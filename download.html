@@ -272,7 +272,7 @@
             progressWrap.classList.add('visible');
 
             const zip = new JSZip();
-            const folder = zip.folder('paulina-stefanovic-site');
+            const rootFolder = zip.folder('paulina-stefanovic-site');
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
@@ -285,14 +285,25 @@
 
                     if (file.type === 'blob') {
                         const blob = await res.blob();
-                        folder.file(file.path, blob);
+                        addFileToZip(rootFolder, file.path, blob);
                     } else {
                         const text = await res.text();
-                        folder.file(file.path, text);
+                        addFileToZip(rootFolder, file.path, text);
                     }
                 } catch (e) {
                     console.warn(`Could not fetch ${file.path}`, e);
                 }
+            }
+
+            function addFileToZip(folder, filePath, content) {
+                const parts = filePath.split('/');
+                let currentFolder = folder;
+
+                for (let i = 0; i < parts.length - 1; i++) {
+                    currentFolder = currentFolder.folder(parts[i]);
+                }
+
+                currentFolder.file(parts[parts.length - 1], content);
             }
 
             progressLabel.textContent = 'generating zip...';
