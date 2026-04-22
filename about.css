@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display:wght@300;400;500;600;700&family=Suisse+Intl:wght@300;400;500;600&display=swap');
+
+/* About Page Specific Styles - Elke van den Ende Style */
+.about-content {
+    width: 100%;
+    padding: 0;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+/* Add grayscale filter to any images in about page */
+.about-content img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.about-content img:hover {
+    filter: grayscale(0%);
+}
+
+.about-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: start;
+}
+
+/* Navigation Active State */
+.main-nav a.active {
+    color: #000;
+    font-weight: 500;
+}
+
+/* Left Column - Single Bio Block */
+.about-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 0;
+}
+
+.bio-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.bio-intro {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 0;
+}
+
+.bio-intro em {
+    font-style: italic;
+    color: #666;
+}
+
+.bio-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-align: justify;
+    hyphens: auto;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 0;
+}
+
+.bio-description em {
+    font-style: italic;
+    color: #666;
+}
+
+.bio-work {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    text-align: justify;
+    hyphens: auto;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 0;
+}
+
+.bio-work em {
+    font-style: italic;
+    color: #666;
+}
+
+/* Right Column - Exhibitions and Education */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 48px; /* Reduced from 80px */
+    align-items: start;
+}
+
+.exhibitions-section,
+.education-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Reduced from 32px */
+    width: 100%;
+}
+
+.section-title {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    color: #000;
+    margin-bottom: 32px;
+    line-height: 1.1;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.exhibitions-list,
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Reduced from 24px */
+}
+
+/* Exhibition Items */
+.exhibition-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    padding-bottom: 12px; /* Reduced from 16px */
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.exhibition-item:last-child {
+    border-bottom: none;
+}
+
+.exhibition-year {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.exhibition-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.exhibition-name {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.exhibition-location {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+/* Education Items */
+.education-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding-bottom: 16px; /* Reduced from 24px */
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.education-year {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.education-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.education-degree {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .about-layout {
+        gap: 80px;
+        padding: 60px 32px;
+    }
+    
+    .bio-text-block {
+        gap: 20px;
+    }
+    
+    .about-right {
+        gap: 36px; /* Reduced from 60px */
+    }
+    
+    .exhibitions-section,
+    .education-section {
+        gap: 16px; /* Reduced */
+    }
+    
+    .section-title {
+        font-size: 40px;
+        margin-bottom: 24px;
+    }
+    
+    .exhibitions-list,
+    .education-list {
+        gap: 12px; /* Reduced */
+    }
+    
+    .exhibition-item {
+        grid-template-columns: 70px 1fr 1fr;
+        gap: 32px;
+        padding-bottom: 10px; /* Reduced */
+    }
+    
+    .education-item {
+        grid-template-columns: 70px 1fr;
+        gap: 32px;
+        padding-bottom: 12px; /* Reduced */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding: 48px 24px;
+    }
+    
+    .bio-text-block {
+        gap: 16px;
+    }
+    
+    .about-right {
+        gap: 32px; /* Reduced from 48px */
+    }
+    
+    .exhibitions-section,
+    .education-section {
+        gap: 12px; /* Reduced */
+    }
+    
+    .section-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    
+    .exhibitions-list,
+    .education-list {
+        gap: 10px; /* Reduced */
+    }
+    
+    .exhibition-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-bottom: 8px; /* Reduced */
+    }
+    
+    .education-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding-bottom: 10px; /* Reduced */
+    }
+    
+    .bio-intro,
+    .bio-description,
+    .bio-work,
+    .exhibition-year,
+    .exhibition-name,
+    .exhibition-location,
+    .education-year,
+    .education-degree {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-layout {
+        padding: 32px 20px;
+        gap: 40px;
+    }
+    
+    .bio-text-block {
+        gap: 12px;
+    }
+    
+    .about-right {
+        gap: 24px; /* Reduced from 32px */
+    }
+    
+    .exhibitions-section,
+    .education-section {
+        gap: 10px; /* Reduced */
+    }
+    
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+    
+    .exhibitions-list,
+    .education-list {
+        gap: 8px; /* Reduced from 16px */
+    }
+    
+    .exhibition-item,
+    .education-item {
+        padding-bottom: 6px; /* Reduced from 12px */
+    }
+    
+    .bio-intro,
+    .bio-description,
+    .bio-work,
+    .exhibition-year,
+    .exhibition-name,
+    .exhibition-location,
+    .education-year,
+    .education-degree {
+        font-size: 12px;
+    }
+}

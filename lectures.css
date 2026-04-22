@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display:wght@300;400;500;600;700&family=Suisse+Intl:wght@300;400;500;600&display=swap');
+
+/* Teaching Page Specific Styles - Match Practice Page Style */
+.teaching-content {
+    width: 100%;
+    padding: 0;
+    background-color: #fff; /* White background like practice */
+    min-height: 100vh;
+}
+
+.teaching-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0; /* No padding to match practice */
+}
+
+/* Navigation Active State */
+.main-nav a.active {
+    color: #000;
+    font-weight: 500;
+}
+
+/* Teaching Row Layout - Match Practice Page Structure */
+.teaching-row {
+    border-bottom: 1px solid #e5e5e5; /* Colophon lines like practice */
+    position: relative;
+    overflow: hidden;
+}
+
+.teaching-row:first-child {
+    border-top: 1px solid #e5e5e5; /* Top border like practice */
+}
+
+/* Expandable Teaching Rows - Match Practice Hover */
+.expandable-teaching {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.expandable-teaching:hover {
+    background-color: #fafafa; /* Light grey hover like practice */
+}
+
+/* Teaching Header - Match Practice Header Structure */
+.teaching-header {
+    display: flex;
+    gap: 40px;
+    padding: 48px 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.teaching-header:hover {
+    background-color: #fafafa;
+}
+
+/* Left Column - Text Content with Plus Below */
+.teaching-info {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.teaching-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px; /* Space before plus icon */
+}
+
+.teaching-title {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #000;
+    margin-bottom: 2px;
+    line-height: 1.3;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.teaching-year {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #666;
+    margin-bottom: 2px;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+    line-height: 1.4;
+}
+
+.teaching-description {
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: #666;
+    font-weight: 400;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 2px;
+}
+
+/* Plus Icon - Under Text on Left Side */
+.teaching-plus-indicator {
+    font-size: 32px;
+    font-weight: 300;
+    color: #000;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+    align-self: flex-start;
+    margin-top: 0;
+}
+
+.expandable-teaching.expanded .teaching-plus-indicator {
+    transform: rotate(45deg);
+}
+
+/* Right Column - Images Pushed to Right */
+.teaching-images {
+    flex: 1;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-end; /* Push images to the right */
+}
+
+.teaching-image {
+    flex: 0 0 auto;
+}
+
+.teaching-image-number {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+    color: #999;
+    font-weight: 400;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.teaching-image-container {
+    width: 160px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0;
+}
+
+.teaching-image-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    z-index: 10;
+}
+
+/* Varied Heights for Dynamic Layout - Like Practice Page */
+.teaching-image:nth-child(1) .teaching-image-container { height: 120px; }
+.teaching-image:nth-child(2) .teaching-image-container { height: 180px; }
+.teaching-image:nth-child(3) .teaching-image-container { height: 140px; }
+.teaching-image:nth-child(4) .teaching-image-container { height: 200px; }
+.teaching-image:nth-child(5) .teaching-image-container { height: 160px; }
+
+.teaching-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 0;
+    filter: grayscale(100%);
+}
+
+.teaching-image-container:hover img {
+    filter: grayscale(0%);
+}
+
+/* Expand Indicator - Hidden (using plus in left column instead) */
+.expand-indicator {
+    display: none;
+}
+
+/* Expanded Teaching Details - Match Practice Page Style */
+.teaching-details-expanded {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background-color: #fafafa; /* Match practice page background */
+}
+
+.expandable-teaching.expanded .teaching-details-expanded {
+    max-height: 1000px;
+    padding: 48px 40px; /* Match practice page padding */
+}
+
+.teaching-expanded-content {
+    max-width: 800px; /* Match practice page max-width */
+}
+
+.teaching-expanded-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px; /* Match practice page */
+    letter-spacing: -0.02em;
+    color: #000;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.teaching-expanded-content > p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 32px; /* Match practice page */
+    color: #333;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.teaching-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns like practice page */
+    gap: 32px; /* Match practice page */
+    margin-bottom: 32px; /* Match practice page */
+}
+
+.teaching-specs .spec-section h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px; /* Match practice page */
+    letter-spacing: -0.01em;
+    color: #000;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.teaching-specs .spec-section p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.teaching-meta {
+    display: flex;
+    gap: 40px; /* Match practice page */
+    padding-top: 24px; /* Match practice page */
+    border-top: 1px solid #e5e5e5;
+}
+
+.teaching-meta .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Match practice page */
+}
+
+.teaching-meta .meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #999;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.teaching-meta .meta-value {
+    font-size: 13px;
+    color: #333;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+/* Two Column Text Section - NO SPACING */
+.text-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 0; /* REMOVED SPACING */
+    padding: 48px 40px;
+    border-top: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+
+.text-column-left,
+.text-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.column-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 8px;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.bio-text {
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: #666;
+    text-align: justify;
+    hyphens: auto;
+    font-weight: 400;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Loading Animation - Match Practice */
+.teaching-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #f8f8f8 25%, #f0f0f0 50%, #f8f8f8 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    z-index: 1;
+}
+
+.teaching-image-container img {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.teaching-image-container.loaded::before {
+    display: none;
+}
+
+/* Student Work Section Styles */
+.student-work-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 300px;
+    gap: 40px;
+    align-items: center;
+    padding: 24px 40px;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+}
+
+.student-work-row:hover {
+    background-color: #fafafa;
+}
+
+.student-work-row .project-number {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #000;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+}
+
+.student-work-images {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.student-work-images img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    filter: grayscale(100%);
+}
+
+.student-work-images img:hover {
+    transform: scale(1.5);
+    z-index: 10;
+    position: relative;
+    filter: grayscale(0%);
+}
+
+.student-work-row .project-info {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: baseline;
+    text-align: right;
+    justify-self: end;
+}
+
+.student-work-row .project-title,
+.student-work-row .project-title-italic {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #000;
+    line-height: 1.3;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+    margin-bottom: 0;
+    font-style: normal; /* Remove italic */
+}
+
+.student-work-row .project-year {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #666;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+    flex-shrink: 0;
+}
+
+/* Responsive Design for Student Work */
+@media (max-width: 1200px) {
+    .student-work-row {
+        grid-template-columns: 70px 1fr 250px;
+        gap: 32px;
+        padding: 20px 32px;
+    }
+    
+    .student-work-images img {
+        width: 85px;
+        height: 52px;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-work-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 24px;
+    }
+    
+    .student-work-row .project-info {
+        text-align: left;
+        justify-self: start;
+    }
+    
+    .student-work-images {
+        gap: 8px;
+    }
+    
+    .student-work-images img {
+        width: 75px;
+        height: 45px;
+    }
+    
+    .student-work-row .project-title,
+    .student-work-row .project-title-italic {
+        font-size: 14px;
+    }
+    
+    .student-work-row .project-year {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .student-work-row {
+        padding: 16px 20px;
+        gap: 12px;
+    }
+    
+    .student-work-images {
+        gap: 6px;
+    }
+    
+    .student-work-images img {
+        width: 65px;
+        height: 40px;
+    }
+    
+    .student-work-row .project-title,
+    .student-work-row .project-title-italic {
+        font-size: 13px;
+    }
+    
+    .student-work-row .project-year {
+        font-size: 11px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .teaching-images {
+        gap: 20px;
+    }
+    
+    .teaching-image-container {
+        width: 140px;
+    }
+    
+    /* Proportionally scale down heights */
+    .teaching-image:nth-child(1) .teaching-image-container { height: 105px; }
+    .teaching-image:nth-child(2) .teaching-image-container { height: 160px; }
+    .teaching-image:nth-child(3) .teaching-image-container { height: 125px; }
+    .teaching-image:nth-child(4) .teaching-image-container { height: 180px; }
+    .teaching-image:nth-child(5) .teaching-image-container { height: 140px; }
+    
+    .teaching-specs {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+    
+    .text-columns {
+        gap: 60px;
+        padding: 40px 32px; /* Match practice responsive padding */
+    }
+    
+    .teaching-plus-indicator {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .teaching-info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 20px;
+        align-items: start;
+    }
+    
+    .teaching-text {
+        margin-bottom: 0;
+    }
+    
+    .teaching-plus-indicator {
+        margin-top: 0;
+        align-self: start;
+        font-size: 28px;
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .teaching-images {
+        gap: 16px;
+        justify-content: flex-start; /* Reset to left on mobile */
+        grid-column: 1 / -1;
+        margin-top: 12px;
+    }
+    
+    .teaching-image-container {
+        width: 120px;
+    }
+    
+    /* Proportionally scale down heights for mobile */
+    .teaching-image:nth-child(1) .teaching-image-container { height: 90px; }
+    .teaching-image:nth-child(2) .teaching-image-container { height: 135px; }
+    .teaching-image:nth-child(3) .teaching-image-container { height: 105px; }
+    .teaching-image:nth-child(4) .teaching-image-container { height: 150px; }
+    .teaching-image:nth-child(5) .teaching-image-container { height: 120px; }
+    
+    .teaching-title {
+        font-size: 14px;
+    }
+    
+    .teaching-year {
+        font-size: 12px;
+    }
+    
+    .teaching-description {
+        font-size: 12px;
+    }
+    
+    .teaching-meta {
+        flex-direction: column; /* Stack on mobile */
+        gap: 16px;
+    }
+    
+    .text-columns {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 32px 24px; /* Match practice responsive padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .teaching-info {
+        gap: 16px;
+    }
+    
+    .teaching-images {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 8px;
+    }
+    
+    .teaching-image-container {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    /* Larger heights for single column mobile layout */
+    .teaching-image:nth-child(1) .teaching-image-container { height: 150px; }
+    .teaching-image:nth-child(2) .teaching-image-container { height: 200px; }
+    .teaching-image:nth-child(3) .teaching-image-container { height: 170px; }
+    .teaching-image:nth-child(4) .teaching-image-container { height: 220px; }
+    .teaching-image:nth-child(5) .teaching-image-container { height: 180px; }
+    
+    .teaching-plus-indicator {
+        font-size: 24px;
+    }
+    
+    .teaching-title {
+        font-size: 13px;
+    }
+    
+    .teaching-year {
+        font-size: 11px;
+    }
+    
+    .teaching-description {
+        font-size: 11px;
+    }
+    
+    .teaching-meta {
+        gap: 12px;
+        padding-top: 12px;
+    }
+    
+    .text-columns {
+        gap: 24px;
+        padding: 24px 20px; /* Match practice responsive padding */
+    }
+}

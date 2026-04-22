@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - paulina stefanovic</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .download-content {
+            min-height: calc(100vh - 120px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-container {
+            max-width: 480px;
+            width: 100%;
+            padding: 0 40px;
+            text-align: left;
+        }
+
+        .download-title {
+            font-size: 48px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: #000;
+            line-height: 1.1;
+            font-family: 'Neue Haas Grotesk Display', 'Inter', sans-serif;
+            margin-bottom: 24px;
+        }
+
+        .download-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+            letter-spacing: -0.01em;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 48px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+            text-transform: lowercase;
+        }
+
+        .download-btn:hover {
+            background: #222;
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        .download-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .progress-bar-wrap {
+            margin-top: 32px;
+            display: none;
+        }
+
+        .progress-bar-wrap.visible {
+            display: block;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: #999;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 1px;
+            background: #e5e5e5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #000;
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+
+        .file-list {
+            margin-top: 40px;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 32px;
+        }
+
+        .file-list-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: #999;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 16px;
+        }
+
+        .file-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .file-list li {
+            font-size: 12px;
+            color: #666;
+            font-family: 'Inter', monospace;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .file-list li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #ccc;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .download-container {
+                padding: 0 24px;
+            }
+            .download-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .download-container {
+                padding: 0 20px;
+            }
+            .download-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="research2.html" class="logo">ps</a>
+            </div>
+            <div class="header-center">
+                <nav class="main-nav">
+                    <a href="research2.html">research</a>
+                    <a href="index.html">practice</a>
+                    <a href="lectures.html">teaching</a>
+                    <a href="selected.html">selected</a>
+                    <a href="inspiration.html">inspiration</a>
+                    <a href="about.html">about</a>
+                </nav>
+            </div>
+            <div class="header-right"></div>
+        </div>
+    </header>
+
+    <main class="download-content">
+        <div class="download-container">
+            <h1 class="download-title">Download</h1>
+            <p class="download-description">Download the complete site as a zip archive containing all HTML, CSS, and JavaScript files.</p>
+
+            <button class="download-btn" id="downloadBtn" onclick="buildAndDownload()">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                download zip
+            </button>
+
+            <div class="progress-bar-wrap" id="progressWrap">
+                <div class="progress-label" id="progressLabel">preparing files...</div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="file-list">
+                <div class="file-list-title">included structure</div>
+                <ul>
+                    <li>index.html</li>
+                    <li>research2.html</li>
+                    <li>lectures.html</li>
+                    <li>selected.html</li>
+                    <li>inspiration.html</li>
+                    <li>about.html</li>
+                    <li>main.js</li>
+                    <li>selected.js</li>
+                    <li>counter.js</li>
+                    <li>style.css & others</li>
+                    <li>package.json</li>
+                    <li>public/ (images)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-copyright">© 2025</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        const files = [
+            { path: 'index.html', type: 'text' },
+            { path: 'research2.html', type: 'text' },
+            { path: 'lectures.html', type: 'text' },
+            { path: 'selected.html', type: 'text' },
+            { path: 'inspiration.html', type: 'text' },
+            { path: 'about.html', type: 'text' },
+            { path: 'style.css', type: 'text' },
+            { path: 'research2.css', type: 'text' },
+            { path: 'lectures.css', type: 'text' },
+            { path: 'selected.css', type: 'text' },
+            { path: 'inspiration.css', type: 'text' },
+            { path: 'about.css', type: 'text' },
+            { path: 'main.js', type: 'text' },
+            { path: 'selected.js', type: 'text' },
+            { path: 'counter.js', type: 'text' },
+            { path: 'package.json', type: 'text' },
+            { path: 'README.md', type: 'text' },
+            { path: 'public/vite.svg', type: 'text' },
+            { path: 'public/f96ba084f7ea7a4d3e76ba41b7fb4dda.jpg', type: 'blob' },
+            { path: 'public/8ffca1d6d4c619f35882cf36a6ead3b9.jpg', type: 'blob' },
+        ];
+
+        async function buildAndDownload() {
+            const btn = document.getElementById('downloadBtn');
+            const progressWrap = document.getElementById('progressWrap');
+            const progressFill = document.getElementById('progressFill');
+            const progressLabel = document.getElementById('progressLabel');
+
+            btn.disabled = true;
+            btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="animation:spin 1s linear infinite"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> preparing...`;
+            progressWrap.classList.add('visible');
+
+            const zip = new JSZip();
+            const folder = zip.folder('paulina-stefanovic-site');
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                progressLabel.textContent = `fetching ${file.path}...`;
+                progressFill.style.width = `${Math.round((i / files.length) * 80)}%`;
+
+                try {
+                    const res = await fetch(file.path);
+                    if (!res.ok) throw new Error('Not found');
+
+                    if (file.type === 'blob') {
+                        const blob = await res.blob();
+                        folder.file(file.path, blob);
+                    } else {
+                        const text = await res.text();
+                        folder.file(file.path, text);
+                    }
+                } catch (e) {
+                    console.warn(`Could not fetch ${file.path}`, e);
+                }
+            }
+
+            progressLabel.textContent = 'generating zip...';
+            progressFill.style.width = '90%';
+
+            const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 6 } });
+
+            progressFill.style.width = '100%';
+            progressLabel.textContent = 'done';
+
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'paulina-stefanovic-site.zip';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            btn.disabled = false;
+            btn.innerHTML = `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> download again`;
+        }
+    </script>
+
+    <style>
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</body>
+</html>

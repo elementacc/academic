@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected - paulina stefanovic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="selected.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="research2.html" class="logo">ps</a>
+            </div>
+            <div class="header-center">
+                <nav class="main-nav">
+                    <a href="research2.html">research</a>
+                    <a href="index.html">practice</a>
+                    <a href="lectures.html">teaching</a>
+                    <a href="selected.html" class="active">selected</a>
+                    <a href="inspiration.html">inspiration</a>
+                    <a href="about.html">about</a>
+                </nav>
+            </div>
+            <div class="header-right">
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Intro Section - Match Practice and Teaching Exactly -->
+    <section class="page-intro">
+        <h1 class="intro-title">Selected Work</h1>
+        <p class="intro-description">A curated selection of projects spanning brand identity, editorial design, and digital platforms. Each project represents a unique approach to visual communication and creative problem-solving.</p>
+    </section>
+
+    <main class="selected-content">
+        <div class="selected-layout">
+            <!-- Project Row 1 -->
+            <div class="project-row" data-project="01">
+                <div class="project-info">
+                    <div class="project-text">
+                        <div class="project-title">Lukas Morio</div>
+                        <div class="project-subtitle">Web- and Digital Design</div>
+                        <div class="project-year">A digital manifestation of a photographers graphical expression</div>
+                    </div>
+                    <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
+                </div>
+                <div class="project-preview">
+                    <img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Lukas Morio Preview">
+                </div>
+                
+                <div class="project-details-expanded">
+                    <div class="project-description">
+                        <div class="project-description-left">
+                            <h3>Project Overview</h3>
+                            <p>Lukas Morio represents a comprehensive digital platform that translates a photographer's unique visual language into an immersive web experience. The project focuses on creating a seamless bridge between analog photography and digital presentation.</p>
+                            
+                            <p>The design emphasizes the photographer's distinctive aesthetic through careful consideration of typography, layout, and interactive elements. Each page serves as a canvas that enhances rather than competes with the photographic content.</p>
+                        </div>
+                        
+                        <div class="project-description-right">
+                            <h3>Technical Approach</h3>
+                            <p>The website employs a minimalist design philosophy that prioritizes content visibility and user experience. Custom animations and transitions create a fluid browsing experience that mirrors the photographer's artistic vision.</p>
+                            
+                            <p>Responsive design ensures optimal viewing across all devices while maintaining the integrity of the photographic compositions. The platform includes portfolio management, client galleries, and commission inquiry systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-grid">
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Lukas Morio 1">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Lukas Morio 2">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976077/pexels-photo-6976077.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Lukas Morio 3">
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Client:</span>
+                            <span class="meta-value">Lukas Morio</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Services:</span>
+                            <span class="meta-value">Web Design, Digital Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Row 2 -->
+            <div class="project-row" data-project="02">
+                <div class="project-info">
+                    <div class="project-text">
+                        <div class="project-title">Dongle C</div>
+                        <div class="project-subtitle">Web- and Digital Design</div>
+                        <div class="project-year">A straightforward and convenient digital experience</div>
+                    </div>
+                    <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
+                </div>
+                <div class="project-preview">
+                    <img src="https://images.pexels.com/photos/6976092/pexels-photo-6976092.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dongle C Preview">
+                </div>
+                
+                <div class="project-details-expanded">
+                    <div class="project-description">
+                        <div class="project-description-left">
+                            <h3>Design Philosophy</h3>
+                            <p>Dongle C embodies the principle that great design should be invisible. The project focuses on creating an intuitive user experience that eliminates friction and enhances productivity for Apple device users.</p>
+                            
+                            <p>The interface design prioritizes clarity and functionality, with every element serving a specific purpose in the user journey. Clean typography and strategic use of white space create a calming, professional environment.</p>
+                        </div>
+                        
+                        <div class="project-description-right">
+                            <h3>User Experience</h3>
+                            <p>The platform addresses the common pain points of device connectivity through thoughtful information architecture and streamlined workflows. Users can quickly find solutions and make informed purchasing decisions.</p>
+                            
+                            <p>Comprehensive product information, compatibility guides, and customer support integration ensure users have all necessary resources at their fingertips. The design scales seamlessly across desktop and mobile platforms.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-grid">
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976092/pexels-photo-6976092.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dongle C 1">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976085/pexels-photo-6976085.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dongle C 2">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976096/pexels-photo-6976096.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Dongle C 3">
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Client:</span>
+                            <span class="meta-value">Dongle C</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Services:</span>
+                            <span class="meta-value">UX/UI Design, E-commerce</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Row 3 -->
+            <div class="project-row" data-project="03">
+                <div class="project-info">
+                    <div class="project-text">
+                        <div class="project-title">Trevor Cheney Gallery</div>
+                        <div class="project-subtitle">Brand Identity & Digital Platform</div>
+                        <div class="project-year">Contemporary art gallery digital presence</div>
+                    </div>
+                    <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
+                </div>
+                <div class="project-preview">
+                    <img src="https://images.pexels.com/photos/6976089/pexels-photo-6976089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Trevor Gallery Preview">
+                </div>
+                
+                <div class="project-details-expanded">
+                    <div class="project-description">
+                        <div class="project-description-left">
+                            <h3>Gallery Identity</h3>
+                            <p>Trevor Cheney Gallery required a sophisticated digital presence that would reflect the quality and vision of contemporary art exhibitions. The project encompassed complete brand development and digital platform creation.</p>
+                            
+                            <p>The visual identity balances artistic expression with professional presentation, creating a framework that supports diverse artistic voices while maintaining gallery coherence.</p>
+                        </div>
+                        
+                        <div class="project-description-right">
+                            <h3>Digital Experience</h3>
+                            <p>The website serves as both exhibition space and business platform, featuring artist portfolios, exhibition archives, and collector services. High-quality image presentation ensures artworks are displayed with maximum impact.</p>
+                            
+                            <p>Custom content management allows gallery staff to easily update exhibitions, artist information, and news. The platform integrates with social media and email marketing systems for comprehensive outreach.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-grid">
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976089/pexels-photo-6976089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Trevor Gallery 1">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976079/pexels-photo-6976079.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Trevor Gallery 2">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976087/pexels-photo-6976087.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Trevor Gallery 3">
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Client:</span>
+                            <span class="meta-value">Trevor Cheney Gallery</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Services:</span>
+                            <span class="meta-value">Brand Identity, Web Design, CMS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Row 4 -->
+            <div class="project-row" data-project="04">
+                <div class="project-info">
+                    <div class="project-text">
+                        <div class="project-title-italic">Formative Modern</div>
+                        <div class="project-subtitle">Editorial Design & Publication</div>
+                        <div class="project-year">Contemporary design discourse publication</div>
+                    </div>
+                    <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
+                </div>
+                <div class="project-preview">
+                    <img src="https://images.pexels.com/photos/6976074/pexels-photo-6976074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Formative Modern Preview">
+                </div>
+                
+                <div class="project-details-expanded">
+                    <div class="project-description">
+                        <div class="project-description-left">
+                            <h3>Editorial Vision</h3>
+                            <p>Formative Modern explores the intersection of contemporary design practice and theoretical discourse. The publication serves as a platform for emerging voices in design criticism and practice.</p>
+                            
+                            <p>The editorial design reflects the publication's commitment to experimental approaches while maintaining readability and accessibility. Typography and layout choices support diverse content types from essays to visual portfolios.</p>
+                        </div>
+                        
+                        <div class="project-description-right">
+                            <h3>Design Approach</h3>
+                            <p>The publication design employs a flexible grid system that accommodates various content formats while maintaining visual consistency. Custom typography and careful attention to hierarchy enhance the reading experience.</p>
+                            
+                            <p>Both print and digital versions were developed, with the digital platform offering interactive features and expanded multimedia content. The design system scales across different publication formats and special issues.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-grid">
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976074/pexels-photo-6976074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Formative Modern 1">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976093/pexels-photo-6976093.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Formative Modern 2">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Formative Modern 3">
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Client:</span>
+                            <span class="meta-value">Formative Modern</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Services:</span>
+                            <span class="meta-value">Editorial Design, Typography, Publishing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Row 5 -->
+            <div class="project-row" data-project="05">
+                <div class="project-info">
+                    <div class="project-text">
+                        <div class="project-title">Space of Time</div>
+                        <div class="project-subtitle">Installation & Digital Documentation</div>
+                        <div class="project-year">Temporal art installation documentation</div>
+                    </div>
+                    <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
+                </div>
+                <div class="project-preview">
+                    <img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Space of Time Preview">
+                </div>
+                
+                <div class="project-details-expanded">
+                    <div class="project-description">
+                        <div class="project-description-left">
+                            <h3>Installation Concept</h3>
+                            <p>Space of Time explores the relationship between physical space and temporal experience through immersive installation art. The project documents and extends the installation through digital media.</p>
+                            
+                            <p>The documentation strategy captures both the static elements and temporal changes within the installation, creating a comprehensive record that serves as both archive and artistic statement.</p>
+                        </div>
+                        
+                        <div class="project-description-right">
+                            <h3>Digital Extension</h3>
+                            <p>The digital platform extends the installation's reach beyond its physical boundaries, offering virtual visitors an opportunity to engage with the work through interactive documentation and supplementary content.</p>
+                            
+                            <p>Time-based media, including video documentation and audio recordings, capture the installation's evolution over time. The digital archive serves researchers, critics, and future exhibitions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-images-grid">
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Space of Time 1">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976077/pexels-photo-6976077.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Space of Time 2">
+                        </div>
+                        <div class="project-image-item">
+                            <img src="https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Space of Time 3">
+                        </div>
+                    </div>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Client:</span>
+                            <span class="meta-value">Space of Time</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Year:</span>
+                            <span class="meta-value">2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Services:</span>
+                            <span class="meta-value">Documentation, Digital Archive, Web Platform</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-copyright">© 2025</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // Selected page expand functionality - NO REDIRECTS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lock to current page - prevent any navigation
+            const originalPushState = history.pushState;
+            const originalReplaceState = history.replaceState;
+            
+            history.pushState = function() {
+                // Block all pushState calls
+                return;
+            };
+            
+            history.replaceState = function() {
+                // Block all replaceState calls
+                return;
+            };
+            
+            const projectRows = document.querySelectorAll('.project-row');
+            
+            projectRows.forEach(row => {
+                // Also handle clicks on the entire row (except images)
+                row.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                   // Don't trigger if clicking on images
+                    if (e.target.closest('.project-plus-indicator') ||
+                        e.target.closest('.project-image-item') || 
+                       e.target.closest('.project-preview')) {
+                        return;
+                    }
+                    
+                    const isExpanded = row.classList.contains('expanded');
+                    
+                    // Close all other expanded projects
+                    document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
+                        if (otherRow !== row) {
+                            otherRow.classList.remove('expanded');
+                        }
+                    });
+                    
+                    // Toggle current project
+                    if (isExpanded) {
+                        row.classList.remove('expanded');
+                    } else {
+                        row.classList.add('expanded');
+                        
+                        // Smooth scroll to expanded content after animation
+                        setTimeout(() => {
+                            const expandedContent = row.querySelector('.project-details-expanded');
+                            if (expandedContent) {
+                                expandedContent.scrollIntoView({ 
+                                    behavior: 'smooth',
+                                    block: 'nearest'
+                                });
+                            }
+                        }, 200);
+                    }
+                });
+            });
+            
+            // Global function for compatibility with onclick attributes
+            window.toggleSelectedProject = function(projectRow) {
+                        if (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        
+                        const isExpanded = projectRow.classList.contains('expanded');
+                        
+                        // Close all other expanded projects
+                        document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
+                            if (otherRow !== projectRow) {
+                                otherRow.classList.remove('expanded');
+                            }
+                        });
+                        
+                        // Toggle current project
+                        if (isExpanded) {
+                            projectRow.classList.remove('expanded');
+                        } else {
+                            projectRow.classList.add('expanded');
+                            
+                            // Smooth scroll to expanded content after animation
+                            setTimeout(() => {
+                                const expandedContent = projectRow.querySelector('.project-details-expanded');
+                                if (expandedContent) {
+                                    expandedContent.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'nearest'
+                                    });
+                                }
+                            }, 200);
+                        }
+            };
+        });
+    </script>
+</body>
+</html>
