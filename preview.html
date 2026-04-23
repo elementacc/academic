@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview — Academic × Elementa Style</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gutter: 16px;
+      --pageMargin: 16px;
+      --easing: cubic-bezier(0.87, 0, 0.13, 1);
+      --headerHeight: 60px;
+      --c-black: #000000;
+      --c-grey-100: #565656;
+      --c-grey-80: #767676;
+      --c-grey-60: #959595;
+      --c-grey-40: #b8b8b8;
+      --c-grey-20: #eceae9;
+      --c-white: #ffffff;
+      --c-yellow: #f4bf35;
+      --sp-4: 4px; --sp-8: 8px; --sp-12: 12px; --sp-16: 16px;
+      --sp-20: 20px; --sp-40: 40px; --sp-60: 60px; --sp-80: 80px; --sp-120: 120px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body, h1, h2, h3, h4, p, ul, ol, li { margin: 0; padding: 0; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      color: var(--c-grey-80);
+      background-color: #fff;
+      -webkit-font-smoothing: antialiased;
+      margin-top: var(--headerHeight);
+    }
+    ::selection { background: var(--c-yellow); color: var(--c-white); }
+
+    .header {
+      border-bottom: 1px solid var(--c-grey-20);
+      padding: var(--sp-16) 0;
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: #fff;
+      z-index: 5000;
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--pageMargin);
+      width: 100%;
+    }
+    .header-left { flex: 0 0 50%; }
+    .logo {
+      font-size: 24px; line-height: 28px;
+      font-weight: 400; letter-spacing: -0.04em;
+      color: var(--c-black); text-decoration: none;
+      transition: color 0.2s var(--easing);
+    }
+    .logo:hover { color: var(--c-grey-80); }
+    .header-center { flex: 0 0 50%; display: flex; justify-content: flex-end; }
+    .main-nav { display: flex; align-items: center; gap: var(--sp-20); }
+    .main-nav a {
+      font-size: 24px; line-height: 28px;
+      font-weight: 400; letter-spacing: -0.04em;
+      color: var(--c-grey-80); text-decoration: none;
+      transition: color 0.2s var(--easing);
+    }
+    .main-nav a:hover { color: var(--c-grey-60); }
+    .main-nav a.active { color: var(--c-black); }
+
+    .page-intro {
+      padding: var(--sp-120) var(--pageMargin) var(--sp-80);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--sp-120);
+      align-items: start;
+    }
+    .intro-title {
+      font-size: 60px; line-height: 64px;
+      font-weight: 400; letter-spacing: -0.04em;
+      color: var(--c-black); margin-left: -0.1em;
+    }
+    .intro-description {
+      font-size: 24px; line-height: 28px;
+      font-weight: 400; letter-spacing: -0.04em;
+      color: var(--c-grey-80);
+    }
+
+    .project-grid { display: flex; flex-direction: column; }
+    .project-row {
+      border-bottom: 1px solid var(--c-grey-20);
+      position: relative; overflow: hidden;
+      transition: border-bottom-color 0.2s var(--easing);
+    }
+    .project-row:first-child { border-top: 1px solid var(--c-grey-20); }
+    .project-row:hover { border-bottom-color: var(--c-yellow); }
+    .project-header {
+      display: flex; gap: var(--sp-40);
+      padding: var(--sp-40) var(--pageMargin);
+      cursor: pointer;
+    }
+    .project-info { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; }
+    .project-text { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-12); }
+    .project-number-large { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); margin-bottom: var(--sp-12); }
+    .project-title { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-bottom: var(--sp-16); }
+    .project-subtitle { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-20); }
+    .project-subtitle div { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); }
+    .project-plus-indicator {
+      font-size: 24px; color: var(--c-black);
+      transition: transform 0.3s ease; cursor: pointer;
+      line-height: 1; user-select: none; align-self: flex-start;
+    }
+    .project-row.expanded .project-plus-indicator { transform: rotate(45deg); }
+    .project-images { flex: 1; display: flex; gap: var(--sp-16); flex-wrap: wrap; align-items: flex-start; }
+    .image-item { flex: 0 0 auto; }
+    .image-number { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; margin-bottom: var(--sp-8); color: var(--c-grey-60); }
+    .image-container {
+      width: 160px; overflow: hidden; background: var(--c-grey-20);
+      cursor: pointer; position: relative;
+      border-radius: 8px; transition: border-radius 0.3s ease;
+    }
+    .image-container:hover { border-radius: 4px; }
+    .image-item:nth-child(1) .image-container { height: 120px; }
+    .image-item:nth-child(2) .image-container { height: 180px; }
+    .image-item:nth-child(3) .image-container { height: 140px; }
+    .image-item:nth-child(4) .image-container { height: 200px; }
+    .image-item:nth-child(5) .image-container { height: 160px; }
+    .image-container img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .image-container:hover img { transform: scale(1.02); }
+    .project-details-expanded { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+    .project-row.expanded .project-details-expanded { max-height: 1200px; padding: var(--sp-40) var(--pageMargin); }
+    .project-description { max-width: 800px; }
+    .project-description h3 { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-bottom: var(--sp-16); }
+    .project-description > p { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; margin-bottom: var(--sp-40); color: var(--c-grey-80); }
+    .project-specs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-40); margin-bottom: var(--sp-40); }
+    .spec-section h4 { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-black); margin-bottom: var(--sp-8); }
+    .spec-section p { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
+    .project-meta { display: flex; gap: var(--sp-40); padding-top: var(--sp-16); border-top: 1px solid var(--c-grey-20); }
+    .meta-item { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .meta-label { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); }
+    .meta-value { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
+
+    .about-layout {
+      padding: var(--sp-120) var(--pageMargin);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--sp-120); align-items: start;
+    }
+    .bio-text-block { display: flex; flex-direction: column; gap: var(--sp-40); }
+    .bio-intro, .bio-description { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
+    .bio-intro em { font-style: italic; color: var(--c-grey-100); }
+    .about-right { display: flex; flex-direction: column; gap: var(--sp-80); }
+    .section-title { font-size: 60px; line-height: 64px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-left: -0.1em; margin-bottom: var(--sp-40); }
+    .exhibition-item { padding: var(--sp-8) 0; border-bottom: 1px solid var(--c-grey-20); display: grid; grid-template-columns: 80px 1fr; gap: var(--sp-40); }
+    .exhibition-year { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-black); }
+    .exhibition-name { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
+    .exhibition-location { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); }
+
+    .selected-row {
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: var(--sp-40); align-items: start;
+      padding: var(--sp-40) var(--pageMargin);
+      border-bottom: 1px solid var(--c-grey-20);
+      border-top: 1px solid var(--c-grey-20);
+      cursor: pointer;
+      transition: border-bottom-color 0.2s var(--easing);
+    }
+    .selected-row + .selected-row { border-top: none; }
+    .selected-row:hover { border-bottom-color: var(--c-yellow); }
+    .selected-title { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); }
+    .selected-sub { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); margin-top: var(--sp-4); }
+    .selected-year { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); margin-top: var(--sp-4); }
+    .preview-img {
+      width: 300px; height: 180px; overflow: hidden;
+      background: var(--c-grey-20); border-radius: 8px;
+      transition: border-radius 0.3s ease; justify-self: end;
+    }
+    .preview-img:hover { border-radius: 4px; }
+    .preview-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+    .selected-row:hover .preview-img img { transform: scale(1.02); }
+
+    .page-label {
+      font-size: 12px; line-height: 16px; letter-spacing: -0.03em;
+      color: var(--c-grey-60); padding: var(--sp-40) var(--pageMargin) var(--sp-8);
+      border-bottom: 1px solid var(--c-grey-20); text-transform: uppercase;
+    }
+
+    .footer {
+      margin-top: var(--sp-120);
+      border-top: 1px solid var(--c-grey-20);
+      padding-top: var(--sp-16); padding-bottom: var(--sp-16);
+      min-height: 40vh;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .footer-content { padding: 0 var(--pageMargin); }
+    .footer-copyright { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <a href="#" class="logo">ps</a>
+      </div>
+      <div class="header-center">
+        <nav class="main-nav">
+          <a href="#research">research</a>
+          <a href="#practice" class="active">practice</a>
+          <a href="#teaching">teaching</a>
+          <a href="#selected">selected</a>
+          <a href="#inspiration">inspiration</a>
+          <a href="#about">about</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-label">— practice</div>
+
+  <section class="page-intro">
+    <h1 class="intro-title">Practice</h1>
+    <p class="intro-description">A selection of past and ongoing projects. Some were built for clients, others for ourselves—from early experiments to full-scale systems, our work spans disciplines and formats.</p>
+  </section>
+
+  <div class="project-grid">
+    <div class="project-row" id="row1">
+      <div class="project-header" onclick="toggleRow('row1')">
+        <div class="project-info">
+          <div class="project-text">
+            <div class="project-number-large">[01]</div>
+            <div class="project-title">NE GEURRA</div>
+            <div class="project-subtitle">
+              <div>[01.1] Branding</div>
+              <div>[01.2] Art Direction</div>
+              <div>[01.3] Printed Matter</div>
+              <div>[01.4] Website</div>
+            </div>
+          </div>
+          <div class="project-plus-indicator">+</div>
+        </div>
+        <div class="project-images">
+          <div class="image-item">
+            <div class="image-number">[01.1.1]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[01.2.2]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[01.3.3]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976073/pexels-photo-6976073.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[01.3.4]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976092/pexels-photo-6976092.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[01.2.5]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976085/pexels-photo-6976085.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-details-expanded">
+        <div class="project-description">
+          <h3>Project Overview</h3>
+          <p>NE GEURRA is a comprehensive brand identity project that encompasses multiple touchpoints including visual identity, art direction, printed materials, and digital presence.</p>
+          <div class="project-specs">
+            <div class="spec-section"><h4>[01.1] Branding</h4><p>Complete visual identity system including logo design, color palette, typography selection, and brand guidelines.</p></div>
+            <div class="spec-section"><h4>[01.2] Art Direction</h4><p>Creative direction for photography, illustration style, and overall visual language.</p></div>
+          </div>
+          <div class="project-meta">
+            <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">NE GEURRA</span></div>
+            <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2024</span></div>
+            <div class="meta-item"><span class="meta-label">Services</span><span class="meta-value">Branding, Art Direction, Print, Web</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="project-row" id="row2">
+      <div class="project-header" onclick="toggleRow('row2')">
+        <div class="project-info">
+          <div class="project-text">
+            <div class="project-number-large">[02]</div>
+            <div class="project-title">DANNY KAPLAN STUDIO</div>
+            <div class="project-subtitle">
+              <div>[02.1] Art Direction</div>
+              <div>[02.2] Website</div>
+            </div>
+          </div>
+          <div class="project-plus-indicator">+</div>
+        </div>
+        <div class="project-images">
+          <div class="image-item">
+            <div class="image-number">[02.1.1]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[02.1.2]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976077/pexels-photo-6976077.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+          <div class="image-item">
+            <div class="image-number">[02.2.3]</div>
+            <div class="image-container"><img src="https://images.pexels.com/photos/6976079/pexels-photo-6976079.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-details-expanded">
+        <div class="project-description">
+          <h3>Project Overview</h3>
+          <p>Danny Kaplan Studio focuses on creating a sophisticated digital presence and art direction for a contemporary art studio.</p>
+          <div class="project-meta">
+            <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Danny Kaplan Studio</span></div>
+            <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2024</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-label" style="margin-top: var(--sp-120);">— selected</div>
+
+  <div style="padding: var(--sp-120) var(--pageMargin) var(--sp-80); display: grid; grid-template-columns: 1fr 2fr; gap: var(--sp-120);">
+    <h1 style="font-size: 60px; line-height: 64px; font-weight: 400; letter-spacing: -0.04em; color: #000; margin-left: -0.1em;">Selected Work</h1>
+    <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80);">A curated selection of projects spanning brand identity, editorial design, and digital platforms.</p>
+  </div>
+
+  <div class="selected-row">
+    <div>
+      <div class="selected-title">Lukas Morio</div>
+      <div class="selected-sub">Web- and Digital Design</div>
+      <div class="selected-year">A digital manifestation of a photographer's graphical expression</div>
+      <div style="margin-top: var(--sp-20); font-size: 24px; color: var(--c-black);">+</div>
+    </div>
+    <div class="preview-img"><img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt=""></div>
+  </div>
+  <div class="selected-row">
+    <div>
+      <div class="selected-title">Trevor Cheney Gallery</div>
+      <div class="selected-sub">Brand Identity & Digital Platform</div>
+      <div class="selected-year">Contemporary art gallery digital presence</div>
+      <div style="margin-top: var(--sp-20); font-size: 24px; color: var(--c-black);">+</div>
+    </div>
+    <div class="preview-img"><img src="https://images.pexels.com/photos/6976089/pexels-photo-6976089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt=""></div>
+  </div>
+
+  <div class="page-label" style="margin-top: var(--sp-120);">— about</div>
+
+  <div class="about-layout">
+    <div>
+      <div class="bio-text-block">
+        <p class="bio-intro">Paulina Greta Stefanovic is a <em>Berlin-based artist</em>, assistant researcher in the HCI field at HTW Berlin, and <em>Ph.D. candidate at TU Berlin</em>. She explores the relationship between technology, art, design and the concepts of space, and human perceptions.</p>
+        <p class="bio-description">Her focus is on immersive and movement-based interfaces. Her works have been featured at international venues and multimedia festivals. She has been a lecturer in different European academies teaching Technological Arts.</p>
+      </div>
+    </div>
+    <div class="about-right">
+      <div>
+        <h4 class="section-title">exhibitions</h4>
+        <div class="exhibition-item"><div class="exhibition-year">2025</div><div><div class="exhibition-name">TU Dresden</div><div class="exhibition-location">Dresden</div></div></div>
+        <div class="exhibition-item"><div class="exhibition-year">2025</div><div><div class="exhibition-name">Already Possible by Soiree XD & masumi</div><div class="exhibition-location">Berlin</div></div></div>
+        <div class="exhibition-item"><div class="exhibition-year">2024</div><div><div class="exhibition-name">Prague Quadriennial</div><div class="exhibition-location">Prague</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleRow(id) {
+      document.getElementById(id).classList.toggle('expanded');
+    }
+  </script>
+</body>
+</html>
