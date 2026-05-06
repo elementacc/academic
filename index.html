@@ -14,21 +14,15 @@
             </div>
             <div class="header-center">
                 <nav class="main-nav">
-                    <a href="research2.html">research</a>
-                    <a href="index.html" class="active">practice</a>
-                    <a href="lectures.html">teaching</a>
-                    <a href="selected.html">selected</a>
-                    <a href="inspiration.html">inspiration</a>
-                    <a href="about.html">about</a>
+                    <ul>
+                        <li><a href="research2.html">research</a></li>
+                        <li><a href="lectures.html">teaching</a></li>
+                        <li><a href="selected.html">selected</a></li>
+                        <li><a href="about.html">about</a></li>
+                    </ul>
                 </nav>
             </div>
-            <div class="header-right">
-                <div class="enquiries">
-                    <span>ENQUIRIES</span>
-                    <a href="mailto:office@1o1studio.com">E. office@1o1studio.com</a>
-                </div>
-                <p class="tagline">A creative studio specialised in brand identity and creative direction.</p>
-            </div>
+            <div class="header-right"></div>
         </div>
     </header>
 
@@ -325,32 +319,19 @@
     <script>
         // Practice page expand functionality - NO REDIRECTS
         document.addEventListener('DOMContentLoaded', function() {
-            // Lock to current page - prevent any navigation
-            const currentPath = window.location.pathname;
-            
-            // Override any potential redirects
             const originalPushState = history.pushState;
             const originalReplaceState = history.replaceState;
             
-            history.pushState = function() {
-                // Block all pushState calls
-                return;
-            };
-            
-            history.replaceState = function() {
-                // Block all replaceState calls
-                return;
-            };
+            history.pushState = function() { return; };
+            history.replaceState = function() { return; };
             
             const projectRows = document.querySelectorAll('.project-row');
             
             projectRows.forEach(row => {
-                // Handle row clicks (but exclude plus icon and images)
                 row.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Don't trigger if clicking on plus icon or images
                     if (e.target.closest('.project-plus-indicator') || 
                         e.target.closest('.image-container') || 
                         e.target.closest('.project-images') || 
@@ -362,7 +343,6 @@
                 });
             });
             
-            // Helper function to handle the toggle logic
             function toggleProjectHelper(projectRow) {
                 if (event) {
                     event.preventDefault();
@@ -371,20 +351,17 @@
                 
                 const isExpanded = projectRow.classList.contains('expanded');
                 
-                // Close all other expanded projects
                 document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
                     if (otherRow !== projectRow) {
                         otherRow.classList.remove('expanded');
                     }
                 });
                 
-                // Toggle current project
                 if (isExpanded) {
                     projectRow.classList.remove('expanded');
                 } else {
                     projectRow.classList.add('expanded');
                     
-                    // Smooth scroll to expanded content after animation
                     setTimeout(() => {
                         const expandedContent = projectRow.querySelector('.project-details-expanded');
                         if (expandedContent) {
@@ -397,7 +374,6 @@
                 }
             }
             
-            // Global function for compatibility
             window.toggleProject = function(header) {
                 if (event) {
                     event.preventDefault();
