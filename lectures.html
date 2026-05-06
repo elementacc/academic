@@ -12,20 +12,19 @@
     <header class="header">
         <div class="header-content">
             <div class="header-left">
-                <a href="lectures.html" class="logo">ps</a>
+                <a href="research2.html" class="logo">ps</a>
             </div>
             <div class="header-center">
                 <nav class="main-nav">
-                    <a href="research2.html">research</a>
-                    <a href="index.html">practice</a>
-                    <a href="lectures.html" class="active">teaching</a>
-                    <a href="selected.html">selected</a>
-                    <a href="inspiration.html">inspiration</a>
-                    <a href="about.html">about</a>
+                    <ul>
+                        <li><a href="research2.html">research</a></li>
+                        <li class="active"><a href="lectures.html">teaching</a></li>
+                        <li><a href="selected.html">selected</a></li>
+                        <li><a href="about.html">about</a></li>
+                    </ul>
                 </nav>
             </div>
-            <div class="header-right">
-            </div>
+            <div class="header-right"></div>
         </div>
     </header>
 
@@ -74,7 +73,6 @@
                     </div>
                 </div>
                 
-                <!-- Expanded Content -->
                 <div class="teaching-details-expanded">
                     <div class="teaching-expanded-content">
                         <h3>Project Overview</h3>
@@ -110,7 +108,7 @@
                 </div>
             </div>
 
-            <!-- Teaching Row 2 - Text Left, Images Right, Plus After Text -->
+            <!-- Teaching Row 2 -->
             <div class="teaching-row expandable-teaching" data-teaching="02">
                 <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
                     <div class="teaching-info">
@@ -147,7 +145,6 @@
                     </div>
                 </div>
                 
-                <!-- Expanded Content -->
                 <div class="teaching-details-expanded">
                     <div class="teaching-expanded-content">
                         <h3>Series Overview</h3>
@@ -183,7 +180,7 @@
                 </div>
             </div>
 
-            <!-- Teaching Row 3 - Text Left, Images Right, Plus After Text -->
+            <!-- Teaching Row 3 -->
             <div class="teaching-row expandable-teaching" data-teaching="03">
                 <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
                     <div class="teaching-info">
@@ -220,7 +217,6 @@
                     </div>
                 </div>
                 
-                <!-- Expanded Content -->
                 <div class="teaching-details-expanded">
                     <div class="teaching-expanded-content">
                         <h3>Material Investigation</h3>
@@ -256,7 +252,7 @@
                 </div>
             </div>
 
-            <!-- Teaching Row 4 - Text Left, Images Right, Plus After Text -->
+            <!-- Teaching Row 4 -->
             <div class="teaching-row expandable-teaching" data-teaching="04">
                 <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
                     <div class="teaching-info">
@@ -293,7 +289,6 @@
                     </div>
                 </div>
                 
-                <!-- Expanded Content -->
                 <div class="teaching-details-expanded">
                     <div class="teaching-expanded-content">
                         <h3>Conceptual Framework</h3>
@@ -329,7 +324,7 @@
                 </div>
             </div>
 
-            <!-- Teaching Row 5 - Text Left, Images Right, Plus After Text -->
+            <!-- Teaching Row 5 -->
             <div class="teaching-row expandable-teaching" data-teaching="05">
                 <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
                     <div class="teaching-info">
@@ -366,7 +361,6 @@
                     </div>
                 </div>
                 
-                <!-- Expanded Content -->
                 <div class="teaching-details-expanded">
                     <div class="teaching-expanded-content">
                         <h3>Photographic Series</h3>
@@ -402,7 +396,7 @@
                 </div>
             </div>
 
-            <!-- Two Column Text Section - NO SPACING -->
+            <!-- Two Column Text Section -->
             <div class="text-columns">
                 <div class="text-column-left">
                     <h4 class="column-title">KÜNSTLERIN</h4>
@@ -424,9 +418,8 @@
             </div>
         </div>
 
-        <!-- Selected Student Work Section - NO SPACING -->
+        <!-- Selected Student Work Section -->
         <div class="teaching-layout" style="margin-top: 0; padding-top: 0;">
-            <!-- Section Title in Lectures Style -->
             <div class="teaching-row" style="border-bottom: none; padding-bottom: 0; margin-bottom: 60px; border-top: 1px solid #e5e5e5;">
                 <div class="teaching-header" style="cursor: default;">
                     <div class="teaching-info" style="width: 100%;">
@@ -436,9 +429,7 @@
                 </div>
             </div>
 
-            <!-- Student Work Projects -->
             <div class="selected-layout" style="padding: 0; margin: 0;">
-                <!-- Student Project Row 1 -->
                 <div class="student-work-row">
                     <div class="project-number">[01]</div>
                     <div class="student-work-images">
@@ -452,7 +443,6 @@
                     </div>
                 </div>
 
-                <!-- Student Project Row 2 -->
                 <div class="student-work-row">
                     <div class="project-number">[03]</div>
                     <div class="student-work-images">
@@ -466,7 +456,6 @@
                     </div>
                 </div>
 
-                <!-- Student Project Row 3 -->
                 <div class="student-work-row">
                     <div class="project-number">[04]</div>
                     <div class="student-work-images">
@@ -480,7 +469,6 @@
                     </div>
                 </div>
 
-                <!-- Student Project Row 4 -->
                 <div class="student-work-row">
                     <div class="project-number">[08]</div>
                     <div class="student-work-images">
@@ -505,41 +493,17 @@
 
     <script src="main.js"></script>
     <script>
-        // Teaching page expand functionality - NO REDIRECTS
         document.addEventListener('DOMContentLoaded', function() {
-            // Lock to current page - prevent any navigation
-            const currentPath = window.location.pathname;
-            
-            // Prevent any form of navigation away from this page
-            window.addEventListener('beforeunload', function(e) {
-                // This will prevent navigation but allow refresh
-                return;
-            });
-            
-            // Override any potential redirects
-            const originalPushState = history.pushState;
-            const originalReplaceState = history.replaceState;
-            
-            history.pushState = function() {
-                // Block all pushState calls
-                return;
-            };
-            
-            history.replaceState = function() {
-                // Block all replaceState calls except for current page
-                return;
-            };
+            history.pushState = function() { return; };
+            history.replaceState = function() { return; };
             
             const teachingRows = document.querySelectorAll('.expandable-teaching');
             
             teachingRows.forEach(row => {
-                // Handle row clicks (but exclude plus icon and images)
                 row.addEventListener('click', function(e) {
-                    // Prevent default behavior
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Don't trigger if clicking on plus icon or images
                     if (e.target.closest('.teaching-plus-indicator') || 
                         e.target.closest('.teaching-image-container') || 
                         e.target.closest('.teaching-images')) {
@@ -550,37 +514,23 @@
                 });
             });
             
-            // Global toggleTeaching function for onclick attributes
             window.toggleTeaching = function(teachingElement) {
-                // Prevent any default behavior
-                if (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
+                if (event) { event.preventDefault(); event.stopPropagation(); }
                 
                 const isExpanded = teachingElement.classList.contains('expanded');
                 
-                // Close all other expanded teaching items
                 document.querySelectorAll('.expandable-teaching.expanded').forEach(otherRow => {
-                    if (otherRow !== teachingElement) {
-                        otherRow.classList.remove('expanded');
-                    }
+                    if (otherRow !== teachingElement) otherRow.classList.remove('expanded');
                 });
                 
-                // Toggle current teaching item
                 if (isExpanded) {
                     teachingElement.classList.remove('expanded');
                 } else {
                     teachingElement.classList.add('expanded');
-                    
-                    // Smooth scroll to expanded content after animation
                     setTimeout(() => {
                         const expandedContent = teachingElement.querySelector('.teaching-details-expanded');
                         if (expandedContent) {
-                            expandedContent.scrollIntoView({ 
-                                behavior: 'smooth',
-                                block: 'nearest'
-                            });
+                            expandedContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         }
                     }, 200);
                 }
