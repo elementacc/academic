@@ -68,15 +68,10 @@
     }
     .logo:hover { color: var(--c-grey-80); }
     .header-center { flex: 0 0 50%; display: flex; justify-content: flex-end; }
-    .main-nav { display: flex; align-items: center; gap: var(--sp-20); }
-    .main-nav a {
-      font-size: 13px; line-height: 16px;
-      font-weight: 400; letter-spacing: -0.03em;
-      color: var(--c-grey-80); text-decoration: none;
-      transition: color 0.2s var(--easing);
-    }
-    .main-nav a:hover { color: var(--c-grey-60); }
-    .main-nav a.active { color: var(--c-black); }
+    .main-nav ul { display: flex; align-items: center; justify-content: flex-end; list-style: none; margin: 0; padding: 0; }
+    .main-nav ul li { margin-left: var(--sp-20); transition: color 0.2s var(--easing); color: var(--c-black); font-size: 13px; line-height: 16px; letter-spacing: -0.03em; }
+    .main-nav ul li a { color: inherit; text-decoration: none; }
+    .main-nav ul li:hover, .main-nav ul li.active { color: var(--c-grey-80); }
 
     /* ── PAGE INTRO ── */
     .page-intro {
@@ -278,12 +273,14 @@
       </div>
       <div class="header-center">
         <nav class="main-nav">
-          <a href="#research">research</a>
-          <a href="#practice" class="active">practice</a>
-          <a href="#teaching">teaching</a>
-          <a href="#selected">selected</a>
-          <a href="#inspiration">inspiration</a>
-          <a href="#about">about</a>
+          <ul>
+            <li><a href="#research">research</a></li>
+            <li class="active"><a href="#practice">practice</a></li>
+            <li><a href="#teaching">teaching</a></li>
+            <li><a href="#selected">selected</a></li>
+            <li><a href="#inspiration">inspiration</a></li>
+            <li><a href="#about">about</a></li>
+          </ul>
         </nav>
       </div>
     </div>
