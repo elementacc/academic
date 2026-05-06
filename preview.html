@@ -23,10 +23,12 @@
       --sp-4: 4px; --sp-8: 8px; --sp-12: 12px; --sp-16: 16px;
       --sp-20: 20px; --sp-40: 40px; --sp-60: 60px; --sp-80: 80px; --sp-120: 120px;
     }
+
     *, *::before, *::after { box-sizing: border-box; }
     body, h1, h2, h3, h4, p, ul, ol, li { margin: 0; padding: 0; }
     ul, ol { list-style: none; }
     img { max-width: 100%; height: auto; display: block; }
+
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
       font-size: 24px;
@@ -38,8 +40,10 @@
       -webkit-font-smoothing: antialiased;
       margin-top: var(--headerHeight);
     }
+
     ::selection { background: var(--c-yellow); color: var(--c-white); }
 
+    /* ── HEADER ── */
     .header {
       border-bottom: 1px solid var(--c-grey-20);
       padding: var(--sp-16) 0;
@@ -66,14 +70,15 @@
     .header-center { flex: 0 0 50%; display: flex; justify-content: flex-end; }
     .main-nav { display: flex; align-items: center; gap: var(--sp-20); }
     .main-nav a {
-      font-size: 24px; line-height: 28px;
-      font-weight: 400; letter-spacing: -0.04em;
+      font-size: 13px; line-height: 16px;
+      font-weight: 400; letter-spacing: -0.03em;
       color: var(--c-grey-80); text-decoration: none;
       transition: color 0.2s var(--easing);
     }
     .main-nav a:hover { color: var(--c-grey-60); }
     .main-nav a.active { color: var(--c-black); }
 
+    /* ── PAGE INTRO ── */
     .page-intro {
       padding: var(--sp-120) var(--pageMargin) var(--sp-80);
       display: grid;
@@ -92,7 +97,9 @@
       color: var(--c-grey-80);
     }
 
+    /* ── PROJECT ROWS ── */
     .project-grid { display: flex; flex-direction: column; }
+
     .project-row {
       border-bottom: 1px solid var(--c-grey-20);
       position: relative; overflow: hidden;
@@ -100,23 +107,37 @@
     }
     .project-row:first-child { border-top: 1px solid var(--c-grey-20); }
     .project-row:hover { border-bottom-color: var(--c-yellow); }
+
     .project-header {
       display: flex; gap: var(--sp-40);
       padding: var(--sp-40) var(--pageMargin);
       cursor: pointer;
     }
-    .project-info { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; }
+    .project-info {
+      width: 220px; flex-shrink: 0;
+      display: flex; flex-direction: column;
+    }
     .project-text { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-12); }
-    .project-number-large { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); margin-bottom: var(--sp-12); }
-    .project-title { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-bottom: var(--sp-16); }
+
+    .project-number-large {
+      font-size: 12px; line-height: 16px; letter-spacing: -0.03em;
+      color: var(--c-grey-80); margin-bottom: var(--sp-12);
+    }
+    .project-title {
+      font-size: 24px; line-height: 28px;
+      font-weight: 400; letter-spacing: -0.04em;
+      color: var(--c-black); margin-bottom: var(--sp-16);
+    }
     .project-subtitle { display: flex; flex-direction: column; gap: var(--sp-4); margin-bottom: var(--sp-20); }
     .project-subtitle div { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); }
+
     .project-plus-indicator {
       font-size: 24px; color: var(--c-black);
       transition: transform 0.3s ease; cursor: pointer;
       line-height: 1; user-select: none; align-self: flex-start;
     }
     .project-row.expanded .project-plus-indicator { transform: rotate(45deg); }
+
     .project-images { flex: 1; display: flex; gap: var(--sp-16); flex-wrap: wrap; align-items: flex-start; }
     .image-item { flex: 0 0 auto; }
     .image-number { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; margin-bottom: var(--sp-8); color: var(--c-grey-60); }
@@ -133,10 +154,20 @@
     .image-item:nth-child(5) .image-container { height: 160px; }
     .image-container img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
     .image-container:hover img { transform: scale(1.02); }
-    .project-details-expanded { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
-    .project-row.expanded .project-details-expanded { max-height: 1200px; padding: var(--sp-40) var(--pageMargin); }
+
+    /* Expanded */
+    .project-details-expanded {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .project-row.expanded .project-details-expanded {
+      max-height: 1200px; padding: var(--sp-40) var(--pageMargin);
+    }
     .project-description { max-width: 800px; }
-    .project-description h3 { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-bottom: var(--sp-16); }
+    .project-description h3 {
+      font-size: 24px; line-height: 28px; font-weight: 400;
+      letter-spacing: -0.04em; color: var(--c-black); margin-bottom: var(--sp-16);
+    }
     .project-description > p { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; margin-bottom: var(--sp-40); color: var(--c-grey-80); }
     .project-specs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-40); margin-bottom: var(--sp-40); }
     .spec-section h4 { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-black); margin-bottom: var(--sp-8); }
@@ -146,35 +177,69 @@
     .meta-label { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); }
     .meta-value { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
 
+    /* ── ABOUT SECTION ── */
     .about-layout {
       padding: var(--sp-120) var(--pageMargin);
       display: grid; grid-template-columns: 1fr 1fr;
       gap: var(--sp-120); align-items: start;
     }
     .bio-text-block { display: flex; flex-direction: column; gap: var(--sp-40); }
-    .bio-intro, .bio-description { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
+    .bio-intro, .bio-description {
+      font-size: 24px; line-height: 28px; letter-spacing: -0.04em;
+      color: var(--c-grey-80); font-weight: 400;
+    }
     .bio-intro em { font-style: italic; color: var(--c-grey-100); }
     .about-right { display: flex; flex-direction: column; gap: var(--sp-80); }
-    .section-title { font-size: 60px; line-height: 64px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); margin-left: -0.1em; margin-bottom: var(--sp-40); }
-    .exhibition-item { padding: var(--sp-8) 0; border-bottom: 1px solid var(--c-grey-20); display: grid; grid-template-columns: 80px 1fr; gap: var(--sp-40); }
+    .section-title {
+      font-size: 60px; line-height: 64px; font-weight: 400;
+      letter-spacing: -0.04em; color: var(--c-black); margin-left: -0.1em;
+      margin-bottom: var(--sp-40);
+    }
+    .exhibition-item {
+      padding: var(--sp-8) 0; border-bottom: 1px solid var(--c-grey-20);
+      display: grid; grid-template-columns: 80px 1fr; gap: var(--sp-40);
+    }
     .exhibition-year { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-black); }
     .exhibition-name { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); }
     .exhibition-location { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); }
 
-    .selected-row {
-      display: grid; grid-template-columns: 1fr 300px;
-      gap: var(--sp-40); align-items: start;
-      padding: var(--sp-40) var(--pageMargin);
+    /* ── SELECTED ROW ── */
+    .selected-item {
       border-bottom: 1px solid var(--c-grey-20);
-      border-top: 1px solid var(--c-grey-20);
       cursor: pointer;
       transition: border-bottom-color 0.2s var(--easing);
     }
-    .selected-row + .selected-row { border-top: none; }
-    .selected-row:hover { border-bottom-color: var(--c-yellow); }
+    .selected-item:first-of-type { border-top: 1px solid var(--c-grey-20); }
+    .selected-item:hover { border-bottom-color: var(--c-yellow); }
+
+    .selected-row-header {
+      display: grid; grid-template-columns: 1fr 300px;
+      gap: var(--sp-40); align-items: start;
+      padding: var(--sp-40) var(--pageMargin);
+    }
     .selected-title { font-size: 24px; line-height: 28px; font-weight: 400; letter-spacing: -0.04em; color: var(--c-black); }
     .selected-sub { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-80); margin-top: var(--sp-4); }
     .selected-year { font-size: 12px; line-height: 16px; letter-spacing: -0.03em; color: var(--c-grey-60); margin-top: var(--sp-4); }
+    .selected-plus {
+      display: inline-block; font-size: 24px; color: var(--c-black);
+      transition: transform 0.3s ease; margin-top: var(--sp-20);
+      line-height: 1; user-select: none;
+    }
+    .selected-item.expanded .selected-plus { transform: rotate(45deg); }
+
+    .selected-expanded {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+    .selected-item.expanded .selected-expanded {
+      max-height: 600px;
+      padding: 0 var(--pageMargin) var(--sp-40);
+    }
+    .selected-expanded-inner { max-width: 800px; }
+    .selected-expanded-inner p { font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80); margin-bottom: var(--sp-40); }
+    .selected-expanded-inner .meta-item { display: flex; flex-direction: column; gap: var(--sp-4); }
+    .selected-meta { display: flex; gap: var(--sp-40); padding-top: var(--sp-16); border-top: 1px solid var(--c-grey-20); }
+
     .preview-img {
       width: 300px; height: 180px; overflow: hidden;
       background: var(--c-grey-20); border-radius: 8px;
@@ -182,14 +247,16 @@
     }
     .preview-img:hover { border-radius: 4px; }
     .preview-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-    .selected-row:hover .preview-img img { transform: scale(1.02); }
+    .selected-item:hover .preview-img img { transform: scale(1.02); }
 
+    /* ── PAGE LABELS ── */
     .page-label {
       font-size: 12px; line-height: 16px; letter-spacing: -0.03em;
       color: var(--c-grey-60); padding: var(--sp-40) var(--pageMargin) var(--sp-8);
       border-bottom: 1px solid var(--c-grey-20); text-transform: uppercase;
     }
 
+    /* ── FOOTER ── */
     .footer {
       margin-top: var(--sp-120);
       border-top: 1px solid var(--c-grey-20);
@@ -203,6 +270,7 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header class="header">
     <div class="header-content">
       <div class="header-left">
@@ -221,6 +289,7 @@
     </div>
   </header>
 
+  <!-- PRACTICE PAGE -->
   <div class="page-label">— practice</div>
 
   <section class="page-intro">
@@ -247,23 +316,33 @@
         <div class="project-images">
           <div class="image-item">
             <div class="image-number">[01.1.1]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[01.2.2]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[01.3.3]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976073/pexels-photo-6976073.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976073/pexels-photo-6976073.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[01.3.4]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976092/pexels-photo-6976092.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976092/pexels-photo-6976092.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[01.2.5]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976085/pexels-photo-6976085.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976085/pexels-photo-6976085.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
         </div>
       </div>
@@ -272,8 +351,14 @@
           <h3>Project Overview</h3>
           <p>NE GEURRA is a comprehensive brand identity project that encompasses multiple touchpoints including visual identity, art direction, printed materials, and digital presence.</p>
           <div class="project-specs">
-            <div class="spec-section"><h4>[01.1] Branding</h4><p>Complete visual identity system including logo design, color palette, typography selection, and brand guidelines.</p></div>
-            <div class="spec-section"><h4>[01.2] Art Direction</h4><p>Creative direction for photography, illustration style, and overall visual language.</p></div>
+            <div class="spec-section">
+              <h4>[01.1] Branding</h4>
+              <p>Complete visual identity system including logo design, color palette, typography selection, and brand guidelines.</p>
+            </div>
+            <div class="spec-section">
+              <h4>[01.2] Art Direction</h4>
+              <p>Creative direction for photography, illustration style, and overall visual language.</p>
+            </div>
           </div>
           <div class="project-meta">
             <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">NE GEURRA</span></div>
@@ -283,6 +368,7 @@
         </div>
       </div>
     </div>
+
     <div class="project-row" id="row2">
       <div class="project-header" onclick="toggleRow('row2')">
         <div class="project-info">
@@ -299,22 +385,28 @@
         <div class="project-images">
           <div class="image-item">
             <div class="image-number">[02.1.1]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976091/pexels-photo-6976091.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[02.1.2]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976077/pexels-photo-6976077.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976077/pexels-photo-6976077.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
           <div class="image-item">
             <div class="image-number">[02.2.3]</div>
-            <div class="image-container"><img src="https://images.pexels.com/photos/6976079/pexels-photo-6976079.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt=""></div>
+            <div class="image-container">
+              <img src="https://images.pexels.com/photos/6976079/pexels-photo-6976079.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="">
+            </div>
           </div>
         </div>
       </div>
       <div class="project-details-expanded">
         <div class="project-description">
           <h3>Project Overview</h3>
-          <p>Danny Kaplan Studio focuses on creating a sophisticated digital presence and art direction for a contemporary art studio.</p>
+          <p>Danny Kaplan Studio focuses on creating a sophisticated digital presence and art direction for a contemporary art studio. The work emphasizes clean aesthetics and thoughtful user experience.</p>
           <div class="project-meta">
             <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Danny Kaplan Studio</span></div>
             <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2024</span></div>
@@ -324,6 +416,7 @@
     </div>
   </div>
 
+  <!-- SELECTED PAGE -->
   <div class="page-label" style="margin-top: var(--sp-120);">— selected</div>
 
   <div style="padding: var(--sp-120) var(--pageMargin) var(--sp-80); display: grid; grid-template-columns: 1fr 2fr; gap: var(--sp-120);">
@@ -331,44 +424,99 @@
     <p style="font-size: 24px; line-height: 28px; letter-spacing: -0.04em; color: var(--c-grey-80);">A curated selection of projects spanning brand identity, editorial design, and digital platforms.</p>
   </div>
 
-  <div class="selected-row">
-    <div>
-      <div class="selected-title">Lukas Morio</div>
-      <div class="selected-sub">Web- and Digital Design</div>
-      <div class="selected-year">A digital manifestation of a photographer's graphical expression</div>
-      <div style="margin-top: var(--sp-20); font-size: 24px; color: var(--c-black);">+</div>
+  <div class="selected-item" id="sel1" onclick="toggleSelected('sel1')">
+    <div class="selected-row-header">
+      <div>
+        <div class="selected-title">Lukas Morio</div>
+        <div class="selected-sub">Web- and Digital Design</div>
+        <div class="selected-year">A digital manifestation of a photographer's graphical expression</div>
+        <span class="selected-plus">+</span>
+      </div>
+      <div class="preview-img">
+        <img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="">
+      </div>
     </div>
-    <div class="preview-img"><img src="https://images.pexels.com/photos/6976088/pexels-photo-6976088.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt=""></div>
-  </div>
-  <div class="selected-row">
-    <div>
-      <div class="selected-title">Trevor Cheney Gallery</div>
-      <div class="selected-sub">Brand Identity & Digital Platform</div>
-      <div class="selected-year">Contemporary art gallery digital presence</div>
-      <div style="margin-top: var(--sp-20); font-size: 24px; color: var(--c-black);">+</div>
+    <div class="selected-expanded">
+      <div class="selected-expanded-inner">
+        <p>A minimal digital portfolio for photographer Lukas Morio — built around a grid that adapts to the weight of each image. Navigation stays out of the way, letting the work speak without interference.</p>
+        <div class="selected-meta">
+          <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Lukas Morio</span></div>
+          <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2024</span></div>
+          <div class="meta-item"><span class="meta-label">Services</span><span class="meta-value">Web Design, Development</span></div>
+        </div>
+      </div>
     </div>
-    <div class="preview-img"><img src="https://images.pexels.com/photos/6976089/pexels-photo-6976089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt=""></div>
   </div>
 
+  <div class="selected-item" id="sel2" onclick="toggleSelected('sel2')">
+    <div class="selected-row-header">
+      <div>
+        <div class="selected-title">Trevor Cheney Gallery</div>
+        <div class="selected-sub">Brand Identity & Digital Platform</div>
+        <div class="selected-year">Contemporary art gallery digital presence</div>
+        <span class="selected-plus">+</span>
+      </div>
+      <div class="preview-img">
+        <img src="https://images.pexels.com/photos/6976089/pexels-photo-6976089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="">
+      </div>
+    </div>
+    <div class="selected-expanded">
+      <div class="selected-expanded-inner">
+        <p>Brand identity and digital platform for a contemporary gallery. The visual system balances institutional clarity with the unpredictability of the artists it represents — precise typography, flexible layout.</p>
+        <div class="selected-meta">
+          <div class="meta-item"><span class="meta-label">Client</span><span class="meta-value">Trevor Cheney Gallery</span></div>
+          <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2024</span></div>
+          <div class="meta-item"><span class="meta-label">Services</span><span class="meta-value">Brand Identity, Digital Platform</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT PAGE -->
   <div class="page-label" style="margin-top: var(--sp-120);">— about</div>
 
   <div class="about-layout">
     <div>
       <div class="bio-text-block">
-        <p class="bio-intro">Paulina Greta Stefanovic is a <em>Berlin-based artist</em>, assistant researcher in the HCI field at HTW Berlin, and <em>Ph.D. candidate at TU Berlin</em>. She explores the relationship between technology, art, design and the concepts of space, and human perceptions.</p>
-        <p class="bio-description">Her focus is on immersive and movement-based interfaces. Her works have been featured at international venues and multimedia festivals. She has been a lecturer in different European academies teaching Technological Arts.</p>
+        <p class="bio-intro">
+          Paulina Greta Stefanovic is a <em>Berlin-based artist</em>, assistant researcher in the HCI field at HTW Berlin, and <em>Ph.D. candidate at TU Berlin</em>. She explores the relationship between technology, art, design and the concepts of space, and human perceptions.
+        </p>
+        <p class="bio-description">
+          Her focus is on immersive and movement-based interfaces. Her works have been featured at international venues and multimedia festivals. She has been a lecturer in different European academies teaching Technological Arts.
+        </p>
       </div>
     </div>
     <div class="about-right">
       <div>
         <h4 class="section-title">exhibitions</h4>
-        <div class="exhibition-item"><div class="exhibition-year">2025</div><div><div class="exhibition-name">TU Dresden</div><div class="exhibition-location">Dresden</div></div></div>
-        <div class="exhibition-item"><div class="exhibition-year">2025</div><div><div class="exhibition-name">Already Possible by Soiree XD & masumi</div><div class="exhibition-location">Berlin</div></div></div>
-        <div class="exhibition-item"><div class="exhibition-year">2024</div><div><div class="exhibition-name">Prague Quadriennial</div><div class="exhibition-location">Prague</div></div></div>
+        <div>
+          <div class="exhibition-item">
+            <div class="exhibition-year">2025</div>
+            <div>
+              <div class="exhibition-name">TU Dresden</div>
+              <div class="exhibition-location">Dresden</div>
+            </div>
+          </div>
+          <div class="exhibition-item">
+            <div class="exhibition-year">2025</div>
+            <div>
+              <div class="exhibition-name">Already Possible by Soiree XD & masumi</div>
+              <div class="exhibition-location">Berlin</div>
+            </div>
+          </div>
+          <div class="exhibition-item">
+            <div class="exhibition-year">2024</div>
+            <div>
+              <div class="exhibition-name">Prague Quadriennial</div>
+              <div class="exhibition-location">Prague</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-content">
       <p class="footer-copyright">© 2025</p>
@@ -377,7 +525,12 @@
 
   <script>
     function toggleRow(id) {
-      document.getElementById(id).classList.toggle('expanded');
+      const row = document.getElementById(id);
+      row.classList.toggle('expanded');
+    }
+    function toggleSelected(id) {
+      const item = document.getElementById(id);
+      item.classList.toggle('expanded');
     }
   </script>
 </body>
