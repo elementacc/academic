@@ -15,16 +15,15 @@
             </div>
             <div class="header-center">
                 <nav class="main-nav">
-                    <a href="research2.html">research</a>
-                    <a href="index.html">practice</a>
-                    <a href="lectures.html">teaching</a>
-                    <a href="selected.html" class="active">selected</a>
-                    <a href="inspiration.html">inspiration</a>
-                    <a href="about.html">about</a>
+                    <ul>
+                        <li><a href="research2.html">research</a></li>
+                        <li><a href="lectures.html">teaching</a></li>
+                        <li class="active"><a href="selected.html">selected</a></li>
+                        <li><a href="about.html">about</a></li>
+                    </ul>
                 </nav>
             </div>
-            <div class="header-right">
-            </div>
+            <div class="header-right"></div>
         </div>
     </header>
 
@@ -161,7 +160,7 @@
                 <div class="project-info">
                     <div class="project-text">
                         <div class="project-title">Trevor Cheney Gallery</div>
-                        <div class="project-subtitle">Brand Identity & Digital Platform</div>
+                        <div class="project-subtitle">Brand Identity &amp; Digital Platform</div>
                         <div class="project-year">Contemporary art gallery digital presence</div>
                     </div>
                     <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
@@ -221,7 +220,7 @@
                 <div class="project-info">
                     <div class="project-text">
                         <div class="project-title-italic">Formative Modern</div>
-                        <div class="project-subtitle">Editorial Design & Publication</div>
+                        <div class="project-subtitle">Editorial Design &amp; Publication</div>
                         <div class="project-year">Contemporary design discourse publication</div>
                     </div>
                     <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
@@ -281,7 +280,7 @@
                 <div class="project-info">
                     <div class="project-text">
                         <div class="project-title">Space of Time</div>
-                        <div class="project-subtitle">Installation & Digital Documentation</div>
+                        <div class="project-subtitle">Installation &amp; Digital Documentation</div>
                         <div class="project-year">Temporal art installation documentation</div>
                     </div>
                     <div class="project-plus-indicator" onclick="event.stopPropagation(); toggleSelectedProject(this.closest('.project-row'));">+</div>
@@ -346,99 +345,63 @@
 
     <script src="main.js"></script>
     <script>
-        // Selected page expand functionality - NO REDIRECTS
         document.addEventListener('DOMContentLoaded', function() {
-            // Lock to current page - prevent any navigation
-            const originalPushState = history.pushState;
-            const originalReplaceState = history.replaceState;
-            
-            history.pushState = function() {
-                // Block all pushState calls
-                return;
-            };
-            
-            history.replaceState = function() {
-                // Block all replaceState calls
-                return;
-            };
+            history.pushState = function() { return; };
+            history.replaceState = function() { return; };
             
             const projectRows = document.querySelectorAll('.project-row');
             
             projectRows.forEach(row => {
-                // Also handle clicks on the entire row (except images)
                 row.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                   // Don't trigger if clicking on images
                     if (e.target.closest('.project-plus-indicator') ||
                         e.target.closest('.project-image-item') || 
-                       e.target.closest('.project-preview')) {
+                        e.target.closest('.project-preview')) {
                         return;
                     }
                     
                     const isExpanded = row.classList.contains('expanded');
                     
-                    // Close all other expanded projects
                     document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
-                        if (otherRow !== row) {
-                            otherRow.classList.remove('expanded');
-                        }
+                        if (otherRow !== row) otherRow.classList.remove('expanded');
                     });
                     
-                    // Toggle current project
                     if (isExpanded) {
                         row.classList.remove('expanded');
                     } else {
                         row.classList.add('expanded');
-                        
-                        // Smooth scroll to expanded content after animation
                         setTimeout(() => {
                             const expandedContent = row.querySelector('.project-details-expanded');
                             if (expandedContent) {
-                                expandedContent.scrollIntoView({ 
-                                    behavior: 'smooth',
-                                    block: 'nearest'
-                                });
+                                expandedContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                             }
                         }, 200);
                     }
                 });
             });
             
-            // Global function for compatibility with onclick attributes
             window.toggleSelectedProject = function(projectRow) {
-                        if (event) {
-                            event.preventDefault();
-                            event.stopPropagation();
+                if (event) { event.preventDefault(); event.stopPropagation(); }
+                
+                const isExpanded = projectRow.classList.contains('expanded');
+                
+                document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
+                    if (otherRow !== projectRow) otherRow.classList.remove('expanded');
+                });
+                
+                if (isExpanded) {
+                    projectRow.classList.remove('expanded');
+                } else {
+                    projectRow.classList.add('expanded');
+                    setTimeout(() => {
+                        const expandedContent = projectRow.querySelector('.project-details-expanded');
+                        if (expandedContent) {
+                            expandedContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         }
-                        
-                        const isExpanded = projectRow.classList.contains('expanded');
-                        
-                        // Close all other expanded projects
-                        document.querySelectorAll('.project-row.expanded').forEach(otherRow => {
-                            if (otherRow !== projectRow) {
-                                otherRow.classList.remove('expanded');
-                            }
-                        });
-                        
-                        // Toggle current project
-                        if (isExpanded) {
-                            projectRow.classList.remove('expanded');
-                        } else {
-                            projectRow.classList.add('expanded');
-                            
-                            // Smooth scroll to expanded content after animation
-                            setTimeout(() => {
-                                const expandedContent = projectRow.querySelector('.project-details-expanded');
-                                if (expandedContent) {
-                                    expandedContent.scrollIntoView({ 
-                                        behavior: 'smooth',
-                                        block: 'nearest'
-                                    });
-                                }
-                            }, 200);
-                        }
+                    }, 200);
+                }
             };
         });
     </script>
