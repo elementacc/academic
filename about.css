@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk+Display:wght@300;400;500;600;700&family=Suisse+Intl:wght@300;400;500;600&display=swap');
 
-/* About Page Specific Styles - Elke van den Ende Style */
+/* About Page Specific Styles */
 .about-content {
     width: 100%;
     padding: 0;
@@ -8,7 +8,6 @@
     min-height: 100vh;
 }
 
-/* Add grayscale filter to any images in about page */
 .about-content img {
     filter: grayscale(100%);
     transition: filter 0.3s ease;
@@ -18,6 +17,168 @@
     filter: grayscale(0%);
 }
 
+/* ─── Dashboard Section (Bleed-style) ─── */
+.about-dashboard {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    background-color: #fff;
+}
+
+.dash-label {
+    font-size: 13px;
+    color: #999;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 20px;
+}
+
+.dash-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dash-item {
+    font-size: 14px;
+    color: #000;
+    letter-spacing: -0.01em;
+    font-family: 'Suisse Intl', sans-serif;
+    line-height: 1.7;
+}
+
+.dash-item.muted {
+    color: #999;
+}
+
+.dash-item a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dash-item a:hover {
+    color: #767676;
+}
+
+.dash-spacer {
+    height: 12px;
+}
+
+.dash-photo {
+    width: 160px;
+    height: 214px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    margin-bottom: 16px;
+}
+
+.dash-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+    display: block;
+}
+
+.dash-photo img:hover {
+    filter: grayscale(0%);
+}
+
+/* ─── External Projects Section ─── */
+.about-projects {
+    border-bottom: 1px solid #e5e5e5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #fff;
+}
+
+.about-project-link {
+    display: block;
+    text-decoration: none;
+    color: #000;
+    border-right: 1px solid #e5e5e5;
+    transition: background-color 0.2s ease;
+    overflow: hidden;
+}
+
+.about-project-link:last-child {
+    border-right: none;
+}
+
+.about-project-link:hover {
+    background-color: #fafafa;
+}
+
+.about-project-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    position: relative;
+}
+
+.about-project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.4s ease;
+    display: block;
+}
+
+.about-project-link:hover .about-project-img img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+.about-project-ext {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 13px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.9);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-family: 'Suisse Intl', sans-serif;
+}
+
+.about-project-link:hover .about-project-ext {
+    opacity: 1;
+}
+
+.about-project-meta {
+    padding: 20px 24px 36px;
+}
+
+.about-project-cat {
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: 'Suisse Intl', sans-serif;
+    margin-bottom: 8px;
+}
+
+.about-project-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: -0.02em;
+    font-family: 'Neue Haas Grotesk Display', sans-serif;
+    line-height: 1.2;
+}
+
+/* ─── Existing About Layout ─── */
 .about-layout {
     max-width: 1400px;
     margin: 0 auto;
@@ -28,13 +189,6 @@
     align-items: start;
 }
 
-/* Navigation Active State */
-.main-nav a.active {
-    color: #000;
-    font-weight: 500;
-}
-
-/* Left Column - Single Bio Block */
 .about-left {
     display: flex;
     flex-direction: column;
@@ -48,7 +202,7 @@
     gap: 24px;
 }
 
-.bio-intro {
+.bio-intro, .bio-description, .bio-work {
     font-size: 14px;
     line-height: 1.6;
     color: #000;
@@ -60,58 +214,22 @@
     margin-bottom: 0;
 }
 
-.bio-intro em {
+.bio-intro em, .bio-description em, .bio-work em {
     font-style: italic;
     color: #666;
 }
 
-.bio-description {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #000;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    text-align: justify;
-    hyphens: auto;
-    font-family: 'Suisse Intl', sans-serif;
-    margin-bottom: 0;
-}
-
-.bio-description em {
-    font-style: italic;
-    color: #666;
-}
-
-.bio-work {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #000;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    text-align: justify;
-    hyphens: auto;
-    font-family: 'Suisse Intl', sans-serif;
-    margin-bottom: 0;
-}
-
-.bio-work em {
-    font-style: italic;
-    color: #666;
-}
-
-/* Right Column - Exhibitions and Education */
 .about-right {
     display: flex;
     flex-direction: column;
-    gap: 48px; /* Reduced from 80px */
+    gap: 48px;
     align-items: start;
 }
 
-.exhibitions-section,
-.education-section {
+.exhibitions-section, .education-section {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Reduced from 32px */
+    gap: 20px;
     width: 100%;
 }
 
@@ -126,28 +244,24 @@
     font-family: 'Neue Haas Grotesk Display', sans-serif;
 }
 
-.exhibitions-list,
-.education-list {
+.exhibitions-list, .education-list {
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Reduced from 24px */
+    gap: 16px;
 }
 
-/* Exhibition Items */
 .exhibition-item {
     display: grid;
     grid-template-columns: 80px 1fr 1fr;
     gap: 40px;
     align-items: start;
-    padding-bottom: 12px; /* Reduced from 16px */
+    padding-bottom: 12px;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.exhibition-item:last-child {
-    border-bottom: none;
-}
+.exhibition-item:last-child { border-bottom: none; }
 
-.exhibition-year {
+.exhibition-year, .exhibition-name, .exhibition-location {
     font-size: 14px;
     line-height: 1.4;
     color: #000;
@@ -162,53 +276,18 @@
     gap: 4px;
 }
 
-.exhibition-name {
-    font-size: 14px;
-    line-height: 1.4;
-    color: #000;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    font-family: 'Suisse Intl', sans-serif;
-}
-
-.exhibition-location {
-    font-size: 14px;
-    line-height: 1.4;
-    color: #000;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    font-family: 'Suisse Intl', sans-serif;
-}
-
-/* Education Items */
 .education-item {
     display: grid;
     grid-template-columns: 80px 1fr;
     gap: 40px;
     align-items: start;
-    padding-bottom: 16px; /* Reduced from 24px */
+    padding-bottom: 16px;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.education-item:last-child {
-    border-bottom: none;
-}
+.education-item:last-child { border-bottom: none; }
 
-.education-year {
-    font-size: 14px;
-    line-height: 1.4;
-    color: #000;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    font-family: 'Suisse Intl', sans-serif;
-}
-
-.education-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.education-degree {
+.education-year, .education-degree {
     font-size: 14px;
     line-height: 1.6;
     color: #000;
@@ -217,145 +296,42 @@
     font-family: 'Suisse Intl', sans-serif;
 }
 
-/* Responsive Design */
+.education-details { display: flex; flex-direction: column; }
+
+/* Responsive */
 @media (max-width: 1200px) {
-    .about-layout {
-        gap: 80px;
-        padding: 60px 32px;
-    }
-    
-    .bio-text-block {
-        gap: 20px;
-    }
-    
-    .about-right {
-        gap: 36px; /* Reduced from 60px */
-    }
-    
-    .exhibitions-section,
-    .education-section {
-        gap: 16px; /* Reduced */
-    }
-    
-    .section-title {
-        font-size: 40px;
-        margin-bottom: 24px;
-    }
-    
-    .exhibitions-list,
-    .education-list {
-        gap: 12px; /* Reduced */
-    }
-    
-    .exhibition-item {
-        grid-template-columns: 70px 1fr 1fr;
-        gap: 32px;
-        padding-bottom: 10px; /* Reduced */
-    }
-    
-    .education-item {
-        grid-template-columns: 70px 1fr;
-        gap: 32px;
-        padding-bottom: 12px; /* Reduced */
-    }
+    .about-dashboard { padding: 48px 32px; gap: 40px; }
+    .about-project-meta { padding: 16px 20px 28px; }
+    .about-project-title { font-size: 16px; }
+    .about-layout { gap: 80px; padding: 60px 32px; }
+    .section-title { font-size: 40px; margin-bottom: 24px; }
+    .exhibition-item { grid-template-columns: 70px 1fr 1fr; gap: 32px; }
+    .education-item { grid-template-columns: 70px 1fr; gap: 32px; }
 }
 
 @media (max-width: 768px) {
-    .about-layout {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        padding: 48px 24px;
-    }
-    
-    .bio-text-block {
-        gap: 16px;
-    }
-    
-    .about-right {
-        gap: 32px; /* Reduced from 48px */
-    }
-    
-    .exhibitions-section,
-    .education-section {
-        gap: 12px; /* Reduced */
-    }
-    
-    .section-title {
-        font-size: 32px;
-        margin-bottom: 20px;
-    }
-    
-    .exhibitions-list,
-    .education-list {
-        gap: 10px; /* Reduced */
-    }
-    
-    .exhibition-item {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding-bottom: 8px; /* Reduced */
-    }
-    
-    .education-item {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding-bottom: 10px; /* Reduced */
-    }
-    
-    .bio-intro,
-    .bio-description,
-    .bio-work,
-    .exhibition-year,
-    .exhibition-name,
-    .exhibition-location,
-    .education-year,
-    .education-degree {
-        font-size: 13px;
-    }
+    .about-dashboard { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+    .about-projects { grid-template-columns: 1fr; }
+    .about-project-link { border-right: none; border-bottom: 1px solid #e5e5e5; }
+    .about-project-link:last-child { border-bottom: none; }
+    .about-project-img { aspect-ratio: 16 / 9; }
+    .dash-photo { width: 120px; height: 160px; }
+    .about-layout { grid-template-columns: 1fr; gap: 60px; padding: 48px 24px; }
+    .bio-text-block { gap: 16px; }
+    .about-right { gap: 32px; }
+    .section-title { font-size: 32px; margin-bottom: 20px; }
+    .exhibition-item, .education-item { grid-template-columns: 1fr; gap: 16px; }
+    .bio-intro, .bio-description, .bio-work,
+    .exhibition-year, .exhibition-name, .exhibition-location,
+    .education-year, .education-degree { font-size: 13px; }
 }
 
 @media (max-width: 480px) {
-    .about-layout {
-        padding: 32px 20px;
-        gap: 40px;
-    }
-    
-    .bio-text-block {
-        gap: 12px;
-    }
-    
-    .about-right {
-        gap: 24px; /* Reduced from 32px */
-    }
-    
-    .exhibitions-section,
-    .education-section {
-        gap: 10px; /* Reduced */
-    }
-    
-    .section-title {
-        font-size: 28px;
-        margin-bottom: 16px;
-    }
-    
-    .exhibitions-list,
-    .education-list {
-        gap: 8px; /* Reduced from 16px */
-    }
-    
-    .exhibition-item,
-    .education-item {
-        padding-bottom: 6px; /* Reduced from 12px */
-    }
-    
-    .bio-intro,
-    .bio-description,
-    .bio-work,
-    .exhibition-year,
-    .exhibition-name,
-    .exhibition-location,
-    .education-year,
-    .education-degree {
-        font-size: 12px;
-    }
+    .about-dashboard { padding: 32px 20px; gap: 24px; }
+    .about-project-meta { padding: 12px 16px 20px; }
+    .about-layout { padding: 32px 20px; gap: 40px; }
+    .section-title { font-size: 28px; margin-bottom: 16px; }
+    .bio-intro, .bio-description, .bio-work,
+    .exhibition-year, .exhibition-name, .exhibition-location,
+    .education-year, .education-degree { font-size: 12px; }
 }
