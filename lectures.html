@@ -36,7 +36,7 @@
     <main class="teaching-content">
         <div class="teaching-layout">
             <div class="teaching-row expandable-teaching" data-teaching="01">
-                <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
+                <div class="teaching-header">
                     <div class="teaching-info">
                         <div class="teaching-text">
                             <div class="teaching-title">APEX, STRUCTURE I</div>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="teaching-row expandable-teaching" data-teaching="02">
-                <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
+                <div class="teaching-header">
                     <div class="teaching-info">
                         <div class="teaching-text">
                             <div class="teaching-title">RESISTANCE, FORMATION I-VII</div>
@@ -102,7 +102,7 @@
             </div>
 
             <div class="teaching-row expandable-teaching" data-teaching="03">
-                <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
+                <div class="teaching-header">
                     <div class="teaching-info">
                         <div class="teaching-text">
                             <div class="teaching-title">IMITATION, POSITION I-VII</div>
@@ -135,7 +135,7 @@
             </div>
 
             <div class="teaching-row expandable-teaching" data-teaching="04">
-                <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
+                <div class="teaching-header">
                     <div class="teaching-info">
                         <div class="teaching-text">
                             <div class="teaching-title">SOFT-DEFENSE</div>
@@ -168,7 +168,7 @@
             </div>
 
             <div class="teaching-row expandable-teaching" data-teaching="05">
-                <div class="teaching-header" onclick="toggleTeaching(this.closest('.expandable-teaching'))">
+                <div class="teaching-header">
                     <div class="teaching-info">
                         <div class="teaching-text">
                             <div class="teaching-title">SACRIFICE</div>
@@ -287,6 +287,11 @@
                         e.target.closest('.teaching-images')) return;
                     toggleTeaching(row);
                 });
+            });
+
+            // Block image clicks from triggering row expansion
+            document.querySelectorAll('.teaching-image-container').forEach(function(c) {
+                c.addEventListener('click', function(e) { e.stopPropagation(); });
             });
 
             window.toggleTeaching = function(el) {
