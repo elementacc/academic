@@ -283,15 +283,18 @@
                     e.preventDefault();
                     e.stopPropagation();
                     if (e.target.closest('.teaching-plus-indicator') ||
-                        e.target.closest('.teaching-image-container') ||
-                        e.target.closest('.teaching-images')) return;
+                        e.target.closest('.teaching-images') ||
+                        e.target.closest('.student-work-images')) return;
                     toggleTeaching(row);
                 });
             });
 
-            // Block image clicks from triggering row expansion
-            document.querySelectorAll('.teaching-image-container').forEach(function(c) {
-                c.addEventListener('click', function(e) { e.stopPropagation(); });
+            // Block all clicks in the entire images zone (images + number labels)
+            document.querySelectorAll('.teaching-images, .student-work-images').forEach(function(zone) {
+                zone.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
             });
 
             window.toggleTeaching = function(el) {

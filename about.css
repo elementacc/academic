@@ -4,7 +4,7 @@
 .about-content {
     width: 100%;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: #fff;
     min-height: 100vh;
 }
 
@@ -19,12 +19,11 @@
 
 /* ─── Dashboard Section (Bleed-style) ─── */
 .about-dashboard {
-    border-bottom: 1px solid #e0dcd7;
     padding: 60px 40px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px;
-    background-color: #f0eeeb;
+    background-color: #fff;
 }
 
 .dash-label {
@@ -72,7 +71,7 @@
     width: 160px;
     height: 214px;
     overflow: hidden;
-    background-color: #e0dcd7;
+    background-color: #e5e5e5;
     margin-bottom: 16px;
     border-radius: 8px;
 }
@@ -93,58 +92,41 @@
 
 /* ─── External Projects Section ─── */
 .about-projects {
-    border-bottom: 1px solid #e0dcd7;
+    padding: 0 40px 60px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    background-color: #f0eeeb;
+    gap: 40px;
+    background-color: #fff;
 }
 
 .about-project-link {
     display: block;
     text-decoration: none;
     color: #000;
-    border-right: 1px solid #e0dcd7;
-    transition: background-color 0.2s ease;
-}
-
-.about-project-link:last-child {
-    border-right: none;
-}
-
-.about-project-link:hover {
-    background-color: #e8e4df;
 }
 
 .about-project-meta {
-    padding: 28px 20px 16px;
+    padding: 0 0 14px;
 }
 
 .about-project-cat {
-    font-family: 'Courier New', Courier, monospace;
-    font-style: italic;
-    font-size: 12px;
-    color: #999;
-    letter-spacing: 0;
-    text-transform: none;
-    margin-bottom: 8px;
+    display: none;
 }
 
 .about-project-title {
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     color: #000;
-    text-transform: uppercase;
     letter-spacing: -0.01em;
     font-family: 'Neue Haas Grotesk Display', sans-serif;
-    line-height: 1.2;
+    line-height: 1.3;
 }
 
 .about-project-img {
-    width: calc(100% - 32px);
-    margin: 0 16px 24px;
+    width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    background-color: #e0dcd7;
+    background-color: #e5e5e5;
     position: relative;
     border-radius: 12px;
 }
@@ -309,8 +291,7 @@
 /* Responsive */
 @media (max-width: 1200px) {
     .about-dashboard { padding: 48px 32px; gap: 40px; }
-    .about-project-meta { padding: 22px 16px 12px; }
-    .about-project-title { font-size: 15px; }
+    .about-projects { padding: 0 32px 48px; gap: 28px; }
     .about-layout { gap: 80px; padding: 60px 32px; }
     .section-title { font-size: 40px; margin-bottom: 24px; }
     .exhibition-item { grid-template-columns: 70px 1fr 1fr; gap: 32px; }
@@ -319,10 +300,8 @@
 
 @media (max-width: 768px) {
     .about-dashboard { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
-    .about-projects { grid-template-columns: 1fr; }
-    .about-project-link { border-right: none; border-bottom: 1px solid #e0dcd7; }
-    .about-project-link:last-child { border-bottom: none; }
-    .about-project-img { aspect-ratio: 16 / 9; width: calc(100% - 24px); margin: 0 12px 20px; }
+    .about-projects { grid-template-columns: 1fr; padding: 0 24px 40px; gap: 32px; }
+    .about-project-img { aspect-ratio: 16 / 9; }
     .dash-photo { width: 120px; height: 160px; }
     .about-layout { grid-template-columns: 1fr; gap: 60px; padding: 48px 24px; }
     .bio-text-block { gap: 16px; }
@@ -336,7 +315,7 @@
 
 @media (max-width: 480px) {
     .about-dashboard { padding: 32px 20px; gap: 24px; }
-    .about-project-meta { padding: 16px 14px 10px; }
+    .about-projects { padding: 0 20px 32px; gap: 24px; }
     .about-layout { padding: 32px 20px; gap: 40px; }
     .section-title { font-size: 28px; margin-bottom: 16px; }
     .bio-intro, .bio-description, .bio-work,
