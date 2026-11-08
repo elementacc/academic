@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home | Between Systems</title>
-  <meta name="description" content="Between Systems — an independent research archive for spatial interaction, embodied cognition, visualization and human–AI evaluation." />
+  <title>Research / Teaching / Practice</title>
+  <meta name="description" content="Research / Teaching / Practice — an independent research archive for spatial interaction, embodied cognition, visualization and human–AI evaluation." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Between Systems" />
+  <meta property="og:title" content="Research / Teaching / Practice" />
   <meta property="og:description" content="An independent research archive exploring the relationships between people, interfaces and space." />
-  <meta property="og:site_name" content="Between Systems" />
+  <meta property="og:site_name" content="Research / Teaching / Practice" />
   <link rel="preload" href="fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
   <style>
     /* =========================================================
@@ -188,19 +188,21 @@
     /* =========================================================
        Wordmark
        ========================================================= */
-    .wordmark h1 { font-size: clamp(1.5rem, 21vw, 20rem); line-height: .95; white-space: nowrap; }
+    .wordmark h1 { font-size: clamp(1.5rem, 14vw, 20rem); line-height: .92; white-space: nowrap; }
     .wordmark span { position: relative; display: block; left: -.05em; grid-column-end: span var(--grid-cols); }
-    .wordmark .s2 { left: auto; text-align: right; }
+    .wordmark .s1::after, .wordmark .s2::after { content: " /"; color: var(--textTertiaryColor); }
+    .wordmark .s3 { text-align: right; left: 0; }
     @media (min-width: 1024px) {
-      .wordmark h1 { font-size: clamp(1.5rem, 11.2vw, 20rem); line-height: .825; padding-top: .12em; padding-bottom: .16em; }
-      .wordmark .s1 { grid-column-end: span 6; }
-      .wordmark .s2 { grid-column-end: span 6; left: -.05em; text-align: left; }
+      .wordmark h1 { font-size: clamp(1.5rem, 6.15vw, 20rem); line-height: .825; padding-top: .3em; padding-bottom: .2em; }
+      .wordmark .s1, .wordmark .s2, .wordmark .s3 { grid-column-end: span 4; text-align: left; left: -.05em; }
+      .wordmark .s1::after, .wordmark .s2::after { content: "/"; position: absolute; right: .15em; }
     }
-    .wordmark .s1, .wordmark .s2 { animation: rise 1.1s var(--ease) both; }
+    .wordmark .s1, .wordmark .s2, .wordmark .s3 { animation: rise 1.1s var(--ease) both; }
     .wordmark .s2 { animation-delay: .1s; }
+    .wordmark .s3 { animation-delay: .2s; }
     @keyframes rise { from { opacity: 0; transform: translateY(15%); } }
     @media (prefers-reduced-motion: reduce) {
-      .wordmark .s1, .wordmark .s2, .hd-logo__mark g, .arrow span, .proj-media svg .spin, .proj-media svg .spin-r { animation: none !important; }
+      .wordmark .s1, .wordmark .s2, .wordmark .s3, .hd-logo__mark g, .arrow span, .proj-media svg .spin, .proj-media svg .spin-r { animation: none !important; }
     }
 
     /* =========================================================
@@ -532,7 +534,7 @@
   <div class="page-grid">
     <header class="site subgrid">
       <div class="hd-logo t-label">
-        <p><span>○</span> Between Systems</p>
+        <p><span>○</span> Research / Teaching / Practice</p>
         <svg class="hd-logo__mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
           <g><circle cx="20" cy="20" r="11" /><circle cx="31" cy="20" r="2.2" fill="currentColor" stroke="none" /></g>
           <circle cx="20" cy="20" r="3" />
@@ -555,7 +557,7 @@
       </div>
 
       <nav class="hd-nav t-body" aria-label="Primary">
-        <h2 class="t-label">Research / Practice / Archive — 01 Ongoing</h2>
+        <h2 class="t-label">Independent research archive — 01 Ongoing</h2>
         <ul>
           <li><a href="bio.html">Bio</a></li>
           <li><a href="#about">About</a></li>
@@ -572,7 +574,7 @@
   <!-- ============ Wordmark ============ -->
   <div class="page-grid wordmark">
     <section class="subgrid">
-      <h1 class="subgrid" aria-label="Between Systems"><span class="s1" aria-hidden="true">Between</span><span class="s2" aria-hidden="true">Systems</span></h1>
+      <h1 class="subgrid" aria-label="Research / Teaching / Practice"><span class="s1" aria-hidden="true">Research</span><span class="s2" aria-hidden="true">Teaching</span><span class="s3" aria-hidden="true">Practice</span></h1>
     </section>
   </div>
 
@@ -883,14 +885,14 @@
 
       <div class="ft-columns">
         <div class="ft-graphic">
-          <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Between Systems">
+          <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Research / Teaching / Practice">
             <circle cx="26" cy="36" r="20" />
             <circle cx="46" cy="36" r="20" />
           </svg>
         </div>
         <div class="ft-copyright">
           <h3 class="t-label">Copyright</h3>
-          <p>Between Systems © 2026</p>
+          <p>Research / Teaching / Practice © 2026</p>
         </div>
         <div class="ft-about">
           <h3 class="t-label">Contact</h3>

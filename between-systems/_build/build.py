@@ -1,4 +1,4 @@
-"""Generate Between Systems single-project pages (mosaic layout).
+"""Generate Research / Teaching / Practice single-project pages (mosaic layout).
 
 Usage: python3 -I build.py <between-systems dir>
 """
@@ -59,7 +59,7 @@ PROJECTS = [
          ],
          info_blocks=[
              ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)<br>L. E. Boxall, “Printing with magnetic inks”"),
-             ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision: Between Systems."),
+             ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
 ]
 
@@ -182,15 +182,15 @@ def page(i, p):
     info_extra = ('<div class="info__pair">' + "".join(block(h, b) for h, b in extra) + '</div>') if extra else ""
     spine = "".join(f"<span>{esc(x)}</span>" for x in [
         p["title"], p["area"] + " — " + p["type"], " + ".join(p["filters"]),
-        "№" + p["no"], "Between Systems", "Research / Practice / Archive"])
+        "№" + p["no"], "Research / Teaching / Practice", "Independent research archive"])
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{esc(p["title"])} | Between Systems</title>
+  <title>{esc(p["title"])} | Research / Teaching / Practice</title>
   <meta name="description" content="{html.escape(p["short"])}" />
-  <meta property="og:title" content="{html.escape(p["title"])} — Between Systems" />
+  <meta property="og:title" content="{html.escape(p["title"])} — Research / Teaching / Practice" />
   <meta property="og:description" content="{html.escape(p["lead"])}" />
   <link rel="preload" href="../fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
   <style>
@@ -203,7 +203,7 @@ def page(i, p):
     <!-- ============ Left half ============ -->
     <div class="half half--left">
       <div class="row row--top">
-        <a class="logo" href="../index.html">○ Between Systems</a>
+        <a class="logo" href="../index.html">○ Research / Teaching / Practice</a>
         {figure_html}
         <div class="thumbs">{thumbs}</div>
       </div>

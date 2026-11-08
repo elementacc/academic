@@ -58,7 +58,7 @@ HTML = f'''<!doctype html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bio | Between Systems</title>
+  <title>Bio | Research / Teaching / Practice</title>
   <meta name="description" content="Bio — artist and HCI researcher working on immersive and movement-based interfaces." />
   <link rel="preload" href="fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
   <style>
@@ -84,11 +84,11 @@ HTML = f'''<!doctype html>
 
     /* header */
     .top {{ padding: 14px 0 64px; align-items: start; border-bottom: 1px solid var(--line); }}
-    .logo {{ grid-column: 1 / span 2; font-size: 18px; letter-spacing: -.02em; }}
+    .logo {{ grid-column: 1 / -1; font-size: 16px; letter-spacing: -.01em; white-space: nowrap; margin-bottom: 12px; }}
     .top__meta {{ display: none; font-size: 12px; }}
     .top__meta p {{ display: flex; align-items: center; gap: 6px; }}
     .bullet {{ width: 9px; height: 9px; border-radius: 50%; background: var(--fg3); display: inline-block; }}
-    .top__pill {{ grid-column: 3 / span 1; justify-self: end; white-space: nowrap; background: var(--pillBg); color: var(--pillFg); border-radius: 999px; padding: 5px 16px; font-size: 12px; }}
+    .top__pill {{ grid-column: 1 / span 3; justify-self: start; white-space: nowrap; background: var(--pillBg); color: var(--pillFg); border-radius: 999px; padding: 5px 16px; font-size: 12px; }}
     .top__pill:hover {{ color: var(--pillFg); opacity: .85; }}
     .lights {{ grid-column: 4 / span 1; justify-self: end; display: flex; gap: 6px; }}
     .lights button {{ width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--fg3); padding: 0; cursor: pointer; background: transparent; }}
@@ -96,7 +96,8 @@ HTML = f'''<!doctype html>
     .lights button[aria-pressed=true] {{ outline: 1px solid var(--fg); outline-offset: 2px; }}
     @media (min-width: 900px) {{
       .top__meta {{ display: block; }}
-      .top__meta--a {{ grid-column: 3 / span 3; }} .top__meta--b {{ grid-column: 6 / span 3; }}
+      .logo {{ grid-column: 1 / span 3; margin-bottom: 0; }}
+      .top__meta--a {{ grid-column: 4 / span 2; }} .top__meta--b {{ grid-column: 6 / span 3; }}
       .top__pill {{ grid-column: 9 / span 2; }} .lights {{ grid-column: 12 / span 1; }}
     }}
 
@@ -162,7 +163,7 @@ HTML = f'''<!doctype html>
 <body class="dark">
   <div class="wrap">
     <header class="top g">
-      <a class="logo" href="index.html">Between Systems</a>
+      <a class="logo" href="index.html">Research / Teaching / Practice</a>
       <div class="top__meta top__meta--a"><p>Bio</p><p class="muted">Research practice</p></div>
       <div class="top__meta top__meta--b"><p><span class="bullet"></span>Berlin</p><p><span class="bullet"></span>HCI · Immersive arts</p></div>
       <a class="top__pill" href="index.html#research">Selected work</a>
@@ -173,7 +174,7 @@ HTML = f'''<!doctype html>
 
     <section class="head g">
       <h1>Bio &amp;<br>Practice</h1>
-      <p class="head__count"><span>01→{N:02d}</span><span class="head__code">BS-BIO</span></p>
+      <p class="head__count"><span>01→{N:02d}</span><span class="head__code">RTP-BIO</span></p>
     </section>
 
     <ol class="specs">{"".join(row(i, r) for i, r in enumerate(ROWS))}
@@ -190,7 +191,7 @@ HTML = f'''<!doctype html>
         <p class="foot__label">Index</p>
         <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#about">About</a><a href="index.html#students">Teaching</a><a href="index.html#reflections">Reflections</a></p>
       </div>
-      <div class="g foot__base"><p>Between Systems</p><p>© 2026</p><p>An independent research archive</p></div>
+      <div class="g foot__base"><p>Research / Teaching / Practice</p><p>© 2026</p><p>An independent research archive</p></div>
     </footer>
   </div>
   <script>
