@@ -159,7 +159,9 @@
       transition: background-color .4s var(--ease), color .4s var(--ease);
     }
     .doodle { color: var(--textPrimaryColor); }
-    .doodle svg { width: 100%; height: auto; }
+    .doodle { margin: 0; }
+    .doodle svg { width: 100%; max-width: 12rem; height: auto; }
+    .doodle__cap { margin-top: 6px; color: var(--textTertiaryColor); font-size: .85em; }
 
     /* Right: details row */
     .details { grid-column: 1 / -1; }
@@ -348,7 +350,12 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <div class="doodle" aria-hidden="true"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M169.5 100.0 Q169.5 100.0 166.1 126.3 Q162.6 152.6 137.8 163.1 Q113.0 173.7 85.5 173.3 Q57.9 172.9 39.0 151.0 Q20.1 129.1 30.6 103.8 Q41.2 78.6 55.4 63.1 Q69.7 47.6 93.0 27.8 Q116.2 7.9 135.1 31.3 Q153.9 54.8 135.1 85.7 Q116.3 116.6 125.0 105.0 Q133.7 93.4 121.6 80.4 Q109.5 67.5 96.9 75.5 Q84.2 83.5 77.9 101.0 Q71.6 118.5 120.6 109.2"/></svg></div>
+          <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M58 140 L42 74 M74 132 L68 52 M90 132 L96 54 M104 138 L124 76"/>
+<path d="M56 146 L30 116"/>
+<path d="M56 146 L66 182 M108 146 L100 182"/>
+<path d="M124 76 C 150 40, 192 60, 176 92 S 130 110, 150 140 S 196 150, 186 176" stroke-width="5" stroke-dasharray="1 10"/>
+<circle cx="124" cy="76" r="6" fill="currentColor" stroke="none"/></svg><p class="doodle__cap">Fig 1: Drawing in air</p></figure>
           <div class="tile side__small" aria-hidden="true"><svg  viewBox="140 140 120 120" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
                 <g class="spin" opacity=".9">
                   <path d="M70 250 C 110 140, 190 120, 230 170 S 320 260, 340 150" />

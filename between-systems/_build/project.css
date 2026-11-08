@@ -148,7 +148,9 @@
       transition: background-color .4s var(--ease), color .4s var(--ease);
     }
     .doodle { color: var(--textPrimaryColor); }
-    .doodle svg { width: 100%; height: auto; }
+    .doodle { margin: 0; }
+    .doodle svg { width: 100%; max-width: 12rem; height: auto; }
+    .doodle__cap { margin-top: 6px; color: var(--textTertiaryColor); font-size: .85em; }
 
     /* Right: details row */
     .details { grid-column: 1 / -1; }

@@ -7,6 +7,14 @@ import json, math, os, random, sys, html
 OUT = sys.argv[1]
 HERE = os.path.dirname(os.path.abspath(__file__))
 SVGS = json.load(open(os.path.join(HERE, "svgs.json")))
+FIG_DIR = os.path.join(HERE, "figures")
+# figure shown in the right-hand column of each project page: (file, number, caption)
+PROJECT_FIGS = [("01-drawing-in-air", 1, "Drawing in air"), ("03-signal", 3, "Signal"),
+                ("04-spatial-cube", 4, "Spatial cube"), ("02-headset", 2, "Headset")]
+def fig(i):
+    f, n, cap = PROJECT_FIGS[i]
+    svg = open(os.path.join(FIG_DIR, f + ".svg")).read()
+    return f'{svg}<p class="doodle__cap">Fig {n}: {cap}</p>' 
 
 PROJECTS = [
     dict(slug="01-drawing-without-a-page", no="01", title="Drawing without a page",
@@ -198,7 +206,7 @@ def page(i, p):
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>0{len(PROJECTS)}</span></a>
-          <div class="doodle" aria-hidden="true">{doodle(i + 3)}</div>
+          <figure class="doodle">{fig(i)}</figure>
           <div class="tile side__small" aria-hidden="true">{crop(svg, "140 140 120 120")}</div>
         </div>
       </div>

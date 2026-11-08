@@ -159,7 +159,9 @@
       transition: background-color .4s var(--ease), color .4s var(--ease);
     }
     .doodle { color: var(--textPrimaryColor); }
-    .doodle svg { width: 100%; height: auto; }
+    .doodle { margin: 0; }
+    .doodle svg { width: 100%; max-width: 12rem; height: auto; }
+    .doodle__cap { margin-top: 6px; color: var(--textTertiaryColor); font-size: .85em; }
 
     /* Right: details row */
     .details { grid-column: 1 / -1; }
@@ -368,7 +370,7 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <div class="doodle" aria-hidden="true"><svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M184.9 100.0 Q184.9 100.0 176.8 128.8 Q168.7 157.6 142.3 174.0 Q115.9 190.4 83.5 187.5 Q51.2 184.6 33.5 157.6 Q15.8 130.6 12.4 98.8 Q9.0 66.9 39.2 56.9 Q69.4 47.0 91.5 34.8 Q113.7 22.6 144.3 29.9 Q174.9 37.2 146.5 81.1 Q118.1 125.1 119.0 109.5 Q120.0 93.8 113.3 83.1 Q106.7 72.3 86.6 75.4 Q66.5 78.4 72.6 93.9 Q78.8 109.4 131.9 104.7"/></svg></div>
+          <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="72" x2="132" y2="72" stroke="#e8432f" stroke-width="6" /><line x1="132" y1="72" x2="132" y2="164" stroke="#e8432f" stroke-width="6" /><line x1="132" y1="164" x2="40" y2="164" stroke="#e8432f" stroke-width="6" /><line x1="40" y1="164" x2="40" y2="72" stroke="#e8432f" stroke-width="6" /><line x1="76" y1="36" x2="168" y2="36" stroke="#e8432f" stroke-width="6" /><line x1="168" y1="36" x2="168" y2="128" stroke="#e8432f" stroke-width="6" /><line x1="168" y1="128" x2="76" y2="128" stroke="#e8432f" stroke-width="6" /><line x1="76" y1="128" x2="76" y2="36" stroke="#e8432f" stroke-width="6" /><line x1="40" y1="72" x2="76" y2="36" stroke="#e8432f" stroke-width="6" /><line x1="132" y1="72" x2="168" y2="36" stroke="#e8432f" stroke-width="6" /><line x1="132" y1="164" x2="168" y2="128" stroke="#e8432f" stroke-width="6" /><line x1="40" y1="164" x2="76" y2="128" stroke="#e8432f" stroke-width="6" /><line x1="46" y1="66" x2="138" y2="66" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="138" y1="66" x2="138" y2="158" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="138" y1="158" x2="46" y2="158" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="46" y1="158" x2="46" y2="66" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="82" y1="30" x2="174" y2="30" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="174" y1="30" x2="174" y2="122" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="174" y1="122" x2="82" y2="122" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="82" y1="122" x2="82" y2="30" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="46" y1="66" x2="82" y2="30" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="138" y1="66" x2="174" y2="30" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="138" y1="158" x2="174" y2="122" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/><line x1="46" y1="158" x2="82" y2="122" stroke="#2335d8" stroke-width="4" stroke-dasharray="2 7"/></svg><p class="doodle__cap">Fig 4: Spatial cube</p></figure>
           <div class="tile side__small" aria-hidden="true"><svg  viewBox="140 140 120 120" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
                 <line x1="200" y1="60" x2="200" y2="340" opacity=".6"/>
                 <line x1="60" y1="200" x2="340" y2="200" opacity=".6"/>
