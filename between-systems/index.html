@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Between Systems</title>
+  <title>Home | Between Systems</title>
   <meta name="description" content="Between Systems — an independent research archive for spatial interaction, embodied cognition, visualization and human–AI evaluation." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Between Systems" />
@@ -11,729 +11,838 @@
   <meta property="og:site_name" content="Between Systems" />
   <link rel="preload" href="fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
   <style>
+    /* =========================================================
+       Base — adapted from the reference stylesheets
+       ========================================================= */
     @font-face {
-      font-family: "UN 11";
-      src: url("fonts/UN_11ST_Regular.woff2") format("woff2"),
-           url("fonts/UN_11ST_Regular.woff") format("woff");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+      font-family: UN_11ST_Regular;
+      src: url(fonts/UN_11ST_Regular.woff2) format("woff2"),
+           url(fonts/UN_11ST_Regular.woff) format("woff");
+      font-weight: 400; font-style: normal; font-display: swap;
     }
-
-    /* ---------- Themes: Switch lights — On · Off · Mood ---------- */
-    :root {
-      --bg: #f1efea;
-      --fg: #141414;
-      --muted: #7a7873;
-      --line: #141414;
-      --panel: #e4e1da;
-      --accent: #2f3cff;
-      --gutter: 16px;
-      --gap: 16px;
-      --fs-body: 15px;
-      --fs-small: 12px;
-      --ease: cubic-bezier(.65, 0, .35, 1);
-      color-scheme: light;
-    }
-    :root[data-theme="off"] {
-      --bg: #111111;
-      --fg: #ecebe6;
-      --muted: #85837e;
-      --line: #ecebe6;
-      --panel: #1d1d1c;
-      --accent: #8f97ff;
-      color-scheme: dark;
-    }
-    :root[data-theme="mood"] {
-      --bg: #2f3cff;
-      --fg: #f3f0e8;
-      --muted: #b8bcff;
-      --line: #f3f0e8;
-      --panel: #2633e6;
-      --accent: #f3f0e8;
-      color-scheme: dark;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    *, *:before, *:after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { -moz-text-size-adjust: none; -webkit-text-size-adjust: none; text-size-adjust: none; scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { line-height: 1.5; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    img, svg, video, canvas { display: block; }
+    input, button, textarea, select { font: inherit; }
+    p, h1, h2, h3, h4 { overflow-wrap: break-word; }
+    h1, h2, h3, h4 { font-size: inherit; font-weight: inherit; text-wrap: balance; }
+    ul, ol { list-style: none; padding: 0; }
+
+    :root {
+      --font-family: "UN_11ST_Regular", monospace, "Helvetica Neue", Arial, sans-serif;
+      --grid-cols: 8;
+      --grid-gutter: .5rem;
+      --grid-margin: 1rem;
+      --color-black: #1a1a1a;
+      --color-grey-100: #202020;
+      --color-grey-80: #363636;
+      --color-grey-60: #767676;
+      --color-grey-40: #b3b3b3;
+      --color-grey-20: #ededed;
+      --color-grey-10: #fafafa;
+      --color-white: #ffffff;
+      --color-purple-100: #342d42;
+      --color-purple-80: #4c2994;
+      --color-purple-60: #5509ff;
+      --color-purple-40: #b594ff;
+      --color-purple-20: #ebe3fd;
+      --color-purple-10: #f7e5ff;
+      --color-purple-5: #f5f0fe;
+      --power2-in-out: linear(0, .0036 9.62%, .0185 16.66%, .0489 23.03%, .0962 28.86%, .1705 34.93%, .269 40.66%, .3867 45.89%, .5833 52.95%, .683 57.05%, .7829 62.14%, .8621 67.46%, .8991 70.68%, .9299 74.03%, .9545 77.52%, .9735 81.21%, .9865 85%, .9949 89.15%, 1);
+      --power2-out: linear(0, .2688 9.91%, .3859 15%, .4917 20.19%, .5865 25.5%, .6705 30.93%, .7441 36.51%, .8075 42.26%, .8593 47.98%, .9022 53.93%, .9366 60.13%, .963 66.67%, .9812 73.4%, .9929 80.76%, .9986 88.89%, 1);
+      --sine-out: linear(0, .2861 18.47%, .4829 32.08%, .6437 44.52%, .7712 56.07%, .8722 67.47%, .9115 73.02%, .9434 78.49%, .9682 83.91%, .9859 89.3%, .9965, 1);
+      --ease: var(--power2-in-out);
+      --ease-out: var(--power2-out);
+    }
+    @media (min-width: 1024px) { :root { --grid-cols: 12; --grid-gutter: 1rem; } }
+
+    /* Themes: Switch lights — On (light) · Off (dark) · Mood */
+    body, body.light {
+      --bgColor: var(--color-white);
+      --textPrimaryColor: var(--color-grey-100);
+      --textSecondaryColor: var(--color-grey-60);
+      --textTertiaryColor: var(--color-grey-40);
+      --borderColor: var(--color-grey-20);
+      --layer1Color: var(--color-grey-10);
+      --bigTextColor: var(--color-grey-100);
+      --underlineColor: var(--color-purple-40);
+    }
+    body ::selection { background-color: var(--color-purple-5); }
+    body.dark {
+      --bgColor: var(--color-black);
+      --textPrimaryColor: var(--color-grey-10);
+      --textSecondaryColor: var(--color-grey-40);
+      --textTertiaryColor: var(--color-grey-60);
+      --borderColor: var(--color-grey-80);
+      --layer1Color: var(--color-grey-100);
+      --bigTextColor: var(--color-grey-80);
+      --underlineColor: var(--color-purple-80);
+    }
+    body.dark ::selection { background-color: var(--color-grey-60); }
+    body.mood {
+      --bgColor: var(--color-purple-5);
+      --textPrimaryColor: var(--color-purple-100);
+      --textSecondaryColor: rgba(52, 45, 66, .75);
+      --textTertiaryColor: rgba(52, 45, 66, .5);
+      --borderColor: var(--color-purple-20);
+      --layer1Color: var(--color-purple-20);
+      --bigTextColor: var(--color-purple-100);
+      --underlineColor: var(--color-purple-40);
+    }
+    body.mood ::selection { background-color: var(--color-purple-20); }
+
+    html { background-color: var(--bgColor, #fff); }
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: "UN 11", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: var(--fs-body);
-      line-height: 1.35;
-      letter-spacing: -0.005em;
-      -webkit-font-smoothing: antialiased;
-      transition: background-color .5s var(--ease), color .5s var(--ease);
+      background-color: var(--bgColor);
+      color: var(--textPrimaryColor);
+      font-family: var(--font-family);
+      font-feature-settings: "ss01" on, "liga" off, "clig" off;
+      transition: background-color .4s var(--ease), color .4s var(--ease);
       overflow-x: hidden;
     }
-    h1, h2, h3, h4, p, ul, ol { margin: 0; padding: 0; font-weight: 400; }
-    ul, ol { list-style: none; }
-    a { color: inherit; text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
-    a:hover { text-decoration: none; }
-    button { font: inherit; color: inherit; }
-    .button--reset { background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; }
-    :focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
-    .label { color: var(--muted); }
+    a, .button--link {
+      color: currentColor;
+      text-underline-offset: .35em;
+      text-decoration-thickness: 1px;
+      text-decoration-color: var(--underlineColor);
+    }
+    a { transition: color .2s var(--ease-out); }
+    a:hover { color: var(--textSecondaryColor); }
+    .body p + p { margin-top: 1em; }
+    .button--reset {
+      -webkit-appearance: none; appearance: none;
+      background-color: transparent; border: none; padding: 0; border-radius: 0;
+      color: currentColor; cursor: pointer; text-align: left;
+      transition: color .2s var(--ease-out);
+    }
+    .button--reset:focus { outline: none; }
+    .button--reset:focus-visible, a:focus-visible { outline: 1px solid var(--underlineColor); outline-offset: 3px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: var(--gap);
-      padding: 0 var(--gutter);
-    }
-    .body p + p { margin-top: 1.1em; }
+    /* Type scale */
+    .t-label { font-size: .625rem; line-height: 1.6; letter-spacing: 0; text-transform: uppercase; color: var(--textTertiaryColor); }
+    .t-body  { font-size: .75rem; line-height: 1.3333; letter-spacing: 0; }
+    @media (min-width: 1024px) { .t-body { font-size: .875rem; line-height: 1.14285; } }
 
-    /* ---------- Header ---------- */
-    header.site {
-      padding-top: 14px;
-      row-gap: 28px;
-      align-items: start;
-    }
-    header.site h2 { color: var(--muted); margin-bottom: .2em; }
-    .logo { grid-column: span 3; display: flex; gap: 10px; align-items: flex-start; }
-    .logo__mark {
-      flex: 0 0 auto;
-      width: 30px; height: 30px;
-      display: grid; place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      font-size: 14px;
-      position: relative;
-      overflow: hidden;
-    }
-    .logo__mark::after {
-      content: ""; position: absolute; inset: 0;
-      border-radius: 50%;
-      border-top: 1px solid var(--fg);
-      animation: orbit 6s linear infinite;
-      transform-origin: 50% 50%;
-      opacity: .6;
-    }
-    @keyframes orbit { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .logo__mark::after { animation: none; } }
-    .logo p span { display: block; color: var(--muted); }
-    .color-switch { grid-column: span 3; }
-    .color-switch__colors { display: flex; flex-wrap: wrap; }
-    .color-switch__button { color: var(--muted); }
-    .color-switch__button:hover { color: var(--fg); }
-    .color-switch__button.active { color: var(--fg); text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
-    .intro { grid-column: span 3; }
-    .nav { grid-column: span 3; }
-    .nav ul { display: flex; flex-wrap: wrap; }
-    .nav li:not(:last-child)::after { content: ",\00a0"; }
-    .nav a { text-decoration: none; }
-    .nav a:hover { text-decoration: underline; }
-
-    /* ---------- Wordmark ---------- */
-    .wordmark { padding: 6vw var(--gutter) 0; }
-    .wordmark h1 {
-      font-size: clamp(64px, 19.5vw, 400px);
-      line-height: .8;
-      letter-spacing: -0.065em;
-      margin-left: -0.04em;
-    }
-    .wordmark span { display: block; }
-    .wordmark .w2 { text-align: right; margin-right: -0.02em; }
-    .wordmark .w1, .wordmark .w2 {
-      opacity: 0; transform: translateY(12%);
-      animation: rise 1.1s var(--ease) forwards;
-    }
-    .wordmark .w2 { animation-delay: .12s; }
-    @keyframes rise { to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .wordmark .w1, .wordmark .w2 { animation: none; opacity: 1; transform: none; } }
-    .wordmark__meta { display: flex; justify-content: space-between; margin-top: 18px; color: var(--muted); font-size: var(--fs-small); }
-
-    main > section { margin-top: 140px; }
-
-    /* ---------- Text columns ---------- */
-    .text-columns { row-gap: 40px; position: relative; }
-    .text-columns { row-gap: 10px; }
-    .text-columns .left-h  { grid-column: 1 / span 3; grid-row: 1; }
-    .text-columns .left-t  { grid-column: 4 / span 4; grid-row: 1 / span 2; }
-    .text-columns .right-h { grid-column: 9 / span 4; grid-row: 1; }
-    .text-columns .right-t { grid-column: 9 / span 4; grid-row: 2; }
-    .text-columns h2, .section-head h2 { color: var(--muted); }
-    .lead-q { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.2em; }
-    .domains li::before { content: "— "; color: var(--muted); }
-    .nav-list { margin-top: 1.4em; }
-    .nav-list a { text-decoration: none; display: inline-flex; gap: .5em; }
-    .nav-list a span { color: var(--muted); }
-    .nav-list a:hover { text-decoration: underline; }
-    .arrow {
-      grid-column: 1 / -1;
-      margin-top: 60px;
-      font-size: 48px; line-height: 1;
-      animation: bob 2.4s var(--ease) infinite;
-      text-decoration: none; width: max-content;
-    }
-    @keyframes bob { 50% { transform: translateY(10px); } }
-    @media (prefers-reduced-motion: reduce) { .arrow { animation: none; } }
-
-    /* ---------- Media block (generative) ---------- */
-    .media { padding: 0 var(--gutter); }
-    .media__frame {
-      position: relative;
-      background: var(--panel);
-      aspect-ratio: 16 / 7.5;
-      overflow: hidden;
-      transition: background-color .5s var(--ease);
-    }
-    .media__frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    .media__caption { display: flex; justify-content: space-between; gap: 16px; margin-top: 8px; font-size: var(--fs-small); color: var(--muted); }
-
-    /* ---------- Section head (cases) ---------- */
-    .section-head { row-gap: 18px; }
-    .section-head .h { grid-column: 1 / span 3; }
-    .section-head .sub { grid-column: 4 / span 2; color: var(--muted); }
-    .section-head .t { grid-column: 6 / span 4; }
-    .filters { grid-column: 10 / span 3; display: flex; flex-wrap: wrap; align-content: flex-start; }
-    .filters button { color: var(--muted); }
-    .filters button:hover { color: var(--fg); }
-    .filters button[aria-pressed="true"] { color: var(--fg); text-decoration: underline; text-underline-offset: .18em; text-decoration-thickness: 1px; }
-    .filters span { color: var(--muted); }
-
-    /* ---------- Projects ---------- */
-    .projects {
-      margin-top: 56px;
-      row-gap: 72px;
-    }
-    .project { grid-column: span 4; display: flex; flex-direction: column; transition: opacity .45s var(--ease); }
-    .project--large { grid-column: span 6; }
-    @media (min-width: 1024px) {
-      .projects .project:nth-child(3) { grid-column: 5 / span 4; }
-      .projects .project:nth-child(4) { grid-column: 9 / span 4; }
-    }
-    .project.is-hidden { display: none; }
-    .project__media {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      background: var(--panel);
-      overflow: hidden;
-      transition: background-color .5s var(--ease);
-    }
-    .project--large .project__media { aspect-ratio: 4 / 3.4; }
-    .project__media svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--fg); }
-    .project__media .status {
-      position: absolute; left: 10px; bottom: 10px; right: 10px;
-      font-size: var(--fs-small); color: var(--muted);
-    }
-    .project__media svg .spin { transform-origin: 200px 200px; animation: orbit 40s linear infinite; }
-    .project__media svg .spin-r { transform-origin: 200px 200px; animation: orbit 60s linear infinite reverse; }
-    @media (prefers-reduced-motion: reduce) { .project__media svg .spin, .project__media svg .spin-r { animation: none; } }
-    .project__content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: var(--gap); row-gap: 14px; margin-top: 12px; }
-    .project--large .project__content { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
-    .project__number { color: var(--muted); }
-    .project__title { font-size: clamp(22px, 2vw, 30px); line-height: 1.05; letter-spacing: -0.03em; }
-    .project__lead { grid-column: 2; }
-    .project__desc { grid-column: 2; color: var(--muted); }
-    .project__meta { grid-column: 1 / -1; display: grid; grid-template-columns: inherit; column-gap: inherit; grid-template-columns: subgrid; border-top: 1px solid var(--line); padding-top: 8px; }
-    @supports not (grid-template-columns: subgrid) {
-      .project__meta { display: flex; gap: var(--gap); }
-    }
-    .project__meta p:first-child { color: var(--muted); }
-    .project__toggle { grid-column: 2; display: inline-flex; align-items: center; gap: 10px; width: max-content; }
-    .project__toggle .icon { position: relative; width: 11px; height: 11px; }
-    .project__toggle .icon::before, .project__toggle .icon::after {
-      content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: currentColor;
-      transition: transform .4s var(--ease);
-    }
-    .project__toggle .icon::after { transform: rotate(90deg); }
-    .project.is-open .project__toggle .icon::after { transform: rotate(0deg); }
-    .project__detail {
-      grid-column: 2;
-      display: grid; grid-template-rows: 0fr;
-      transition: grid-template-rows .55s var(--ease);
-    }
-    .project.is-open .project__detail { grid-template-rows: 1fr; }
-    .project__detail > div { overflow: hidden; }
-    .project__detail p { padding-top: 4px; }
-
-    /* ---------- Large text ---------- */
-    .large-text { padding: 0 var(--gutter); }
-    .large-text p {
-      font-size: clamp(44px, 8.4vw, 170px);
-      line-height: .9;
-      letter-spacing: -0.055em;
-      margin-left: calc(var(--col) / 12 * 100%);
-      white-space: nowrap;
-    }
-
-    /* ---------- Accordion ---------- */
-    .accordion-section { row-gap: 24px; }
-    .accordion-section .h { grid-column: 1 / span 3; }
-    .accordion-section .h h2 { color: var(--muted); }
-    .accordion-section .h p { margin-top: .2em; }
-    .accordion-section .items { grid-column: 4 / span 9; border-bottom: 1px solid var(--line); }
-    .acc { border-top: 1px solid var(--line); }
-    .acc__toggle {
+    /* Page grid */
+    .page-grid {
       width: 100%;
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 7fr) 24px;
-      column-gap: var(--gap); align-items: baseline;
-      padding: 12px 0 14px;
+      display: grid;
+      grid-template-columns:
+        [full-start] calc(var(--grid-margin) - var(--grid-gutter))
+        [content-start] repeat(var(--grid-cols), 1fr)
+        [content-end] calc(var(--grid-margin) - var(--grid-gutter))
+        [full-end];
+      column-gap: var(--grid-gutter);
     }
-    .acc__num { color: var(--muted); }
-    .acc__headline { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.05; letter-spacing: -0.03em; }
-    .acc__icon { position: relative; width: 16px; height: 16px; justify-self: end; align-self: center; }
-    .acc__icon::before, .acc__icon::after {
-      content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: currentColor;
-      transition: transform .45s var(--ease);
-    }
-    .acc__icon::after { transform: rotate(90deg); }
-    .acc.is-open .acc__icon::after { transform: rotate(0deg); }
-    .acc__reveal { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s var(--ease); }
-    .acc.is-open .acc__reveal { grid-template-rows: 1fr; }
-    .acc__reveal > div { overflow: hidden; }
-    .acc__inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 7fr) 24px; column-gap: var(--gap); }
-    .acc__text { grid-column: 2; max-width: 46ch; padding-bottom: 28px; }
+    .subgrid { grid-column: content; display: grid; grid-template-columns: subgrid; width: 100%; }
 
-    /* ---------- Notes ---------- */
-    .notes { row-gap: 24px; }
-    .notes .h { grid-column: 1 / span 3; }
-    .notes .h h2 { color: var(--muted); }
-    .notes .h p { margin-top: .2em; }
-    .notes .h em { display: block; margin-top: 1em; font-style: normal; color: var(--muted); max-width: 26ch; }
-    .notes ol { grid-column: 4 / span 9; }
-    .note {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 5fr) minmax(0, 2fr);
-      column-gap: var(--gap); align-items: baseline;
-      border-top: 1px solid var(--line); padding: 12px 0 30px;
+    /* =========================================================
+       Header
+       ========================================================= */
+    header.site { padding-top: .8125rem; overflow: hidden; position: relative; }
+    .hd-logo { position: relative; grid-column-end: span 5; }
+    .hd-logo p { transition: transform .4s var(--ease); }
+    body.mood .hd-logo p { transform: translate(2.375em); }
+    .hd-logo span { transition: opacity .4s var(--ease); }
+    body.mood .hd-logo span { opacity: 0; }
+    .hd-logo__mark {
+      position: absolute; top: -.35rem; left: -.15rem; width: 1.9rem; height: 1.9rem;
+      opacity: 0; transform: scale(0);
+      transition: opacity .4s var(--ease), transform .4s var(--ease);
+      color: var(--textPrimaryColor);
     }
-    .note:last-child { border-bottom: 1px solid var(--line); }
-    .note__num { color: var(--muted); }
-    .note__title { font-size: clamp(22px, 2.4vw, 36px); line-height: 1.05; letter-spacing: -0.03em; }
-    .note__topic { color: var(--muted); text-align: right; }
+    body.mood .hd-logo__mark { opacity: 1; transform: scale(1); }
+    .hd-logo__mark g { transform-origin: 20px 20px; animation: orbit 5s linear infinite; }
+    @keyframes orbit { to { transform: rotate(360deg); } }
 
-    /* ---------- Contact ---------- */
-    .contact-block { row-gap: 24px; }
-    .contact-block .h { grid-column: 1 / span 3; color: var(--muted); }
-    .contact-block .big {
-      grid-column: 4 / span 9;
-      font-size: clamp(44px, 7.4vw, 150px);
-      line-height: .9; letter-spacing: -0.055em;
+    .hd-switch { grid-column-end: span 3; padding-bottom: 5rem; }
+    .hd-switch__lights { display: none; }
+    .hd-switch__colors { display: flex; }
+    .hd-switch__button { color: var(--textTertiaryColor); }
+    .hd-switch__button:hover, .hd-switch__button.active { color: var(--textPrimaryColor); }
+
+    .hd-intro, .hd-nav { grid-column-end: span var(--grid-cols); }
+    .hd-intro { padding-top: .75rem; border-top: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
+    .hd-nav { margin-top: .75rem; margin-bottom: .25rem; padding-bottom: .75rem; border-bottom: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
+    .hd-nav ul { display: flex; flex-wrap: wrap; }
+    .hd-nav li:not(:last-child)::after { content: ",\00a0"; }
+    .hd-nav a { text-decoration: none; }
+
+    @media (min-width: 480px) { .hd-logo, .hd-switch { grid-column-end: span 4; } }
+    @media (min-width: 1024px) {
+      header.site { border-bottom: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
+      .hd-logo { grid-column: 1 / span 2; grid-row-start: 1; }
+      .hd-intro { grid-column: 3 / span 4; grid-row-start: 1; padding-top: 0; border-top: none; }
+      .hd-nav { grid-column: 7 / span 3; grid-row-start: 1; margin: 0; padding-bottom: 0; border-bottom: none; }
+      .hd-switch {
+        grid-column: 10 / span 3; grid-row-start: 1;
+        display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--grid-gutter); align-items: start;
+      }
+      .hd-switch__lights { display: block; }
     }
-    .contact-block .big .ne { display: inline-block; transition: transform .5s var(--ease); }
-    .contact-block .big:hover .ne { transform: translate(.08em, -.08em); }
-    .contact-block .sub { grid-column: 4 / span 3; color: var(--muted); }
-    .contact-block .txt { grid-column: 7 / span 4; }
-    .contact-block .txt .label { display: block; margin-top: 1em; font-size: var(--fs-small); }
 
-    /* ---------- Footer ---------- */
-    footer.site { margin-top: 180px; padding-bottom: 16px; }
-    footer.site .cols { align-items: end; row-gap: 28px; }
-    footer.site h3 { color: var(--muted); }
-    .f-graphic { grid-column: span 3; font-size: clamp(90px, 12vw, 220px); line-height: .75; letter-spacing: -0.06em; }
-    .f-copy { grid-column: span 3; }
-    .f-index { grid-column: span 3; }
-    .f-index a { text-decoration: none; }
-    .f-index a:hover { text-decoration: underline; }
-    .f-index li span { color: var(--muted); display: inline-block; min-width: 2.2em; }
-    .f-fields { grid-column: span 2; }
-    .f-top { grid-column: span 1; justify-self: end; font-size: 40px; line-height: 1; }
-    .f-top span { display: inline-block; transition: transform .4s var(--ease); }
-    .f-top:hover span { transform: translateY(-6px); }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 1023px) {
-      .logo, .color-switch, .intro, .nav { grid-column: span 6; }
-      .text-columns .left-h, .text-columns .left-t, .text-columns .right-h, .text-columns .right-t { grid-row: auto; }
-      .text-columns .right-h { margin-top: 30px; }
-      .text-columns .left-h { grid-column: 1 / -1; }
-      .text-columns .left-t { grid-column: 1 / span 7; }
-      .text-columns .right-h { grid-column: 1 / -1; }
-      .text-columns .right-t { grid-column: 1 / span 7; }
-      .section-head .h { grid-column: 1 / span 6; }
-      .section-head .sub { grid-column: 7 / span 6; }
-      .section-head .t { grid-column: 1 / span 8; }
-      .filters { grid-column: 1 / -1; }
-      .project, .project--large { grid-column: span 6; }
-      .accordion-section .h, .notes .h, .contact-block .h { grid-column: 1 / -1; }
-      .accordion-section .items, .notes ol, .contact-block .big { grid-column: 1 / -1; }
-      .contact-block .sub { grid-column: 1 / span 4; }
-      .contact-block .txt { grid-column: 5 / span 8; }
-      .f-graphic, .f-copy, .f-index { grid-column: span 4; }
-      .f-fields { grid-column: span 10; }
-      .f-top { grid-column: span 2; }
+    /* =========================================================
+       Wordmark
+       ========================================================= */
+    .wordmark h1 { font-size: clamp(1.5rem, 21vw, 20rem); line-height: .95; white-space: nowrap; }
+    .wordmark span { position: relative; display: block; left: -.05em; grid-column-end: span var(--grid-cols); }
+    .wordmark .s2 { left: auto; text-align: right; }
+    @media (min-width: 1024px) {
+      .wordmark h1 { font-size: clamp(1.5rem, 11.2vw, 20rem); line-height: .825; padding-top: .12em; padding-bottom: .16em; }
+      .wordmark .s1 { grid-column-end: span 6; }
+      .wordmark .s2 { grid-column-end: span 6; left: -.05em; text-align: left; }
     }
-    @media (max-width: 640px) {
-      :root { --fs-body: 14px; }
-      main > section { margin-top: 96px; }
-      .logo, .color-switch, .intro, .nav { grid-column: span 12; }
-      header.site { row-gap: 18px; }
-      .text-columns .left-t, .text-columns .right-t { grid-column: 1 / -1; }
-      .section-head .h, .section-head .sub, .section-head .t { grid-column: 1 / -1; }
-      .project, .project--large { grid-column: 1 / -1; }
-      .project__content, .project--large .project__content { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); }
-      .media__frame { aspect-ratio: 4 / 3; }
-      .large-text p { margin-left: calc(var(--col-m, 0) / 12 * 100%); font-size: 13.4vw; }
-      .acc__toggle, .acc__inner { grid-template-columns: 28px minmax(0, 1fr) 18px; column-gap: 10px; }
-      .note { grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; row-gap: 8px; }
-      .note__topic { grid-column: 2; text-align: left; }
-      .contact-block .sub, .contact-block .txt { grid-column: 1 / -1; }
-      .f-graphic, .f-copy, .f-index { grid-column: 1 / -1; }
-      .f-fields { grid-column: 1 / span 9; }
-      .f-top { grid-column: 10 / span 3; }
-      .wordmark__meta { flex-direction: column; gap: 2px; }
+    .wordmark .s1, .wordmark .s2 { animation: rise 1.1s var(--ease) both; }
+    .wordmark .s2 { animation-delay: .1s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(15%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .wordmark .s1, .wordmark .s2, .hd-logo__mark g, .arrow span, .proj-media svg .spin, .proj-media svg .spin-r { animation: none !important; }
+    }
+
+    /* =========================================================
+       Text columns  (Bio / Services pattern)
+       ========================================================= */
+    .text-columns {
+      position: relative; margin-top: .25rem; padding-top: .75rem;
+      border-top: 1px solid var(--borderColor); transition: border-color .4s var(--ease);
+    }
+    .tc-left, .tc-right { grid-column-end: span var(--grid-cols); }
+    .tc-right { margin-top: .875rem; }
+    .domains li::before { content: "— "; color: var(--textTertiaryColor); }
+    .nav-list a { text-decoration: none; }
+    .nav-list a span { color: var(--textTertiaryColor); }
+    .arrow { display: none; }
+    @media (min-width: 1024px) {
+      .text-columns { margin-top: .125rem; padding-bottom: 4.5rem; }
+      .tc-left { grid-column-end: span 9; display: grid; grid-template-columns: repeat(9, 1fr); gap: var(--grid-gutter); }
+      .tc-left .tc-text {
+        grid-column: 3 / span 6; columns: 3; column-gap: var(--grid-gutter); column-fill: balance; orphans: 3; widows: 3;
+      }
+      .tc-left .tc-text > * { break-inside: avoid; padding-bottom: 1em; }
+      .tc-left .tc-text p + p { margin-top: 0; }
+      .tc-right { grid-column-end: span 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gutter); margin-top: 0; }
+      .tc-right .tc-text { grid-column: 2 / span 2; }
+      .tc-head { grid-column: 1 / span 1; }
+      .arrow {
+        position: absolute; left: calc(50% - 3rem); bottom: 0; display: block; width: 4rem;
+        font-size: 3rem; line-height: 1; text-align: center; text-decoration: none;
+      }
+      .arrow span { display: block; animation: bob 2.4s var(--ease) infinite; }
+    }
+    @keyframes bob { 50% { transform: translateY(.5rem); } }
+
+    /* =========================================================
+       Media block
+       ========================================================= */
+    .media-block { grid-column: content; margin-top: 1rem; }
+    @media (min-width: 1024px) { .media-block { margin-top: 2.5rem; } }
+    .media-block__frame {
+      position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+      background-color: var(--layer1Color); transition: background-color .4s var(--ease);
+    }
+    @media (min-width: 768px) { .media-block__frame { aspect-ratio: 1.87 / 1; } }
+    .media-block canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .media-block__status { position: absolute; left: .75rem; bottom: .6rem; right: .75rem; }
+
+    /* =========================================================
+       Large text  (What I do defines you pattern)
+       ========================================================= */
+    .large-text { grid-column: content; position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 0 .25em; margin-top: .375rem; }
+    .large-text .container { display: contents; }
+    .large-text p { display: inline-block; font-size: clamp(2.25rem, 9vw, 20rem); letter-spacing: -.004em; line-height: .825; white-space: nowrap; }
+    @media (min-width: 768px) {
+      .large-text { display: grid; grid-template-columns: subgrid; width: 100%; margin-top: .25rem; }
+      .large-text .container { display: grid; grid-column-end: span calc(var(--columns) / 12 * 8); }
+      .large-text p { font-size: clamp(1.5rem, 6.6vw, 20rem); }
+    }
+    @media (min-width: 1024px) { .large-text .container { grid-column-end: span var(--columns); } }
+
+    /* =========================================================
+       Cases  (Clients & projects pattern)
+       ========================================================= */
+    .cases { margin-top: 2.1875rem; padding-top: .75rem; border-top: 1px solid var(--borderColor); }
+    .cases__headline { grid-column-end: span 5; }
+    .cases__sub { grid-column-end: span 3; }
+    .cases__text, .cases__filters, .projects { grid-column-end: span var(--grid-cols); }
+    .cases__text { margin-top: 1rem; }
+    .cases__filters { display: flex; flex-wrap: wrap; margin-bottom: 1.5rem; margin-top: .25rem; }
+    .cases__filters button { color: var(--textTertiaryColor); }
+    .cases__filters button:hover, .cases__filters button[aria-pressed="true"] { color: var(--textPrimaryColor); }
+    .cases__filters span { color: var(--textTertiaryColor); }
+    .proj { margin-bottom: 1.75rem; }
+    .proj.is-hidden { display: none; }
+    @media (min-width: 1024px) {
+      .cases { margin-top: 4.5rem; }
+      .cases__headline { grid-column: 1 / span 2; grid-row: 1; }
+      .cases__sub { grid-column: 3 / span 2; grid-row: 1; }
+      .cases__text { grid-column: 7 / span 3; grid-row: 1; margin-top: 0; margin-bottom: 2.5rem; }
+      .cases__filters { grid-column: 10 / span 3; grid-row: 1; margin: 0; align-content: flex-start; }
+      .projects { display: grid; grid-template-columns: subgrid; width: 100%; }
+      .proj { grid-column-end: span 4; }
+      .proj--large { grid-column-end: span 6; }
+    }
+
+    .proj-container { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100%; }
+    .proj-media {
+      position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+      background-color: var(--layer1Color); transition: background-color .4s var(--ease);
+    }
+    .proj-media svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--textPrimaryColor); }
+    .proj-media svg .spin { transform-origin: 200px 200px; animation: orbit 40s linear infinite; }
+    .proj-media svg .spin-r { transform-origin: 200px 200px; animation: orbit 60s linear infinite reverse; }
+    .proj-media .status { position: absolute; left: .75rem; bottom: .6rem; right: .75rem; }
+    .proj-content { display: flex; flex-direction: column; }
+    .proj-header {
+      display: grid; grid-template-columns: repeat(8, 1fr); column-gap: var(--grid-gutter);
+      padding: .75rem 0; border-bottom: 1px solid var(--borderColor);
+    }
+    .proj-number { grid-column: 1 / span 1; }
+    .proj-title { grid-column: 6 / span 3; }
+    .proj-desc { padding-top: .75rem; padding-bottom: 1rem; color: var(--textTertiaryColor); }
+    .proj-desc .lead { color: var(--textPrimaryColor); margin-bottom: 1em; }
+    .proj-detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
+    .proj.is-open .proj-detail { grid-template-rows: 1fr; }
+    .proj-detail > div { overflow: hidden; }
+    .proj-detail p { padding-bottom: 1rem; color: var(--textSecondaryColor); }
+    .proj-bottom { display: flex; align-items: baseline; margin-top: auto; min-height: 2em; gap: .25rem; }
+    .proj-bottom__label { color: var(--textSecondaryColor); }
+    .proj-toggle { margin-left: auto; display: inline-flex; align-items: center; gap: .5rem; }
+    .proj-toggle:hover { color: var(--textSecondaryColor); }
+    .proj-toggle .icon { position: relative; width: .625rem; height: .625rem; }
+    .proj-toggle .icon::before, .proj-toggle .icon::after {
+      content: ""; position: absolute; top: 50%; left: 0; width: .625rem; height: 1px; background-color: currentColor;
+    }
+    .proj-toggle .icon::after { transform: rotate(90deg); transition: transform .2s var(--sine-out); }
+    .proj.is-open .proj-toggle .icon::after { transform: rotate(180deg); }
+    @media (min-width: 1024px) {
+      .proj-header { padding: 1rem 0; }
+      .proj-title { grid-column: 5 / span 4; }
+      .proj-desc { padding-top: 1rem; }
+      .proj--default .proj-desc { padding-right: 1rem; }
+      .proj--large .proj-desc, .proj--large .proj-detail { width: calc((100% - var(--grid-gutter) * 5) / 6 * 5 + var(--grid-gutter) * 4); }
+    }
+
+    /* =========================================================
+       Accordion  (Principles pattern)
+       ========================================================= */
+    .acc-section { position: relative; margin-top: 2.5rem; }
+    .acc-section > .t-label { position: absolute; top: .75rem; left: 0; }
+    .acc-items { grid-column-end: span var(--grid-cols); }
+    .acc-item { padding-top: .6875rem; }
+    .acc-item:not(:last-child) { border-bottom: 1px solid var(--borderColor); }
+    .accordion { position: relative; margin-bottom: .125rem; padding-bottom: .625rem; }
+    .acc-toggle {
+      position: relative; display: block; grid-column: 6 / span 3;
+      text-wrap: balance; transition: color .2s var(--ease-out);
+    }
+    .acc-toggle:hover { color: var(--textSecondaryColor); }
+    .acc-icon { position: absolute; right: 0; top: .5rem; z-index: 1; width: 2.5rem; height: 2.5rem; }
+    .acc-line { position: absolute; top: 0; right: 0; width: .625rem; height: 1px; background-color: currentColor; }
+    .acc-line--1 { transform: rotate(90deg); transition: transform .2s var(--sine-out); }
+    .accordion--open .acc-line--1 { transform: rotate(180deg); }
+    .acc-reveal { grid-column: content; grid-column-end: span var(--grid-cols); }
+    .acc-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s var(--ease); }
+    .accordion--open .acc-content { grid-template-rows: 1fr; }
+    .acc-inner { overflow: hidden; }
+    .acc-text { padding-top: 1rem; padding-bottom: .5rem; }
+    .acc-meta { color: var(--textTertiaryColor); }
+    @media (min-width: 480px) { .acc-toggle { grid-column: 5 / span 4; } }
+    @media (min-width: 1024px) {
+      .acc-item { padding-top: .9375rem; }
+      .accordion { margin-bottom: 0; padding-bottom: 0; }
+      .acc-toggle { grid-column: 3 / span 10; display: grid; grid-template-columns: repeat(10, 1fr); column-gap: var(--grid-gutter); }
+      .acc-headline { grid-column: 1 / span 4; display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--grid-gutter); margin-bottom: 1rem; }
+      .acc-headline .headline { grid-column-end: span 3; }
+      .acc-reveal { display: grid; grid-template-columns: subgrid; width: 100%; position: relative; margin-top: -2rem; pointer-events: none; }
+      .acc-content { grid-column: 7 / span 6; pointer-events: none; }
+      .acc-text { padding-top: 0; padding-right: 2rem; padding-bottom: 2.5rem; column-count: 2; column-gap: var(--grid-gutter); column-fill: balance; }
+      .acc-text p { padding-bottom: 1em; break-inside: avoid; }
+    }
+    /* Static list variant (Reflections — not links, not expandable) */
+    .acc-item--static .acc-toggle { cursor: default; }
+    .acc-item--static .acc-toggle:hover { color: inherit; }
+    .acc-topic { color: var(--textTertiaryColor); }
+    @media (max-width: 1023px) { .acc-topic { display: block; margin-top: .25rem; } }
+    @media (min-width: 1024px) { .acc-topic { grid-column: 7 / span 4; } }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+    footer.site {
+      grid-column: content; display: grid; grid-template-columns: subgrid; width: 100%;
+      margin-top: 10rem; padding-top: .4375rem; padding-bottom: 5rem;
+      border-top: 1px solid var(--borderColor);
+    }
+    .ft-contact {
+      grid-column-end: span var(--grid-cols);
+      border-bottom: 1px solid var(--borderColor);
+      padding-bottom: 10.4375rem;
+      font-size: clamp(2.25rem, 8vw, 10rem); line-height: 1.111; letter-spacing: -.04em;
+      color: var(--bigTextColor);
+    }
+    .ft-contact .ne { display: inline-block; transition: transform .4s var(--ease); }
+    .ft-contact:hover .ne { transform: translate(.06em, -.06em); }
+    .ft-contact__text { color: var(--textTertiaryColor); }
+    .ft-contact__text .note { display: block; }
+    .ft-columns { grid-column: content; display: grid; grid-template-columns: subgrid; width: 100%; position: relative; margin-top: .875rem; }
+    .ft-columns a { color: var(--textSecondaryColor); text-decoration: none; }
+    .ft-columns a:hover { color: var(--textTertiaryColor); }
+    .ft-graphic { grid-column: 1 / span 5; grid-row: 1; }
+    .ft-graphic svg { width: 4.5rem; height: auto; color: var(--textPrimaryColor); }
+    .ft-copyright { grid-column: 6 / span 3; }
+    .ft-about, .ft-credits { grid-column: 1 / span calc(var(--grid-cols)); margin-top: .8125rem; }
+    .ft-about p { max-width: 50ch; }
+    .ft-links li { display: grid; grid-template-columns: repeat(8, 1fr); gap: var(--grid-gutter); color: var(--textTertiaryColor); }
+    .ft-links li > :first-child { grid-column: 1 / span 5; color: var(--textPrimaryColor); }
+    .ft-links li > :last-child { grid-column: 6 / span 3; }
+    .ft-arrow { grid-column: 6 / span 1; position: relative; margin-top: 1.5rem; left: -.0625rem; }
+    .ft-arrow span { display: block; transition: transform .2s var(--ease-out); }
+    .ft-arrow:hover span { transform: translateY(-.25rem); }
+    @media (min-width: 1024px) {
+      footer.site { padding-bottom: 3.25rem; }
+      .ft-contact { padding-bottom: 20.4375rem; font-size: clamp(2.25rem, 9vw, 10rem); }
+      .ft-graphic { grid-column: 1 / span 2; }
+      .ft-about { grid-column: 3 / span 3; margin-top: 0; }
+      .ft-credits { grid-column: 7 / span 3; margin-top: 0; }
+      .ft-links li { grid-template-columns: repeat(2, 1fr); column-gap: var(--grid-gutter); }
+      .ft-links li > :first-child { grid-column: 1 / span 1; }
+      .ft-links li > :last-child { grid-column: 2 / span 1; }
+      .ft-copyright { grid-column: 10 / span 3; grid-row: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: var(--grid-gutter); }
+      .ft-copyright p { grid-column-end: span 2; }
+      .ft-arrow { position: absolute; top: 0; right: 0; grid-column: 12 / span 1; margin-top: 0; text-align: right; }
     }
   </style>
 </head>
-<body id="top">
-  <header class="site grid" aria-label="Site header">
-    <div class="logo">
-      <div class="logo__mark" aria-hidden="true">B</div>
-      <p>Between Systems<span>Research / Practice / Archive — 01 Ongoing</span></p>
-    </div>
+<body class="light" id="top">
 
-    <div class="color-switch">
-      <h2>Switch</h2>
-      <p>Lights</p>
-      <div class="color-switch__colors" role="group" aria-label="Switch lights">
-        <button class="color-switch__button button--reset active" data-theme-set="on" aria-pressed="true">On</button><span>,&nbsp;</span>
-        <button class="color-switch__button button--reset" data-theme-set="off" aria-pressed="false">Off</button><span>,&nbsp;</span>
-        <button class="color-switch__button button--reset" data-theme-set="mood" aria-pressed="false">Mood</button>
+  <!-- ============ Header ============ -->
+  <div class="page-grid">
+    <header class="site subgrid">
+      <div class="hd-logo t-label">
+        <p><span>○</span> Between Systems</p>
+        <svg class="hd-logo__mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+          <g><circle cx="20" cy="20" r="11" /><circle cx="31" cy="20" r="2.2" fill="currentColor" stroke="none" /></g>
+          <circle cx="20" cy="20" r="3" />
+        </svg>
       </div>
-    </div>
 
-    <div class="intro">
-      <h2>Intro</h2>
-      <p>An independent research archive exploring the relationships between people, interfaces and space.</p>
-    </div>
+      <div class="hd-switch t-body">
+        <h2 class="t-label">Switch</h2>
+        <p class="hd-switch__lights">Lights</p>
+        <div class="hd-switch__colors" role="group" aria-label="Switch lights">
+          <button class="hd-switch__button button--reset active" data-theme="light" aria-pressed="true">On</button><p>,&nbsp;</p>
+          <button class="hd-switch__button button--reset" data-theme="dark" aria-pressed="false">Off</button><p>,&nbsp;</p>
+          <button class="hd-switch__button button--reset" data-theme="mood" aria-pressed="false">Mood</button>
+        </div>
+      </div>
 
-    <nav class="nav" aria-label="Primary">
-      <h2>Index</h2>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#reflections">Reflections</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+      <div class="hd-intro t-body">
+        <h2 class="t-label">Intro</h2>
+        <p>An independent research archive exploring the relationships between people, interfaces and space.</p>
+      </div>
 
-  <div class="wordmark" aria-hidden="false">
-    <h1 aria-label="Between Systems"><span class="w1">Between</span><span class="w2">Systems</span></h1>
-    <div class="wordmark__meta">
-      <p>Interaction / Cognition / Computational environments</p>
-      <p>01 Ongoing</p>
-    </div>
+      <nav class="hd-nav t-body" aria-label="Primary">
+        <h2 class="t-label">Research / Practice / Archive — 01 Ongoing</h2>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#reflections">Reflections</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
   </div>
 
-  <main>
-    <!-- Introduction -->
-    <section class="text-columns grid" aria-labelledby="intro-h">
-      <div class="left-h"><h2 id="intro-h">(01) The inquiry</h2></div>
-      <div class="left-t body">
-        <p class="lead-q">How do people perceive, move and make sense of worlds shaped by computation?</p>
-        <p><span class="label">(02) The approach —</span> Experimental and mixed-methods research connecting psychology, interaction design and computational media.</p>
-      </div>
-      <div class="right-h"><h2>(03) Selected domains</h2></div>
-      <div class="right-t body">
-        <ul class="domains">
-          <li>Immersive sketching</li>
-          <li>Embodied interaction</li>
-          <li>Scientific visualization</li>
-          <li>Human–AI evaluation</li>
-        </ul>
-        <ul class="nav-list" aria-label="Navigate">
-          <li class="label">(04) Navigate</li>
-          <li><a href="#research">Selected work <span>→ Research</span></a></li>
-          <li><a href="#about">Research practice <span>→ About</span></a></li>
-          <li><a href="#teaching">Teaching <span>→ Teaching</span></a></li>
-        </ul>
-      </div>
-      <a class="arrow" href="#research" aria-label="Selected work">↓</a>
+  <!-- ============ Wordmark ============ -->
+  <div class="page-grid wordmark">
+    <section class="subgrid">
+      <h1 class="subgrid" aria-label="Between Systems"><span class="s1" aria-hidden="true">Between</span><span class="s2" aria-hidden="true">Systems</span></h1>
     </section>
+  </div>
 
-    <!-- Generative media block -->
-    <section class="media" aria-label="Illustrative graphic">
-      <div class="media__frame">
-        <canvas id="strokes" aria-hidden="true"></canvas>
-      </div>
-      <div class="media__caption">
-        <p>Strokes in space, no page beneath them.</p>
-        <p>Illustrative — not a research artifact</p>
-      </div>
-    </section>
+  <main class="page-grid">
 
-    <!-- (01) Research -->
-    <section id="research" aria-labelledby="research-h">
-      <div class="section-head grid">
-        <div class="h"><h2 id="research-h">(01) Research</h2></div>
-        <div class="sub"><p>Selected work</p></div>
-        <div class="t"><p>Studies of spatial thinking, interactive systems, and the ways we come to understand them.</p></div>
-        <div class="filters" role="group" aria-label="Filter projects">
-          <button class="button--reset" data-filter="all" aria-pressed="true">All</button><span>,&nbsp;</span>
-          <button class="button--reset" data-filter="spatial" aria-pressed="false">Spatial interaction</button><span>,&nbsp;</span>
-          <button class="button--reset" data-filter="visualization" aria-pressed="false">Visualization</button><span>,&nbsp;</span>
-          <button class="button--reset" data-filter="methods" aria-pressed="false">Methods &amp; interfaces</button>
+    <!-- ============ Introduction (text columns) ============ -->
+    <section class="text-columns subgrid t-body">
+      <div class="tc-left">
+        <div class="tc-head"><h2 class="t-label">The inquiry</h2></div>
+        <div class="tc-text body">
+          <p><span class="acc-meta">(01)</span> How do people perceive, move and make sense of worlds shaped by computation?</p>
+          <p><span class="acc-meta">(02)</span> Experimental and mixed-methods research connecting psychology, interaction design and computational media.</p>
+          <ul class="nav-list" aria-label="Navigate">
+            <li class="acc-meta">(04) Navigate</li>
+            <li><a href="#research">Selected work <span>→ Research</span></a></li>
+            <li><a href="#about">Research practice <span>→ About</span></a></li>
+            <li><a href="#teaching">Teaching <span>→ Teaching</span></a></li>
+          </ul>
         </div>
       </div>
+      <div class="tc-right">
+        <div class="tc-head"><h2 class="t-label">Domains</h2></div>
+        <div class="tc-text body">
+          <p class="acc-meta">(03) Selected domains</p>
+          <ul class="domains">
+            <li>Immersive sketching</li>
+            <li>Embodied interaction</li>
+            <li>Scientific visualization</li>
+            <li>Human–AI evaluation</li>
+          </ul>
+        </div>
+      </div>
+      <a class="arrow" href="#research" aria-label="Selected work"><span>↓</span></a>
+    </section>
 
-      <div class="projects grid">
-        <!-- 01 -->
-        <article class="project project--large" data-cats="spatial methods">
-          <div class="project__media">
-            <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <g class="spin" opacity=".9">
-                <path d="M70 250 C 110 140, 190 120, 230 170 S 320 260, 340 150" />
-                <path d="M90 300 C 150 230, 170 300, 240 250 S 300 120, 330 110" opacity=".6"/>
-                <path d="M120 120 C 160 180, 220 90, 260 140 S 250 290, 300 300" opacity=".45"/>
-                <path d="M60 180 L 140 210 L 200 160 L 290 220" stroke-dasharray="2 5"/>
-              </g>
-              <ellipse cx="200" cy="300" rx="150" ry="22" opacity=".35"/>
-              <ellipse cx="200" cy="300" rx="90" ry="12" opacity=".25"/>
-              <circle cx="230" cy="170" r="3" fill="currentColor"/>
-              <circle cx="140" cy="210" r="3" fill="currentColor"/>
-            </svg>
-            <p class="status">Illustrative study / 01. Current graphic is not a research artifact.</p>
-          </div>
-          <div class="project__content">
-            <p class="project__number">№01.</p>
-            <h3 class="project__title">Drawing without a page</h3>
-            <p class="project__lead">How are spatial relationships made when there is no surface to draw on?</p>
-            <p class="project__desc">Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.</p>
-            <button class="project__toggle button--reset" aria-expanded="false" aria-controls="pd-1"><span class="icon" aria-hidden="true"></span><span class="txt">Open project</span></button>
-            <div class="project__detail" id="pd-1"><div><p>A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.</p></div></div>
-            <div class="project__meta"><p>Area</p><p>VR Sketching — Longitudinal study</p></div>
-          </div>
-        </article>
-
-        <!-- 02 -->
-        <article class="project project--large" data-cats="visualization methods">
-          <div class="project__media">
-            <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <g class="spin-r">
-                <path d="M200 92 C 280 92, 318 150, 312 205 C 306 268, 250 310, 198 306 C 132 302, 88 262, 90 200 C 92 140, 130 92, 200 92 Z" opacity=".9"/>
-                <path d="M200 122 C 262 122, 290 168, 284 208 C 278 255, 238 282, 199 280 C 148 277, 118 246, 120 202 C 122 158, 150 122, 200 122 Z" opacity=".7"/>
-                <path d="M201 152 C 242 152, 258 182, 254 210 C 250 240, 226 254, 200 253 C 168 252, 150 232, 151 205 C 152 176, 170 152, 201 152 Z" opacity=".5"/>
-                <path d="M200 182 C 222 182, 228 196, 226 210 C 224 224, 212 230, 200 229 C 186 228, 178 220, 178 207 C 178 194, 186 182, 200 182 Z" opacity=".35"/>
-              </g>
-              <path d="M170 210 C 180 196, 196 200, 200 214 C 204 228, 222 226, 230 214" />
-              <circle cx="170" cy="210" r="2.5" fill="currentColor"/>
-              <circle cx="230" cy="214" r="2.5" fill="currentColor"/>
-              <line x1="230" y1="214" x2="330" y2="150" stroke-dasharray="2 4" opacity=".6"/>
-              <line x1="170" y1="210" x2="70" y2="290" stroke-dasharray="2 4" opacity=".6"/>
-            </svg>
-            <p class="status">Illustrative study / 02. Current graphic is a conceptual illustration.</p>
-          </div>
-          <div class="project__content">
-            <p class="project__number">№02.</p>
-            <h3 class="project__title">Subcortical Matters</h3>
-            <p class="project__lead">Making complex anatomical information more navigable and interpretable.</p>
-            <p class="project__desc">Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.</p>
-            <button class="project__toggle button--reset" aria-expanded="false" aria-controls="pd-2"><span class="icon" aria-hidden="true"></span><span class="txt">Open project</span></button>
-            <div class="project__detail" id="pd-2"><div><p>An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.</p></div></div>
-            <div class="project__meta"><p>Area</p><p>Visualization — Collaborative work</p></div>
-          </div>
-        </article>
-
-        <!-- 03 -->
-        <article class="project" data-cats="spatial visualization">
-          <div class="project__media">
-            <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <line x1="200" y1="60" x2="200" y2="340" opacity=".6"/>
-              <line x1="60" y1="200" x2="340" y2="200" opacity=".6"/>
-              <line x1="95" y1="305" x2="305" y2="95" opacity=".35" stroke-dasharray="3 4"/>
-              <g class="spin">
-                <circle cx="200" cy="200" r="30"/>
-                <circle cx="200" cy="200" r="60" opacity=".8"/>
-                <circle cx="200" cy="200" r="95" opacity=".6" stroke-dasharray="1 6"/>
-                <circle cx="200" cy="200" r="130" opacity=".4"/>
-                <circle cx="260" cy="200" r="3" fill="currentColor"/>
-                <circle cx="105" cy="200" r="3" fill="currentColor"/>
-              </g>
-              <text x="346" y="204" font-size="10" fill="currentColor" stroke="none">x</text>
-              <text x="196" y="54" font-size="10" fill="currentColor" stroke="none">y</text>
-              <text x="310" y="92" font-size="10" fill="currentColor" stroke="none">z</text>
-            </svg>
-            <p class="status">Conceptual / 03. Current graphic uses coordinate axes and concentric forms.</p>
-          </div>
-          <div class="project__content">
-            <p class="project__number">№03.</p>
-            <h3 class="project__title">TopoVox</h3>
-            <p class="project__lead">Interfaces for seeing and exploring complex spatial data.</p>
-            <p class="project__desc">An exploration of visual organization, spatial navigation, and interaction with three-dimensional representations.</p>
-            <button class="project__toggle button--reset" aria-expanded="false" aria-controls="pd-3"><span class="icon" aria-hidden="true"></span><span class="txt">Open project</span></button>
-            <div class="project__detail" id="pd-3"><div><p>Design inquiry into how interactive spatial representations may support exploration, comparison, and interpretation of complex digital material.</p></div></div>
-            <div class="project__meta"><p>Area</p><p>Interfaces — Experimental</p></div>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="project" data-cats="methods">
-          <div class="project__media">
-            <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-              <g opacity=".35">
-                <path d="M80 120 H320 M80 160 H320 M80 200 H320 M80 240 H320 M80 280 H320"/>
-                <path d="M120 80 V320 M160 80 V320 M200 80 V320 M240 80 V320 M280 80 V320"/>
-              </g>
-              <g class="spin-r">
-                <rect x="140" y="140" width="120" height="120" transform="rotate(45 200 200)"/>
-                <rect x="160" y="160" width="80" height="80" opacity=".6"/>
-              </g>
-              <path d="M200 200 C 240 150, 300 170, 320 110" stroke-dasharray="2 4"/>
-              <circle cx="320" cy="110" r="6"/>
-              <circle cx="200" cy="200" r="3" fill="currentColor"/>
-            </svg>
-            <p class="status">Illustrative study / 04. Current graphic is illustrative imagery.</p>
-          </div>
-          <div class="project__content">
-            <p class="project__number">№04.</p>
-            <h3 class="project__title">Speculative Realities Lab</h3>
-            <p class="project__lead">Prototypes, methods, and experiments at the edges of emerging interfaces.</p>
-            <p class="project__desc">Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.</p>
-            <button class="project__toggle button--reset" aria-expanded="false" aria-controls="pd-4"><span class="icon" aria-hidden="true"></span><span class="txt">Open project</span></button>
-            <div class="project__detail" id="pd-4"><div><p>Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.</p></div></div>
-            <div class="project__meta"><p>Area</p><p>Experiments — Research practice</p></div>
-          </div>
-        </article>
+    <!-- ============ Media block (generative) ============ -->
+    <section class="media-block" aria-label="Illustrative graphic">
+      <div class="media-block__frame">
+        <canvas id="strokes" aria-hidden="true"></canvas>
+        <p class="media-block__status t-label">Illustrative — strokes in space, no page beneath them. Not a research artifact.</p>
       </div>
     </section>
 
-    <!-- (02) About -->
-    <section id="about" aria-labelledby="about-h">
-      <h2 id="about-h" class="sr-only">(02) About / Approach</h2>
-      <div class="large-text" aria-label="Between disciplines, between perspectives.">
-        <p style="--col: 3; --col-m: 2" aria-hidden="true">Between</p>
-        <p style="--col: 0; --col-m: 0" aria-hidden="true">disciplines,</p>
-        <p style="--col: 5; --col-m: 3" aria-hidden="true">between</p>
-        <p style="--col: 2; --col-m: 0" aria-hidden="true">perspectives.</p>
-      </div>
-      <div class="text-columns grid" style="margin-top: 80px">
-        <div class="left-h"><h2>(02) About / Approach</h2></div>
-        <div class="left-t body">
+    <!-- ============ Large text ============ -->
+    <section class="large-text" aria-label="Between disciplines, between perspectives.">
+      <div class="container" style="--columns: 4" aria-hidden="true"><p>Between</p></div>
+      <div class="container" style="--columns: 8" aria-hidden="true"><p>disciplines,</p></div>
+      <div class="container" style="--columns: 4" aria-hidden="true"><p>between</p></div>
+      <div class="container" style="--columns: 8" aria-hidden="true"><p>perspectives.</p></div>
+    </section>
+
+    <!-- ============ (02) About (text columns) ============ -->
+    <section id="about" class="text-columns subgrid t-body" style="margin-top: 2.5rem; padding-bottom: .75rem;">
+      <div class="tc-left">
+        <div class="tc-head"><h2 class="t-label">About</h2></div>
+        <div class="tc-text body">
+          <p><span class="acc-meta">(02) Approach —</span> Between disciplines, between perspectives.</p>
           <p>The work begins with questions about perception and action: what do people notice, what do they use as a reference, and how does an interface change what becomes possible?</p>
         </div>
-        <div class="right-h"><h2>Working methods</h2></div>
-        <div class="right-t body">
+      </div>
+      <div class="tc-right">
+        <div class="tc-head"><h2 class="t-label">Methods</h2></div>
+        <div class="tc-text body">
           <p>Experimental studies, interviews, behavioral and interaction logs, visualization prototyping, iterative design, and multimodal analysis.</p>
         </div>
       </div>
     </section>
 
-    <!-- (03) Teaching -->
-    <section id="teaching" class="accordion-section grid" aria-labelledby="teaching-h">
-      <div class="h">
-        <h2 id="teaching-h">(03) Knowledge / Teaching</h2>
-        <p>Seminars &amp; teaching</p>
+    <!-- ============ (01) Research (cases) ============ -->
+    <section id="research" class="cases subgrid">
+      <div class="cases__headline"><h2 class="t-label">(01) Research</h2></div>
+      <div class="cases__sub t-body"><p>Selected work</p></div>
+      <div class="cases__text t-body"><p>Studies of spatial thinking, interactive systems, and the ways we come to understand them.</p></div>
+      <div class="cases__filters t-body" role="group" aria-label="Filter projects">
+        <button class="button--reset" data-filter="all" aria-pressed="true">All</button><span>,&nbsp;</span>
+        <button class="button--reset" data-filter="spatial" aria-pressed="false">Spatial interaction</button><span>,&nbsp;</span>
+        <button class="button--reset" data-filter="visualization" aria-pressed="false">Visualization</button><span>,&nbsp;</span>
+        <button class="button--reset" data-filter="methods" aria-pressed="false">Methods &amp; interfaces</button>
       </div>
-      <div class="items">
-        <div class="acc is-open">
-          <button class="acc__toggle button--reset" aria-expanded="true" aria-controls="acc-1">
-            <span class="acc__num">01.</span>
-            <span class="acc__headline">Natural User Interfaces</span>
-            <span class="acc__icon" aria-hidden="true"></span>
-          </button>
-          <div class="acc__reveal" id="acc-1"><div><div class="acc__inner"><p class="acc__text">Teaching on embodied, multimodal and sensor-based approaches to interaction, from evaluation methods to interactive prototyping.</p></div></div></div>
+
+      <div class="projects">
+        <!-- 01 -->
+        <article class="proj proj--large" data-cats="spatial methods">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <g class="spin" opacity=".9">
+                  <path d="M70 250 C 110 140, 190 120, 230 170 S 320 260, 340 150" />
+                  <path d="M90 300 C 150 230, 170 300, 240 250 S 300 120, 330 110" opacity=".6"/>
+                  <path d="M120 120 C 160 180, 220 90, 260 140 S 250 290, 300 300" opacity=".45"/>
+                  <path d="M60 180 L 140 210 L 200 160 L 290 220" stroke-dasharray="2 5"/>
+                </g>
+                <ellipse cx="200" cy="300" rx="150" ry="22" opacity=".35"/>
+                <ellipse cx="200" cy="300" rx="90" ry="12" opacity=".25"/>
+                <circle cx="230" cy="170" r="3" fill="currentColor"/>
+                <circle cx="140" cy="210" r="3" fill="currentColor"/>
+              </svg>
+              <p class="status t-label">Illustrative study / 01. Current graphic is not a research artifact.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№01.</div><h3 class="proj-title">Drawing without a page</h3></div>
+              <div class="proj-desc">
+                <p class="lead">How are spatial relationships made when there is no surface to draw on?</p>
+                <p>Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.</p>
+              </div>
+              <div class="proj-detail" id="pd-1"><div><p>A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.</p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>VR Sketching, Longitudinal study</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-1"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="proj proj--large" data-cats="visualization methods">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <g class="spin-r">
+                  <path d="M200 92 C 280 92, 318 150, 312 205 C 306 268, 250 310, 198 306 C 132 302, 88 262, 90 200 C 92 140, 130 92, 200 92 Z" opacity=".9"/>
+                  <path d="M200 122 C 262 122, 290 168, 284 208 C 278 255, 238 282, 199 280 C 148 277, 118 246, 120 202 C 122 158, 150 122, 200 122 Z" opacity=".7"/>
+                  <path d="M201 152 C 242 152, 258 182, 254 210 C 250 240, 226 254, 200 253 C 168 252, 150 232, 151 205 C 152 176, 170 152, 201 152 Z" opacity=".5"/>
+                  <path d="M200 182 C 222 182, 228 196, 226 210 C 224 224, 212 230, 200 229 C 186 228, 178 220, 178 207 C 178 194, 186 182, 200 182 Z" opacity=".35"/>
+                </g>
+                <path d="M170 210 C 180 196, 196 200, 200 214 C 204 228, 222 226, 230 214" />
+                <circle cx="170" cy="210" r="2.5" fill="currentColor"/>
+                <circle cx="230" cy="214" r="2.5" fill="currentColor"/>
+                <line x1="230" y1="214" x2="330" y2="150" stroke-dasharray="2 4" opacity=".6"/>
+                <line x1="170" y1="210" x2="70" y2="290" stroke-dasharray="2 4" opacity=".6"/>
+              </svg>
+              <p class="status t-label">Illustrative study / 02. Current graphic is a conceptual illustration.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№02.</div><h3 class="proj-title">Subcortical Matters</h3></div>
+              <div class="proj-desc">
+                <p class="lead">Making complex anatomical information more navigable and interpretable.</p>
+                <p>Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.</p>
+              </div>
+              <div class="proj-detail" id="pd-2"><div><p>An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.</p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>Visualization, Collaborative work</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-2"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="proj proj--default" data-cats="spatial visualization">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <line x1="200" y1="60" x2="200" y2="340" opacity=".6"/>
+                <line x1="60" y1="200" x2="340" y2="200" opacity=".6"/>
+                <line x1="95" y1="305" x2="305" y2="95" opacity=".35" stroke-dasharray="3 4"/>
+                <g class="spin">
+                  <circle cx="200" cy="200" r="30"/>
+                  <circle cx="200" cy="200" r="60" opacity=".8"/>
+                  <circle cx="200" cy="200" r="95" opacity=".6" stroke-dasharray="1 6"/>
+                  <circle cx="200" cy="200" r="130" opacity=".4"/>
+                  <circle cx="260" cy="200" r="3" fill="currentColor"/>
+                  <circle cx="105" cy="200" r="3" fill="currentColor"/>
+                </g>
+                <text x="346" y="204" font-size="10" fill="currentColor" stroke="none">x</text>
+                <text x="196" y="54" font-size="10" fill="currentColor" stroke="none">y</text>
+                <text x="310" y="92" font-size="10" fill="currentColor" stroke="none">z</text>
+              </svg>
+              <p class="status t-label">Conceptual / 03. Current graphic uses coordinate axes and concentric forms.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№03.</div><h3 class="proj-title">TopoVox</h3></div>
+              <div class="proj-desc">
+                <p class="lead">Interfaces for seeing and exploring complex spatial data.</p>
+                <p>An exploration of visual organization, spatial navigation, and interaction with three-dimensional representations.</p>
+              </div>
+              <div class="proj-detail" id="pd-3"><div><p>Design inquiry into how interactive spatial representations may support exploration, comparison, and interpretation of complex digital material.</p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>Interfaces, Experimental</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-3"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="proj proj--default" data-cats="methods">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <g opacity=".35">
+                  <path d="M80 120 H320 M80 160 H320 M80 200 H320 M80 240 H320 M80 280 H320"/>
+                  <path d="M120 80 V320 M160 80 V320 M200 80 V320 M240 80 V320 M280 80 V320"/>
+                </g>
+                <g class="spin-r">
+                  <rect x="140" y="140" width="120" height="120" transform="rotate(45 200 200)"/>
+                  <rect x="160" y="160" width="80" height="80" opacity=".6"/>
+                </g>
+                <path d="M200 200 C 240 150, 300 170, 320 110" stroke-dasharray="2 4"/>
+                <circle cx="320" cy="110" r="6"/>
+                <circle cx="200" cy="200" r="3" fill="currentColor"/>
+              </svg>
+              <p class="status t-label">Illustrative study / 04. Current graphic is illustrative imagery.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№04.</div><h3 class="proj-title">Speculative Realities Lab</h3></div>
+              <div class="proj-desc">
+                <p class="lead">Prototypes, methods, and experiments at the edges of emerging interfaces.</p>
+                <p>Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.</p>
+              </div>
+              <div class="proj-detail" id="pd-4"><div><p>Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.</p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>Experiments, Research practice</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-4"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ (03) Teaching (accordion) ============ -->
+    <section id="teaching" class="acc-section subgrid">
+      <h2 class="t-label">(03) Teaching</h2>
+      <div class="acc-items subgrid t-body">
+        <div class="acc-item subgrid">
+          <div class="accordion subgrid accordion--open">
+            <button class="acc-toggle button--reset" aria-expanded="true" aria-controls="acc-1">
+              <div class="acc-headline"><p class="number">1.</p><p class="headline">Natural User Interfaces</p></div>
+              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
+            </button>
+            <div class="acc-reveal" id="acc-1"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
+              <p>Teaching on embodied, multimodal and sensor-based approaches to interaction, from evaluation methods to interactive prototyping.</p>
+              <p class="acc-meta">Seminars &amp; teaching</p>
+            </div></div></div></div>
+          </div>
         </div>
-        <div class="acc">
-          <button class="acc__toggle button--reset" aria-expanded="false" aria-controls="acc-2">
-            <span class="acc__num">02.</span>
-            <span class="acc__headline">Adaptive Digital Twin</span>
-            <span class="acc__icon" aria-hidden="true"></span>
-          </button>
-          <div class="acc__reveal" id="acc-2"><div><div class="acc__inner"><p class="acc__text">An interdisciplinary block-seminar context around digital twins and neurosurgical visualization.</p></div></div></div>
+        <div class="acc-item subgrid">
+          <div class="accordion subgrid">
+            <button class="acc-toggle button--reset" aria-expanded="false" aria-controls="acc-2">
+              <div class="acc-headline"><p class="number">2.</p><p class="headline">Adaptive Digital Twin</p></div>
+              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
+            </button>
+            <div class="acc-reveal" id="acc-2"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
+              <p>An interdisciplinary block-seminar context around digital twins and neurosurgical visualization.</p>
+              <p class="acc-meta">Block seminar</p>
+            </div></div></div></div>
+          </div>
         </div>
-        <div class="acc">
-          <button class="acc__toggle button--reset" aria-expanded="false" aria-controls="acc-3">
-            <span class="acc__num">03.</span>
-            <span class="acc__headline">Multidisciplinary Perspectives of Digital Neurosurgery</span>
-            <span class="acc__icon" aria-hidden="true"></span>
-          </button>
-          <div class="acc__reveal" id="acc-3"><div><div class="acc__inner"><p class="acc__text">Exploring questions of representation, interaction and collaboration across clinical, scientific and design disciplines.</p></div></div></div>
+        <div class="acc-item subgrid">
+          <div class="accordion subgrid">
+            <button class="acc-toggle button--reset" aria-expanded="false" aria-controls="acc-3">
+              <div class="acc-headline"><p class="number">3.</p><p class="headline">Multidisciplinary Perspectives of Digital Neurosurgery</p></div>
+              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
+            </button>
+            <div class="acc-reveal" id="acc-3"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
+              <p>Exploring questions of representation, interaction and collaboration across clinical, scientific and design disciplines.</p>
+              <p class="acc-meta">Seminars &amp; teaching</p>
+            </div></div></div></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- (04) Notes -->
-    <section id="reflections" class="notes grid" aria-labelledby="notes-h">
-      <div class="h">
-        <h2 id="notes-h">(04) Notes / Reflections</h2>
-        <p>Questions in progress</p>
-        <em>Topics for future writing — not published articles.</em>
+    <!-- ============ (04) Reflections (static list) ============ -->
+    <section id="reflections" class="acc-section subgrid" style="margin-top: 4.5rem;">
+      <h2 class="t-label">(04) Reflections</h2>
+      <div class="acc-items subgrid t-body">
+        <div class="acc-item acc-item--static subgrid">
+          <div class="accordion subgrid">
+            <div class="acc-toggle">
+              <div class="acc-headline"><p class="number acc-meta">—</p><p class="headline acc-meta">Questions in progress. Topics for future writing — not published articles.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="acc-item acc-item--static subgrid">
+          <div class="accordion subgrid">
+            <div class="acc-toggle">
+              <div class="acc-headline"><p class="number">1.</p><p class="headline">What counts as a reference in immersive space?</p></div>
+              <p class="acc-topic">Topic: Spatial thinking</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc-item acc-item--static subgrid">
+          <div class="accordion subgrid">
+            <div class="acc-toggle">
+              <div class="acc-headline"><p class="number">2.</p><p class="headline">Measuring what matters in human–AI interaction</p></div>
+              <p class="acc-topic">Topic: Evaluation</p>
+            </div>
+          </div>
+        </div>
+        <div class="acc-item acc-item--static subgrid">
+          <div class="accordion subgrid">
+            <div class="acc-toggle">
+              <div class="acc-headline"><p class="number">3.</p><p class="headline">When scientific images become interactive</p></div>
+              <p class="acc-topic">Topic: Visualization</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <ol>
-        <li class="note"><span class="note__num">1.</span><span class="note__title">What counts as a reference in immersive space?</span><span class="note__topic">Spatial thinking</span></li>
-        <li class="note"><span class="note__num">2.</span><span class="note__title">Measuring what matters in human–AI interaction</span><span class="note__topic">Evaluation</span></li>
-        <li class="note"><span class="note__num">3.</span><span class="note__title">When scientific images become interactive</span><span class="note__topic">Visualization</span></li>
-      </ol>
     </section>
 
-    <!-- (05) Contact -->
-    <section id="contact" class="contact-block grid" aria-labelledby="contact-h">
-      <div class="h"><h2 id="contact-h">(05) Contact</h2></div>
-      <!-- Contact details intentionally omitted from the current draft; add a mailto: link here before publication. -->
-      <p class="big">New questions start here.&nbsp;<span class="ne" aria-hidden="true">↗</span></p>
-      <p class="sub">Research / Teaching / Collaboration</p>
-      <p class="txt">Open to interdisciplinary research conversations, evaluations and experimental collaborations.<span class="label">Contact details to be added before publication.</span></p>
-    </section>
+    <!-- ============ Footer ============ -->
+    <footer class="site t-body" id="contact">
+      <div class="ft-contact">
+        <p>New questions start here.&nbsp;<span class="ne" aria-hidden="true">↗</span></p>
+        <div class="ft-contact__text">
+          <p>Research / Teaching / Collaboration.</p>
+          <!-- Contact details intentionally omitted from the current draft; add a mailto: link here before publication. -->
+        </div>
+      </div>
+
+      <div class="ft-columns">
+        <div class="ft-graphic">
+          <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Between Systems">
+            <circle cx="26" cy="36" r="20" />
+            <circle cx="46" cy="36" r="20" />
+          </svg>
+        </div>
+        <div class="ft-copyright">
+          <h3 class="t-label">Copyright</h3>
+          <p>Between Systems © 2026</p>
+        </div>
+        <div class="ft-about">
+          <h3 class="t-label">Contact</h3>
+          <p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p>
+          <p style="margin-top:1em">An independent research archive. Interaction / Cognition / Computational environments.</p>
+        </div>
+        <div class="ft-credits">
+          <h3 class="t-label">Index</h3>
+          <ul class="ft-links">
+            <li><a href="#research">Research</a><p>01</p></li>
+            <li><a href="#about">About</a><p>02</p></li>
+            <li><a href="#teaching">Teaching</a><p>03</p></li>
+            <li><a href="#reflections">Reflections</a><p>04</p></li>
+            <li><a href="https://www.sourcetype.com/" rel="noreferrer">Source Type</a><p>Type [UN-11]</p></li>
+          </ul>
+        </div>
+        <a class="button--reset ft-arrow" href="#top" aria-label="Back to top" style="text-decoration:none"><span>↑</span></a>
+      </div>
+    </footer>
   </main>
-
-  <footer class="site">
-    <div class="cols grid">
-      <div class="f-graphic" aria-hidden="true">B/S</div>
-      <div class="f-copy">
-        <h3>Copyright</h3>
-        <p>Between Systems © 2026</p>
-        <p class="label">An independent research archive</p>
-      </div>
-      <nav class="f-index" aria-label="Section index">
-        <h3>Index</h3>
-        <ul>
-          <li><span>01</span><a href="#research">Research</a></li>
-          <li><span>02</span><a href="#about">About</a></li>
-          <li><span>03</span><a href="#teaching">Teaching</a></li>
-          <li><span>04</span><a href="#reflections">Reflections</a></li>
-        </ul>
-      </nav>
-      <div class="f-fields">
-        <h3>Fields</h3>
-        <p>Interaction / Cognition / Computational environments</p>
-      </div>
-      <a class="f-top button--reset" href="#top" aria-label="Back to top" style="text-decoration:none"><span>↑</span></a>
-    </div>
-  </footer>
 
   <script>
     (function () {
-      var root = document.documentElement;
+      var body = document.body;
 
       /* ---- Switch lights ---- */
-      var buttons = document.querySelectorAll('[data-theme-set]');
+      var buttons = document.querySelectorAll('[data-theme]');
       function setTheme(t) {
-        if (t === 'on') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
+        body.classList.remove('light', 'dark', 'mood');
+        body.classList.add(t);
         buttons.forEach(function (b) {
-          var on = b.getAttribute('data-theme-set') === t;
+          var on = b.getAttribute('data-theme') === t;
           b.classList.toggle('active', on);
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
         try { localStorage.setItem('bs-lights', t); } catch (e) {}
+        if (window.__redraw) window.__redraw();
       }
       var saved = null;
       try { saved = localStorage.getItem('bs-lights'); } catch (e) {}
-      if (saved === 'off' || saved === 'mood') setTheme(saved);
+      if (saved === 'dark' || saved === 'mood') setTheme(saved);
       buttons.forEach(function (b) {
-        b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme-set')); });
+        b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme')); });
       });
 
       /* ---- Accordion ---- */
-      document.querySelectorAll('.acc__toggle').forEach(function (btn) {
+      document.querySelectorAll('button.acc-toggle').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var item = btn.closest('.acc');
-          var open = !item.classList.contains('is-open');
-          item.classList.toggle('is-open', open);
+          var item = btn.closest('.accordion');
+          var open = !item.classList.contains('accordion--open');
+          item.classList.toggle('accordion--open', open);
           btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
       });
 
-      /* ---- Project windows ---- */
-      document.querySelectorAll('.project__toggle').forEach(function (btn) {
+      /* ---- Project windows: Open project / Close ---- */
+      document.querySelectorAll('.proj-toggle').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var item = btn.closest('.project');
+          var item = btn.closest('.proj');
           var open = !item.classList.contains('is-open');
           item.classList.toggle('is-open', open);
           btn.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -747,7 +856,7 @@
         f.addEventListener('click', function () {
           var key = f.getAttribute('data-filter');
           filters.forEach(function (o) { o.setAttribute('aria-pressed', o === f ? 'true' : 'false'); });
-          document.querySelectorAll('.project').forEach(function (p) {
+          document.querySelectorAll('.proj').forEach(function (p) {
             var cats = (p.getAttribute('data-cats') || '').split(' ');
             p.classList.toggle('is-hidden', key !== 'all' && cats.indexOf(key) === -1);
           });
@@ -758,15 +867,14 @@
       var canvas = document.getElementById('strokes');
       var ctx = canvas.getContext('2d');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var W = 0, H = 0, dpr = 1;
+      var W = 0, H = 0;
       function resize() {
         var r = canvas.getBoundingClientRect();
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
         W = r.width; H = r.height;
         canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }
-      // seeded random for stable compositions
       var seed = 7;
       function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
       var strokes = [];
@@ -775,18 +883,16 @@
         var dx = (rnd() - .5) * .06, dy = (rnd() - .5) * .04, dz = (rnd() - .5) * .06;
         for (var i = 0; i < 70; i++) {
           dx += (rnd() - .5) * .018; dy += (rnd() - .5) * .014; dz += (rnd() - .5) * .018;
-          x += dx; y += dy; z += dz;
-          x *= .985; y *= .985; z *= .985;
+          x += dx; y += dy; z += dz; x *= .985; y *= .985; z *= .985;
           pts.push([x, y, z]);
         }
         strokes.push({ pts: pts, w: s % 3 === 0 ? 1.4 : .8, a: .35 + rnd() * .6 });
       }
-      function fg() { return getComputedStyle(document.body).color; }
       var t0 = performance.now();
       function draw(now) {
         var t = (now - t0) / 1000;
         ctx.clearRect(0, 0, W, H);
-        var col = fg();
+        var col = getComputedStyle(body).color;
         var ry = t * .12, rx = -.35 + Math.sin(t * .2) * .08;
         var cy = Math.cos(ry), sy = Math.sin(ry), cx = Math.cos(rx), sx = Math.sin(rx);
         var scale = Math.min(W, H * 1.6) * .55;
@@ -797,36 +903,30 @@
           return [W / 2 + X * scale * k, H / 2 + Y * scale * k, k];
         }
         ctx.strokeStyle = col; ctx.fillStyle = col;
-        // floor ellipse — the missing page
         ctx.globalAlpha = .18; ctx.lineWidth = 1;
         ctx.beginPath();
         for (var a = 0; a <= 64; a++) {
-          var an = a / 64 * Math.PI * 2;
-          var q = proj([Math.cos(an) * .9, .62, Math.sin(an) * .9]);
+          var an = a / 64 * Math.PI * 2, q = proj([Math.cos(an) * .9, .62, Math.sin(an) * .9]);
           a ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]);
         }
         ctx.stroke();
         var grow = reduce ? 1 : Math.min(1, t / 6);
         strokes.forEach(function (st, si) {
-          var n = Math.max(2, Math.floor(st.pts.length * Math.min(1, grow * 1.6 - si * .06)));
+          var n = Math.floor(st.pts.length * Math.min(1, grow * 1.6 - si * .06));
           if (n < 2) return;
           ctx.globalAlpha = st.a; ctx.lineWidth = st.w;
           ctx.beginPath();
-          for (var j = 0; j < n; j++) {
-            var q = proj(st.pts[j]);
-            j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]);
-          }
+          for (var j = 0; j < n; j++) { var q = proj(st.pts[j]); j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
           ctx.stroke();
           var e = proj(st.pts[n - 1]);
-          ctx.globalAlpha = .9;
-          ctx.beginPath(); ctx.arc(e[0], e[1], 2.2 * e[2], 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = .9; ctx.beginPath(); ctx.arc(e[0], e[1], 2.2 * e[2], 0, Math.PI * 2); ctx.fill();
         });
         ctx.globalAlpha = 1;
         if (!reduce) requestAnimationFrame(draw);
       }
       resize();
       window.addEventListener('resize', function () { resize(); if (reduce) draw(performance.now()); });
-      if (reduce) { draw(performance.now()); buttons.forEach(function (b) { b.addEventListener('click', function () { draw(performance.now()); }); }); }
+      if (reduce) { window.__redraw = function () { setTimeout(function () { draw(performance.now()); }, 450); }; draw(performance.now()); }
       else requestAnimationFrame(draw);
     })();
   </script>
