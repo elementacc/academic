@@ -401,8 +401,10 @@
     }
     .st-intro { grid-column: 1 / -1; color: var(--textSecondaryColor); max-width: 38ch; }
     .st-tools { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
-    .st-title__sub { display: block; color: var(--textTertiaryColor); }
-    .st-sub { font-size: clamp(1.375rem, 2.2vw, 2rem); line-height: 1.1; letter-spacing: -.02em; }
+    .st-pills { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--textPrimaryColor); border-radius: 999px; padding: 2px; }
+    .st-pill { border-radius: 999px; padding: .2rem .7rem; color: var(--textPrimaryColor); }
+    .st-pill:hover { color: var(--textSecondaryColor); }
+    .st-pill[aria-pressed="true"] { background: var(--textPrimaryColor); color: var(--bgColor); }
     .st-count { color: var(--textTertiaryColor); }
     @media (min-width: 1024px) {
       .st-title { grid-column: 1 / span 8; }
@@ -558,7 +560,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#teaching">Teaching</a></li>
-          <li><a href="#students">Student projects</a></li>
+          <li><a href="#students">Teaching archive</a></li>
           <li><a href="#reflections">Reflections</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -819,6 +821,28 @@
             </div>
           </div>
         </article>
+
+        <!-- 05 -->
+        <article class="proj proj--default" data-cats="spatial methods">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <img src="projects/media/movement/poster-concept.jpg" alt="Body/Sketch poster: movement-based interfaces for immersive sketching" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top">
+              <p class="status t-label" style="background:var(--bgColor);width:max-content;padding:2px 4px">Project documentation / 05.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№05.</div><h3 class="proj-title"><a href="projects/05-movement-based-research.html">Movement-based research</a></h3></div>
+              <div class="proj-desc">
+                <p class="lead">Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.</p>
+                <p>Body-Sketch: hand gestures, full-body movement and eye drawing as inputs for 3D sketching beyond hand controllers.</p>
+              </div>
+              <div class="proj-detail" id="pd-5"><div><p>An ongoing system development (2023–present) with students of HTW Berlin, IKG. Users draw through a wide range of motion inputs, from subtle hand gestures to full-body interaction, and through gaze — broadening input modalities and the accessibility of immersive drawing.</p><p><a href="projects/05-movement-based-research.html">Project page →</a></p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>Software research, Ongoing</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-5"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -868,11 +892,11 @@
     <!-- ============ Student projects (archive) ============ -->
     <section id="students" class="students subgrid t-body" aria-labelledby="students-h">
       <div class="st-head">
-        <p class="t-label">(03b) Student projects — Teaching</p>
-        <h2 id="students-h" class="st-title">Student projects <span class="st-title__sub">— Teaching —</span></h2>
-        <p class="st-intro">Selected work from seminars and courses. Placeholder entries — replace with student work and permissions before publication.</p>
+        <p class="t-label">(03b) Teaching / Archive</p>
+        <h2 id="students-h" class="st-title">Teaching</h2>
+        <p class="st-intro">Student projects from courses and seminars. Placeholder entries — replace with student work and permissions before publication.</p>
         <div class="st-tools">
-          <h3 class="st-sub">Natural User Interfaces</h3>
+          <div class="st-pills" role="group" aria-label="Filter by course" id="st-filters"></div>
           <p class="st-count" id="st-count" aria-live="polite"></p>
         </div>
       </div>
@@ -950,7 +974,7 @@
             <li><a href="#research">Research</a><p>01</p></li>
             <li><a href="#about">About</a><p>02</p></li>
             <li><a href="#teaching">Teaching</a><p>03</p></li>
-            <li><a href="#students">Student projects</a><p>03b</p></li>
+            <li><a href="#students">Teaching archive</a><p>03b</p></li>
             <li><a href="#reflections">Reflections</a><p>04</p></li>
             <li><a href="https://www.sourcetype.com/" rel="noreferrer">Source Type</a><p>Type [UN-11]</p></li>
           </ul>
@@ -1012,22 +1036,24 @@
            title, year, students (array), supervision, text (array of paragraphs)
            images: up to 4 image paths (e.g. "students/nui-01-a.jpg"); empty slots show placeholders */
       var COURSES = {
-        nui: { code: '#NUI', name: 'Natural User Interfaces' }
+        nui: { code: '#NUI', name: 'Natural User Interfaces' },
+        ii: { code: '#II', name: 'Inclusive Interfaces' }
       };
       var STUDENT_PROJECTS = [
         { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
         { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name', 'Student name'], images: [] },
+        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name', 'Student name'], images: [] },
         { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
+        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name'], images: [] },
+        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
         { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] }
+        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] }
       ];
       var PLACEHOLDER_TEXT = ['Short description to be added: the question the students worked on, how they approached it, and what came out of it.'];
 
       (function () {
         var list = document.getElementById('st-list');
+        var pills = document.getElementById('st-filters');
         var count = document.getElementById('st-count');
         if (!list) return;
         function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
@@ -1047,7 +1073,7 @@
               '<span class="st-num">' + pad(i + 1) + '</span>' +
               '<span class="st-code">' + c.code + '</span>' +
               '<span class="st-name">' + esc(p.title) + '</span>' +
-              '<span class="st-course">' + (p.students || []).map(esc).join(', ') + '</span>' +
+              '<span class="st-course">' + esc(c.name) + '</span>' +
               '<span class="st-year">' + esc(p.year || '') + '</span>' +
               '<span class="st-dot" aria-hidden="true"></span>' +
             '</button>' +
@@ -1061,6 +1087,12 @@
               '<div class="st-desc">' + text + (p.text && p.text.length ? '' : '<p class="note">Placeholder entry.</p>') + '</div>' +
             '</div></div></div>' +
           '</li>';
+        }).join('');
+
+        var keys = ['all'].concat(Object.keys(COURSES));
+        pills.innerHTML = keys.map(function (k) {
+          var label = k === 'all' ? 'All' : COURSES[k].name;
+          return '<button class="st-pill button--reset" data-st="' + k + '" aria-pressed="' + (k === 'all') + '">' + esc(label) + '</button>';
         }).join('');
 
         var items = list.querySelectorAll('.st-item');
@@ -1078,6 +1110,12 @@
           it.classList.remove('is-open');
           it.querySelector('.st-row').setAttribute('aria-expanded', 'false');
         }
+        pills.querySelectorAll('.st-pill').forEach(function (b) {
+          b.addEventListener('click', function () {
+            pills.querySelectorAll('.st-pill').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+            update(b.getAttribute('data-st'));
+          });
+        });
         items.forEach(function (it) {
           var row = it.querySelector('.st-row');
           row.addEventListener('click', function () {

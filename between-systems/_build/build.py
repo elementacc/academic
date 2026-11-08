@@ -12,7 +12,7 @@ FIG_DIR = os.path.join(HERE, "figures")
 PROJECT_FIGS = [("01-drawing-in-air", 1, "Drawing in air"), ("03-signal", 3, "Signal"),
                 ("04-spatial-cube", 4, "Spatial cube"), ("02-headset", 2, "Headset")]
 def fig(i):
-    f, n, cap = PROJECT_FIGS[i]
+    f, n, cap = PROJECTS[i].get("fig") or PROJECT_FIGS[i]
     svg = open(os.path.join(FIG_DIR, f + ".svg")).read()
     return f'{svg}<p class="doodle__cap">Fig {n}: {cap}</p>' 
 
@@ -45,6 +45,36 @@ PROJECTS = [
          short="Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.",
          detail="Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.",
          status="Illustrative study / 04. Current graphic is illustrative imagery."),
+    dict(slug="05-movement-based-research", no="05", title="Movement-based research",
+         area="Software research", type="Ongoing, 2023–present",
+         filters=["Spatial interaction", "Methods & interfaces"],
+         lead="Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.",
+         short="Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers.",
+         detail="Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.",
+         status="Project documentation / 05. Interface screenshots, posters and reference material.",
+         fig=("05-axes", 5, "Perception, action, interface"),
+         media=dict(
+             dir="media/movement",
+             figure=("ref-laban.jpg", "Effort diagram after Rudolf Laban"),
+             thumbs=[("ui-finger-drawing.png", "Body-Sketch UI: setting countdowns for finger drawing"),
+                     ("dynamic-brushes.png", "Dynamic brushes: width and colour follow movement velocity"),
+                     ("eye-drawing.png", "Eye drawing: gaze as a drawing cursor")],
+             stage=("ui-finger-drawing.png", "Body-Sketch UI — draw with your fingers"),
+             strip=("input-modalities.jpg", "Input modalities: foot, eye, full body, head, hand"),
+             side=("ref-boxall.png", "L. E. Boxall, “Printing with magnetic inks”"),
+             tall=("poster-concept.jpg", "Body/Sketch poster: concept and development"),
+             tex_a=("poster-features.jpg", "Body/Sketch poster: features"),
+             tex_b=("ref-trisha-brown.jpg", "Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
+         ),
+         detail_blocks=[
+             ("About the study", None),
+             ("Objectives", "The software translates continuous movement qualities into discrete coded functions for an immersive drawing interface. Though the applied use case is drawing, the concept can be expanded to other applications."),
+             ("Eye drawing — an inclusive feature", "Eye drawing introduces gaze as an input modality for immersive sketching: the system translates eye movements into a drawing cursor instead of moving controllers. This enables hands-free or hybrid workflows, reduces reliance on controllers and extends embodied interaction beyond the hand — opening tool design towards inclusivity while keeping a user-centred path at its core."),
+         ],
+         info_blocks=[
+             ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)<br>L. E. Boxall, “Printing with magnetic inks”"),
+             ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision: Between Systems."),
+         ]),
 ]
 
 def crop(svg, vb, extra=""):
@@ -117,17 +147,53 @@ def esc(t):
     return html.escape(t, quote=False)
 
 def page(i, p):
-    svg = SVGS[i]
+    M = p.get("media")
+    svg = SVGS[i] if i < len(SVGS) else ""
+    def img(key, cap=True, fit=""):
+        f, alt = M[key]
+        c = f'<span class="tile__cap">{esc(alt)}</span>' if cap else ""
+        return f'<img src="{M["dir"]}/{f}" alt="{html.escape(alt)}" loading="lazy"{fit}>{c}' 
     nxt = PROJECTS[(i + 1) % len(PROJECTS)]
-    t1, t2 = TEXTURES[i]
+    t1, t2 = TEXTURES[i % len(TEXTURES)]
     proj_nav = "".join(
         f'<a href="{q["slug"]}.html" class="sel__item{" is-active" if q is p else ""}"'
         f'{" aria-current=\"page\"" if q is p else ""} title="{esc(q["title"])}">{q["no"]}</a>'
         for q in PROJECTS)
-    thumbs = "".join(
-        f'<button class="thumb tile" data-view="{c}" aria-label="Show detail {k + 1}">'
-        f'{crop(svg, c)}</button>'
-        for k, c in enumerate(CROPS))
+    if M:
+        thumbs = "".join(
+            f'<button class="thumb tile" data-src="{M["dir"]}/{f}" data-alt="{html.escape(alt)}" aria-label="Show: {html.escape(alt)}">'
+            f'<img src="{M["dir"]}/{f}" alt="" loading="lazy"></button>'
+            for f, alt in M["thumbs"])
+    else:
+        thumbs = "".join(
+            f'<button class="thumb tile" data-view="{c}" aria-label="Show detail {k + 1}">'
+            f'{crop(svg, c)}</button>'
+            for k, c in enumerate(CROPS))
+    total = len(PROJECTS)
+    if M:
+        figure_html = f'<div class="figure figure--img">{img("figure", cap=False)}<p class="figure__cap">{esc(M["figure"][1])}</p></div>'
+        stage_html = f'<p class="stage__caption">{esc(M["stage"][1])}</p><div class="stage__img" id="stage">{img("stage", cap=False)}</div>'
+        strip_html = f'<div class="tile strip">{img("strip")}</div>'
+        side_html = f'<div class="tile side__small">{img("side")}</div>'
+        tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>'
+        texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>'
+        texb_html = f'<div class="tile texture texture--b">{img("tex_b")}</div>'
+    else:
+        figure_html = f'<div class="figure" aria-hidden="true">{crop(svg, "0 0 400 400", 'class="figure__svg"')}</div>'
+        stage_html = f'<p class="stage__caption">{esc(p["title"])} — illustrative study {p["no"]}</p><div class="stage__svg" id="stage">{crop(svg, "0 0 400 400")}</div>'
+        strip_html = ""
+        side_html = f'<div class="tile side__small" aria-hidden="true">{crop(svg, "140 140 120 120")}</div>'
+        tall_html = f'<div class="tile tile--tall texture" aria-hidden="true">{texture(t1, i * 7 + 1)}</div>'
+        texa_html = f'<div class="tile texture texture--a" aria-hidden="true">{texture(t2, i * 7 + 2)}</div>'
+        texb_html = f'<div class="tile texture texture--b" aria-hidden="true">{crop(svg, "40 40 320 320")}</div>'
+    blocks = p.get("detail_blocks") or [("About the study", None), ("Visual status", "__status__")]
+    def block(h, body):
+        if body is None: body = esc(p["detail"])
+        elif body == "__status__": body = f'<span class="muted">{esc(p["status"])}</span>'
+        return f'<section class="block"><h2 class="bar">{esc(h)}</h2><div class="block__body"><p>{body}</p></div></section>'
+    details_html = "\n          ".join(block(h, b) for h, b in blocks)
+    extra = p.get("info_blocks")
+    info_extra = ('<div class="info__pair">' + "".join(block(h, b) for h, b in extra) + '</div>') if extra else ""
     spine = "".join(f"<span>{esc(x)}</span>" for x in [
         p["title"], p["area"] + " — " + p["type"], " + ".join(p["filters"]),
         "№" + p["no"], "Between Systems", "Research / Practice / Archive"])
@@ -152,7 +218,7 @@ def page(i, p):
     <div class="half half--left">
       <div class="row row--top">
         <a class="logo" href="../index.html">○ Between Systems</a>
-        <div class="figure" aria-hidden="true">{crop(svg, "0 0 400 400", 'class="figure__svg"')}</div>
+        {figure_html}
         <div class="thumbs">{thumbs}</div>
       </div>
 
@@ -161,15 +227,16 @@ def page(i, p):
         <div class="spine__label">{spine}</div>
         <span class="spine__end" aria-hidden="true"></span>
       </div>
+      {strip_html}
 
       <div class="row row--info">
-        <div class="tile tile--tall texture" aria-hidden="true">{texture(t1, i * 7 + 1)}</div>
+        {tall_html}
         <div class="info">
           <section class="block">
             <h1 class="bar">{esc(p["title"])}</h1>
             <div class="block__body">
               <p>{esc(p["area"])}<br>{esc(p["type"])}<br>{esc(" + ".join(p["filters"]))}</p>
-              <p class="muted">№{p["no"]} / 04 &nbsp;·&nbsp; 01 Research</p>
+              <p class="muted">№{p["no"]} / {total:02d} &nbsp;·&nbsp; 01 Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -182,6 +249,7 @@ def page(i, p):
               <div class="block__body"><p>{esc(p["short"])}</p></div>
             </section>
           </div>
+          {info_extra}
         </div>
       </div>
     </div>
@@ -200,30 +268,22 @@ def page(i, p):
             <nav class="sel__items" aria-label="Projects">{proj_nav}</nav>
           </div>
           <div class="stage tile">
-            <p class="stage__caption">{esc(p["title"])} — illustrative study {p["no"]}</p>
-            <div class="stage__svg" id="stage">{crop(svg, "0 0 400 400")}</div>
+            {stage_html}
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Index</span><span>0{len(PROJECTS)}</span></a>
+          <a class="pill" href="../index.html#research"><span>Index</span><span>{total:02d}</span></a>
           <figure class="doodle">{fig(i)}</figure>
-          <div class="tile side__small" aria-hidden="true">{crop(svg, "140 140 120 120")}</div>
+          {side_html}
         </div>
       </div>
 
       <div class="row row--details">
         <div class="details">
-          <section class="block">
-            <h2 class="bar">About the study</h2>
-            <div class="block__body"><p>{esc(p["detail"])}</p></div>
-          </section>
-          <section class="block">
-            <h2 class="bar">Visual status</h2>
-            <div class="block__body"><p class="muted">{esc(p["status"])}</p></div>
-          </section>
+          {details_html}
         </div>
-        <div class="tile texture texture--a" aria-hidden="true">{texture(t2, i * 7 + 2)}</div>
-        <div class="tile texture texture--b" aria-hidden="true">{crop(svg, "40 40 320 320")}</div>
+        {texa_html}
+        {texb_html}
       </div>
     </div>
   </div>

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movement-based research | Between Systems</title>
+  <meta name="description" content="Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers." />
+  <meta property="og:title" content="Movement-based research — Between Systems" />
+  <meta property="og:description" content="Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface." />
+  <link rel="preload" href="../fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face {
+      font-family: UN_11ST_Regular;
+      src: url(../fonts/UN_11ST_Regular.woff2) format("woff2"), url(../fonts/UN_11ST_Regular.woff) format("woff");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    *, *:before, *:after { box-sizing: border-box; }
+    * { margin: 0; }
+    html { -webkit-text-size-adjust: none; text-size-adjust: none; }
+    svg { display: block; }
+    button { font: inherit; color: inherit; }
+    h1, h2, h3 { font-size: inherit; font-weight: inherit; }
+
+    :root {
+      --font-family: "UN_11ST_Regular", monospace, "Helvetica Neue", Arial, sans-serif;
+      --gap: 8px;
+      --fs: clamp(13px, .95vw, 18px);
+      --lh: 1.2;
+      --ease: cubic-bezier(.65, 0, .35, 1);
+    }
+    body, body.light {
+      --bgColor: #ffffff;
+      --textPrimaryColor: #202020;
+      --textSecondaryColor: #767676;
+      --textTertiaryColor: #b3b3b3;
+      --borderColor: #ededed;
+      --layer1Color: #f3f3f3;
+      --layer2Color: #e6e6e6;
+      --inkTint: #c9c2b6;
+      --underlineColor: #b594ff;
+      --dockBg: #202020;
+      --dockFg: #ffffff;
+    }
+    body.dark {
+      --bgColor: #1a1a1a;
+      --textPrimaryColor: #fafafa;
+      --textSecondaryColor: #b3b3b3;
+      --textTertiaryColor: #767676;
+      --borderColor: #363636;
+      --layer1Color: #262626;
+      --layer2Color: #303030;
+      --inkTint: #4a4540;
+      --underlineColor: #4c2994;
+      --dockBg: #fafafa;
+      --dockFg: #1a1a1a;
+    }
+    body.mood {
+      --bgColor: #f5f0fe;
+      --textPrimaryColor: #342d42;
+      --textSecondaryColor: rgba(52, 45, 66, .75);
+      --textTertiaryColor: rgba(52, 45, 66, .5);
+      --borderColor: #ebe3fd;
+      --layer1Color: #ebe3fd;
+      --layer2Color: #ddd0fb;
+      --inkTint: #b594ff;
+      --underlineColor: #b594ff;
+      --dockBg: #342d42;
+      --dockFg: #f5f0fe;
+    }
+    html { background: var(--bgColor, #fff); }
+    body {
+      background: var(--bgColor); color: var(--textPrimaryColor);
+      font-family: var(--font-family); font-size: var(--fs); line-height: var(--lh);
+      font-feature-settings: "ss01" on, "liga" off, "clig" off;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color .4s var(--ease), color .4s var(--ease);
+      padding-bottom: 72px;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 1px solid var(--underlineColor); outline-offset: 2px; }
+    .muted { color: var(--textSecondaryColor); }
+
+    .tile { position: relative; overflow: hidden; background: var(--layer1Color); transition: background-color .4s var(--ease); }
+    .tile svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--textPrimaryColor); }
+    .spin { transform-origin: 200px 200px; animation: orbit 40s linear infinite; }
+    .spin-r { transform-origin: 200px 200px; animation: orbit 60s linear infinite reverse; }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+
+    /* ---------- Mosaic ---------- */
+    .mosaic { display: grid; grid-template-columns: 1fr; gap: var(--gap); padding: var(--gap); }
+    .half { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap); align-content: start; }
+    .row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; gap: var(--gap); }
+
+    /* Left: top row */
+    .logo { grid-column: 1 / span 3; grid-row: 1; align-self: start; padding: 10px 6px; letter-spacing: .02em; text-transform: uppercase; font-size: .8em; }
+    .figure { grid-column: 1 / -1; grid-row: 2; aspect-ratio: 1 / 1; }
+    .figure__svg { width: 100%; height: 100%; color: var(--textPrimaryColor); }
+    .thumbs { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .thumb { aspect-ratio: 4 / 3; border: 0; padding: 0; cursor: pointer; }
+    .thumb::after { content: ""; position: absolute; inset: 0; background: var(--textPrimaryColor); opacity: 0; transition: opacity .2s; }
+    .thumb:hover::after { opacity: .06; }
+    .thumb.is-active { outline: 1px solid var(--textPrimaryColor); outline-offset: -1px; }
+
+    /* Left: spine (horizontal capsule with vertical type) */
+    .spine {
+      grid-column: 1 / -1; aspect-ratio: 2.4 / 1;
+      border-radius: 18% 10px 10px 18% / 50% 10px 10px 50%;
+      background: linear-gradient(90deg,
+        var(--layer1Color) 0 31%, var(--layer2Color) 31.5%,
+        var(--inkTint) 60%, var(--layer2Color) 88%, var(--layer1Color) 91% 100%);
+      display: flex; align-items: center;
+    }
+    .spine__cap { position: absolute; left: 6%; top: 16%; width: 5.5%; aspect-ratio: 1; border-radius: 50%; background: var(--bgColor); }
+    .spine__label {
+      position: absolute; left: 36%; top: 12%; bottom: 12%;
+      display: flex; gap: 1.1em; align-items: flex-end;
+      font-size: .82em; line-height: 1.1;
+    }
+    .spine__label span { writing-mode: vertical-rl; transform: rotate(180deg); max-height: 100%; }
+    .spine__label span:nth-child(4) { color: var(--textSecondaryColor); }
+    .spine__label span:nth-child(5) { letter-spacing: -.02em; text-transform: uppercase; font-size: 1.1em; }
+    .spine__end { position: absolute; right: 0; top: 0; bottom: 0; width: 8%; background: linear-gradient(90deg, transparent, var(--bgColor) 300%); opacity: .5; }
+
+    /* Left: info row */
+    .texture { aspect-ratio: .8; }
+    .tile--tall { grid-column: 1 / -1; }
+    .info { grid-column: 1 / -1; display: grid; gap: var(--gap); align-content: start; }
+    .info__pair { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
+    .bar { background: var(--layer1Color); padding: 6.5px 8px; transition: background-color .4s var(--ease); }
+    .block__body { padding: 12px 8px 16px; }
+    .block__body p + p { margin-top: .9em; }
+
+    /* Right: top row */
+    .stage-col { grid-column: 1 / -1; display: flex; flex-direction: column; gap: var(--gap); }
+    .sel { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; min-height: 32px; }
+    .sel__dots { display: flex; gap: 6px; }
+    .dot {
+      width: 27px; height: 27px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+      display: inline-grid; place-items: center;
+    }
+    .dot i { width: 8px; height: 8px; border-radius: 50%; background: transparent; transition: background-color .2s; }
+    .dot.is-active i { background: currentColor; }
+    .dot--light { background: #ffffff; color: #202020; box-shadow: inset 0 0 0 1px #d9d9d9; }
+    .dot--dark  { background: #202020; color: #ffffff; }
+    .dot--mood  { background: #ebe3fd; color: #342d42; }
+    .sel__label { margin-left: 6px; }
+    .sel__items { display: flex; gap: 10px; }
+    .sel__item { color: var(--textTertiaryColor); transition: color .2s; }
+    .sel__item:hover, .sel__item.is-active { color: var(--textPrimaryColor); }
+    .stage { aspect-ratio: 4 / 3; }
+    .stage__svg { position: absolute; inset: 0; }
+    .stage__svg svg { transition: opacity .3s var(--ease); }
+    .stage__caption { position: absolute; z-index: 2; left: 12px; top: 10px; right: 12px; color: var(--textSecondaryColor); }
+    .side { display: none; }
+    .pill {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--dockBg); color: var(--dockFg); padding: 0 12px; height: 38px;
+      transition: background-color .4s var(--ease), color .4s var(--ease);
+    }
+    .doodle { color: var(--textPrimaryColor); }
+    .doodle { margin: 0; }
+    .doodle svg { width: 100%; max-width: 12rem; height: auto; }
+    .doodle__cap { margin-top: 6px; color: var(--textTertiaryColor); font-size: .85em; }
+
+    /* Right: details row */
+    .details { grid-column: 1 / -1; }
+    .texture--a, .texture--b { grid-column: span 3; }
+
+    /* ---------- Photo tiles (projects with real media) ---------- */
+    .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb img { object-fit: cover; }
+    .tile__cap {
+      position: absolute; z-index: 2; left: 0; bottom: 0; max-width: 100%;
+      background: var(--bgColor); color: var(--textPrimaryColor); padding: 4px 8px; font-size: .8em;
+      opacity: 0; transition: opacity .2s;
+    }
+    .tile:hover .tile__cap, .tile:focus-within .tile__cap { opacity: 1; }
+    @media (hover: none) { .tile__cap { opacity: 1; } }
+    .stage__img { position: absolute; inset: 44px 12px 12px; }
+    .stage__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s var(--ease); }
+    .figure--img { position: relative; }
+    .figure--img img { width: 100%; height: calc(100% - 1.6em); object-fit: contain; mix-blend-mode: multiply; }
+    body.dark .figure--img img { filter: invert(1); mix-blend-mode: screen; }
+    .figure__cap { color: var(--textTertiaryColor); font-size: .85em; margin-top: 4px; }
+    .strip { grid-column: 1 / -1; aspect-ratio: 9 / 1; background: #fff; }
+    .strip img { object-fit: contain; }
+    body.dark .strip img { filter: invert(1); }
+    body.dark .strip { background: var(--layer1Color); }
+    .texture img { object-fit: cover; object-position: top; }
+
+    /* ---------- Dock ---------- */
+    .dock { position: fixed; z-index: 20; left: var(--gap); right: var(--gap); bottom: var(--gap); display: flex; gap: var(--gap); }
+    .dock__bar {
+      flex: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      background: var(--dockBg); color: var(--dockFg); height: 44px; padding: 0 12px;
+      transition: background-color .4s var(--ease), color .4s var(--ease);
+    }
+    .dock__bar span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dock__bar:hover span:last-child { transform: translateX(3px); }
+    .dock__bar span:last-child { transition: transform .2s var(--ease); white-space: nowrap; }
+    .dock__back {
+      display: none; align-items: center; padding: 0 12px; height: 44px;
+      background: var(--layer1Color); color: var(--textPrimaryColor);
+    }
+    .dock__back:hover { color: var(--textSecondaryColor); }
+
+    /* ---------- Phone: one flowing column, stage first ---------- */
+    @media (max-width: 639px) {
+      .mosaic { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+      .half, .row, .row--top, .row--info, .row--details { display: contents; }
+      .mosaic > .half > *, .row > * { grid-column: 1 / -1; }
+      .logo { order: 1; } .stage-col { order: 2; } .thumbs { order: 3; } .info { order: 4; }
+      .spine { order: 5; } .details { order: 6; }
+      .tile--tall, .texture--a, .texture--b { order: 7; grid-column: span 2 !important; }
+      .figure, .side { display: none; }
+    }
+
+    /* ---------- Tablet ---------- */
+    @media (min-width: 640px) {
+      .figure { grid-column: 1 / span 4; grid-row: 2 / span 1; }
+      .thumbs { grid-column: 5 / span 2; grid-row: 2; grid-template-columns: 1fr; align-content: start; }
+      .tile--tall { grid-column: 1 / span 2; }
+      .info { grid-column: 3 / span 4; }
+      .info__pair { grid-template-columns: 1fr 1fr; }
+      .details { grid-column: 1 / span 2; }
+      .texture--a, .texture--b { grid-column: span 2; }
+      .dock__back { display: flex; }
+    }
+
+    /* ---------- Desktop: two halves, 12 columns ---------- */
+    @media (min-width: 1024px) {
+      .mosaic { grid-template-columns: 1fr 1fr; }
+      .logo { grid-column: 1 / span 2; grid-row: 1; }
+      .figure { grid-column: 3 / span 3; grid-row: 1; align-self: start; aspect-ratio: auto; height: 100%; }
+      .thumbs { grid-column: 6 / span 1; grid-row: 1; }
+      .row--top { min-height: 0; }
+      .spine { margin-top: calc(var(--gap) * 2); }
+      .stage-col { grid-column: 1 / span 4; }
+      .side { display: grid; grid-column: 5 / span 2; grid-template-columns: 1fr 1fr; gap: var(--gap); align-content: start; grid-template-rows: auto auto 1fr; }
+      .pill { grid-column: 1 / -1; }
+      .doodle { grid-column: 1 / -1; padding: 4px 0 0 4px; }
+      .side__small { grid-column: 1 / span 1; aspect-ratio: .8; align-self: end; }
+      .row--details { margin-top: 0; }
+      /* bar spans left-half columns 3–6 */
+      .dock {
+        --half: calc((100vw - var(--gap) * 3) / 2);
+        --col: calc((var(--half) - var(--gap) * 5) / 6);
+        left: calc(var(--gap) + (var(--col) + var(--gap)) * 2); right: auto;
+      }
+      .dock__bar { flex: 0 0 calc(var(--col) * 4 + var(--gap) * 3); }
+      .dock__back { flex: 0 0 calc(var(--col) * 2 + var(--gap)); }
+      .sel { position: relative; }
+    }
+    @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
+
+  </style>
+</head>
+<body class="light">
+  <div class="mosaic">
+
+    <!-- ============ Left half ============ -->
+    <div class="half half--left">
+      <div class="row row--top">
+        <a class="logo" href="../index.html">○ Between Systems</a>
+        <div class="figure figure--img"><img src="media/movement/ref-laban.jpg" alt="Effort diagram after Rudolf Laban" loading="lazy"><p class="figure__cap">Effort diagram after Rudolf Laban</p></div>
+        <div class="thumbs"><button class="thumb tile" data-src="media/movement/ui-finger-drawing.png" data-alt="Body-Sketch UI: setting countdowns for finger drawing" aria-label="Show: Body-Sketch UI: setting countdowns for finger drawing"><img src="media/movement/ui-finger-drawing.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/dynamic-brushes.png" data-alt="Dynamic brushes: width and colour follow movement velocity" aria-label="Show: Dynamic brushes: width and colour follow movement velocity"><img src="media/movement/dynamic-brushes.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/eye-drawing.png" data-alt="Eye drawing: gaze as a drawing cursor" aria-label="Show: Eye drawing: gaze as a drawing cursor"><img src="media/movement/eye-drawing.png" alt="" loading="lazy"></button></div>
+      </div>
+
+      <div class="spine tile" aria-label="Project specification">
+        <span class="spine__cap" aria-hidden="true"></span>
+        <div class="spine__label"><span>Movement-based research</span><span>Software research — Ongoing, 2023–present</span><span>Spatial interaction + Methods &amp; interfaces</span><span>№05</span><span>Between Systems</span><span>Research / Practice / Archive</span></div>
+        <span class="spine__end" aria-hidden="true"></span>
+      </div>
+      <div class="tile strip"><img src="media/movement/input-modalities.jpg" alt="Input modalities: foot, eye, full body, head, hand" loading="lazy"><span class="tile__cap">Input modalities: foot, eye, full body, head, hand</span></div>
+
+      <div class="row row--info">
+        <div class="tile tile--tall texture"><img src="media/movement/poster-concept.jpg" alt="Body/Sketch poster: concept and development" loading="lazy"><span class="tile__cap">Body/Sketch poster: concept and development</span></div>
+        <div class="info">
+          <section class="block">
+            <h1 class="bar">Movement-based research</h1>
+            <div class="block__body">
+              <p>Software research<br>Ongoing, 2023–present<br>Spatial interaction + Methods &amp; interfaces</p>
+              <p class="muted">№05 / 05 &nbsp;·&nbsp; 01 Research</p>
+            </div>
+          </section>
+          <div class="info__pair">
+            <section class="block">
+              <h2 class="bar">Lead</h2>
+              <div class="block__body"><p>Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.</p></div>
+            </section>
+            <section class="block">
+              <h2 class="bar">Short description</h2>
+              <div class="block__body"><p>Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers.</p></div>
+            </section>
+          </div>
+          <div class="info__pair"><section class="block"><h2 class="bar">References</h2><div class="block__body"><p>Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)<br>L. E. Boxall, “Printing with magnetic inks”</p></div></section><section class="block"><h2 class="bar">Credits</h2><div class="block__body"><p>Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision: Between Systems.</p></div></section></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ Right half ============ -->
+    <div class="half half--right">
+      <div class="row row--top">
+        <div class="stage-col">
+          <div class="sel">
+            <div class="sel__dots" role="group" aria-label="Switch lights">
+              <button class="dot dot--light" data-theme="light" aria-label="Lights on"><i></i></button>
+              <button class="dot dot--dark" data-theme="dark" aria-label="Lights off"><i></i></button>
+              <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
+            </div>
+            <span class="sel__label">Project</span>
+            <nav class="sel__items" aria-label="Projects"><a href="01-drawing-without-a-page.html" class="sel__item" title="Drawing without a page">01</a><a href="02-subcortical-matters.html" class="sel__item" title="Subcortical Matters">02</a><a href="03-topovox.html" class="sel__item" title="TopoVox">03</a><a href="04-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">04</a><a href="05-movement-based-research.html" class="sel__item is-active" aria-current="page" title="Movement-based research">05</a></nav>
+          </div>
+          <div class="stage tile">
+            <p class="stage__caption">Body-Sketch UI — draw with your fingers</p><div class="stage__img" id="stage"><img src="media/movement/ui-finger-drawing.png" alt="Body-Sketch UI — draw with your fingers" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="side">
+          <a class="pill" href="../index.html#research"><span>Index</span><span>05</span></a>
+          <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+<path d="M100 100 L100 22" stroke="#6b7d1e" stroke-width="4"/>
+<path d="M100 100 L32 140" stroke="#e8432f" stroke-width="4"/>
+<path d="M100 100 L168 140" stroke="#2335d8" stroke-width="4"/>
+<path d="M100 100 L176 100" stroke="#e6c619" stroke-width="3" stroke-dasharray="3 6"/>
+<path d="M100 18 L168 58 L168 140 L100 182 L32 140 L32 58 Z" stroke="currentColor" opacity=".3" stroke-width="1.5"/>
+<path d="M100 100 L168 58 M100 100 L32 58 M100 100 L100 182" stroke="currentColor" opacity=".15" stroke-width="1.5"/>
+<g fill="currentColor" stroke="none" font-family="Helvetica, Arial, sans-serif" font-size="9">
+<text x="104" y="36">Perception</text><text x="34" y="156" transform="rotate(-30 34 156)">Action</text>
+<text x="132" y="128" transform="rotate(30 132 128)">Interface</text></g></svg><p class="doodle__cap">Fig 5: Perception, action, interface</p></figure>
+          <div class="tile side__small"><img src="media/movement/ref-boxall.png" alt="L. E. Boxall, “Printing with magnetic inks”" loading="lazy"><span class="tile__cap">L. E. Boxall, “Printing with magnetic inks”</span></div>
+        </div>
+      </div>
+
+      <div class="row row--details">
+        <div class="details">
+          <section class="block"><h2 class="bar">About the study</h2><div class="block__body"><p>Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.</p></div></section>
+          <section class="block"><h2 class="bar">Objectives</h2><div class="block__body"><p>The software translates continuous movement qualities into discrete coded functions for an immersive drawing interface. Though the applied use case is drawing, the concept can be expanded to other applications.</p></div></section>
+          <section class="block"><h2 class="bar">Eye drawing — an inclusive feature</h2><div class="block__body"><p>Eye drawing introduces gaze as an input modality for immersive sketching: the system translates eye movements into a drawing cursor instead of moving controllers. This enables hands-free or hybrid workflows, reduces reliance on controllers and extends embodied interaction beyond the hand — opening tool design towards inclusivity while keeping a user-centred path at its core.</p></div></section>
+        </div>
+        <div class="tile texture texture--a"><img src="media/movement/poster-features.jpg" alt="Body/Sketch poster: features" loading="lazy"><span class="tile__cap">Body/Sketch poster: features</span></div>
+        <div class="tile texture texture--b"><img src="media/movement/ref-trisha-brown.jpg" alt="Trisha Brown, “It’s a Draw/Live Feed” (2003)" loading="lazy"><span class="tile__cap">Trisha Brown, “It’s a Draw/Live Feed” (2003)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Sticky action bar ============ -->
+  <div class="dock">
+    <a class="dock__bar" href="01-drawing-without-a-page.html">
+      <span>Next project — Drawing without a page</span><span>№01 →</span>
+    </a>
+    <a class="dock__back" href="../index.html#research">← All research</a>
+  </div>
+
+  <script>
+    (function () {
+      var body = document.body;
+      var dots = document.querySelectorAll('[data-theme]');
+      function setTheme(t) {
+        body.classList.remove('light', 'dark', 'mood');
+        body.classList.add(t);
+        dots.forEach(function (d) {
+          var on = d.getAttribute('data-theme') === t;
+          d.classList.toggle('is-active', on);
+          d.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        try { localStorage.setItem('bs-lights', t); } catch (e) {}
+      }
+      var saved = 'light';
+      try { saved = localStorage.getItem('bs-lights') || 'light'; } catch (e) {}
+      setTheme(['light', 'dark', 'mood'].indexOf(saved) > -1 ? saved : 'light');
+      dots.forEach(function (d) { d.addEventListener('click', function () { setTheme(d.getAttribute('data-theme')); }); });
+
+      /* Thumbnails: zoom the stage drawing (svg) or swap the stage image; click again to reset */
+      var stageSvg = document.querySelector('#stage svg');
+      var stageImg = document.querySelector('#stage img');
+      var stageCap = document.querySelector('.stage__caption');
+      var orig = stageImg ? { src: stageImg.getAttribute('src'), cap: stageCap.textContent } : null;
+      var thumbs = document.querySelectorAll('.thumb');
+      thumbs.forEach(function (t) {
+        t.addEventListener('click', function () {
+          var active = t.classList.contains('is-active');
+          thumbs.forEach(function (o) { o.classList.remove('is-active'); });
+          var el = stageImg || stageSvg;
+          el.style.opacity = 0;
+          setTimeout(function () {
+            if (stageImg) {
+              stageImg.setAttribute('src', active ? orig.src : t.getAttribute('data-src'));
+              stageCap.textContent = active ? orig.cap : t.getAttribute('data-alt');
+            } else {
+              stageSvg.setAttribute('viewBox', active ? '0 0 400 400' : t.getAttribute('data-view'));
+            }
+            el.style.opacity = 1;
+          }, 180);
+          if (!active) t.classList.add('is-active');
+        });
+      });
+    })();
+
+  </script>
+</body>
+</html>

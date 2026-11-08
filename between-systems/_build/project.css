@@ -156,6 +156,28 @@
     .details { grid-column: 1 / -1; }
     .texture--a, .texture--b { grid-column: span 3; }
 
+    /* ---------- Photo tiles (projects with real media) ---------- */
+    .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .thumb img { object-fit: cover; }
+    .tile__cap {
+      position: absolute; z-index: 2; left: 0; bottom: 0; max-width: 100%;
+      background: var(--bgColor); color: var(--textPrimaryColor); padding: 4px 8px; font-size: .8em;
+      opacity: 0; transition: opacity .2s;
+    }
+    .tile:hover .tile__cap, .tile:focus-within .tile__cap { opacity: 1; }
+    @media (hover: none) { .tile__cap { opacity: 1; } }
+    .stage__img { position: absolute; inset: 44px 12px 12px; }
+    .stage__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s var(--ease); }
+    .figure--img { position: relative; }
+    .figure--img img { width: 100%; height: calc(100% - 1.6em); object-fit: contain; mix-blend-mode: multiply; }
+    body.dark .figure--img img { filter: invert(1); mix-blend-mode: screen; }
+    .figure__cap { color: var(--textTertiaryColor); font-size: .85em; margin-top: 4px; }
+    .strip { grid-column: 1 / -1; aspect-ratio: 9 / 1; background: #fff; }
+    .strip img { object-fit: contain; }
+    body.dark .strip img { filter: invert(1); }
+    body.dark .strip { background: var(--layer1Color); }
+    .texture img { object-fit: cover; object-position: top; }
+
     /* ---------- Dock ---------- */
     .dock { position: fixed; z-index: 20; left: var(--gap); right: var(--gap); bottom: var(--gap); display: flex; gap: var(--gap); }
     .dock__bar {
