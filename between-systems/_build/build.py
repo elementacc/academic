@@ -39,6 +39,7 @@ PROJECTS = [
          detail="Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.",
          status="Project documentation / 03. Interface screenshots, posters and reference material.",
          fig=("05-axes", 5, "Perception, action, interface"),
+         diagram=True,
          media=dict(
              dir="media/movement",
              figure=("ref-laban.jpg", "Effort diagram after Rudolf Laban"),
@@ -126,6 +127,42 @@ def texture(kind, seed):
 TEXTURES = [("contour", "dots"), ("contour", "field"), ("dots", "hatch"), ("field", "hatch")]
 CROPS = ["60 60 200 200", "160 120 180 180", "110 200 160 160"]
 
+
+def diagram():
+    """Axis diagram (fig. 01) for the movement project; lines draw in, labels fade in."""
+    L = []
+    def ln(x1, y1, x2, y2, cls, delay):
+        L.append(f'<line class="dg-l {cls}" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" '
+                 f'style="transform-origin:{x1}px {y1}px;transition-delay:{delay}s"/>')
+    def tx(x, y, t, cls, delay, anchor="middle", size=None, rot=None):
+        st = f"transition-delay:{delay}s" + (f";font-size:{size}px" if size else "")
+        tr = f' transform="rotate({rot} {x} {y})"' if rot is not None else ""
+        L.append(f'<text class="dg-t {cls}" x="{x}" y="{y}" text-anchor="{anchor}"{tr} style="{st}">{t}</text>')
+    # vertical axis
+    tx(600, 62, "Body", "k", .05, size=58)
+    ln(600, 82, 600, 292, "solid", .1)
+    tx(600, 362, "Input", "k", .35, size=58)
+    ln(600, 388, 600, 598, "solid", .3)
+    tx(600, 668, "Code", "k", .55, size=58)
+    # dotted: continuous -> discrete
+    ln(70, 378, 548, 344, "dot", .6); ln(672, 336, 1128, 304, "dot", .75)
+    tx(42, 380, "continuous", "k", .7, size=46, rot=-90)
+    tx(1160, 300, "discrete", "k", .85, size=46, rot=90)
+    # dashed grey to input modes
+    ln(548, 372, 130, 628, "dash", .95); ln(652, 312, 1070, 66, "dash", 1.05)
+    ln(636, 652, 1010, 652, "dash", 1.15)
+    tx(18, 672, "Hand gesture", "g", 1.1, anchor="start", size=46)
+    tx(1182, 54, "Eye drawing", "g", 1.2, anchor="end", size=46)
+    tx(1182, 668, "Full body", "g", 1.3, anchor="end", size=46)
+    # leaders
+    ln(392, 282, 566, 330, "thin", 1.35); ln(632, 366, 700, 404, "thin", 1.45)
+    tx(258, 262, "Movement", "k", 1.4, anchor="start", size=17); tx(258, 282, "qualities", "k", 1.4, anchor="start", size=17)
+    tx(704, 422, "Body-Sketch", "k", 1.5, anchor="start", size=17); tx(704, 442, "immersive drawing", "k", 1.5, anchor="start", size=17)
+    tx(548, 512, "fig. 01", "k it", 1.6, size=12)
+    L.append('<circle class="dg-pulse" cx="600" cy="340" r="62"/>')
+    return ('<svg class="dg" viewBox="0 0 1200 700" role="img" aria-label="Diagram: body movement as input, translated from continuous movement into discrete code; input modes eye drawing, hand gesture and full body.">'
+            + "".join(L) + "</svg>")
+
 CSS = open(os.path.join(HERE, "project.css")).read()
 JS = open(os.path.join(HERE, "project.js")).read()
 
@@ -156,6 +193,8 @@ def page(i, p):
             f'{crop(svg, c)}</button>'
             for k, c in enumerate(CROPS))
     total = len(PROJECTS)
+    diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
+                    f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
     if M:
         figure_html = f'<div class="figure figure--img">{img("figure", cap=False)}<p class="figure__cap">{esc(M["figure"][1])}</p></div>'
         stage_html = f'<p class="stage__caption">{esc(M["stage"][1])}</p><div class="stage__img" id="stage">{img("stage", cap=False)}</div>'
@@ -273,6 +312,8 @@ def page(i, p):
       </div>
     </div>
   </div>
+
+  {diagram_html}
 
   <!-- ============ Sticky action bar ============ -->
   <div class="dock">

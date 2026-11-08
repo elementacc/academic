@@ -40,4 +40,12 @@
           if (!active) t.classList.add('is-active');
         });
       });
+      /* Diagram: draw in when scrolled into view */
+      var dg = document.querySelector('.diagram');
+      if (dg) {
+        if (!('IntersectionObserver' in window)) dg.classList.add('is-drawn');
+        else new IntersectionObserver(function (es, o) {
+          es.forEach(function (e) { if (e.isIntersecting) { dg.classList.add('is-drawn'); o.disconnect(); } });
+        }, { threshold: .25 }).observe(dg);
+      }
     })();
