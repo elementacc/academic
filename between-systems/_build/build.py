@@ -9,49 +9,35 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SVGS = json.load(open(os.path.join(HERE, "svgs.json")))
 FIG_DIR = os.path.join(HERE, "figures")
 # figure shown in the right-hand column of each project page: (file, number, caption)
-PROJECT_FIGS = [("01-drawing-in-air", 1, "Drawing in air"), ("03-signal", 3, "Signal"),
-                ("04-spatial-cube", 4, "Spatial cube"), ("02-headset", 2, "Headset")]
+PROJECT_FIGS = [("01-drawing-in-air", 1, "Drawing in air"), ("02-headset", 2, "Headset"),
+                ("05-axes", 5, "Perception, action, interface")]
 def fig(i):
     f, n, cap = PROJECTS[i].get("fig") or PROJECT_FIGS[i]
     svg = open(os.path.join(FIG_DIR, f + ".svg")).read()
     return f'{svg}<p class="doodle__cap">Fig {n}: {cap}</p>' 
 
 PROJECTS = [
-    dict(slug="01-drawing-without-a-page", no="01", title="Drawing without a page",
-         area="VR Sketching", type="Longitudinal study",
+    dict(slug="01-vr-sketching", no="01", title="VR Sketching", svg=0,
+         area="Drawing without a page", type="Longitudinal study",
          filters=["Spatial interaction", "Methods & interfaces"],
          lead="How are spatial relationships made when there is no surface to draw on?",
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
          status="Illustrative study / 01. Current graphic is not a research artifact."),
-    dict(slug="02-subcortical-matters", no="02", title="Subcortical Matters",
-         area="Visualization", type="Collaborative work",
-         filters=["Visualization", "Methods & interfaces"],
-         lead="Making complex anatomical information more navigable and interpretable.",
-         short="Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.",
-         detail="An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.",
-         status="Illustrative study / 02. Current graphic is a conceptual illustration."),
-    dict(slug="03-topovox", no="03", title="TopoVox",
-         area="Interfaces", type="Experimental",
-         filters=["Spatial interaction", "Visualization"],
-         lead="Interfaces for seeing and exploring complex spatial data.",
-         short="An exploration of visual organization, spatial navigation, and interaction with three-dimensional representations.",
-         detail="Design inquiry into how interactive spatial representations may support exploration, comparison, and interpretation of complex digital material.",
-         status="Conceptual / 03. Current graphic uses coordinate axes and concentric forms."),
-    dict(slug="04-speculative-realities-lab", no="04", title="Speculative Realities Lab",
+    dict(slug="02-speculative-realities-lab", no="02", svg=3, title="Speculative Realities Lab",
          area="Experiments", type="Research practice",
          filters=["Methods & interfaces"],
          lead="Prototypes, methods, and experiments at the edges of emerging interfaces.",
          short="Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.",
          detail="Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.",
-         status="Illustrative study / 04. Current graphic is illustrative imagery."),
-    dict(slug="05-movement-based-research", no="05", title="Movement-based research",
+         status="Illustrative study / 02. Current graphic is illustrative imagery."),
+    dict(slug="03-movement-based-research", no="03", title="Movement-based research",
          area="Software research", type="Ongoing, 2023–present",
          filters=["Spatial interaction", "Methods & interfaces"],
          lead="Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.",
          short="Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers.",
          detail="Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.",
-         status="Project documentation / 05. Interface screenshots, posters and reference material.",
+         status="Project documentation / 03. Interface screenshots, posters and reference material.",
          fig=("05-axes", 5, "Perception, action, interface"),
          media=dict(
              dir="media/movement",
@@ -148,13 +134,13 @@ def esc(t):
 
 def page(i, p):
     M = p.get("media")
-    svg = SVGS[i] if i < len(SVGS) else ""
+    svg = SVGS[p["svg"]] if "svg" in p else ""
     def img(key, cap=True, fit=""):
         f, alt = M[key]
         c = f'<span class="tile__cap">{esc(alt)}</span>' if cap else ""
         return f'<img src="{M["dir"]}/{f}" alt="{html.escape(alt)}" loading="lazy"{fit}>{c}' 
     nxt = PROJECTS[(i + 1) % len(PROJECTS)]
-    t1, t2 = TEXTURES[i % len(TEXTURES)]
+    t1, t2 = TEXTURES[p.get("svg", i) % len(TEXTURES)]
     proj_nav = "".join(
         f'<a href="{q["slug"]}.html" class="sel__item{" is-active" if q is p else ""}"'
         f'{" aria-current=\"page\"" if q is p else ""} title="{esc(q["title"])}">{q["no"]}</a>'
@@ -183,8 +169,8 @@ def page(i, p):
         stage_html = f'<p class="stage__caption">{esc(p["title"])} — illustrative study {p["no"]}</p><div class="stage__svg" id="stage">{crop(svg, "0 0 400 400")}</div>'
         strip_html = ""
         side_html = f'<div class="tile side__small" aria-hidden="true">{crop(svg, "140 140 120 120")}</div>'
-        tall_html = f'<div class="tile tile--tall texture" aria-hidden="true">{texture(t1, i * 7 + 1)}</div>'
-        texa_html = f'<div class="tile texture texture--a" aria-hidden="true">{texture(t2, i * 7 + 2)}</div>'
+        tall_html = f'<div class="tile tile--tall texture" aria-hidden="true">{texture(t1, p.get("svg", i) * 7 + 1)}</div>'
+        texa_html = f'<div class="tile texture texture--a" aria-hidden="true">{texture(t2, p.get("svg", i) * 7 + 2)}</div>'
         texb_html = f'<div class="tile texture texture--b" aria-hidden="true">{crop(svg, "40 40 320 320")}</div>'
     blocks = p.get("detail_blocks") or [("About the study", None), ("Visual status", "__status__")]
     def block(h, body):
