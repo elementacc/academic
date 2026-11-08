@@ -388,6 +388,96 @@
     @media (max-width: 1023px) { .acc-topic { display: block; margin-top: .25rem; } }
     @media (min-width: 1024px) { .acc-topic { grid-column: 7 / span 4; } }
 
+
+    /* =========================================================
+       Student projects — archive list
+       ========================================================= */
+    .students { margin-top: 6rem; }
+    .st-head { grid-column: content; display: grid; grid-template-columns: subgrid; row-gap: 1.25rem; align-items: end; padding-bottom: 1.25rem; }
+    .st-head .t-label { grid-column: 1 / -1; }
+    .st-title {
+      grid-column: 1 / -1;
+      font-size: clamp(2.75rem, 7.2vw, 7.5rem); line-height: .92; letter-spacing: -.035em;
+    }
+    .st-intro { grid-column: 1 / -1; color: var(--textSecondaryColor); max-width: 38ch; }
+    .st-tools { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+    .st-pills { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--textPrimaryColor); border-radius: 999px; padding: 2px; }
+    .st-pill { border-radius: 999px; padding: .2rem .7rem; color: var(--textPrimaryColor); }
+    .st-pill:hover { color: var(--textSecondaryColor); }
+    .st-pill[aria-pressed="true"] { background: var(--textPrimaryColor); color: var(--bgColor); }
+    .st-count { color: var(--textTertiaryColor); }
+    @media (min-width: 1024px) {
+      .st-title { grid-column: 1 / span 8; }
+      .st-intro { grid-column: 10 / span 3; }
+      .st-tools { grid-column: 1 / -1; }
+    }
+
+    .st-list { grid-column: content; border-top: 1px solid var(--textPrimaryColor); }
+    .st-item { border-bottom: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
+    .st-item.is-hidden { display: none; }
+    .st-row {
+      width: 100%; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) 1.25rem;
+      column-gap: var(--grid-gutter); align-items: baseline; padding: .7rem 0 .75rem;
+      transition: color .2s var(--ease-out), padding .35s var(--ease);
+    }
+    .st-num, .st-code, .st-year { color: var(--textTertiaryColor); transition: color .2s var(--ease-out); }
+    .st-name { font-size: 1.125rem; line-height: 1.15; letter-spacing: -.01em; }
+    .st-code, .st-course, .st-year { display: none; }
+    .st-dot { justify-self: end; align-self: center; width: 6px; height: 6px; border-radius: 50%; background: var(--textPrimaryColor); transition: background-color .2s, transform .35s var(--ease); }
+    .st-item.is-open .st-num { color: var(--textPrimaryColor); }
+    @media (hover: hover) {
+      .st-list:hover .st-item:not(:hover):not(.is-open) .st-row { color: var(--textTertiaryColor); }
+      .st-row:hover { padding-left: .5rem; }
+      .st-row:hover .st-num { color: var(--textPrimaryColor); }
+      .st-row:hover .st-dot { transform: scale(1.6); }
+    }
+    .st-item.is-open .st-dot { background: #e8432f; transform: scale(1.6); }
+    @media (min-width: 768px) {
+      .st-row { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .st-num  { grid-column: 1 / span 1; }
+      .st-code { display: block; grid-column: 2 / span 2; }
+      .st-name { grid-column: 4 / span 4; }
+      .st-course { display: block; grid-column: 8 / span 3; color: var(--textSecondaryColor); }
+      .st-year { display: block; grid-column: 11 / span 1; }
+      .st-dot  { grid-column: 12 / span 1; }
+    }
+    @media (min-width: 1024px) { .st-name { font-size: 1.375rem; } }
+
+    .st-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+    .st-item.is-open .st-panel { grid-template-rows: 1fr; }
+    .st-panel > div { overflow: hidden; }
+    .st-panel__inner {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--grid-gutter); row-gap: 1.25rem;
+      padding: .75rem 0 2rem;
+      opacity: 0; transform: translateY(-6px); transition: opacity .4s var(--ease), transform .5s var(--ease);
+    }
+    .st-item.is-open .st-panel__inner { opacity: 1; transform: none; }
+    .st-img {
+      position: relative; aspect-ratio: 3 / 4; background: var(--layer1Color); overflow: hidden;
+      transition: background-color .4s var(--ease);
+    }
+    @media (min-width: 768px) { .st-img { aspect-ratio: auto; height: clamp(13rem, 21vw, 20rem); } }
+    .st-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .st-img__label { position: absolute; left: .5rem; top: .45rem; }
+    .st-img__mark { position: absolute; inset: 0; display: grid; place-items: center; color: var(--textTertiaryColor); font-size: 1.5rem; }
+    .st-meta dt { color: var(--textTertiaryColor); margin-top: .6rem; }
+    .st-meta dt:first-child { margin-top: 0; }
+    .st-meta dd { margin: 0; }
+    .st-desc { grid-column: 1 / -1; max-width: 46ch; }
+    .st-desc p + p { margin-top: 1em; }
+    .st-desc .note { color: var(--textTertiaryColor); }
+    @media (min-width: 768px) {
+      .st-panel__inner { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .st-a { grid-column: 1 / span 2; }
+      .st-meta { grid-column: 1 / span 2; grid-row: 2; }
+      .st-b { grid-column: 4 / span 3; }
+      .st-desc { grid-column: 4 / span 4; grid-row: 2; }
+      .st-c { grid-column: 7 / span 2; }
+      .st-d { grid-column: 11 / span 2; }
+    }
+    @media (max-width: 767px) { .st-c, .st-d { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .st-row, .st-panel, .st-panel__inner { transition: none; } }
+
     /* =========================================================
        Footer
        ========================================================= */
@@ -470,6 +560,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#students">Students</a></li>
           <li><a href="#reflections">Reflections</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -776,6 +867,21 @@
       </div>
     </section>
 
+    <!-- ============ Student projects (archive) ============ -->
+    <section id="students" class="students subgrid t-body" aria-labelledby="students-h">
+      <div class="st-head">
+        <p class="t-label">(03b) Teaching / Archive</p>
+        <h2 id="students-h" class="st-title">Student projects</h2>
+        <p class="st-intro">Selected work from seminars and courses. Placeholder entries — replace with student work and permissions before publication.</p>
+        <div class="st-tools">
+          <div class="st-pills" role="group" aria-label="Filter student projects" id="st-filters"></div>
+          <p class="st-count" id="st-count" aria-live="polite"></p>
+        </div>
+      </div>
+      <ol class="st-list" id="st-list"></ol>
+      <noscript><p class="st-intro" style="margin-top:1rem">Enable JavaScript to browse the student project archive.</p></noscript>
+    </section>
+
     <!-- ============ (04) Reflections (static list) ============ -->
     <section id="reflections" class="acc-section subgrid" style="margin-top: 4.5rem;">
       <h2 class="t-label">(04) Reflections</h2>
@@ -846,6 +952,7 @@
             <li><a href="#research">Research</a><p>01</p></li>
             <li><a href="#about">About</a><p>02</p></li>
             <li><a href="#teaching">Teaching</a><p>03</p></li>
+            <li><a href="#students">Students</a><p>03b</p></li>
             <li><a href="#reflections">Reflections</a><p>04</p></li>
             <li><a href="https://www.sourcetype.com/" rel="noreferrer">Source Type</a><p>Type [UN-11]</p></li>
           </ul>
@@ -899,6 +1006,106 @@
           btn.querySelector('.txt').textContent = open ? 'Close' : 'Open project';
         });
       });
+
+
+      /* ---- Student projects archive ----
+         Edit this list to add real projects. Fields:
+           course: one of the keys in COURSES
+           title, year, students (array), supervision, text (array of paragraphs)
+           images: up to 4 image paths (e.g. "students/nui-01-a.jpg"); empty slots show placeholders */
+      var COURSES = {
+        nui: { code: '#NUI', name: 'Natural User Interfaces' },
+        adt: { code: '#ADT', name: 'Adaptive Digital Twin' },
+        mpdn: { code: '#MPDN', name: 'Multidisciplinary Perspectives of Digital Neurosurgery' }
+      };
+      var STUDENT_PROJECTS = [
+        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
+        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
+        { course: 'adt',  title: 'Project title', year: '—', students: ['Student name', 'Student name', 'Student name'], images: [] },
+        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
+        { course: 'mpdn', title: 'Project title', year: '—', students: ['Student name'], images: [] },
+        { course: 'adt',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
+        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
+        { course: 'mpdn', title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] }
+      ];
+      var PLACEHOLDER_TEXT = ['Short description to be added: the question the students worked on, how they approached it, and what came out of it.'];
+
+      (function () {
+        var list = document.getElementById('st-list');
+        var pills = document.getElementById('st-filters');
+        var count = document.getElementById('st-count');
+        if (!list) return;
+        function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+        function img(src, n, cls) {
+          return '<div class="st-img ' + cls + '">' + (src
+            ? '<img src="' + esc(src) + '" alt="" loading="lazy">'
+            : '<span class="st-img__label t-label">Image ' + pad(n) + '</span><span class="st-img__mark" aria-hidden="true">○</span>') + '</div>';
+        }
+        list.innerHTML = STUDENT_PROJECTS.map(function (p, i) {
+          var c = COURSES[p.course] || { code: '#', name: '' };
+          var im = p.images || [];
+          var text = (p.text && p.text.length ? p.text : PLACEHOLDER_TEXT).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+          var id = 'st-p-' + (i + 1);
+          return '<li class="st-item" data-course="' + p.course + '">' +
+            '<button class="st-row button--reset" aria-expanded="false" aria-controls="' + id + '">' +
+              '<span class="st-num">' + pad(i + 1) + '</span>' +
+              '<span class="st-code">' + c.code + '</span>' +
+              '<span class="st-name">' + esc(p.title) + '</span>' +
+              '<span class="st-course">' + esc(c.name) + '</span>' +
+              '<span class="st-year">' + esc(p.year || '') + '</span>' +
+              '<span class="st-dot" aria-hidden="true"></span>' +
+            '</button>' +
+            '<div class="st-panel" id="' + id + '"><div><div class="st-panel__inner">' +
+              img(im[0], 1, 'st-a') + img(im[1], 2, 'st-b') + img(im[2], 3, 'st-c') + img(im[3], 4, 'st-d') +
+              '<dl class="st-meta">' +
+                '<dt>Students</dt><dd>' + (p.students || []).map(esc).join('<br>') + '</dd>' +
+                '<dt>Course</dt><dd>' + esc(c.name) + '</dd>' +
+                (p.supervision ? '<dt>Supervision</dt><dd>' + esc(p.supervision) + '</dd>' : '') +
+              '</dl>' +
+              '<div class="st-desc">' + text + (p.text && p.text.length ? '' : '<p class="note">Placeholder entry.</p>') + '</div>' +
+            '</div></div></div>' +
+          '</li>';
+        }).join('');
+
+        var keys = ['all'].concat(Object.keys(COURSES));
+        pills.innerHTML = keys.map(function (k) {
+          var label = k === 'all' ? 'All' : COURSES[k].name;
+          return '<button class="st-pill button--reset" data-st="' + k + '" aria-pressed="' + (k === 'all') + '">' + esc(label) + '</button>';
+        }).join('');
+
+        var items = list.querySelectorAll('.st-item');
+        function update(key) {
+          var n = 0;
+          items.forEach(function (it) {
+            var show = key === 'all' || it.getAttribute('data-course') === key;
+            it.classList.toggle('is-hidden', !show);
+            if (!show) close(it);
+            if (show) n++;
+          });
+          count.textContent = pad(n) + ' projects';
+        }
+        function close(it) {
+          it.classList.remove('is-open');
+          it.querySelector('.st-row').setAttribute('aria-expanded', 'false');
+        }
+        pills.querySelectorAll('.st-pill').forEach(function (b) {
+          b.addEventListener('click', function () {
+            pills.querySelectorAll('.st-pill').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+            update(b.getAttribute('data-st'));
+          });
+        });
+        items.forEach(function (it) {
+          var row = it.querySelector('.st-row');
+          row.addEventListener('click', function () {
+            var open = !it.classList.contains('is-open');
+            items.forEach(function (o) { if (o !== it) close(o); });
+            it.classList.toggle('is-open', open);
+            row.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+        });
+        update('all');
+      })();
 
       /* ---- Project filters ---- */
       var filters = document.querySelectorAll('[data-filter]');
