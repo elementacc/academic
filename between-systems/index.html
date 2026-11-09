@@ -174,9 +174,6 @@
     .pos { display: grid; grid-template-columns: auto 1fr; column-gap: .9em; margin: 0; }
     .pos dt { white-space: nowrap; }
     .pos dd { margin: 0; color: var(--textSecondaryColor); }
-    .pos__more { display: inline-grid; place-items: center; width: 1.05em; height: 1.05em; margin-left: .3em; border-radius: 50%;
-      background: var(--textPrimaryColor); color: var(--bgColor); text-decoration: none; font-size: .95em; line-height: 1; vertical-align: -.1em; }
-    .pos__more:hover { color: var(--bgColor); background: var(--textSecondaryColor); }
 
 
     @media (min-width: 480px) { .hd-logo, .hd-switch { grid-column-end: span 4; } }
@@ -193,13 +190,6 @@
     }
 
 
-    /* Initials line (very top) */
-    .initials { padding-top: .5rem; }
-    .ini { border-bottom: 1px solid var(--borderColor); padding-bottom: .9rem; transition: border-color .4s var(--ease); }
-    .ini span { font-size: clamp(4.5rem, 10vw, 11rem); line-height: .78; letter-spacing: -.04em; display: block; }
-    .ini__p { grid-column: 1 / span 1; margin-left: -.06em; }
-    .ini__s { grid-column: 5 / span 1; }
-    @media (min-width: 1024px) { .ini__s { grid-column: 7 / span 1; } }
 
     /* =========================================================
        Wordmark
@@ -557,11 +547,6 @@
 </head>
 <body class="light" id="top">
 
-  <!-- ============ Initials ============ -->
-  <div class="page-grid initials" aria-hidden="true">
-    <div class="subgrid ini"><span class="ini__p">P</span><span class="ini__s">S</span></div>
-  </div>
-
   <!-- ============ Header ============ -->
   <div class="page-grid">
     <header class="site subgrid">
@@ -594,7 +579,7 @@
           <dt>Artist</dt><dd></dd>
           <dt>Lecturer</dt><dd>HTW Berlin</dd>
           <dt>Researcher, HCI</dt><dd>Cluster of Excellence Matters of Activity, SpecLab</dd>
-          <dt>Ph.D. candidate</dt><dd>TU Berlin <a class="pos__more" href="bio.html" aria-label="Full bio">+</a></dd>
+          <dt>Ph.D. candidate</dt><dd>TU Berlin</dd>
         </dl>
       </div>
     </header>
