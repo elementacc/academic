@@ -615,7 +615,7 @@
           <p class="acc-meta">(03) Selected domains</p>
           <ul class="domains">
             <li>Immersive Sketching</li>
-            <li>Embodied Interaction</li>
+            <li>Embodied Cognition</li>
             <li>Scientific Visualization</li>
             <li>Non-Normative Interfaces</li>
           </ul>
@@ -1130,14 +1130,19 @@
         }
         strokes.push({ pts: pts, w: s % 3 === 0 ? 1.4 : .8, a: .35 + rnd() * .6 });
       }
+      /* keep every stroke inside a unit sphere so nothing swings behind the camera */
+      var maxR = 0;
+      strokes.forEach(function (st) { st.pts.forEach(function (q) { maxR = Math.max(maxR, Math.hypot(q[0], q[1], q[2])); }); });
+      var norm = .95 / maxR;
+      strokes.forEach(function (st) { st.pts = st.pts.map(function (q) { return [q[0] * norm, q[1] * norm, q[2] * norm]; }); });
       var t0 = performance.now();
       function draw(now) {
-        var t = (now - t0) / 1000;
+        var t = Math.max(0, (now - t0) / 1000);
         ctx.clearRect(0, 0, W, H);
         var col = getComputedStyle(body).color;
-        var ry = t * .12, rx = -.35 + Math.sin(t * .2) * .08;
+        var ry = t * .22, rx = -.35 + Math.sin(t * .3) * .12;
         var cy = Math.cos(ry), sy = Math.sin(ry), cx = Math.cos(rx), sx = Math.sin(rx);
-        var scale = Math.min(W, H * 1.6) * .55;
+        var scale = Math.min(W, H * 1.6) * .78;
         function proj(p) {
           var X = p[0] * cy - p[2] * sy, Z = p[0] * sy + p[2] * cy;
           var Y = p[1] * cx - Z * sx; Z = p[1] * sx + Z * cx;
@@ -1152,16 +1157,22 @@
           a ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]);
         }
         ctx.stroke();
-        var grow = reduce ? 1 : Math.min(1, t / 6);
+        /* each stroke: faint full trace + a pen tip that keeps redrawing it */
         strokes.forEach(function (st, si) {
-          var n = Math.floor(st.pts.length * Math.min(1, grow * 1.6 - si * .06));
-          if (n < 2) return;
-          ctx.globalAlpha = st.a; ctx.lineWidth = st.w;
+          var N = st.pts.length, j;
+          ctx.globalAlpha = st.a * .3; ctx.lineWidth = st.w;
           ctx.beginPath();
-          for (var j = 0; j < n; j++) { var q = proj(st.pts[j]); j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
+          for (j = 0; j < N; j++) { var q = proj(st.pts[j]); j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
           ctx.stroke();
-          var e = proj(st.pts[n - 1]);
-          ctx.globalAlpha = .9; ctx.beginPath(); ctx.arc(e[0], e[1], 2.2 * e[2], 0, Math.PI * 2); ctx.fill();
+          var cycle = N + 30, head = reduce ? N - 1 : Math.floor((t * 18 + si * 23) % cycle);
+          if (head >= N) head = N - 1;
+          var tail = Math.max(0, head - (reduce ? N : 45));
+          ctx.globalAlpha = st.a; ctx.lineWidth = st.w * 1.4;
+          ctx.beginPath();
+          for (j = tail; j <= head; j++) { var r = proj(st.pts[j]); j > tail ? ctx.lineTo(r[0], r[1]) : ctx.moveTo(r[0], r[1]); }
+          ctx.stroke();
+          var e = proj(st.pts[head]);
+          ctx.globalAlpha = .95; ctx.beginPath(); ctx.arc(e[0], e[1], 2.4 * e[2], 0, Math.PI * 2); ctx.fill();
         });
         ctx.globalAlpha = 1;
         if (!reduce) requestAnimationFrame(draw);
