@@ -171,6 +171,13 @@
     .hd-nav ul { display: flex; flex-wrap: wrap; }
     .hd-nav li:not(:last-child)::after { content: ",\00a0"; }
     .hd-nav a { text-decoration: none; }
+    .pos { display: grid; grid-template-columns: auto 1fr; column-gap: .9em; margin: 0; }
+    .pos dt { white-space: nowrap; }
+    .pos dd { margin: 0; color: var(--textSecondaryColor); }
+    .pos__more { display: inline-grid; place-items: center; width: 1.05em; height: 1.05em; margin-left: .3em; border-radius: 50%;
+      background: var(--textPrimaryColor); color: var(--bgColor); text-decoration: none; font-size: .95em; line-height: 1; vertical-align: -.1em; }
+    .pos__more:hover { color: var(--bgColor); background: var(--textSecondaryColor); }
+
 
     @media (min-width: 480px) { .hd-logo, .hd-switch { grid-column-end: span 4; } }
     @media (min-width: 1024px) {
@@ -197,6 +204,7 @@
     /* =========================================================
        Wordmark
        ========================================================= */
+    .wordmark { margin-top: 2.5rem; }
     .wordmark { --helv: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .wordmark h1 {
       grid-column: 1 / -1; text-align: left;
@@ -554,13 +562,6 @@
     <div class="subgrid ini"><span class="ini__p">P</span><span class="ini__s">S</span></div>
   </div>
 
-  <!-- ============ Wordmark ============ -->
-  <div class="page-grid wordmark">
-    <section class="subgrid">
-      <h1 aria-label="Research / Teaching / Practice"><span class="w" aria-hidden="true"><span class="n">(1)</span>Research</span><span class="w" aria-hidden="true"><span class="n">(2)</span>Teaching</span><span class="w" aria-hidden="true"><span class="n">(3)</span>Practice</span></h1>
-    </section>
-  </div>
-
   <!-- ============ Header ============ -->
   <div class="page-grid">
     <header class="site subgrid">
@@ -587,19 +588,23 @@
         <p>An independent research archive exploring the relationships between people, interfaces and space.</p>
       </div>
 
-      <nav class="hd-nav t-body" aria-label="Primary">
-        <h2 class="t-label">Independent research archive — 01 Ongoing</h2>
-        <ul>
-          <li><a href="bio.html">Bio</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#teaching">Teaching</a></li>
-          <li><a href="#students">Teaching archive</a></li>
-          <li><a href="#reflections">Reflections</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="hd-nav hd-pos t-body">
+        <h2 class="t-label">Position</h2>
+        <dl class="pos">
+          <dt>Artist</dt><dd></dd>
+          <dt>Lecturer</dt><dd>HTW Berlin</dd>
+          <dt>Researcher, HCI</dt><dd>Cluster of Excellence Matters of Activity, SpecLab</dd>
+          <dt>Ph.D. candidate</dt><dd>TU Berlin <a class="pos__more" href="bio.html" aria-label="Full bio">+</a></dd>
+        </dl>
+      </div>
     </header>
+  </div>
+
+  <!-- ============ Wordmark ============ -->
+  <div class="page-grid wordmark">
+    <section class="subgrid">
+      <h1 aria-label="Research / Teaching / Practice"><span class="w" aria-hidden="true"><span class="n">(1)</span>Research</span><span class="w" aria-hidden="true"><span class="n">(2)</span>Teaching</span><span class="w" aria-hidden="true"><span class="n">(3)</span>Practice</span></h1>
+    </section>
   </div>
 
   <main class="page-grid">
