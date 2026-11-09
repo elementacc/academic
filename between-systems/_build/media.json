@@ -1,0 +1,446 @@
+{
+ "students": [
+  {
+   "key": "unio",
+   "title": "ÜNIO",
+   "course": "ii",
+   "year": "2026",
+   "date": "18 March 2026",
+   "text": "A head-worn interface “für mehr Barrierefreiheit” — for more accessibility. Exhibition stand, modular components and documentation.",
+   "images": [
+    {
+     "src": "media/students/unio-01.jpg",
+     "alt": "ÜNIO exhibition stand with posters and head forms",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/unio-02.jpg",
+     "alt": "Head form wearing the ÜNIO device",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/unio-03.jpg",
+     "alt": "ÜNIO components laid out on a board",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/unio-04.jpg",
+     "alt": "ÜNIO documentation booklet",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "turn-it-up",
+   "title": "Turn It Up",
+   "course": "nui",
+   "year": "2025",
+   "date": "8 December 2025",
+   "text": "A Bluetooth speaker with deformable input — connect, volume, skip, play / pause through touch on a soft knitted body.",
+   "images": [
+    {
+     "src": "media/students/turn-it-up-01.jpg",
+     "alt": "Turn It Up speakers and poster on a table",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/turn-it-up-02.jpg",
+     "alt": "Knitted and printed speaker bodies",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/turn-it-up-03.jpg",
+     "alt": "Interaction diagram poster",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "formfonie",
+   "title": "formFONIE",
+   "course": "nui",
+   "year": "2025",
+   "date": "8 December 2025",
+   "text": "Tufted textile panels wired with electronics — a soft surface as an interface.",
+   "images": [
+    {
+     "src": "media/students/formfonie-01.jpg",
+     "alt": "Tufted textile surface in blue, red and white",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/formfonie-02.jpg",
+     "alt": "Wiring and electronics behind the textile panels",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/formfonie-03.jpg",
+     "alt": "Textile and copper sensor samples",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "belly-bond",
+   "title": "Belly Bond",
+   "course": "ii",
+   "year": "2024",
+   "date": "11 October 2024",
+   "text": "A wearable belt with soft modules, presented with posters, sketches and a dress form.",
+   "images": [
+    {
+     "src": "media/students/belly-bond-01.jpg",
+     "alt": "Belly Bond exhibition table and posters",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/belly-bond-02.jpg",
+     "alt": "The belt laid flat on the table",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/belly-bond-03.jpg",
+     "alt": "Belt worn on a dress form",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/belly-bond-04.jpg",
+     "alt": "Sketches and module samples",
+     "r": 1.333
+    }
+   ]
+  },
+  {
+   "key": "snooze-vest",
+   "title": "Snooze Vest",
+   "course": "ii",
+   "year": "2024",
+   "date": "11 October 2024",
+   "text": "A soft vest and companion app, shown on a torso form with sketchbooks.",
+   "images": [
+    {
+     "src": "media/students/snooze-vest-01.jpg",
+     "alt": "Snooze Vest on a torso form with posters",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/snooze-vest-02.jpg",
+     "alt": "Vest detail",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/snooze-vest-03.jpg",
+     "alt": "Sketchbook pages",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/snooze-vest-04.jpg",
+     "alt": "Vest fastening detail",
+     "r": 1.333
+    }
+   ]
+  },
+  {
+   "key": "aura",
+   "title": "Aura",
+   "course": "ii",
+   "year": "2024",
+   "date": "1 February 2024",
+   "text": "A medication dispenser, presented with its poster and interface components.",
+   "images": [
+    {
+     "src": "media/students/aura-01.jpg",
+     "alt": "Exhibition view with the Aura stand",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/aura-02.jpg",
+     "alt": "Aura dispenser detail",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/aura-03.jpg",
+     "alt": "Aura poster",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "ovy",
+   "title": "OVY",
+   "course": "ii",
+   "year": "2024",
+   "date": "1 February 2024",
+   "text": "Tactile memory objects — “Ihre Erinnerungen, unsere Magie”.",
+   "images": [
+    {
+     "src": "media/students/ovy-01.jpg",
+     "alt": "OVY poster and objects",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/ovy-02.jpg",
+     "alt": "OVY objects from above",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/ovy-03.jpg",
+     "alt": "OVY objects and leaflet",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "sensor-glove",
+   "title": "Sensor glove",
+   "course": "nui",
+   "year": "2025",
+   "date": "23 July 2025",
+   "text": "A glove prototype with sensors and microcontrollers for hand-based input.",
+   "images": [
+    {
+     "src": "media/students/sensor-glove-01.jpg",
+     "alt": "Sensor glove with electronics",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/sensor-glove-02.jpg",
+     "alt": "Glove from above",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/sensor-glove-03.jpg",
+     "alt": "Glove connected to a laptop",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "sound-textiles",
+   "title": "Sound textiles",
+   "course": "nui",
+   "year": "2024",
+   "date": "18 April 2024",
+   "text": "A session with textile, light and sound prototypes.",
+   "images": [
+    {
+     "src": "media/students/sound-textiles-01.jpg",
+     "alt": "Workshop room with the textile installation",
+     "r": 1.328
+    },
+    {
+     "src": "media/students/sound-textiles-02.jpg",
+     "alt": "Cable and textile detail",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/sound-textiles-03.jpg",
+     "alt": "Controller with laptop and synth",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/sound-textiles-04.jpg",
+     "alt": "Sound software on screen",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "physical-prototypes",
+   "title": "Physical computing prototypes",
+   "course": "nui",
+   "year": "2024",
+   "date": "25 July 2024",
+   "text": "Sensor objects and circuits built during the course.",
+   "images": [
+    {
+     "src": "media/students/physical-prototypes-01.jpg",
+     "alt": "Transparent sphere with a circuit inside",
+     "r": 1.333
+    },
+    {
+     "src": "media/students/physical-prototypes-02.jpg",
+     "alt": "Round button interface from above",
+     "r": 0.75
+    },
+    {
+     "src": "media/students/physical-prototypes-03.jpg",
+     "alt": "Plant connected to a light circuit",
+     "r": 1.333
+    }
+   ]
+  }
+ ],
+ "subcortical": [
+  {
+   "key": "charite-workshop",
+   "title": "Drawing the brain",
+   "meta": "Charité, 18 July 2025",
+   "text": "A sketching session with anatomical models, headsets and drawings of subcortical structures.",
+   "images": [
+    {
+     "src": "media/subcortical/charite-workshop-01.jpg",
+     "alt": "Charité building, Berlin",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/charite-workshop-02.jpg",
+     "alt": "Participants around an anatomical brain model",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/charite-workshop-03.jpg",
+     "alt": "Drawing subcortical structures by hand",
+     "r": 1.333
+    },
+    {
+     "src": "media/subcortical/charite-workshop-04.jpg",
+     "alt": "Headsets, brain models and drawings on a table",
+     "r": 1.333
+    }
+   ]
+  },
+  {
+   "key": "through-the-headset",
+   "title": "Through the headset",
+   "meta": "Immersive sketching",
+   "text": "Brain structures drawn and viewed in VR, photographed through the headset lens.",
+   "images": [
+    {
+     "src": "media/subcortical/through-the-headset-01.jpg",
+     "alt": "Brain model seen through the headset lens",
+     "r": 0.753
+    },
+    {
+     "src": "media/subcortical/through-the-headset-02.jpg",
+     "alt": "Ventricles drawn in VR, seen through the lens",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/through-the-headset-03.jpg",
+     "alt": "Line drawing of brain structures in VR",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/through-the-headset-04.jpg",
+     "alt": "Hand drawings of brain sections",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "visualisation",
+   "title": "Visualising fibres and forms",
+   "meta": "2024–2025",
+   "text": "Tractography, colour maps and diffusion forms explored across screen and immersive views.",
+   "images": [
+    {
+     "src": "media/subcortical/visualisation-01.jpg",
+     "alt": "Fibre tractography on screen",
+     "r": 1.333
+    },
+    {
+     "src": "media/subcortical/visualisation-02.jpg",
+     "alt": "Colourful fibre drawing",
+     "r": 0.563
+    },
+    {
+     "src": "media/subcortical/visualisation-03.jpg",
+     "alt": "Voxel and diffusion forms",
+     "r": 1.333
+    },
+    {
+     "src": "media/subcortical/visualisation-04.jpg",
+     "alt": "Diffusion form in an immersive scene",
+     "r": 1.333
+    }
+   ]
+  }
+ ],
+ "speclab": [
+  {
+   "key": "museum-vr",
+   "title": "Museum VR sketching",
+   "meta": "2025",
+   "text": "Sketching in VR around museum objects — notes, drawings and overlays.",
+   "images": [
+    {
+     "src": "media/speclab/museum-vr-01.jpg",
+     "alt": "Notes and photos from a museum VR sketching session",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/museum-vr-02.jpg",
+     "alt": "VR sketch overlaid on a museum visitor",
+     "r": 0.996
+    },
+    {
+     "src": "media/speclab/museum-vr-03.jpg",
+     "alt": "Dense VR line drawing",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/museum-vr-04.jpg",
+     "alt": "Sketch overlay on fabric",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "sessions",
+   "title": "Sketching sessions",
+   "meta": "2024–2025",
+   "text": "Group sessions in VR and printed sketches from the headset.",
+   "images": [
+    {
+     "src": "media/speclab/sessions-01.jpg",
+     "alt": "Group sketching session with VR headsets",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/sessions-02.jpg",
+     "alt": "Printed VR sketches laid out on a table",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/sessions-03.jpg",
+     "alt": "VR sketch on screen",
+     "r": 1.333
+    },
+    {
+     "src": "media/speclab/sessions-04.jpg",
+     "alt": "Printed VR sketch detail",
+     "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "materiality",
+   "title": "Rethinking materiality",
+   "meta": "Matters of Activity",
+   "text": "Reading, weaving and material thinking around the Cluster of Excellence “Matters of Activity”.",
+   "images": [
+    {
+     "src": "media/speclab/materiality-01.jpg",
+     "alt": "Book cover: Matters of Activity — Rethinking Materiality, Rethinking Knowledge",
+     "r": 0.791
+    },
+    {
+     "src": "media/speclab/materiality-02.jpg",
+     "alt": "Books and materials on a table",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/materiality-03.jpg",
+     "alt": "Hands weaving on a loom",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/materiality-04.jpg",
+     "alt": "Book: After Method by John Law",
+     "r": 0.75
+    }
+   ]
+  }
+ ]
+}

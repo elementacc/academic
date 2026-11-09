@@ -319,7 +319,7 @@
       .cases__text { grid-column: 7 / span 3; grid-row: 1; margin-top: 0; margin-bottom: 2.5rem; }
       .cases__filters { grid-column: 10 / span 3; grid-row: 1; margin: 0; align-content: flex-start; }
       .projects { display: grid; grid-template-columns: subgrid; width: 100%; }
-      .proj { grid-column-end: span 4; }
+      .proj { grid-column-end: span 3; }
       .proj--large { grid-column-end: span 6; }
     }
 
@@ -479,6 +479,11 @@
     .st-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .st-img__label { position: absolute; left: .5rem; top: .45rem; }
     .st-img__mark { position: absolute; inset: 0; display: grid; place-items: center; color: var(--textTertiaryColor); font-size: 1.5rem; }
+    .st-imgs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--grid-gutter); }
+    .st-imgs .st-img { margin: 0; flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; height: auto; }
+    .st-imgs .st-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 767px) { .st-imgs .st-img { flex: 1 1 calc(50% - var(--grid-gutter)); aspect-ratio: auto; height: 44vw; } }
+    @media (min-width: 768px) { .st-meta { grid-row: 2; } .st-desc { grid-row: 2; } }
     .st-meta dt { color: var(--textTertiaryColor); margin-top: .6rem; }
     .st-meta dt:first-child { margin-top: 0; }
     .st-meta dd { margin: 0; }
@@ -696,6 +701,7 @@
       <div class="cases__filters t-body" role="group" aria-label="Filter projects">
         <button class="button--reset" data-filter="all" aria-pressed="true">All</button><span>,&nbsp;</span>
         <button class="button--reset" data-filter="spatial" aria-pressed="false">Spatial interaction</button><span>,&nbsp;</span>
+        <button class="button--reset" data-filter="visualization" aria-pressed="false">Visualization</button><span>,&nbsp;</span>
         <button class="button--reset" data-filter="methods" aria-pressed="false">Methods &amp; interfaces</button>
       </div>
 
@@ -737,20 +743,8 @@
         <article class="proj proj--default" data-cats="methods">
           <div class="proj-container t-body">
             <div class="proj-media">
-              <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-                <g opacity=".35">
-                  <path d="M80 120 H320 M80 160 H320 M80 200 H320 M80 240 H320 M80 280 H320"/>
-                  <path d="M120 80 V320 M160 80 V320 M200 80 V320 M240 80 V320 M280 80 V320"/>
-                </g>
-                <g class="spin-r">
-                  <rect x="140" y="140" width="120" height="120" transform="rotate(45 200 200)"/>
-                  <rect x="160" y="160" width="80" height="80" opacity=".6"/>
-                </g>
-                <path d="M200 200 C 240 150, 300 170, 320 110" stroke-dasharray="2 4"/>
-                <circle cx="320" cy="110" r="6"/>
-                <circle cx="200" cy="200" r="3" fill="currentColor"/>
-              </svg>
-              <p class="status t-label">Illustrative study / 02. Current graphic is illustrative imagery.</p>
+              <img src="media/speclab/museum-vr-02.jpg" alt="VR sketch overlaid on a museum visitor" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+              <p class="status t-label" style="background:var(--bgColor);width:max-content;padding:2px 4px">Project documentation / 02.</p>
             </div>
             <div class="proj-content">
               <div class="proj-header"><div class="proj-number">№02.</div><h3 class="proj-title"><a href="projects/02-speculative-realities-lab.html">Speculative Realities Lab</a></h3></div>
@@ -784,6 +778,27 @@
               <div class="proj-bottom">
                 <p class="proj-bottom__label">Area</p><p>Software research, Ongoing</p>
                 <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-3b"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- 04 Subcortical Matters -->
+        <article class="proj proj--default" data-cats="visualization methods">
+          <div class="proj-container t-body">
+            <div class="proj-media">
+              <img src="media/subcortical/through-the-headset-01.jpg" alt="Brain model seen through the headset lens" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+              <p class="status t-label" style="background:var(--bgColor);width:max-content;padding:2px 4px">Project documentation / 04.</p>
+            </div>
+            <div class="proj-content">
+              <div class="proj-header"><div class="proj-number">№04.</div><h3 class="proj-title"><a href="projects/04-subcortical-matters.html">Subcortical Matters</a></h3></div>
+              <div class="proj-desc">
+                <p class="lead">Making complex anatomical information more navigable and interpretable.</p>
+                <p>Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.</p>
+              </div>
+              <div class="proj-detail" id="pd-4b"><div><p>An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction — with drawing sessions at Charité, VR sketching of brain structures and fibre visualisation.</p><p><a href="projects/04-subcortical-matters.html">Project page →</a></p></div></div>
+              <div class="proj-bottom">
+                <p class="proj-bottom__label">Area</p><p>Visualization, Collaborative work</p>
+                <button class="proj-toggle button--reset" aria-expanded="false" aria-controls="pd-4b"><span class="txt">Open project</span><span class="icon" aria-hidden="true"></span></button>
               </div>
             </div>
           </div>
@@ -837,9 +852,9 @@
     <!-- ============ Student projects (archive) ============ -->
     <section id="students" class="students subgrid t-body" aria-labelledby="students-h">
       <div class="st-head">
-        <p class="t-label">(03b) Teaching / Archive</p>
+        <p class="t-label">(03b) Teaching / Student work</p>
         <h2 id="students-h" class="st-title">Teaching</h2>
-        <p class="st-intro">Student projects from courses and seminars. Placeholder entries — replace with student work and permissions before publication.</p>
+        <p class="st-intro">Student projects from courses and seminars — exhibitions, prototypes and workshops.</p>
         <div class="st-tools">
           <div class="st-pills" role="group" aria-label="Filter by course" id="st-filters"></div>
           <p class="st-count" id="st-count" aria-live="polite"></p>
@@ -979,21 +994,293 @@
       /* ---- Student projects archive ----
          Edit this list to add real projects. Fields:
            course: one of the keys in COURSES
-           title, year, students (array), supervision, text (array of paragraphs)
-           images: up to 4 image paths (e.g. "students/nui-01-a.jpg"); empty slots show placeholders */
+           title, year, date, students (optional array), supervision (optional), text (array of paragraphs)
+           images: 3-4 objects { src, alt, r } — r = width / height, used to size the photo row */
       var COURSES = {
         nui: { code: '#NUI', name: 'Natural User Interfaces' },
         ii: { code: '#II', name: 'Inclusive Interfaces' }
       };
       var STUDENT_PROJECTS = [
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name', 'Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
-        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] },
-        { course: 'nui',  title: 'Project title', year: '—', students: ['Student name'], images: [] },
-        { course: 'ii',   title: 'Project title', year: '—', students: ['Student name', 'Student name'], images: [] }
+       {
+        "course": "ii",
+        "title": "ÜNIO",
+        "year": "2026",
+        "date": "18 March 2026",
+        "text": [
+         "A head-worn interface “für mehr Barrierefreiheit” — for more accessibility. Exhibition stand, modular components and documentation."
+        ],
+        "images": [
+         {
+          "src": "media/students/unio-01.jpg",
+          "alt": "ÜNIO exhibition stand with posters and head forms",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/unio-02.jpg",
+          "alt": "Head form wearing the ÜNIO device",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/unio-03.jpg",
+          "alt": "ÜNIO components laid out on a board",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/unio-04.jpg",
+          "alt": "ÜNIO documentation booklet",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "nui",
+        "title": "Turn It Up",
+        "year": "2025",
+        "date": "8 December 2025",
+        "text": [
+         "A Bluetooth speaker with deformable input — connect, volume, skip, play / pause through touch on a soft knitted body."
+        ],
+        "images": [
+         {
+          "src": "media/students/turn-it-up-01.jpg",
+          "alt": "Turn It Up speakers and poster on a table",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/turn-it-up-02.jpg",
+          "alt": "Knitted and printed speaker bodies",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/turn-it-up-03.jpg",
+          "alt": "Interaction diagram poster",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "nui",
+        "title": "formFONIE",
+        "year": "2025",
+        "date": "8 December 2025",
+        "text": [
+         "Tufted textile panels wired with electronics — a soft surface as an interface."
+        ],
+        "images": [
+         {
+          "src": "media/students/formfonie-01.jpg",
+          "alt": "Tufted textile surface in blue, red and white",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/formfonie-02.jpg",
+          "alt": "Wiring and electronics behind the textile panels",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/formfonie-03.jpg",
+          "alt": "Textile and copper sensor samples",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "ii",
+        "title": "Belly Bond",
+        "year": "2024",
+        "date": "11 October 2024",
+        "text": [
+         "A wearable belt with soft modules, presented with posters, sketches and a dress form."
+        ],
+        "images": [
+         {
+          "src": "media/students/belly-bond-01.jpg",
+          "alt": "Belly Bond exhibition table and posters",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/belly-bond-02.jpg",
+          "alt": "The belt laid flat on the table",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/belly-bond-03.jpg",
+          "alt": "Belt worn on a dress form",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/belly-bond-04.jpg",
+          "alt": "Sketches and module samples",
+          "r": 1.333
+         }
+        ]
+       },
+       {
+        "course": "ii",
+        "title": "Snooze Vest",
+        "year": "2024",
+        "date": "11 October 2024",
+        "text": [
+         "A soft vest and companion app, shown on a torso form with sketchbooks."
+        ],
+        "images": [
+         {
+          "src": "media/students/snooze-vest-01.jpg",
+          "alt": "Snooze Vest on a torso form with posters",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/snooze-vest-02.jpg",
+          "alt": "Vest detail",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/snooze-vest-03.jpg",
+          "alt": "Sketchbook pages",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/snooze-vest-04.jpg",
+          "alt": "Vest fastening detail",
+          "r": 1.333
+         }
+        ]
+       },
+       {
+        "course": "ii",
+        "title": "Aura",
+        "year": "2024",
+        "date": "1 February 2024",
+        "text": [
+         "A medication dispenser, presented with its poster and interface components."
+        ],
+        "images": [
+         {
+          "src": "media/students/aura-01.jpg",
+          "alt": "Exhibition view with the Aura stand",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/aura-02.jpg",
+          "alt": "Aura dispenser detail",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/aura-03.jpg",
+          "alt": "Aura poster",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "ii",
+        "title": "OVY",
+        "year": "2024",
+        "date": "1 February 2024",
+        "text": [
+         "Tactile memory objects — “Ihre Erinnerungen, unsere Magie”."
+        ],
+        "images": [
+         {
+          "src": "media/students/ovy-01.jpg",
+          "alt": "OVY poster and objects",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/ovy-02.jpg",
+          "alt": "OVY objects from above",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/ovy-03.jpg",
+          "alt": "OVY objects and leaflet",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "nui",
+        "title": "Sensor glove",
+        "year": "2025",
+        "date": "23 July 2025",
+        "text": [
+         "A glove prototype with sensors and microcontrollers for hand-based input."
+        ],
+        "images": [
+         {
+          "src": "media/students/sensor-glove-01.jpg",
+          "alt": "Sensor glove with electronics",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/sensor-glove-02.jpg",
+          "alt": "Glove from above",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/sensor-glove-03.jpg",
+          "alt": "Glove connected to a laptop",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "nui",
+        "title": "Sound textiles",
+        "year": "2024",
+        "date": "18 April 2024",
+        "text": [
+         "A session with textile, light and sound prototypes."
+        ],
+        "images": [
+         {
+          "src": "media/students/sound-textiles-01.jpg",
+          "alt": "Workshop room with the textile installation",
+          "r": 1.328
+         },
+         {
+          "src": "media/students/sound-textiles-02.jpg",
+          "alt": "Cable and textile detail",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/sound-textiles-03.jpg",
+          "alt": "Controller with laptop and synth",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/sound-textiles-04.jpg",
+          "alt": "Sound software on screen",
+          "r": 0.75
+         }
+        ]
+       },
+       {
+        "course": "nui",
+        "title": "Physical computing prototypes",
+        "year": "2024",
+        "date": "25 July 2024",
+        "text": [
+         "Sensor objects and circuits built during the course."
+        ],
+        "images": [
+         {
+          "src": "media/students/physical-prototypes-01.jpg",
+          "alt": "Transparent sphere with a circuit inside",
+          "r": 1.333
+         },
+         {
+          "src": "media/students/physical-prototypes-02.jpg",
+          "alt": "Round button interface from above",
+          "r": 0.75
+         },
+         {
+          "src": "media/students/physical-prototypes-03.jpg",
+          "alt": "Plant connected to a light circuit",
+          "r": 1.333
+         }
+        ]
+       }
       ];
       var PLACEHOLDER_TEXT = ['Short description to be added: the question the students worked on, how they approached it, and what came out of it.'];
 
@@ -1004,10 +1291,10 @@
         if (!list) return;
         function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
         function pad(n) { return (n < 10 ? '0' : '') + n; }
-        function img(src, n, cls) {
-          return '<div class="st-img ' + cls + '">' + (src
-            ? '<img src="' + esc(src) + '" alt="" loading="lazy">'
-            : '<span class="st-img__label t-label">Image ' + pad(n) + '</span><span class="st-img__mark" aria-hidden="true">○</span>') + '</div>';
+        function photos(list) {
+          return '<div class="st-imgs">' + list.map(function (im) {
+            return '<figure class="st-img" style="--r:' + im.r + '"><img src="' + esc(im.src) + '" alt="' + esc(im.alt) + '" loading="lazy"></figure>';
+          }).join('') + '</div>';
         }
         list.innerHTML = STUDENT_PROJECTS.map(function (p, i) {
           var c = COURSES[p.course] || { code: '#', name: '' };
@@ -1024,13 +1311,14 @@
               '<span class="st-dot" aria-hidden="true"></span>' +
             '</button>' +
             '<div class="st-panel" id="' + id + '"><div><div class="st-panel__inner">' +
-              img(im[0], 1, 'st-a') + img(im[1], 2, 'st-b') + img(im[2], 3, 'st-c') + img(im[3], 4, 'st-d') +
+              photos(im) +
               '<dl class="st-meta">' +
-                '<dt>Students</dt><dd>' + (p.students || []).map(esc).join('<br>') + '</dd>' +
+                (p.students && p.students.length ? '<dt>Students</dt><dd>' + p.students.map(esc).join('<br>') + '</dd>' : '') +
                 '<dt>Course</dt><dd>' + esc(c.name) + '</dd>' +
+                (p.date ? '<dt>Documented</dt><dd>' + esc(p.date) + '</dd>' : '') +
                 (p.supervision ? '<dt>Supervision</dt><dd>' + esc(p.supervision) + '</dd>' : '') +
               '</dl>' +
-              '<div class="st-desc">' + text + (p.text && p.text.length ? '' : '<p class="note">Placeholder entry.</p>') + '</div>' +
+              '<div class="st-desc">' + text + '</div>' +
             '</div></div></div>' +
           '</li>';
         }).join('');

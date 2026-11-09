@@ -10,7 +10,7 @@ SVGS = json.load(open(os.path.join(HERE, "svgs.json")))
 FIG_DIR = os.path.join(HERE, "figures")
 # figure shown in the right-hand column of each project page: (file, number, caption)
 PROJECT_FIGS = [("01-drawing-in-air", 1, "Drawing in air"), ("02-headset", 2, "Headset"),
-                ("05-axes", 5, "Perception, action, interface")]
+                ("05-axes", 5, "Perception, action, interface"), ("03-signal", 3, "Signal")]
 def fig(i):
     f, n, cap = PROJECTS[i].get("fig") or PROJECT_FIGS[i]
     svg = open(os.path.join(FIG_DIR, f + ".svg")).read()
@@ -30,7 +30,20 @@ PROJECTS = [
          lead="Prototypes, methods, and experiments at the edges of emerging interfaces.",
          short="Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.",
          detail="Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.",
-         status="Illustrative study / 02. Current graphic is illustrative imagery."),
+         status="Project documentation / 02. Photographs from museum VR sketching, sessions and reading.",
+         media=dict(
+             dir="../media/speclab",
+             figure=("museum-vr-03.jpg", "Dense VR line drawing"),
+             thumbs=[("museum-vr-01.jpg", "Notes and photos from a museum VR sketching session"),
+                     ("museum-vr-02.jpg", "VR sketch overlaid on a museum visitor"),
+                     ("sessions-01.jpg", "Group sketching session with VR headsets")],
+             stage=("museum-vr-02.jpg", "Museum VR sketching — drawing around objects"),
+             side=("materiality-03.jpg", "Hands weaving on a loom"),
+             tall=("materiality-01.jpg", "Matters of Activity — Rethinking Materiality, Rethinking Knowledge"),
+             tex_a=("sessions-02.jpg", "Printed VR sketches laid out on a table"),
+             tex_b=("sessions-03.jpg", "VR sketch on screen"),
+         ),
+         docs="speclab"),
     dict(slug="03-movement-based-research", no="03", title="Movement-based research",
          area="Software research", type="Ongoing, 2023–present",
          filters=["Spatial interaction", "Methods & interfaces"],
@@ -62,6 +75,27 @@ PROJECTS = [
              ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)<br>L. E. Boxall, “Printing with magnetic inks”"),
              ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
+    dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters",
+         area="Visualization", type="Collaborative work, Charité",
+         filters=["Visualization", "Methods & interfaces"],
+         lead="Making complex anatomical information more navigable and interpretable.",
+         short="Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.",
+         detail="An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.",
+         status="Project documentation / 04. Photographs from drawing sessions, VR sketching and visualisation work.",
+         fig=("03-signal", 3, "Signal"),
+         media=dict(
+             dir="../media/subcortical",
+             figure=("through-the-headset-04.jpg", "Hand drawings of brain sections"),
+             thumbs=[("through-the-headset-01.jpg", "Brain model seen through the headset lens"),
+                     ("through-the-headset-02.jpg", "Ventricles drawn in VR, seen through the lens"),
+                     ("visualisation-01.jpg", "Fibre tractography on screen")],
+             stage=("through-the-headset-01.jpg", "Brain structures in VR, seen through the headset lens"),
+             side=("visualisation-02.jpg", "Colourful fibre drawing"),
+             tall=("charite-workshop-02.jpg", "Participants around an anatomical brain model"),
+             tex_a=("charite-workshop-04.jpg", "Headsets, brain models and drawings on a table"),
+             tex_b=("visualisation-03.jpg", "Voxel and diffusion forms"),
+         ),
+         docs="subcortical"),
 ]
 
 def crop(svg, vb, extra=""):
@@ -163,6 +197,22 @@ def diagram():
     return ('<svg class="dg" viewBox="0 0 1200 700" role="img" aria-label="Diagram: body movement as input, translated from continuous movement into discrete code; input modes eye drawing, hand gesture and full body.">'
             + "".join(L) + "</svg>")
 
+MEDIA = json.load(open(os.path.join(HERE, "media.json")))
+
+def docs_html(cat):
+    """Documentation blocks: header bar, short text, a justified row of 3-4 photos."""
+    out = ['<section class="docs" aria-label="Documentation">']
+    for n, blk in enumerate(MEDIA[cat], 1):
+        imgs = "".join(
+            f'<figure class="doc__img" style="--r:{im["r"]}"><img src="../{im["src"]}" alt="{html.escape(im["alt"])}" loading="lazy"></figure>'
+            for im in blk["images"])
+        out.append(
+            f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
+            f'<span class="muted">{esc(blk["meta"])}</span></header>'
+            f'<p class="doc__text">{esc(blk["text"])}</p><div class="doc__row">{imgs}</div></article>')
+    out.append("</section>")
+    return "".join(out)
+
 CSS = open(os.path.join(HERE, "project.css")).read()
 JS = open(os.path.join(HERE, "project.js")).read()
 
@@ -193,12 +243,13 @@ def page(i, p):
             f'{crop(svg, c)}</button>'
             for k, c in enumerate(CROPS))
     total = len(PROJECTS)
+    docs = docs_html(p["docs"]) if p.get("docs") else ""
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
     if M:
         figure_html = f'<div class="figure figure--img">{img("figure", cap=False)}<p class="figure__cap">{esc(M["figure"][1])}</p></div>'
         stage_html = f'<p class="stage__caption">{esc(M["stage"][1])}</p><div class="stage__img" id="stage">{img("stage", cap=False)}</div>'
-        strip_html = f'<div class="tile strip">{img("strip")}</div>'
+        strip_html = f'<div class="tile strip">{img("strip")}</div>' if "strip" in M else ""
         side_html = f'<div class="tile side__small">{img("side")}</div>'
         tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>'
         texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>'
@@ -313,6 +364,7 @@ def page(i, p):
     </div>
   </div>
 
+  {docs}
   {diagram_html}
 
   <!-- ============ Sticky action bar ============ -->

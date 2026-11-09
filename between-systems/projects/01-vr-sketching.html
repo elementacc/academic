@@ -189,6 +189,16 @@
     body.dark .strip { background: var(--layer1Color); }
     .texture img { object-fit: cover; object-position: top; }
 
+    /* ---------- Documentation blocks ---------- */
+    .docs { padding: calc(var(--gap) * 3) var(--gap) 0; display: grid; gap: calc(var(--gap) * 5); }
+    .doc__head { display: flex; justify-content: space-between; gap: 12px; }
+    .doc__text { padding: 10px 8px 12px; max-width: 60ch; }
+    .doc__row { display: flex; flex-wrap: wrap; gap: var(--gap); }
+    .doc__img { margin: 0; flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; background: var(--layer1Color); overflow: hidden; }
+    .doc__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+    .doc__img:hover img { transform: scale(1.03); }
+    @media (max-width: 639px) { .doc__img { flex: 1 1 calc(50% - var(--gap)); aspect-ratio: auto; height: 46vw; } }
+
     /* ---------- Diagram (fig. 01) ---------- */
     .diagram { padding: calc(var(--gap) * 3) var(--gap) 0; }
     .diagram__frame { padding: 28px 8px 8px; overflow: hidden; }
@@ -350,7 +360,7 @@
             <h1 class="bar">VR Sketching</h1>
             <div class="block__body">
               <p>Drawing without a page<br>Longitudinal study<br>Spatial interaction + Methods &amp; interfaces</p>
-              <p class="muted">№01 / 03 &nbsp;·&nbsp; 01 Research</p>
+              <p class="muted">№01 / 04 &nbsp;·&nbsp; 01 Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -379,7 +389,7 @@
               <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
             </div>
             <span class="sel__label">Project</span>
-            <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item is-active" aria-current="page" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item" title="Movement-based research">03</a></nav>
+            <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item is-active" aria-current="page" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item" title="Movement-based research">03</a><a href="04-subcortical-matters.html" class="sel__item" title="Subcortical Matters">04</a></nav>
           </div>
           <div class="stage tile">
             <p class="stage__caption">VR Sketching — illustrative study 01</p><div class="stage__svg" id="stage"><svg  viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
@@ -397,7 +407,7 @@
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Index</span><span>03</span></a>
+          <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
           <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
 <path d="M58 140 L42 74 M74 132 L68 52 M90 132 L96 54 M104 138 L124 76"/>
 <path d="M56 146 L30 116"/>
@@ -441,6 +451,7 @@
     </div>
   </div>
 
+  
   
 
   <!-- ============ Sticky action bar ============ -->

@@ -189,6 +189,16 @@
     body.dark .strip { background: var(--layer1Color); }
     .texture img { object-fit: cover; object-position: top; }
 
+    /* ---------- Documentation blocks ---------- */
+    .docs { padding: calc(var(--gap) * 3) var(--gap) 0; display: grid; gap: calc(var(--gap) * 5); }
+    .doc__head { display: flex; justify-content: space-between; gap: 12px; }
+    .doc__text { padding: 10px 8px 12px; max-width: 60ch; }
+    .doc__row { display: flex; flex-wrap: wrap; gap: var(--gap); }
+    .doc__img { margin: 0; flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; background: var(--layer1Color); overflow: hidden; }
+    .doc__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+    .doc__img:hover img { transform: scale(1.03); }
+    @media (max-width: 639px) { .doc__img { flex: 1 1 calc(50% - var(--gap)); aspect-ratio: auto; height: 46vw; } }
+
     /* ---------- Diagram (fig. 01) ---------- */
     .diagram { padding: calc(var(--gap) * 3) var(--gap) 0; }
     .diagram__frame { padding: 28px 8px 8px; overflow: hidden; }
@@ -306,7 +316,7 @@
             <h1 class="bar">Movement-based research</h1>
             <div class="block__body">
               <p>Software research<br>Ongoing, 2023–present<br>Spatial interaction + Methods &amp; interfaces</p>
-              <p class="muted">№03 / 03 &nbsp;·&nbsp; 01 Research</p>
+              <p class="muted">№03 / 04 &nbsp;·&nbsp; 01 Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -335,14 +345,14 @@
               <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
             </div>
             <span class="sel__label">Project</span>
-            <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item is-active" aria-current="page" title="Movement-based research">03</a></nav>
+            <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item is-active" aria-current="page" title="Movement-based research">03</a><a href="04-subcortical-matters.html" class="sel__item" title="Subcortical Matters">04</a></nav>
           </div>
           <div class="stage tile">
             <p class="stage__caption">Body-Sketch UI — draw with your fingers</p><div class="stage__img" id="stage"><img src="media/movement/ui-finger-drawing.png" alt="Body-Sketch UI — draw with your fingers" loading="lazy"></div>
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Index</span><span>03</span></a>
+          <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
           <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
 <path d="M100 100 L100 22" stroke="#6b7d1e" stroke-width="4"/>
 <path d="M100 100 L32 140" stroke="#e8432f" stroke-width="4"/>
@@ -369,12 +379,13 @@
     </div>
   </div>
 
+  
   <section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2><div class="diagram__frame"><svg class="dg" viewBox="0 0 1200 700" role="img" aria-label="Diagram: body movement as input, translated from continuous movement into discrete code; input modes eye drawing, hand gesture and full body."><text class="dg-t k" x="600" y="62" text-anchor="middle" style="transition-delay:0.05s;font-size:58px">Body</text><line class="dg-l solid" x1="600" y1="82" x2="600" y2="292" style="transform-origin:600px 82px;transition-delay:0.1s"/><text class="dg-t k" x="600" y="362" text-anchor="middle" style="transition-delay:0.35s;font-size:58px">Input</text><line class="dg-l solid" x1="600" y1="388" x2="600" y2="598" style="transform-origin:600px 388px;transition-delay:0.3s"/><text class="dg-t k" x="600" y="668" text-anchor="middle" style="transition-delay:0.55s;font-size:58px">Code</text><line class="dg-l dot" x1="70" y1="378" x2="548" y2="344" style="transform-origin:70px 378px;transition-delay:0.6s"/><line class="dg-l dot" x1="672" y1="336" x2="1128" y2="304" style="transform-origin:672px 336px;transition-delay:0.75s"/><text class="dg-t k" x="42" y="380" text-anchor="middle" transform="rotate(-90 42 380)" style="transition-delay:0.7s;font-size:46px">continuous</text><text class="dg-t k" x="1160" y="300" text-anchor="middle" transform="rotate(90 1160 300)" style="transition-delay:0.85s;font-size:46px">discrete</text><line class="dg-l dash" x1="548" y1="372" x2="130" y2="628" style="transform-origin:548px 372px;transition-delay:0.95s"/><line class="dg-l dash" x1="652" y1="312" x2="1070" y2="66" style="transform-origin:652px 312px;transition-delay:1.05s"/><line class="dg-l dash" x1="636" y1="652" x2="1010" y2="652" style="transform-origin:636px 652px;transition-delay:1.15s"/><text class="dg-t g" x="18" y="672" text-anchor="start" style="transition-delay:1.1s;font-size:46px">Hand gesture</text><text class="dg-t g" x="1182" y="54" text-anchor="end" style="transition-delay:1.2s;font-size:46px">Eye drawing</text><text class="dg-t g" x="1182" y="668" text-anchor="end" style="transition-delay:1.3s;font-size:46px">Full body</text><line class="dg-l thin" x1="392" y1="282" x2="566" y2="330" style="transform-origin:392px 282px;transition-delay:1.35s"/><line class="dg-l thin" x1="632" y1="366" x2="700" y2="404" style="transform-origin:632px 366px;transition-delay:1.45s"/><text class="dg-t k" x="258" y="262" text-anchor="start" style="transition-delay:1.4s;font-size:17px">Movement</text><text class="dg-t k" x="258" y="282" text-anchor="start" style="transition-delay:1.4s;font-size:17px">qualities</text><text class="dg-t k" x="704" y="422" text-anchor="start" style="transition-delay:1.5s;font-size:17px">Body-Sketch</text><text class="dg-t k" x="704" y="442" text-anchor="start" style="transition-delay:1.5s;font-size:17px">immersive drawing</text><text class="dg-t k it" x="548" y="512" text-anchor="middle" style="transition-delay:1.6s;font-size:12px">fig. 01</text><circle class="dg-pulse" cx="600" cy="340" r="62"/></svg></div></section>
 
   <!-- ============ Sticky action bar ============ -->
   <div class="dock">
-    <a class="dock__bar" href="01-vr-sketching.html">
-      <span>Next project — VR Sketching</span><span>№01 →</span>
+    <a class="dock__bar" href="04-subcortical-matters.html">
+      <span>Next project — Subcortical Matters</span><span>№04 →</span>
     </a>
     <a class="dock__back" href="../index.html#research">← All research</a>
   </div>
