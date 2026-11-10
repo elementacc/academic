@@ -185,7 +185,7 @@
     .doc__credit { padding: 8px 8px 0; font-size: .85em; }
     .doc__credit a { text-decoration: underline; text-underline-offset: .2em; }
     .doc__row { display: flex; flex-wrap: wrap; gap: var(--gap); }
-    .doc__img { margin: 0; flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; background: var(--layer1Color); overflow: hidden; }
+    .doc__img { margin: 0; flex: 0 1 auto; --h: clamp(11rem, 17vw, 17rem); height: var(--h); width: calc(var(--h) * var(--r)); max-width: 100%; background: var(--layer1Color); overflow: hidden; }
     .doc__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
     .doc__img:hover img { transform: scale(1.03); }
     @media (max-width: 639px) { .doc__img { flex: 1 1 calc(50% - var(--gap)); aspect-ratio: auto; height: 46vw; } }

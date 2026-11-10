@@ -363,39 +363,14 @@
   {
    "key": "kunstgewerbemuseum",
    "title": "Museum VR sketching",
-   "meta": "Kunstgewerbemuseum Berlin",
-   "text": "Sketching in VR among the collection of the Kunstgewerbemuseum: drawing around objects in the vitrines, on paper and in the headset.",
+   "meta": "Kunstgewerbemuseum Berlin, 2024",
+   "text": "Sketching in VR among the collection, and the session drawn while it happened.",
    "images": [
-    {
-     "src": "media/speclab/kgm-15.jpg",
-     "alt": "Two participants sketching in VR among the vitrines",
-     "r": 1.333
-    },
-    {
-     "src": "media/speclab/kgm-02.jpg",
-     "alt": "Two participants drawing in VR",
-     "r": 1.332
-    },
     {
      "src": "media/speclab/kgm-03.jpg",
      "alt": "VR sketch placed next to a coral in a vitrine",
      "r": 1.0
     },
-    {
-     "src": "media/speclab/kgm-04.jpg",
-     "alt": "Sketch on paper of a coral",
-     "r": 0.75
-    }
-   ],
-   "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants"
-  },
-  {
-   "key": "sketched",
-   "title": "Sketched in the museum",
-   "meta": "Kunstgewerbemuseum Berlin, 30 May 2024",
-   "text": "The session drawn while it happened: presenting movement-based immersive interfaces, and more-than-human sketching among the vitrines.",
-   "credit": "Sketch overlays: Maxime Le Calvé",
-   "images": [
     {
      "src": "media/speclab/kgm-16.jpg",
      "alt": "Sketch overlay of a presentation on movement-based immersive interfaces",
@@ -405,18 +380,9 @@
      "src": "media/speclab/kgm-17.jpg",
      "alt": "Sketch overlay: more-than-human sketching at the Kunstgewerbemuseum",
      "r": 1.431
-    },
-    {
-     "src": "media/speclab/kgm-18.jpg",
-     "alt": "Vitrine with corals and a brain coral",
-     "r": 1.333
-    },
-    {
-     "src": "media/speclab/kgm-19.jpg",
-     "alt": "Drawing a shell on a clipboard",
-     "r": 1.333
     }
-   ]
+   ],
+   "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé. Sketch overlays: Maxime Le Calvé"
   },
   {
    "key": "materials",
@@ -428,11 +394,6 @@
     {
      "src": "media/speclab/mlc-01.jpg",
      "alt": "VR sketch: coral texture",
-     "r": 1.0
-    },
-    {
-     "src": "media/speclab/mlc-02.jpg",
-     "alt": "VR sketch placed in a museum vitrine",
      "r": 1.0
     },
     {
@@ -448,48 +409,14 @@
    ]
   },
   {
-   "key": "teaching",
-   "title": "Workshop in the galleries",
-   "meta": "Kunstgewerbemuseum Berlin",
-   "text": "Participants drawing among the collection: on paper, on tablets and in VR headsets.",
-   "credit": "Photos: Kotryna Slapsinskaite and workshop participants",
-   "images": [
-    {
-     "src": "media/speclab/kgm-10.jpg",
-     "alt": "Drawing in VR next to a vitrine",
-     "r": 1.332
-    },
-    {
-     "src": "media/speclab/kgm-06.jpg",
-     "alt": "Workshop participants around the table",
-     "r": 1.333
-    },
-    {
-     "src": "media/speclab/kgm-11.jpg",
-     "alt": "Drawing on a tablet in the exhibition",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/kgm-07.jpg",
-     "alt": "Drawing in front of a vitrine",
-     "r": 1.333
-    }
-   ]
-  },
-  {
    "key": "workshop-2023",
    "title": "Site-Writing with Technologies of Capture",
    "meta": "Kunstgewerbemuseum Berlin, 13–14 December 2023",
-   "text": "Workshop in the museum's study room: drawing, pinning up and discussing sketches before working in the galleries.",
+   "text": "Workshop in the museum's study room: drawing, pinning up and discussing sketches.",
    "images": [
     {
      "src": "media/speclab/kgm-20.jpg",
      "alt": "Kunstgewerbemuseum entrance",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/kgm-21.jpg",
-     "alt": "Workshop participants at the table",
      "r": 0.75
     },
     {
@@ -503,30 +430,6 @@
      "r": 0.75
     }
    ]
-  },
-  {
-   "key": "sessions",
-   "title": "Sketching sessions",
-   "meta": "2024–2025",
-   "text": "Printed sketches from the headset and a VR sketch on screen.",
-   "images": [
-    {
-     "src": "media/speclab/sessions-02.jpg",
-     "alt": "Printed VR sketches laid out on a table",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/sessions-03.jpg",
-     "alt": "VR sketch on screen",
-     "r": 1.333
-    },
-    {
-     "src": "media/speclab/sessions-04.jpg",
-     "alt": "Printed VR sketch detail",
-     "r": 0.75
-    }
-   ],
-   "credit": "VR sketch overlays: Maxime Le Calvé"
   }
  ]
 }
