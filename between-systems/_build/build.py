@@ -94,10 +94,10 @@ PROJECTS = [
                      ("through-the-headset-02.jpg", "Ventricles drawn in VR, seen through the lens"),
                      ("visualisation-01.jpg", "Fibre tractography on screen")],
              stage=("through-the-headset-01.jpg", "Brain structures in VR, seen through the headset lens"),
-             side=("visualisation-02.jpg", "Colourful fibre drawing"),
+             side=("lila-02.jpg", "Fibre tracts within a translucent brain model"),
              tall=("charite-workshop-02.jpg", "Participants around an anatomical brain model"),
              tex_a=("charite-workshop-04.jpg", "Headsets, brain models and drawings on a table"),
-             tex_b=("visualisation-03.jpg", "Voxel and diffusion forms"),
+             tex_b=("lila-01.jpg", "Fibre tracts and voxel points in an immersive scene"),
          ),
          docs="subcortical"),
 ]
