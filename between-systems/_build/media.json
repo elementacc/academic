@@ -340,9 +340,9 @@
    "text": "Sketching in VR among the collection of the Kunstgewerbemuseum: drawing around objects in the vitrines, on paper and in the headset.",
    "images": [
     {
-     "src": "media/speclab/kgm-01.jpg",
-     "alt": "Participants sketching in VR in the museum galleries",
-     "r": 1.505
+     "src": "media/speclab/kgm-15.jpg",
+     "alt": "Two participants sketching in VR among the vitrines",
+     "r": 1.333
     },
     {
      "src": "media/speclab/kgm-02.jpg",
@@ -393,14 +393,15 @@
   },
   {
    "key": "teaching",
-   "title": "Teaching museum VR sketching",
-   "meta": "Workshop",
-   "text": "Introducing museum VR sketching to workshop participants, followed by drawing in the galleries.",
+   "title": "Workshop in the galleries",
+   "meta": "Kunstgewerbemuseum Berlin",
+   "text": "Participants drawing among the collection: on paper, on tablets and in VR headsets.",
+   "credit": "Photos: Kotryna Slapsinskaite and workshop participants",
    "images": [
     {
-     "src": "media/speclab/kgm-05.jpg",
-     "alt": "Presentation: Museum Virtual Reality Sketching",
-     "r": 1.333
+     "src": "media/speclab/kgm-10.jpg",
+     "alt": "Drawing in VR next to a vitrine",
+     "r": 1.332
     },
     {
      "src": "media/speclab/kgm-06.jpg",
@@ -408,24 +409,23 @@
      "r": 1.333
     },
     {
+     "src": "media/speclab/kgm-11.jpg",
+     "alt": "Drawing on a tablet in the exhibition",
+     "r": 0.75
+    },
+    {
      "src": "media/speclab/kgm-07.jpg",
      "alt": "Drawing in front of a vitrine",
      "r": 1.333
     }
-   ],
-   "credit": "Photos: workshop participants"
+   ]
   },
   {
    "key": "sessions",
    "title": "Sketching sessions",
    "meta": "2024–2025",
-   "text": "Group sessions in VR and printed sketches from the headset.",
+   "text": "Printed sketches from the headset and a VR sketch on screen.",
    "images": [
-    {
-     "src": "media/speclab/sessions-01.jpg",
-     "alt": "Group sketching session with VR headsets",
-     "r": 0.75
-    },
     {
      "src": "media/speclab/sessions-02.jpg",
      "alt": "Printed VR sketches laid out on a table",
