@@ -39,11 +39,12 @@ PROJECTS = [
                      ("kgm-02.jpg", "Two participants drawing in VR")],
              stage=("museum-vr-02.jpg", "Museum VR sketching: sketch overlay at the Kunstgewerbemuseum"),
              side=("mlc-03.jpg", "VR sketch: medusa, by Maxime Le Calvé"),
-             tall=("materiality-01.jpg", "Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
+             tall=("materiality-01.jpg", "Publication: “The Navigational Technè: From Static Frames to Perpetual Motion”, in Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
              tex_a=("kgm-13.jpg", "Drawing in VR beside a coral vitrine"),
              tex_b=("kgm-14.jpg", "Intervention »Wunderkammer«: more than human"),
          ),
          info_blocks=[
+             ("Publication", "“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>."),
              ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketching materials: Maxime Le Calvé"),
          ],
          ),
