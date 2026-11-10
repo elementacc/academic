@@ -375,58 +375,19 @@
      "src": "media/speclab/kgm-16.jpg",
      "alt": "Sketch overlay of a presentation on movement-based immersive interfaces",
      "r": 1.324
-    },
-    {
-     "src": "media/speclab/kgm-17.jpg",
-     "alt": "Sketch overlay: more-than-human sketching at the Kunstgewerbemuseum",
-     "r": 1.431
     }
    ],
    "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé. Sketch overlays: Maxime Le Calvé"
   },
   {
-   "key": "materials",
-   "title": "Sketching materials",
-   "meta": "Maxime Le Calvé",
-   "text": "VR sketches, textures and visual material for the museum sketching sessions.",
-   "credit": "All sketching materials: Maxime Le Calvé",
-   "images": [
-    {
-     "src": "media/speclab/mlc-01.jpg",
-     "alt": "VR sketch: coral texture",
-     "r": 1.0
-    },
-    {
-     "src": "media/speclab/mlc-03.jpg",
-     "alt": "VR sketch: medusa",
-     "r": 1.777
-    },
-    {
-     "src": "media/speclab/mlc-04.jpg",
-     "alt": "more than human sketching 2",
-     "r": 1.415
-    }
-   ]
-  },
-  {
    "key": "workshop-2023",
    "title": "Site-Writing with Technologies of Capture",
    "meta": "Kunstgewerbemuseum Berlin, 13–14 December 2023",
-   "text": "Workshop in the museum's study room: drawing, pinning up and discussing sketches.",
+   "text": "Workshop at the Kunstgewerbemuseum, with drawing, pinning up and discussing sketches.",
    "images": [
     {
      "src": "media/speclab/kgm-20.jpg",
      "alt": "Kunstgewerbemuseum entrance",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/kgm-22.jpg",
-     "alt": "Sketches pinned to a board",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/kgm-23.jpg",
-     "alt": "Coloured pencils and paper",
      "r": 0.75
     }
    ]
