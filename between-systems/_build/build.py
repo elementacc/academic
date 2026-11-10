@@ -37,7 +37,7 @@ PROJECTS = [
              thumbs=[("museum-vr-01.jpg", "Notes and photos from a museum VR sketching session"),
                      ("museum-vr-02.jpg", "VR sketch overlaid on a museum visitor"),
                      ("kgm-02.jpg", "Two participants drawing in VR")],
-             stage=("kgm-15.jpg", "Museum VR sketching at the Kunstgewerbemuseum"),
+             stage=("museum-vr-02.jpg", "Museum VR sketching: sketch overlay at the Kunstgewerbemuseum"),
              side=("mlc-03.jpg", "VR sketch: medusa, by Maxime Le Calvé"),
              tall=("materiality-01.jpg", "Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
              tex_a=("kgm-13.jpg", "Drawing in VR beside a coral vitrine"),
@@ -46,7 +46,7 @@ PROJECTS = [
          info_blocks=[
              ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketching materials: Maxime Le Calvé"),
          ],
-         docs="speclab"),
+         ),
     dict(slug="03-movement-based-research", no="03", title="Movement-based research",
          area="Software research", type="Ongoing, 2023–present",
          filters=["Spatial interaction", "Methods & interfaces"],
