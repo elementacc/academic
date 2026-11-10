@@ -3,10 +3,10 @@
   {
    "key": "unio",
    "title": "ÜNIO",
-   "course": "ii",
+   "course": "thesis",
    "year": "2026",
    "date": "18 March 2026",
-   "text": "A head-worn interface “für mehr Barrierefreiheit” — for more accessibility. Exhibition stand, modular components and documentation.",
+   "text": "Thesis project in Industrial Design. ÜNIO is a head-worn mouse for people with quadriplegia, designed “für mehr Barrierefreiheit” (for more accessibility).",
    "images": [
     {
      "src": "media/students/unio-01.jpg",
@@ -36,7 +36,7 @@
    "course": "nui",
    "year": "2025",
    "date": "8 December 2025",
-   "text": "A Bluetooth speaker with deformable input — connect, volume, skip, play / pause through touch on a soft knitted body.",
+   "text": "A Bluetooth speaker with deformable input: connect, volume, skip and play / pause through touch on a soft knitted body.",
    "images": [
     {
      "src": "media/students/turn-it-up-01.jpg",
@@ -61,7 +61,7 @@
    "course": "nui",
    "year": "2025",
    "date": "8 December 2025",
-   "text": "Tufted textile panels wired with electronics — a soft surface as an interface.",
+   "text": "Tufted textile panels wired with electronics, turning a soft surface into an interface.",
    "images": [
     {
      "src": "media/students/formfonie-01.jpg",
@@ -86,7 +86,7 @@
    "course": "ii",
    "year": "2024",
    "date": "11 October 2024",
-   "text": "A wearable belt with soft modules, presented with posters, sketches and a dress form.",
+   "text": "A wearable that lets partners and the social environment of a pregnant person feel the baby's movements. Two straps are worn around each person's stomach: pressure sensors in one detect the movements and send signals to the other, which simulates them in real time as light pressure or vibration, at home or on the move, even when apart.",
    "images": [
     {
      "src": "media/students/belly-bond-01.jpg",
@@ -116,7 +116,7 @@
    "course": "ii",
    "year": "2024",
    "date": "11 October 2024",
-   "text": "A soft vest and companion app, shown on a torso form with sketchbooks.",
+   "text": "A smart vest that prevents snoring and analyses sleep. Body sensors capture heartbeat, breathing, body temperature, movement and sleeping position; built-in vibration units wake the wearer gently, and detachable blocks help to avoid sleeping on the back. The Snooze app visualises sleep cycles and flags possible sleep apnea.",
    "images": [
     {
      "src": "media/students/snooze-vest-01.jpg",
@@ -146,21 +146,11 @@
    "course": "ii",
    "year": "2024",
    "date": "1 February 2024",
-   "text": "A medication dispenser, presented with its poster and interface components.",
+   "text": "An AI-powered medication dispenser for people with dementia and older people living independently. It dispenses medication on time, checks in daily with a comforting voice, answers questions about routines and connects with family members, helping people stay autonomous at home or in a care facility.",
    "images": [
-    {
-     "src": "media/students/aura-01.jpg",
-     "alt": "Exhibition view with the Aura stand",
-     "r": 1.333
-    },
     {
      "src": "media/students/aura-02.jpg",
      "alt": "Aura dispenser detail",
-     "r": 0.75
-    },
-    {
-     "src": "media/students/aura-03.jpg",
-     "alt": "Aura poster",
      "r": 0.75
     }
    ]
@@ -171,7 +161,7 @@
    "course": "ii",
    "year": "2024",
    "date": "1 February 2024",
-   "text": "Tactile memory objects — “Ihre Erinnerungen, unsere Magie”.",
+   "text": "Tactile memory objects: “Ihre Erinnerungen, unsere Magie”.",
    "images": [
     {
      "src": "media/students/ovy-01.jpg",
@@ -182,30 +172,20 @@
      "src": "media/students/ovy-02.jpg",
      "alt": "OVY objects from above",
      "r": 0.75
-    },
-    {
-     "src": "media/students/ovy-03.jpg",
-     "alt": "OVY objects and leaflet",
-     "r": 0.75
     }
    ]
   },
   {
    "key": "sensor-glove",
-   "title": "Sensor glove",
+   "title": "FlipSync",
    "course": "nui",
    "year": "2025",
    "date": "23 July 2025",
-   "text": "A glove prototype with sensors and microcontrollers for hand-based input.",
+   "text": "A sensor glove that measures turned pages and reading rate, for reading analytics and learning purposes.",
    "images": [
     {
      "src": "media/students/sensor-glove-01.jpg",
      "alt": "Sensor glove with electronics",
-     "r": 0.75
-    },
-    {
-     "src": "media/students/sensor-glove-02.jpg",
-     "alt": "Glove from above",
      "r": 0.75
     },
     {
@@ -216,31 +196,26 @@
    ]
   },
   {
-   "key": "sound-textiles",
-   "title": "Sound textiles",
-   "course": "nui",
-   "year": "2024",
-   "date": "18 April 2024",
-   "text": "A session with textile, light and sound prototypes.",
+   "key": "shift",
+   "title": "SHIFT",
+   "course": "thesis",
+   "year": "2026",
+   "date": "18 March 2026",
+   "text": "Thesis project in Industrial Design. SHIFT explores programmable matter as a sustainable and reusable design approach: one neutral block reconfigures into seating with backrest, armrests, adjustable height, inclination, length and width.",
    "images": [
     {
-     "src": "media/students/sound-textiles-01.jpg",
-     "alt": "Workshop room with the textile installation",
-     "r": 1.328
-    },
-    {
-     "src": "media/students/sound-textiles-02.jpg",
-     "alt": "Cable and textile detail",
+     "src": "media/students/shift-01.jpg",
+     "alt": "SHIFT poster and prototypes on a table",
      "r": 0.75
     },
     {
-     "src": "media/students/sound-textiles-03.jpg",
-     "alt": "Controller with laptop and synth",
-     "r": 0.75
+     "src": "media/students/shift-02.jpg",
+     "alt": "Form variations study: one neutral block reconfigured into seating",
+     "r": 1.364
     },
     {
-     "src": "media/students/sound-textiles-04.jpg",
-     "alt": "Sound software on screen",
+     "src": "media/students/shift-03.jpg",
+     "alt": "SHIFT prototypes and material samples",
      "r": 0.75
     }
    ]

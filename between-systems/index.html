@@ -480,7 +480,7 @@
     .st-img__label { position: absolute; left: .5rem; top: .45rem; }
     .st-img__mark { position: absolute; inset: 0; display: grid; place-items: center; color: var(--textTertiaryColor); font-size: 1.5rem; }
     .st-imgs { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--grid-gutter); }
-    .st-imgs .st-img { margin: 0; flex: var(--r) 1 0; aspect-ratio: var(--r); min-width: 0; height: auto; }
+    .st-imgs .st-img { margin: 0; flex: 0 0 auto; height: var(--st-h, 18rem); width: calc(var(--st-h, 18rem) * var(--r)); min-width: 0; }
     .st-imgs .st-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 767px) { .st-imgs .st-img { flex: 1 1 calc(50% - var(--grid-gutter)); aspect-ratio: auto; height: 44vw; } }
     @media (min-width: 768px) { .st-meta { grid-row: 2; } .st-desc { grid-row: 2; } }
@@ -892,7 +892,7 @@
       <div class="st-head">
         <p class="t-label">(03b) Teaching / Student work</p>
         <h2 id="students-h" class="st-title">Teaching</h2>
-        <p class="st-intro">Student projects from courses and seminars — exhibitions, prototypes and workshops.</p>
+        <p class="st-intro">Student projects from courses, seminars and theses: exhibitions, prototypes and workshops.</p>
         <div class="st-tools">
           <div class="st-pills" role="group" aria-label="Filter by course" id="st-filters"></div>
           <p class="st-count" id="st-count" aria-live="polite"></p>
@@ -1036,16 +1036,17 @@
            images: 3-4 objects { src, alt, r } — r = width / height, used to size the photo row */
       var COURSES = {
         nui: { code: '#NUI', name: 'Natural User Interfaces' },
-        ii: { code: '#II', name: 'Inclusive Interfaces' }
+        ii: { code: '#II', name: 'Inclusive Interfaces' },
+        thesis: { code: '#TH', name: 'Thesis, Industrial Design' }
       };
       var STUDENT_PROJECTS = [
        {
-        "course": "ii",
+        "course": "thesis",
         "title": "ÜNIO",
         "year": "2026",
         "date": "18 March 2026",
         "text": [
-         "A head-worn interface “für mehr Barrierefreiheit” — for more accessibility. Exhibition stand, modular components and documentation."
+         "Thesis project in Industrial Design. ÜNIO is a head-worn mouse for people with quadriplegia, designed “für mehr Barrierefreiheit” (for more accessibility)."
         ],
         "images": [
          {
@@ -1076,7 +1077,7 @@
         "year": "2025",
         "date": "8 December 2025",
         "text": [
-         "A Bluetooth speaker with deformable input — connect, volume, skip, play / pause through touch on a soft knitted body."
+         "A Bluetooth speaker with deformable input: connect, volume, skip and play / pause through touch on a soft knitted body."
         ],
         "images": [
          {
@@ -1102,7 +1103,7 @@
         "year": "2025",
         "date": "8 December 2025",
         "text": [
-         "Tufted textile panels wired with electronics — a soft surface as an interface."
+         "Tufted textile panels wired with electronics, turning a soft surface into an interface."
         ],
         "images": [
          {
@@ -1128,7 +1129,7 @@
         "year": "2024",
         "date": "11 October 2024",
         "text": [
-         "A wearable belt with soft modules, presented with posters, sketches and a dress form."
+         "A wearable that lets partners and the social environment of a pregnant person feel the baby's movements. Two straps are worn around each person's stomach: pressure sensors in one detect the movements and send signals to the other, which simulates them in real time as light pressure or vibration, at home or on the move, even when apart."
         ],
         "images": [
          {
@@ -1159,7 +1160,7 @@
         "year": "2024",
         "date": "11 October 2024",
         "text": [
-         "A soft vest and companion app, shown on a torso form with sketchbooks."
+         "A smart vest that prevents snoring and analyses sleep. Body sensors capture heartbeat, breathing, body temperature, movement and sleeping position; built-in vibration units wake the wearer gently, and detachable blocks help to avoid sleeping on the back. The Snooze app visualises sleep cycles and flags possible sleep apnea."
         ],
         "images": [
          {
@@ -1190,22 +1191,12 @@
         "year": "2024",
         "date": "1 February 2024",
         "text": [
-         "A medication dispenser, presented with its poster and interface components."
+         "An AI-powered medication dispenser for people with dementia and older people living independently. It dispenses medication on time, checks in daily with a comforting voice, answers questions about routines and connects with family members, helping people stay autonomous at home or in a care facility."
         ],
         "images": [
          {
-          "src": "media/students/aura-01.jpg",
-          "alt": "Exhibition view with the Aura stand",
-          "r": 1.333
-         },
-         {
           "src": "media/students/aura-02.jpg",
           "alt": "Aura dispenser detail",
-          "r": 0.75
-         },
-         {
-          "src": "media/students/aura-03.jpg",
-          "alt": "Aura poster",
           "r": 0.75
          }
         ]
@@ -1216,7 +1207,7 @@
         "year": "2024",
         "date": "1 February 2024",
         "text": [
-         "Tactile memory objects — “Ihre Erinnerungen, unsere Magie”."
+         "Tactile memory objects: “Ihre Erinnerungen, unsere Magie”."
         ],
         "images": [
          {
@@ -1228,31 +1219,21 @@
           "src": "media/students/ovy-02.jpg",
           "alt": "OVY objects from above",
           "r": 0.75
-         },
-         {
-          "src": "media/students/ovy-03.jpg",
-          "alt": "OVY objects and leaflet",
-          "r": 0.75
          }
         ]
        },
        {
         "course": "nui",
-        "title": "Sensor glove",
+        "title": "FlipSync",
         "year": "2025",
         "date": "23 July 2025",
         "text": [
-         "A glove prototype with sensors and microcontrollers for hand-based input."
+         "A sensor glove that measures turned pages and reading rate, for reading analytics and learning purposes."
         ],
         "images": [
          {
           "src": "media/students/sensor-glove-01.jpg",
           "alt": "Sensor glove with electronics",
-          "r": 0.75
-         },
-         {
-          "src": "media/students/sensor-glove-02.jpg",
-          "alt": "Glove from above",
           "r": 0.75
          },
          {
@@ -1263,32 +1244,27 @@
         ]
        },
        {
-        "course": "nui",
-        "title": "Sound textiles",
-        "year": "2024",
-        "date": "18 April 2024",
+        "course": "thesis",
+        "title": "SHIFT",
+        "year": "2026",
+        "date": "18 March 2026",
         "text": [
-         "A session with textile, light and sound prototypes."
+         "Thesis project in Industrial Design. SHIFT explores programmable matter as a sustainable and reusable design approach: one neutral block reconfigures into seating with backrest, armrests, adjustable height, inclination, length and width."
         ],
         "images": [
          {
-          "src": "media/students/sound-textiles-01.jpg",
-          "alt": "Workshop room with the textile installation",
-          "r": 1.328
-         },
-         {
-          "src": "media/students/sound-textiles-02.jpg",
-          "alt": "Cable and textile detail",
+          "src": "media/students/shift-01.jpg",
+          "alt": "SHIFT poster and prototypes on a table",
           "r": 0.75
          },
          {
-          "src": "media/students/sound-textiles-03.jpg",
-          "alt": "Controller with laptop and synth",
-          "r": 0.75
+          "src": "media/students/shift-02.jpg",
+          "alt": "Form variations study: one neutral block reconfigured into seating",
+          "r": 1.364
          },
          {
-          "src": "media/students/sound-textiles-04.jpg",
-          "alt": "Sound software on screen",
+          "src": "media/students/shift-03.jpg",
+          "alt": "SHIFT prototypes and material samples",
           "r": 0.75
          }
         ]
@@ -1367,6 +1343,20 @@
           return '<button class="st-pill button--reset" data-st="' + k + '" aria-pressed="' + (k === 'all') + '">' + esc(label) + '</button>';
         }).join('');
 
+
+        /* every photo row gets the same height: the largest height at which the widest row still fits */
+        function sizeRows() {
+          var w = list.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--grid-gutter')) * 16 || 16;
+          var h = Infinity;
+          STUDENT_PROJECTS.forEach(function (p) {
+            var n = (p.images || []).length; if (!n) return;
+            var sum = p.images.reduce(function (a, im) { return a + im.r; }, 0);
+            h = Math.min(h, (w - (n - 1) * gap) / sum);
+          });
+          list.style.setProperty('--st-h', Math.floor(Math.min(h, 360)) + 'px');
+        }
+        sizeRows();
+        window.addEventListener('resize', sizeRows);
         var items = list.querySelectorAll('.st-item');
         function update(key) {
           var n = 0;
