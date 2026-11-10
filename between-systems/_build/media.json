@@ -334,30 +334,53 @@
  ],
  "speclab": [
   {
-   "key": "museum-vr",
+   "key": "kunstgewerbemuseum",
    "title": "Museum VR sketching",
-   "meta": "2025",
-   "text": "Sketching in VR around museum objects — notes, drawings and overlays.",
+   "meta": "Kunstgewerbemuseum Berlin",
+   "text": "Sketching in VR among the collection of the Kunstgewerbemuseum: drawing around objects in the vitrines, on paper and in the headset.",
    "images": [
     {
-     "src": "media/speclab/museum-vr-01.jpg",
-     "alt": "Notes and photos from a museum VR sketching session",
-     "r": 0.75
+     "src": "media/speclab/kgm-01.jpg",
+     "alt": "Participants sketching in VR in the museum galleries",
+     "r": 1.505
     },
     {
-     "src": "media/speclab/museum-vr-02.jpg",
-     "alt": "VR sketch overlaid on a museum visitor",
-     "r": 0.996
+     "src": "media/speclab/kgm-02.jpg",
+     "alt": "Two participants drawing in VR",
+     "r": 1.332
     },
     {
-     "src": "media/speclab/museum-vr-03.jpg",
-     "alt": "Dense VR line drawing",
-     "r": 0.75
+     "src": "media/speclab/kgm-03.jpg",
+     "alt": "VR sketch placed next to a coral in a vitrine",
+     "r": 1.0
     },
     {
-     "src": "media/speclab/museum-vr-04.jpg",
-     "alt": "Sketch overlay on fabric",
+     "src": "media/speclab/kgm-04.jpg",
+     "alt": "Sketch on paper of a coral",
      "r": 0.75
+    }
+   ]
+  },
+  {
+   "key": "teaching",
+   "title": "Teaching museum VR sketching",
+   "meta": "Workshop",
+   "text": "Introducing museum VR sketching to workshop participants, followed by drawing in the galleries.",
+   "images": [
+    {
+     "src": "media/speclab/kgm-05.jpg",
+     "alt": "Presentation: Museum Virtual Reality Sketching",
+     "r": 1.333
+    },
+    {
+     "src": "media/speclab/kgm-06.jpg",
+     "alt": "Workshop participants around the table",
+     "r": 1.333
+    },
+    {
+     "src": "media/speclab/kgm-07.jpg",
+     "alt": "Drawing in front of a vitrine",
+     "r": 1.333
     }
    ]
   },
@@ -385,34 +408,6 @@
     {
      "src": "media/speclab/sessions-04.jpg",
      "alt": "Printed VR sketch detail",
-     "r": 0.75
-    }
-   ]
-  },
-  {
-   "key": "materiality",
-   "title": "Rethinking materiality",
-   "meta": "Matters of Activity",
-   "text": "Reading, weaving and material thinking around the Cluster of Excellence “Matters of Activity”.",
-   "images": [
-    {
-     "src": "media/speclab/materiality-01.jpg",
-     "alt": "Book cover: Matters of Activity — Rethinking Materiality, Rethinking Knowledge",
-     "r": 0.791
-    },
-    {
-     "src": "media/speclab/materiality-02.jpg",
-     "alt": "Books and materials on a table",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/materiality-03.jpg",
-     "alt": "Hands weaving on a loom",
-     "r": 0.75
-    },
-    {
-     "src": "media/speclab/materiality-04.jpg",
-     "alt": "Book: After Method by John Law",
      "r": 0.75
     }
    ]
