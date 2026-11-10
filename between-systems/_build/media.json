@@ -327,6 +327,25 @@
    ]
   },
   {
+   "key": "textiles",
+   "title": "Textiles",
+   "meta": "Nayeli Vega",
+   "text": "Brain visualisations carried onto textile.",
+   "credit": "Textiles: Nayeli Vega",
+   "images": [
+    {
+     "src": "media/subcortical/textile-01.jpg",
+     "alt": "Textile with brain visualisation, by Nayeli Vega",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/textile-02.jpg",
+     "alt": "Textile detail, by Nayeli Vega",
+     "r": 0.75
+    }
+   ]
+  },
+  {
    "key": "cosmo",
    "title": "[in]visible. The art of visualization",
    "meta": "COSMO Wissenschaftsforum, Dresden, 2025",

@@ -431,6 +431,9 @@
       .st-tools { grid-column: 1 / -1; }
     }
 
+    .st-lab { grid-column: 1 / -1; margin: 0; }
+    .st-lab img { display: block; width: 100%; max-width: 15rem; height: auto; }
+    .st-lab figcaption { margin-top: .4rem; }
     .st-list { grid-column: content; border-top: 1px solid var(--textPrimaryColor); }
     .st-item { border-bottom: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
     .st-item.is-hidden { display: none; }
@@ -897,6 +900,7 @@
           <div class="st-pills" role="group" aria-label="Filter by course" id="st-filters"></div>
           <p class="st-count" id="st-count" aria-live="polite"></p>
         </div>
+        <figure class="st-lab"><img src="media/students/lab.jpg" alt="The lab: an empty room with computers" loading="lazy"><figcaption class="t-label">The lab</figcaption></figure>
       </div>
       <ol class="st-list" id="st-list"></ol>
       <noscript><p class="st-intro" style="margin-top:1rem">Enable JavaScript to browse the student project archive.</p></noscript>
