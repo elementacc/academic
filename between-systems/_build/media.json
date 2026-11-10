@@ -330,6 +330,33 @@
      "r": 1.333
     }
    ]
+  },
+  {
+   "key": "cosmo",
+   "title": "[in]visible. The art of visualization",
+   "meta": "COSMO Wissenschaftsforum, Dresden, 2025",
+   "text": "Our scientific visualisation was part of the exhibition “[un]sichtbar / [in]visible: the art of visualization in science” at COSMO Wissenschaftsforum, Dresden (27 May – 6 August 2025).",
+   "link": [
+    "About the exhibition",
+    "https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/"
+   ],
+   "images": [
+    {
+     "src": "media/subcortical/cosmo-01.jpg",
+     "alt": "COSMO Wissenschaftsforum, Dresden",
+     "r": 0.75
+    },
+    {
+     "src": "media/subcortical/visualisation-02.jpg",
+     "alt": "Colourful fibre drawing",
+     "r": 0.563
+    },
+    {
+     "src": "media/subcortical/cosmo-02.jpg",
+     "alt": "Exhibition sign: [in]visible. The art of visualization",
+     "r": 0.75
+    }
+   ]
   }
  ],
  "speclab": [
@@ -361,6 +388,35 @@
     }
    ],
    "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants"
+  },
+  {
+   "key": "sketched",
+   "title": "Sketched in the museum",
+   "meta": "Kunstgewerbemuseum Berlin, 30 May 2024",
+   "text": "The session drawn while it happened: presenting movement-based immersive interfaces, and more-than-human sketching among the vitrines.",
+   "credit": "Sketch overlays: Maxime Le Calvé",
+   "images": [
+    {
+     "src": "media/speclab/kgm-16.jpg",
+     "alt": "Sketch overlay of a presentation on movement-based immersive interfaces",
+     "r": 1.324
+    },
+    {
+     "src": "media/speclab/kgm-17.jpg",
+     "alt": "Sketch overlay: more-than-human sketching at the Kunstgewerbemuseum",
+     "r": 1.431
+    },
+    {
+     "src": "media/speclab/kgm-18.jpg",
+     "alt": "Vitrine with corals and a brain coral",
+     "r": 1.333
+    },
+    {
+     "src": "media/speclab/kgm-19.jpg",
+     "alt": "Drawing a shell on a clipboard",
+     "r": 1.333
+    }
+   ]
   },
   {
    "key": "materials",
@@ -417,6 +473,34 @@
      "src": "media/speclab/kgm-07.jpg",
      "alt": "Drawing in front of a vitrine",
      "r": 1.333
+    }
+   ]
+  },
+  {
+   "key": "workshop-2023",
+   "title": "Site-Writing with Technologies of Capture",
+   "meta": "Kunstgewerbemuseum Berlin, 13–14 December 2023",
+   "text": "Workshop in the museum's study room: drawing, pinning up and discussing sketches before working in the galleries.",
+   "images": [
+    {
+     "src": "media/speclab/kgm-20.jpg",
+     "alt": "Kunstgewerbemuseum entrance",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/kgm-21.jpg",
+     "alt": "Workshop participants at the table",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/kgm-22.jpg",
+     "alt": "Sketches pinned to a board",
+     "r": 0.75
+    },
+    {
+     "src": "media/speclab/kgm-23.jpg",
+     "alt": "Coloured pencils and paper",
+     "r": 0.75
     }
    ]
   },

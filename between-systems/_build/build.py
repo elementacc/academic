@@ -213,7 +213,9 @@ def docs_html(cat):
             f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
             f'<span class="muted">{esc(blk["meta"])}</span></header>'
             f'<p class="doc__text">{esc(blk["text"])}</p><div class="doc__row">{imgs}</div>'
-            + (f'<p class="doc__credit muted">{esc(blk["credit"])}</p>' if blk.get("credit") else "") + '</article>')
+            + (f'<p class="doc__credit muted">{esc(blk["credit"])}</p>' if blk.get("credit") else "")
+            + (f'<p class="doc__credit"><a href="{html.escape(blk["link"][1])}" target="_blank" rel="noopener">{esc(blk["link"][0])} ↗</a></p>' if blk.get("link") else "")
+            + '</article>')
     out.append("</section>")
     return "".join(out)
 
