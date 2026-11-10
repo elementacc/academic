@@ -359,6 +359,36 @@
      "alt": "Sketch on paper of a coral",
      "r": 0.75
     }
+   ],
+   "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants"
+  },
+  {
+   "key": "materials",
+   "title": "Sketching materials",
+   "meta": "Maxime Le Calvé",
+   "text": "VR sketches, textures and visual material for the museum sketching sessions.",
+   "credit": "All sketching materials: Maxime Le Calvé",
+   "images": [
+    {
+     "src": "media/speclab/mlc-01.jpg",
+     "alt": "VR sketch: coral texture",
+     "r": 1.0
+    },
+    {
+     "src": "media/speclab/mlc-02.jpg",
+     "alt": "VR sketch placed in a museum vitrine",
+     "r": 1.0
+    },
+    {
+     "src": "media/speclab/mlc-03.jpg",
+     "alt": "VR sketch: medusa",
+     "r": 1.777
+    },
+    {
+     "src": "media/speclab/mlc-04.jpg",
+     "alt": "more than human sketching 2",
+     "r": 1.415
+    }
    ]
   },
   {
@@ -382,7 +412,8 @@
      "alt": "Drawing in front of a vitrine",
      "r": 1.333
     }
-   ]
+   ],
+   "credit": "Photos: workshop participants"
   },
   {
    "key": "sessions",
@@ -410,7 +441,8 @@
      "alt": "Printed VR sketch detail",
      "r": 0.75
     }
-   ]
+   ],
+   "credit": "VR sketch overlays: Maxime Le Calvé"
   }
  ]
 }

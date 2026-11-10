@@ -43,6 +43,9 @@ PROJECTS = [
              tex_a=("kgm-05.jpg", "Teaching: Museum Virtual Reality Sketching"),
              tex_b=("kgm-08.jpg", "A VR sketching session in the museum"),
          ),
+         info_blocks=[
+             ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketching materials: Maxime Le Calvé"),
+         ],
          docs="speclab"),
     dict(slug="03-movement-based-research", no="03", title="Movement-based research",
          area="Software research", type="Ongoing, 2023–present",
@@ -209,7 +212,8 @@ def docs_html(cat):
         out.append(
             f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
             f'<span class="muted">{esc(blk["meta"])}</span></header>'
-            f'<p class="doc__text">{esc(blk["text"])}</p><div class="doc__row">{imgs}</div></article>')
+            f'<p class="doc__text">{esc(blk["text"])}</p><div class="doc__row">{imgs}</div>'
+            + (f'<p class="doc__credit muted">{esc(blk["credit"])}</p>' if blk.get("credit") else "") + '</article>')
     out.append("</section>")
     return "".join(out)
 
