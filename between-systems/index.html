@@ -548,6 +548,44 @@
       .ft-copyright p { grid-column-end: span 2; }
       .ft-arrow { position: absolute; top: 0; right: 0; grid-column: 12 / span 1; margin-top: 0; text-align: right; }
     }
+
+    /* =========================================================
+       Section rules — one system for every section line:
+       equal space above each line, equal space from line to label
+       ========================================================= */
+    :root { --section-gap: 7.5rem; --rule-pad: .75rem; }
+    @media (max-width: 1023px) { :root { --section-gap: 5rem; } }
+    /* the title's rule opens the intro: no second line, same padding */
+    main > .text-columns:first-child { margin-top: 0; border-top: none; padding-top: var(--rule-pad); }
+    /* each following section starts with one line */
+    main > .large-text, main > .cases, main > #teaching, main > #students, main > #reflections, main > footer.site {
+      margin-top: var(--section-gap) !important;
+      padding-top: var(--rule-pad) !important;
+      border-top: 1px solid var(--borderColor);
+      transition: border-color .4s var(--ease);
+    }
+    /* About text belongs to the large-text section: no extra line */
+    main > #about { border-top: none; margin-top: 2.5rem !important; padding-top: 0; }
+    .acc-section > .t-label { top: var(--rule-pad); }
+    /* list rows: same spacing in Teaching, archive and Reflections */
+    .acc-item { padding-top: .75rem; }
+    .st-row { padding: .75rem 0; }
+    /* remove hidden trailing space so the visible gap above each line is the same */
+    main > #about { padding-bottom: 0 !important; }
+    .projects .proj:last-child { margin-bottom: 0; }
+    @media (min-width: 1024px) { .projects .proj { margin-bottom: 0; } }
+    .acc-item:last-child .accordion:not(.accordion--open) .acc-headline,
+    .acc-item--static:last-child .acc-headline { margin-bottom: 0; }
+    .acc-item:last-child .accordion:not(.accordion--open) { padding-bottom: 0; margin-bottom: 0; }
+    .wordmark { margin-top: .9rem !important; }
+    @media (min-width: 1024px) { header.site { padding-bottom: var(--rule-pad); } }
+    .ft-contact > p:first-child { margin-top: -.15em; }
+    main > #about .tc-text > *:last-child, main > #about .tc-right, main > #about .tc-left { padding-bottom: 0 !important; margin-bottom: 0; }
+    @media (max-width: 1023px) {
+      .acc-item:last-child .accordion { padding-bottom: 0; margin-bottom: 0; }
+      .acc-item:last-child .acc-topic { margin-bottom: 0; }
+    }
+    .projects .proj:last-child .proj-bottom { min-height: 0; }
   </style>
 </head>
 <body class="light" id="top">
