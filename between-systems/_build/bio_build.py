@@ -9,29 +9,37 @@ def drawing(name):
 
 ROWS = [
   dict(title="Profile", draw="01-headset",
-       a=("Position", [("Artist", ""), ("Assistant researcher, HCI", "HTW Berlin"), ("Ph.D. candidate", "TU Berlin")]),
+       a=("Position", [("Artist", ""), ("Lecturer", "HTW Berlin"), ("Researcher, HCI", "Speculative Realities Lab"), ("Ph.D. candidate", "TU Berlin")]),
        b=("Based in", "Berlin, Germany"),
-       text="Paulina is a Berlin-based artist, assistant researcher in the HCI field at HTW Berlin, and Ph.D. candidate at TU Berlin."),
+       text="I study how interactive technologies shape the ways we perceive, think and move. My starting point is the body: perception, cognition and action form one continuous way of meeting the world, and every interface intervenes in that loop. Trained in psychology and interaction design, I work between first-person inquiry and empirical study, and I build the interfaces I study. My doctoral research follows how people learn to draw in immersive space, without a page to lean on, and how they form spatial references through their own movement. With clinicians, designers and data scientists I develop navigational interfaces for complex neurosurgical imaging, where what an interface makes visible changes what can be understood. Alongside research I teach, run practice-based workshops and make creative technology projects. Increasingly I ask how systems that take part in thinking and making, AI among them, change the conditions under which we perceive, reason and come to know."),
   dict(title="Focus", draw="06-motion-figure",
-       a=("Fields", [("Technology", ""), ("Art & design", ""), ("Space", ""), ("Human perception", "")]),
-       b=("Focus", "Immersive and movement-based interfaces"),
-       text="She explores the relationship between technology, art, design and the concepts of space, and human perceptions, both from theory and practice. Her focus is on immersive and movement-based interfaces."),
+       a=("Fields", [("Embodied cognition", ""), ("Immersive sketching", ""), ("Scientific visualization", ""), ("Non-normative interfaces", "")]),
+       b=("Methods", "Phenomenologically informed inquiry, longitudinal studies, bodystorming, experimental interfaces"),
+       text="I explore the relationship between technology, art, design, space and human perception, both in theory and in practice. My focus is on immersive and movement-based interfaces, and on interaction design that questions assumptions about perception, cognition and bodily ability."),
   dict(title="Practice", draw="05-gaze-drawing",
        a=("Ongoing reflection", [("Dialogues", "")]),
        b=("Through", "Senses, interactive objects, environments"),
-       text="An ongoing reflection upon “Dialogues” as conversations embracing senses, interactive objects, environments. An intent of reasoning and creating different types of dialogues, in various declinations and forms. Confronting constraints and opening channels."),
+       text="An ongoing reflection upon “Dialogues” as conversations embracing senses, interactive objects and environments. An intent of reasoning and creating different types of dialogues, in various declinations and forms. Confronting constraints and opening channels. <a href=\"reflections.html\">Read the reflections</a>"),
   dict(title="Exhibitions", draw="04-stylus-in-air",
-       a=("Selected", [("2025", "TU Dresden, Dresden"), ("2025", "Already Possible by Soiree XD & masumi, Berlin"), ("2024", "Prague Quadrennial, Prague")]),
+       a=("Selected", [("2025", "<a href=\"https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/\" target=\"_blank\" rel=\"noopener\">TU Dresden, [in]visible, COSMO Dresden ↗</a>"), ("2025", "<a href=\"https://www.soiree-xd.com/\" target=\"_blank\" rel=\"noopener\">Already Possible by Soirée XD &amp; masumi, Berlin ↗</a>"), ("2024", "<a href=\"https://pq.cz/symposium-technologies/researching-embodied-interactions/\" target=\"_blank\" rel=\"noopener\">Prague Quadrennial, Prague ↗</a>")]),
        b=("Venues", "International venues and multimedia festivals"),
-       text="Her works have been featured at international venues and multimedia festivals."),
+       text="My work has been shown at international venues and multimedia festivals."),
   dict(title="Teaching", draw="02-controller",
        a=("Courses", [("Natural User Interfaces", "HTW Berlin, current"), ("Technological Arts", "European academies")]),
        b=("Role", "Lecturer"),
-       text="She has been a lecturer in different European academies in the last years teaching Technological Arts. At present, she is teaching the “Natural User Interfaces” course at HTW Berlin."),
+       text="I have taught Technological Arts at several European academies. At present I teach the “Natural User Interfaces” course at HTW Berlin."),
   dict(title="Research lab", draw="03-depth-sensor",
-       a=("The Speculative Realities Lab", [("Neurosurgery", ""), ("Anthropology", ""), ("Immersive arts", "")]),
-       b=("Collaboration", "Charité and the Cluster of Excellence “Matters of Activity”"),
-       text="She is an active researcher at The Speculative Realities Lab, a space connecting neurosurgery, anthropology, and the immersive arts as a collaboration between Charité and the Cluster of Excellence “Matters of Activity”."),
+       a=("Speculative Realities Lab", [("Since", "2023"), ("Neurosurgery", ""), ("Anthropology", ""), ("Immersive arts", "")]),
+       b=("Collaboration", "Charité and the Cluster of Excellence »Matters of Activity. Image Space Material«"),
+       text="Since 2023 I have been a researcher at the Speculative Realities Lab, a space connecting neurosurgery, anthropology and the immersive arts, run by Charité with the Cluster of Excellence »Matters of Activity. Image Space Material«."),
+  dict(title="Education", draw="06-motion-figure",
+       a=("Degrees", [("Ph.D., Human–Computer Interaction", "TU Berlin, expected 2027"), ("MSc, Psychology of Communication", "Sapienza University of Rome, 2015"), ("BA/BFA, Video Direction and Non-Linear Installation Arts", "IED Milan, 2013")]),
+       b=("Doctoral topic", "Spatial reference formation in immersive 3D sketching"),
+       text="My MSc thesis examined the sense of agency in gesture-controlled interactive storytelling through a phenomenological approach. My doctoral research continues that thread with a longitudinal study of drawing in immersive space."),
+  dict(title="Publication", draw="05-gaze-drawing",
+       a=("Chapter", [("“The Navigational Technè: From Static Frames to Perpetual Motion”", "")]),
+       b=("In", "Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
+       text="My chapter “The Navigational Technè: From Static Frames to Perpetual Motion” appears in the volume <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>."),
 ]
 
 def row(i, r):
@@ -137,6 +145,7 @@ HTML = f'''<!doctype html>
     .spec__draw svg {{ width: 100%; height: auto; }}
     .spec__label {{ margin-bottom: 4px; }}
     .spec__kv {{ display: grid; grid-template-columns: auto 1fr; column-gap: 14px; color: var(--fg2); }}
+    .spec__inner a {{ text-decoration: underline; text-underline-offset: .2em; }}
     .spec__kv dt {{ color: var(--fg2); }} .spec__kv dd {{ margin: 0; color: var(--fg3); }}
     @media (min-width: 900px) {{
       .spec__inner {{ grid-template-columns: repeat(12, minmax(0, 1fr)); }}
@@ -189,7 +198,7 @@ HTML = f'''<!doctype html>
       </div>
       <div class="g foot__block">
         <p class="foot__label">Index</p>
-        <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#about">About</a><a href="index.html#students">Teaching</a><a href="index.html#reflections">Reflections</a></p>
+        <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#about">About</a><a href="index.html#students">Teaching</a><a href="reflections.html">Reflections</a></p>
       </div>
       <div class="g foot__base"><p>Research / Teaching / Practice</p><p>© 2026</p><p>An independent research archive</p></div>
     </footer>

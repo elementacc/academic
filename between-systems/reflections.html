@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reflections | Research / Teaching / Practice</title>
+  <meta name="description" content="Reflections on interaction, ostranenie and aporia: refocusing design on the person and on how interfaces shape the ways we see." />
+  <link rel="preload" href="fonts/UN_11ST_Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <style>
+    @font-face { font-family: UN_11ST_Regular; src: url(fonts/UN_11ST_Regular.woff2) format("woff2"), url(fonts/UN_11ST_Regular.woff) format("woff"); font-display: swap; }
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; }
+    img { display: block; max-width: 100%; height: auto; }
+    button { font: inherit; color: inherit; }
+    body, body.light { --bg: #ffffff; --fg: #202020; --fg2: #767676; --fg3: #b3b3b3; --line: #ededed; }
+    body.dark { --bg: #141414; --fg: #f2f2f2; --fg2: #9a9a9a; --fg3: #5c5c5c; --line: #2c2c2c; }
+    body.mood { --bg: #f5f0fe; --fg: #342d42; --fg2: rgba(52,45,66,.75); --fg3: rgba(52,45,66,.45); --line: #e2d8fb; }
+    html { background: var(--bg, #fff); }
+    body {
+      background: var(--bg); color: var(--fg);
+      font-family: "UN_11ST_Regular", "Helvetica Neue", Arial, sans-serif; font-feature-settings: "ss01" on;
+      font-size: 15px; line-height: 1.4; letter-spacing: -.01em; -webkit-font-smoothing: antialiased;
+      transition: background-color .4s, color .4s; overflow-x: hidden;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 1px solid var(--fg2); outline-offset: 3px; }
+
+    /* Elementa-style 12-column grid */
+    .columns { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 16px; padding: 0 16px; }
+    .col-12 { grid-column: 1 / -1; }
+
+    header { padding: 14px 0; align-items: baseline; }
+    .logo { grid-column: 1 / span 6; text-decoration: none; font-size: 15px; }
+    nav { grid-column: 7 / span 6; display: flex; justify-content: flex-end; gap: 18px; flex-wrap: wrap; align-items: center; }
+    nav a { text-decoration: none; color: var(--fg2); }
+    nav a:hover, nav a[aria-current] { color: var(--fg); }
+    .lights { display: flex; gap: 6px; margin-left: 6px; }
+    .lights button { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--fg3); padding: 0; cursor: pointer; }
+    .lights [data-theme=light] { background: #fff; } .lights [data-theme=dark] { background: #141414; } .lights [data-theme=mood] { background: #ebe3fd; }
+    .lights button[aria-pressed=true] { outline: 1px solid var(--fg); outline-offset: 2px; }
+
+    .intro { padding-top: 60px; }
+    .intro h1 { grid-column: 1 / -1; font-weight: 400; font-size: clamp(40px, 4.4vw, 60px); line-height: 1.07; letter-spacing: -.04em; margin-left: -.06em; color: var(--fg2); padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .intro .sub { grid-column: 1 / -1; margin-top: 12px; }
+
+    .row { padding-top: 60px; row-gap: 28px; }
+    .type-detail { font-size: 12px; line-height: 16px; letter-spacing: -.03em; color: var(--fg2); }
+    .type-detail h3 { font: inherit; color: var(--fg); margin-bottom: 8px; }
+    .media { display: grid; gap: 8px; }
+    .media figure { margin: 0; }
+    .media figcaption { font-size: 12px; color: var(--fg2); margin-top: 4px; }
+    .text { font-size: 17px; line-height: 1.45; max-width: 40em; }
+    .text p + p { margin-top: 1em; }
+    .text i { font-style: italic; }
+    .text .pull { color: var(--fg2); }
+
+    .side { grid-column: 1 / -1; }
+    .main { grid-column: 1 / -1; }
+    @media (min-width: 900px) {
+      .side { grid-column: 1 / span 3; }
+      .main { grid-column: 6 / span 6; }
+    }
+
+    .resume { grid-column: 1 / -1; border-top: 1px solid var(--line); }
+    .resume-row { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .resume-row .year { grid-column: 1 / span 3; color: var(--fg2); }
+    .resume-row .role { grid-column: 4 / span 9; }
+    @media (min-width: 900px) { .resume-row .year { grid-column: 1 / span 2; } .resume-row .role { grid-column: 6 / span 5; } .resume-row .link { grid-column: 11 / span 2; text-align: right; } }
+    @media (max-width: 899px) { .resume-row .link { grid-column: 4 / span 9; } }
+    .resume-row a { text-decoration: none; }
+    .resume-row a:hover { text-decoration: underline; text-underline-offset: .2em; }
+
+    footer { padding: 100px 0 20px; color: var(--fg2); font-size: 13px; }
+    footer p:first-child { grid-column: 1 / span 6; } footer p:last-child { grid-column: 7 / span 6; text-align: right; }
+  </style>
+</head>
+<body class="light">
+  <header class="columns">
+    <a class="logo" href="index.html">○ Research / Teaching / Practice</a>
+    <nav aria-label="Primary">
+      <a href="index.html#research">Research</a>
+      <a href="bio.html">Bio</a>
+      <a href="index.html#students">Teaching</a>
+      <a href="reflections.html" aria-current="page">Reflections</a>
+      <span class="lights" role="group" aria-label="Switch lights"><button data-theme="light" aria-label="Lights on"></button><button data-theme="dark" aria-label="Lights off"></button><button data-theme="mood" aria-label="Mood"></button></span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro columns">
+      <h1>Reflections</h1>
+      <p class="sub">On interaction and its intervals</p>
+    </section>
+
+    <!-- 01: self -->
+    <section class="row columns" aria-labelledby="r1">
+      <div class="side">
+        <div class="type-detail"><h3 id="r1">Position</h3><p>Perception, cognition, embodied action</p></div>
+        <div class="media" style="margin-top:12px">
+          <figure><img src="media/subcortical/fibre-paper.jpg" alt="Fibre drawings on paper" loading="lazy"><figcaption>Drawing what a scan cannot hold still</figcaption></figure>
+        </div>
+      </div>
+      <div class="main text">
+        <p><i>Regarding where I stand.</i> I study how interactive technologies shape the ways we perceive, think and move. My starting point is the body: perception, cognition and action form one continuous way of meeting the world, and every interface intervenes in that loop, often without being noticed.</p>
+        <p>Trained in psychology and interaction design, I work between first-person inquiry and empirical study, and I build the interfaces I study. My doctoral research follows how people learn to draw in immersive space, without a page to lean on, and how they form spatial references through their own movement. With clinicians, designers and data scientists I develop navigational interfaces for complex neurosurgical imaging, where what an interface makes visible changes what can be understood.</p>
+        <p>Alongside research I teach, run practice-based workshops and make creative technology projects. Increasingly I ask how systems that take part in thinking and making, AI among them, change the conditions under which we perceive, reason and come to know.</p>
+      </div>
+    </section>
+
+    <!-- 02: interaction, ostranenie, aporia -->
+    <section class="row columns" aria-labelledby="r2">
+      <div class="side">
+        <div class="type-detail"><h3 id="r2">Interaction, ostranenie, aporia</h3><p>On making the familiar strange again</p></div>
+        <div class="media" style="margin-top:12px">
+          <figure><img src="media/speclab/kgm-12.jpg" alt="Colourful sketch of museum vessels on a clipboard" loading="lazy"><figcaption>Sketching in the museum, Kunstgewerbemuseum Berlin</figcaption></figure>
+          <figure><img src="media/subcortical/lila-01.jpg" alt="Fibre tracts and voxel points in an immersive scene" loading="lazy"><figcaption>Navigating tractography in immersive space</figcaption></figure>
+        </div>
+      </div>
+      <div class="main text">
+        <p><i>Regarding interaction.</i> We talk a great deal about interfaces and much less about interaction. The interface is what can be designed, shown and screenshotted; the interaction is what happens when a person meets it, with a body, a history, a mood and a particular way of paying attention. It is easy to forget that meaning is made in the second, not the first. Every interaction quietly trains us: what to look at, what to ignore, how long to wait, what counts as an answer.</p>
+        <p>Much of design works to make that encounter frictionless. Seamlessness has become a value in itself: fewer steps, less hesitation, an interface that disappears. But when an interaction becomes fully transparent it also stops being noticed, and what we stop noticing begins to shape us without our consent. As systems increasingly predict, complete and decide on our behalf, the risk is not only error but habituation, a slow narrowing of how we see.</p>
+        <p class="pull">I often return to Shklovsky's concept of <i>ostranenie</i>, which I encountered through Gillo Dorfles's <i>L'intervallo perduto</i> during my studies.</p>
+        <p>Shklovsky described how habit makes perception automatic, and how art can make the familiar strange again so that it is felt rather than merely recognised. Dorfles, in turn, mourned the loss of the interval: the pause in which perception has time to happen. I still find both relevant when thinking about interfaces that can create moments of distance, reflection and alternative interpretation, rather than always making interactions more immediate.</p>
+        <p>This is where <i>aporia</i> becomes useful. The word means “without passage”: the point where an argument does not go through and one has to stop and think. An aporetic interface would not hide its uncertainties. It would leave room for the impasse, invite a second look, and show where a representation ends and interpretation begins. In neurosurgical imaging this is far from abstract: what a navigation interface makes visible, comparable or ambiguous shapes what clinicians believe they are seeing.</p>
+        <p>Refocusing on interactivity means refocusing on the person: on the perceptual, sensorimotor, cognitive and affective capacities they bring to an experience, and on the bodies and minds that do not fit the norm an interface quietly assumes. To design for interaction rather than for interfaces is to treat those capacities as the material of the work, and to keep asking how a system is shaping our ways of seeing and perceiving.</p>
+      </div>
+    </section>
+
+    <!-- 03: record -->
+    <section class="row columns" aria-labelledby="r3">
+      <div class="side type-detail"><h3 id="r3">Exhibitions</h3><p>Selected</p></div>
+      <div class="resume">
+        <div class="resume-row"><span class="year">2025</span><span class="role">TU Dresden, [in]visible at COSMO, Dresden</span><span class="link"><a href="https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/" target="_blank" rel="noopener">Link ↗</a></span></div>
+        <div class="resume-row"><span class="year">2025</span><span class="role">Already Possible by Soirée XD &amp; masumi, Berlin</span><span class="link"><a href="https://www.soiree-xd.com/" target="_blank" rel="noopener">Link ↗</a></span></div>
+        <div class="resume-row"><span class="year">2024</span><span class="role">Prague Quadrennial, Prague</span><span class="link"><a href="https://pq.cz/symposium-technologies/researching-embodied-interactions/" target="_blank" rel="noopener">Link ↗</a></span></div>
+      </div>
+      <div class="side type-detail" style="margin-top:28px"><h3>Research and study</h3></div>
+      <div class="resume">
+        <div class="resume-row"><span class="year">Since 2023</span><span class="role">Researcher in HCI and design, Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</span></div>
+        <div class="resume-row"><span class="year">Expected 2027</span><span class="role">Ph.D., Human–Computer Interaction, TU Berlin</span></div>
+      </div>
+      <div class="side type-detail" style="margin-top:28px"><h3>Publication</h3></div>
+      <div class="resume">
+        <div class="resume-row"><span class="year">Chapter</span><span class="role">“The Navigational Technè: From Static Frames to Perpetual Motion”, in <i>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</i></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="columns"><p>Research / Teaching / Practice © 2026</p><p><a href="index.html">← Home</a></p></footer>
+
+  <script>
+    (function () {
+      var b = document.body, btns = document.querySelectorAll('[data-theme]');
+      function set(t) {
+        b.classList.remove('light', 'dark', 'mood'); b.classList.add(t);
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-theme') === t ? 'true' : 'false'); });
+        try { localStorage.setItem('bs-lights', t); } catch (e) {}
+      }
+      var s = null; try { s = localStorage.getItem('bs-lights'); } catch (e) {}
+      set(s === 'dark' || s === 'mood' ? s : 'light');
+      btns.forEach(function (x) { x.addEventListener('click', function () { set(x.getAttribute('data-theme')); }); });
+    })();
+  </script>
+</body>
+</html>
