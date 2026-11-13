@@ -304,13 +304,13 @@ def page(i, p):
         {figure_html}
         <div class="thumbs">{thumbs}</div>
       </div>
+      {strip_html}
 
       <div class="spine tile" aria-label="Project specification">
         <span class="spine__cap" aria-hidden="true"></span>
         <div class="spine__label">{spine}</div>
         <span class="spine__end" aria-hidden="true"></span>
       </div>
-      {strip_html}
 
       <div class="row row--info">
         {tall_html}
