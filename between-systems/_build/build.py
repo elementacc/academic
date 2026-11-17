@@ -279,7 +279,7 @@ def page(i, p):
     info_extra = ('<div class="info__pair">' + "".join(block(h, b) for h, b in extra) + '</div>') if extra else ""
     spec = "".join(f"<li>{esc(x)}</li>" for x in [
         p["title"], p["area"] + " — " + p["type"], " + ".join(p["filters"]),
-        "№" + p["no"], "Research / Teaching / Practice", "Independent research archive"])
+        "№" + p["no"], "Research / Teaching / Practice"])
     return f"""<!doctype html>
 <html lang="en">
 <head>

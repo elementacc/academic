@@ -19,7 +19,7 @@ ROWS = [
   dict(title="Practice", draw="05-gaze-drawing",
        a=("Ongoing reflection", [("Dialogues", "")]),
        b=("Through", "Senses, interactive objects, environments"),
-       text="An ongoing reflection upon “Dialogues” as conversations embracing senses, interactive objects and environments. An intent of reasoning and creating different types of dialogues, in various declinations and forms. Confronting constraints and opening channels. <a href=\"reflections.html\">Read the reflections</a>"),
+       text="An ongoing reflection upon “Dialogues” as conversations embracing senses, interactive objects and environments. An intent of reasoning and creating different types of dialogues, in various declinations and forms. Confronting constraints and opening channels."),
   dict(title="Exhibitions", draw="04-stylus-in-air",
        a=("Selected", [("2025", "<a href=\"https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/\" target=\"_blank\" rel=\"noopener\">TU Dresden, [in]visible, COSMO Dresden ↗</a>"), ("2025", "<a href=\"https://www.soiree-xd.com/\" target=\"_blank\" rel=\"noopener\">Already Possible by Soirée XD &amp; masumi, Berlin ↗</a>"), ("2024", "<a href=\"https://pq.cz/symposium-technologies/researching-embodied-interactions/\" target=\"_blank\" rel=\"noopener\">Prague Quadrennial symposium: Researching Embodied Interactions, Prague ↗</a>")]),
        b=("Venues", "International venues and multimedia festivals"),
@@ -198,9 +198,9 @@ HTML = f'''<!doctype html>
       </div>
       <div class="g foot__block">
         <p class="foot__label">Index</p>
-        <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#about">About</a><a href="index.html#students">Teaching</a><a href="reflections.html">Reflections</a></p>
+        <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#about">About</a><a href="index.html#students">Teaching</a></p>
       </div>
-      <div class="g foot__base"><p>Research / Teaching / Practice</p><p>© 2026</p><p>An independent research archive</p></div>
+      <div class="g foot__base"><p>Research / Teaching / Practice</p><p>© 2026</p><p></p></div>
     </footer>
   </div>
   <script>
