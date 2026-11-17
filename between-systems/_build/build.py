@@ -59,13 +59,12 @@ PROJECTS = [
          diagram=True,
          media=dict(
              dir="media/movement",
-             figure=("eye-drawing.png", "Eye drawing: gaze as a drawing cursor"),
+             figure=("input-icons.jpg", "Input modalities: foot, eye, full body, head, hand"),
+             figure_contain=True,
              thumbs=[("ui-finger-drawing.png", "Body-Sketch UI: setting countdowns for finger drawing"),
                      ("dynamic-brushes.png", "Dynamic brushes: width and colour follow movement velocity"),
                      ("eye-drawing.png", "Eye drawing: gaze as a drawing cursor")],
              stage=("ui-finger-drawing.png", "Body-Sketch UI — draw with your fingers"),
-             strip=("input-modalities.jpg", "Input modalities: foot, eye, full body, head, hand"),
-             side=("ref-boxall.png", "L. E. Boxall, “Printing with magnetic inks”"),
              tall=("ref-trisha-brown.jpg", "Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
              tex_a=("poster-concept.jpg", "Body/Sketch poster: concept and development"),
              tex_b=("poster-features.jpg", "Body/Sketch poster: features"),
@@ -254,10 +253,10 @@ def page(i, p):
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
     if M:
-        figure_html = f'<div class="figure figure--img">{img("figure", cap=False)}<p class="figure__cap">{esc(M["figure"][1])}</p></div>'
+        figure_html = f'<div class="figure figure--img{" figure--contain" if M.get("figure_contain") else ""}">{img("figure", cap=False)}<p class="figure__cap">{esc(M["figure"][1])}</p></div>'
         stage_html = f'<p class="stage__caption">{esc(M["stage"][1])}</p><div class="stage__img" id="stage">{img("stage", cap=False)}</div>'
         strip_html = f'<div class="tile strip">{img("strip")}</div>' if "strip" in M else ""
-        side_html = f'<div class="tile side__small">{img("side")}</div>'
+        side_html = f'<div class="tile side__small">{img("side")}</div>' if "side" in M else ""
         tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>'
         texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>'
         texb_html = f'<div class="tile texture texture--b">{img("tex_b")}</div>'
