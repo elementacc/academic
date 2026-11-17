@@ -918,7 +918,7 @@
       }
       var saved = null;
       try { saved = localStorage.getItem('bs-lights'); } catch (e) {}
-      if (saved === 'dark' || saved === 'mood') setTheme(saved);
+      setTheme('light');
       buttons.forEach(function (b) {
         b.addEventListener('click', function () { setTheme(b.getAttribute('data-theme')); });
       });

@@ -169,16 +169,14 @@ HTML = f'''<!doctype html>
     @media (prefers-reduced-motion: reduce) {{ .spec__panel, .spec__icon::after {{ transition: none; }} }}
   </style>
 </head>
-<body class="dark">
+<body class="light">
   <div class="wrap">
     <header class="top g">
       <a class="logo" href="index.html">Research / Teaching / Practice</a>
       <div class="top__meta top__meta--a"><p>Bio</p><p class="muted">Research practice</p></div>
       <div class="top__meta top__meta--b"><p><span class="bullet"></span>Berlin</p><p><span class="bullet"></span>HCI · Immersive arts</p></div>
       <a class="top__pill" href="index.html#research">Selected work</a>
-      <div class="lights" role="group" aria-label="Switch lights">
-        <button data-theme="light" aria-label="Lights on"></button><button data-theme="dark" aria-label="Lights off"></button><button data-theme="mood" aria-label="Mood"></button>
-      </div>
+
     </header>
 
     <section class="head g">
@@ -212,7 +210,7 @@ HTML = f'''<!doctype html>
         try {{ localStorage.setItem('bs-lights', t); }} catch (e) {{}}
       }}
       var s = null; try {{ s = localStorage.getItem('bs-lights'); }} catch (e) {{}}
-      set(s === 'light' || s === 'mood' || s === 'dark' ? s : 'dark');
+      set('light');
       btns.forEach(function (x) {{ x.addEventListener('click', function () {{ set(x.getAttribute('data-theme')); }}); }});
       document.querySelectorAll('.spec__row').forEach(function (r) {{
         r.addEventListener('click', function () {{

@@ -284,8 +284,8 @@
     <div class="half half--left">
       <div class="row row--top">
         <a class="logo" href="../index.html">○ Research / Teaching / Practice</a>
-        <div class="figure figure--img"><img src="../media/speclab/kgm-12.jpg" alt="Colourful sketch of museum vessels on a clipboard" loading="lazy"><p class="figure__cap">Colourful sketch of museum vessels on a clipboard</p></div>
-        <div class="thumbs"><button class="thumb tile" data-src="../media/speclab/museum-vr-01.jpg" data-alt="Notes and photos from a museum VR sketching session" aria-label="Show: Notes and photos from a museum VR sketching session"><img src="../media/speclab/museum-vr-01.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/speclab/museum-vr-02.jpg" data-alt="VR sketch overlaid on a museum visitor" aria-label="Show: VR sketch overlaid on a museum visitor"><img src="../media/speclab/museum-vr-02.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/speclab/kgm-02.jpg" data-alt="Two participants drawing in VR" aria-label="Show: Two participants drawing in VR"><img src="../media/speclab/kgm-02.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/speclab/mlc-03.jpg" data-alt="VR sketch: medusa, by Maxime Le Calvé" aria-label="Show: VR sketch: medusa, by Maxime Le Calvé"><img src="../media/speclab/mlc-03.jpg" alt="" loading="lazy"></button></div>
+        <div class="figure figure--img"><img src="../media/speclab/museum-vr-01.jpg" alt="Printed sketch overlays from a museum VR sketching session" loading="lazy"><p class="figure__cap">Printed sketch overlays from a museum VR sketching session</p></div>
+        <div class="thumbs"><button class="thumb tile" data-src="../media/speclab/kgm-12.jpg" data-alt="Colourful sketch of museum vessels on a clipboard" aria-label="Show: Colourful sketch of museum vessels on a clipboard"><img src="../media/speclab/kgm-12.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/speclab/museum-vr-02.jpg" data-alt="VR sketch overlaid on a museum visitor" aria-label="Show: VR sketch overlaid on a museum visitor"><img src="../media/speclab/museum-vr-02.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/speclab/kgm-02.jpg" data-alt="Two participants drawing in VR" aria-label="Show: Two participants drawing in VR"><img src="../media/speclab/kgm-02.jpg" alt="" loading="lazy"></button></div>
       </div>
       
 
@@ -309,7 +309,7 @@
               <div class="block__body"><p>Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.</p></div>
             </section>
           </div>
-          <div class="info__pair"><section class="block"><h2 class="bar">Publication</h2><div class="block__body"><p>“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>.</p></div></section><section class="block"><h2 class="bar">Credits</h2><div class="block__body"><p>Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketching materials: Maxime Le Calvé</p></div></section></div>
+          <div class="info__pair"><section class="block"><h2 class="bar">Publication</h2><div class="block__body"><p>“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>.</p></div></section><section class="block"><h2 class="bar">Credits</h2><div class="block__body"><p>Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé</p></div></section></div>
         </div>
       </div>
     </div>
@@ -319,11 +319,7 @@
       <div class="row row--top">
         <div class="stage-col">
           <div class="sel">
-            <div class="sel__dots" role="group" aria-label="Switch lights">
-              <button class="dot dot--light" data-theme="light" aria-label="Lights on"><i></i></button>
-              <button class="dot dot--dark" data-theme="dark" aria-label="Lights off"><i></i></button>
-              <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
-            </div>
+
             <span class="sel__label">Project</span>
             <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item is-active" aria-current="page" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item" title="Movement-based research">03</a><a href="04-subcortical-matters.html" class="sel__item" title="Subcortical Matters">04</a></nav>
           </div>
@@ -333,7 +329,6 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <ul class="spec" aria-label="Project specification"><li>Speculative Realities Lab</li><li>Experiments — Research practice</li><li>Methods &amp; interfaces</li><li>№02</li><li>Research / Teaching / Practice</li></ul>
         </div>
       </div>
 
@@ -373,10 +368,7 @@
         });
         try { localStorage.setItem('bs-lights', t); } catch (e) {}
       }
-      var saved = 'light';
-      try { saved = localStorage.getItem('bs-lights') || 'light'; } catch (e) {}
-      setTheme(['light', 'dark', 'mood'].indexOf(saved) > -1 ? saved : 'light');
-      dots.forEach(function (d) { d.addEventListener('click', function () { setTheme(d.getAttribute('data-theme')); }); });
+      setTheme('light');
 
       /* Thumbnails: zoom the stage drawing (svg) or swap the stage image; click again to reset */
       var stageSvg = document.querySelector('#stage svg');

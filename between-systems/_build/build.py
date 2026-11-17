@@ -33,19 +33,18 @@ PROJECTS = [
          status="Project documentation / 02. Photographs from museum VR sketching at the Kunstgewerbemuseum, workshop and sessions.",
          media=dict(
              dir="../media/speclab",
-             figure=("kgm-12.jpg", "Colourful sketch of museum vessels on a clipboard"),
-             thumbs=[("museum-vr-01.jpg", "Notes and photos from a museum VR sketching session"),
+             figure=("museum-vr-01.jpg", "Printed sketch overlays from a museum VR sketching session"),
+             thumbs=[("kgm-12.jpg", "Colourful sketch of museum vessels on a clipboard"),
                      ("museum-vr-02.jpg", "VR sketch overlaid on a museum visitor"),
                      ("kgm-02.jpg", "Two participants drawing in VR")],
              stage=("museum-vr-02.jpg", "Museum VR sketching: sketch overlay at the Kunstgewerbemuseum"),
-             side=("mlc-03.jpg", "VR sketch: medusa, by Maxime Le Calvé"),
              tall=("materiality-01.jpg", "Publication: “The Navigational Technè: From Static Frames to Perpetual Motion”, in Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
              tex_a=("kgm-13.jpg", "Drawing in VR beside a coral vitrine"),
              tex_b=("kgm-14.jpg", "Intervention »Wunderkammer«: more than human"),
          ),
          info_blocks=[
              ("Publication", "“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>."),
-             ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketching materials: Maxime Le Calvé"),
+             ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé"),
          ],
          ),
     dict(slug="03-movement-based-research", no="03", title="Movement-based research",
@@ -335,11 +334,7 @@ def page(i, p):
       <div class="row row--top">
         <div class="stage-col">
           <div class="sel">
-            <div class="sel__dots" role="group" aria-label="Switch lights">
-              <button class="dot dot--light" data-theme="light" aria-label="Lights on"><i></i></button>
-              <button class="dot dot--dark" data-theme="dark" aria-label="Lights off"><i></i></button>
-              <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
-            </div>
+
             <span class="sel__label">Project</span>
             <nav class="sel__items" aria-label="Projects">{proj_nav}</nav>
           </div>
@@ -349,7 +344,6 @@ def page(i, p):
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>{total:02d}</span></a>
-          <ul class="spec" aria-label="Project specification">{spec}</ul>
         </div>
       </div>
 

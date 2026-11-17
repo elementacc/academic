@@ -82,7 +82,6 @@
       <a href="bio.html">Bio</a>
       <a href="index.html#students">Teaching</a>
       <a href="reflections.html" aria-current="page">Reflections</a>
-      <span class="lights" role="group" aria-label="Switch lights"><button data-theme="light" aria-label="Lights on"></button><button data-theme="dark" aria-label="Lights off"></button><button data-theme="mood" aria-label="Mood"></button></span>
     </nav>
   </header>
 
@@ -157,7 +156,7 @@
         try { localStorage.setItem('bs-lights', t); } catch (e) {}
       }
       var s = null; try { s = localStorage.getItem('bs-lights'); } catch (e) {}
-      set(s === 'dark' || s === 'mood' ? s : 'light');
+      set('light');
       btns.forEach(function (x) { x.addEventListener('click', function () { set(x.getAttribute('data-theme')); }); });
     })();
   </script>

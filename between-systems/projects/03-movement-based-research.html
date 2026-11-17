@@ -319,11 +319,7 @@
       <div class="row row--top">
         <div class="stage-col">
           <div class="sel">
-            <div class="sel__dots" role="group" aria-label="Switch lights">
-              <button class="dot dot--light" data-theme="light" aria-label="Lights on"><i></i></button>
-              <button class="dot dot--dark" data-theme="dark" aria-label="Lights off"><i></i></button>
-              <button class="dot dot--mood" data-theme="mood" aria-label="Mood"><i></i></button>
-            </div>
+
             <span class="sel__label">Project</span>
             <nav class="sel__items" aria-label="Projects"><a href="01-vr-sketching.html" class="sel__item" title="VR Sketching">01</a><a href="02-speculative-realities-lab.html" class="sel__item" title="Speculative Realities Lab">02</a><a href="03-movement-based-research.html" class="sel__item is-active" aria-current="page" title="Movement-based research">03</a><a href="04-subcortical-matters.html" class="sel__item" title="Subcortical Matters">04</a></nav>
           </div>
@@ -333,7 +329,6 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <ul class="spec" aria-label="Project specification"><li>Movement-based research</li><li>Software research — Ongoing, 2023–present</li><li>Spatial interaction + Methods &amp; interfaces</li><li>№03</li><li>Research / Teaching / Practice</li></ul>
         </div>
       </div>
 
@@ -374,10 +369,7 @@
         });
         try { localStorage.setItem('bs-lights', t); } catch (e) {}
       }
-      var saved = 'light';
-      try { saved = localStorage.getItem('bs-lights') || 'light'; } catch (e) {}
-      setTheme(['light', 'dark', 'mood'].indexOf(saved) > -1 ? saved : 'light');
-      dots.forEach(function (d) { d.addEventListener('click', function () { setTheme(d.getAttribute('data-theme')); }); });
+      setTheme('light');
 
       /* Thumbnails: zoom the stage drawing (svg) or swap the stage image; click again to reset */
       var stageSvg = document.querySelector('#stage svg');

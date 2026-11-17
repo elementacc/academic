@@ -11,10 +11,7 @@
         });
         try { localStorage.setItem('bs-lights', t); } catch (e) {}
       }
-      var saved = 'light';
-      try { saved = localStorage.getItem('bs-lights') || 'light'; } catch (e) {}
-      setTheme(['light', 'dark', 'mood'].indexOf(saved) > -1 ? saved : 'light');
-      dots.forEach(function (d) { d.addEventListener('click', function () { setTheme(d.getAttribute('data-theme')); }); });
+      setTheme('light');
 
       /* Thumbnails: zoom the stage drawing (svg) or swap the stage image; click again to reset */
       var stageSvg = document.querySelector('#stage svg');
