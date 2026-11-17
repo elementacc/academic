@@ -277,7 +277,7 @@ def page(i, p):
     details_html = "\n          ".join(block(h, b) for h, b in blocks)
     extra = p.get("info_blocks")
     info_extra = ('<div class="info__pair">' + "".join(block(h, b) for h, b in extra) + '</div>') if extra else ""
-    spine = "".join(f"<span>{esc(x)}</span>" for x in [
+    spec = "".join(f"<li>{esc(x)}</li>" for x in [
         p["title"], p["area"] + " — " + p["type"], " + ".join(p["filters"]),
         "№" + p["no"], "Research / Teaching / Practice", "Independent research archive"])
     return f"""<!doctype html>
@@ -350,11 +350,7 @@ def page(i, p):
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>{total:02d}</span></a>
-          <div class="spine tile" aria-label="Project specification">
-            <span class="spine__cap" aria-hidden="true"></span>
-            <div class="spine__label">{spine}</div>
-            <span class="spine__end" aria-hidden="true"></span>
-          </div>
+          <ul class="spec" aria-label="Project specification">{spec}</ul>
         </div>
       </div>
 

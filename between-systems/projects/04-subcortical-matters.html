@@ -225,6 +225,11 @@
       .diagram.is-drawn .dg-l.dot, .diagram.is-drawn .dg-l.dash, .diagram.is-drawn .dg-pulse { animation: none; }
     }
 
+    /* specification text under Index */
+    .spec { list-style: none; margin: 0; padding: 4px 0 0; grid-column: 1 / -1; }
+    .spec li { padding: 6.5px 0; border-bottom: 1px solid var(--borderColor); }
+    .spec li:nth-child(4) { color: var(--textSecondaryColor); }
+
     /* ---------- Dock ---------- */
     .dock { position: fixed; z-index: 20; left: var(--gap); right: var(--gap); bottom: var(--gap); display: flex; gap: var(--gap); }
     .dock__bar {
@@ -250,7 +255,7 @@
       .spine { order: 5; } .details { order: 6; }
       .tile--tall, .texture--a, .texture--b { order: 7; grid-column: span 2 !important; }
       .figure { display: none; }
-      .side { display: contents; } .side .pill { display: none; }
+      .side { display: contents; } .side .pill { display: none; } .spec { order: 5; }
     }
 
     /* ---------- Tablet ---------- */
@@ -351,11 +356,7 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <div class="spine tile" aria-label="Project specification">
-            <span class="spine__cap" aria-hidden="true"></span>
-            <div class="spine__label"><span>Subcortical Matters</span><span>Visualization — Collaborative work, Charité</span><span>Visualization + Methods &amp; interfaces</span><span>№04</span><span>Research / Teaching / Practice</span><span>Independent research archive</span></div>
-            <span class="spine__end" aria-hidden="true"></span>
-          </div>
+          <ul class="spec" aria-label="Project specification"><li>Subcortical Matters</li><li>Visualization — Collaborative work, Charité</li><li>Visualization + Methods &amp; interfaces</li><li>№04</li><li>Research / Teaching / Practice</li><li>Independent research archive</li></ul>
         </div>
       </div>
 

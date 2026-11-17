@@ -214,6 +214,11 @@
       .diagram.is-drawn .dg-l.dot, .diagram.is-drawn .dg-l.dash, .diagram.is-drawn .dg-pulse { animation: none; }
     }
 
+    /* specification text under Index */
+    .spec { list-style: none; margin: 0; padding: 4px 0 0; grid-column: 1 / -1; }
+    .spec li { padding: 6.5px 0; border-bottom: 1px solid var(--borderColor); }
+    .spec li:nth-child(4) { color: var(--textSecondaryColor); }
+
     /* ---------- Dock ---------- */
     .dock { position: fixed; z-index: 20; left: var(--gap); right: var(--gap); bottom: var(--gap); display: flex; gap: var(--gap); }
     .dock__bar {
@@ -239,7 +244,7 @@
       .spine { order: 5; } .details { order: 6; }
       .tile--tall, .texture--a, .texture--b { order: 7; grid-column: span 2 !important; }
       .figure { display: none; }
-      .side { display: contents; } .side .pill { display: none; }
+      .side { display: contents; } .side .pill { display: none; } .spec { order: 5; }
     }
 
     /* ---------- Tablet ---------- */

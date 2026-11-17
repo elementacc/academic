@@ -431,9 +431,7 @@
       .st-tools { grid-column: 1 / -1; }
     }
 
-    .st-lab { grid-column: 1 / -1; margin: 0; }
-    .st-lab img { display: block; width: 100%; max-width: 15rem; height: auto; }
-    .st-lab figcaption { margin-top: .4rem; }
+    .acc-fig { margin: 1rem 0 0; } .acc-fig img { display: block; width: 100%; max-width: 18rem; height: auto; } .acc-fig figcaption { margin-top: .4rem; }
     .st-list { grid-column: content; border-top: 1px solid var(--textPrimaryColor); }
     .st-item { border-bottom: 1px solid var(--borderColor); transition: border-color .4s var(--ease); }
     .st-item.is-hidden { display: none; }
@@ -548,7 +546,7 @@
       .ft-links li > :first-child { grid-column: 1 / span 1; }
       .ft-links li > :last-child { grid-column: 2 / span 1; }
       .ft-copyright { grid-column: 10 / span 3; grid-row: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: var(--grid-gutter); }
-      .ft-copyright p { grid-column-end: span 2; }
+      .ft-copyright p { grid-column-end: span 2; padding-right: 1.5rem; }
       .ft-arrow { position: absolute; top: 0; right: 0; grid-column: 12 / span 1; margin-top: 0; text-align: right; }
     }
 
@@ -561,7 +559,7 @@
     /* the title's rule opens the intro: no second line, same padding */
     main > .text-columns:first-child { margin-top: 0; border-top: none; padding-top: var(--rule-pad); }
     /* each following section starts with one line */
-    main > .large-text, main > .cases, main > #teaching, main > #students, main > #reflections, main > footer.site {
+    main > .large-text, main > .cases, main > #teaching, main > #students, main > footer.site {
       margin-top: var(--section-gap) !important;
       padding-top: var(--rule-pad) !important;
       border-top: 1px solid var(--borderColor);
@@ -830,49 +828,6 @@
       </div>
     </section>
 
-    <!-- ============ (03) Teaching (accordion) ============ -->
-    <section id="teaching" class="acc-section subgrid">
-      <h2 class="t-label">(03) Teaching</h2>
-      <div class="acc-items subgrid t-body">
-        <div class="acc-item subgrid">
-          <div class="accordion subgrid accordion--open">
-            <button class="acc-toggle button--reset" aria-expanded="true" aria-controls="acc-1">
-              <div class="acc-headline"><p class="number">1.</p><p class="headline">Natural User Interfaces</p></div>
-              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
-            </button>
-            <div class="acc-reveal" id="acc-1"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
-              <p>Teaching on embodied, multimodal and sensor-based approaches to interaction, from evaluation methods to interactive prototyping.</p>
-              <p class="acc-meta">Seminars &amp; teaching</p>
-            </div></div></div></div>
-          </div>
-        </div>
-        <div class="acc-item subgrid">
-          <div class="accordion subgrid">
-            <button class="acc-toggle button--reset" aria-expanded="false" aria-controls="acc-2">
-              <div class="acc-headline"><p class="number">2.</p><p class="headline">Adaptive Digital Twin</p></div>
-              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
-            </button>
-            <div class="acc-reveal" id="acc-2"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
-              <p>An interdisciplinary block-seminar context around digital twins and neurosurgical visualization.</p>
-              <p class="acc-meta">Block seminar</p>
-            </div></div></div></div>
-          </div>
-        </div>
-        <div class="acc-item subgrid">
-          <div class="accordion subgrid">
-            <button class="acc-toggle button--reset" aria-expanded="false" aria-controls="acc-3">
-              <div class="acc-headline"><p class="number">3.</p><p class="headline">Multidisciplinary Perspectives of Digital Neurosurgery</p></div>
-              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
-            </button>
-            <div class="acc-reveal" id="acc-3"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
-              <p>Exploring questions of representation, interaction and collaboration across clinical, scientific and design disciplines.</p>
-              <p class="acc-meta">Seminars &amp; teaching</p>
-            </div></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ Student projects (archive) ============ -->
     <section id="students" class="students subgrid t-body" aria-labelledby="students-h">
       <div class="st-head">
@@ -883,45 +838,38 @@
           <div class="st-pills" role="group" aria-label="Filter by course" id="st-filters"></div>
           <p class="st-count" id="st-count" aria-live="polite"></p>
         </div>
-        <figure class="st-lab"><img src="media/students/lab.jpg" alt="The lab: an empty room with computers" loading="lazy"><figcaption class="t-label">The lab</figcaption></figure>
       </div>
       <ol class="st-list" id="st-list"></ol>
       <noscript><p class="st-intro" style="margin-top:1rem">Enable JavaScript to browse the student project archive.</p></noscript>
     </section>
 
-    <!-- ============ (04) Reflections (static list) ============ -->
-    <section id="reflections" class="acc-section subgrid" style="margin-top: 4.5rem;">
-      <h2 class="t-label">(04) Reflections</h2>
+    <!-- ============ Teaching courses (accordion) ============ -->
+    <section id="teaching" class="acc-section subgrid">
+      <h2 class="t-label">Courses</h2>
       <div class="acc-items subgrid t-body">
-        <div class="acc-item acc-item--static subgrid">
-          <div class="accordion subgrid">
-            <div class="acc-toggle">
-              <div class="acc-headline"><p class="number acc-meta">—</p><p class="headline acc-meta">Questions in progress. Topics for future writing — not published articles.</p></div>
-            </div>
+        <div class="acc-item subgrid">
+          <div class="accordion subgrid accordion--open">
+            <button class="acc-toggle button--reset" aria-expanded="true" aria-controls="acc-1">
+              <div class="acc-headline"><p class="number">1.</p><p class="headline">Natural User Interfaces</p></div>
+              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
+            </button>
+            <div class="acc-reveal" id="acc-1"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
+              <p>Teaching on embodied, multimodal and sensor-based approaches to interaction, from evaluation methods to interactive prototyping.</p>
+              <p class="acc-meta">Seminars &amp; teaching</p>
+              <figure class="acc-fig"><img src="media/students/lab.jpg" alt="The lab: an empty room with computers" loading="lazy"><figcaption class="acc-meta">The lab</figcaption></figure>
+            </div></div></div></div>
           </div>
         </div>
-        <div class="acc-item acc-item--static subgrid">
+        <div class="acc-item subgrid">
           <div class="accordion subgrid">
-            <div class="acc-toggle">
-              <div class="acc-headline"><p class="number">1.</p><p class="headline">What counts as a reference in immersive space?</p></div>
-              <p class="acc-topic">Topic: Spatial thinking</p>
-            </div>
-          </div>
-        </div>
-        <div class="acc-item acc-item--static subgrid">
-          <div class="accordion subgrid">
-            <div class="acc-toggle">
-              <div class="acc-headline"><p class="number">2.</p><p class="headline">Measuring what matters in human–AI interaction</p></div>
-              <p class="acc-topic">Topic: Evaluation</p>
-            </div>
-          </div>
-        </div>
-        <div class="acc-item acc-item--static subgrid">
-          <div class="accordion subgrid">
-            <div class="acc-toggle">
-              <div class="acc-headline"><p class="number">3.</p><p class="headline">When scientific images become interactive</p></div>
-              <p class="acc-topic">Topic: Visualization</p>
-            </div>
+            <button class="acc-toggle button--reset" aria-expanded="false" aria-controls="acc-3">
+              <div class="acc-headline"><p class="number">2.</p><p class="headline">Multidisciplinary Perspectives of Digital Neurosurgery</p></div>
+              <div class="acc-icon" aria-hidden="true"><div class="acc-line acc-line--1"></div><div class="acc-line"></div></div>
+            </button>
+            <div class="acc-reveal" id="acc-3"><div class="acc-content"><div class="acc-inner"><div class="acc-text body">
+              <p>An interdisciplinary block-seminar context around digital twins and neurosurgical visualization, exploring questions of representation, interaction and collaboration across clinical, scientific and design disciplines.</p>
+              <p class="acc-meta">Block seminars, including Adaptive Digital Twin</p>
+            </div></div></div></div>
           </div>
         </div>
       </div>
@@ -929,13 +877,6 @@
 
     <!-- ============ Footer ============ -->
     <footer class="site t-body" id="contact">
-      <div class="ft-contact">
-        <div class="ft-contact__text">
-          <p>Research / Teaching / Collaboration.</p>
-          <!-- Contact details intentionally omitted from the current draft; add a mailto: link here before publication. -->
-        </div>
-      </div>
-
       <div class="ft-columns">
         <div class="ft-graphic">
           <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-label="Research / Teaching / Practice">
@@ -950,7 +891,7 @@
         <div class="ft-about">
           <h3 class="t-label">Contact</h3>
           <p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p>
-          <p style="margin-top:1em">An independent research archive. Interaction / Cognition / Computational environments.</p>
+          <p style="margin-top:1em">Interaction / Cognition / Computational environments.</p>
         </div>
         <div class="ft-credits">
           <h3 class="t-label">Index</h3>
