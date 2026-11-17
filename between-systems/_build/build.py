@@ -89,7 +89,7 @@ PROJECTS = [
          fig=("03-signal", 3, "Signal"),
          media=dict(
              dir="../media/subcortical",
-             figure=("through-the-headset-04.jpg", "Hand drawings of brain sections"),
+             figure=("inside-brain.jpg", "Inside the brain: fibre tracts in an immersive visualisation"),
              thumbs=[("through-the-headset-01.jpg", "Brain model seen through the headset lens"),
                      ("through-the-headset-02.jpg", "Ventricles drawn in VR, seen through the lens"),
                      ("visualisation-01.jpg", "Fibre tractography on screen")],
@@ -243,12 +243,12 @@ def page(i, p):
         thumbs = "".join(
             f'<button class="thumb tile" data-src="{M["dir"]}/{f}" data-alt="{html.escape(alt)}" aria-label="Show: {html.escape(alt)}">'
             f'<img src="{M["dir"]}/{f}" alt="" loading="lazy"></button>'
-            for f, alt in M["thumbs"])
+            for f, alt in list(M["thumbs"]) + ([M["side"]] if "side" in M else []))
     else:
         thumbs = "".join(
             f'<button class="thumb tile" data-view="{c}" aria-label="Show detail {k + 1}">'
             f'{crop(svg, c)}</button>'
-            for k, c in enumerate(CROPS))
+            for k, c in enumerate(CROPS + ["140 140 120 120"]))
     total = len(PROJECTS)
     docs = docs_html(p["docs"]) if p.get("docs") else ""
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
@@ -306,12 +306,6 @@ def page(i, p):
       </div>
       {strip_html}
 
-      <div class="spine tile" aria-label="Project specification">
-        <span class="spine__cap" aria-hidden="true"></span>
-        <div class="spine__label">{spine}</div>
-        <span class="spine__end" aria-hidden="true"></span>
-      </div>
-
       <div class="row row--info">
         {tall_html}
         <div class="info">
@@ -356,8 +350,11 @@ def page(i, p):
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>{total:02d}</span></a>
-          <figure class="doodle">{fig(i)}</figure>
-          {side_html}
+          <div class="spine tile" aria-label="Project specification">
+            <span class="spine__cap" aria-hidden="true"></span>
+            <div class="spine__label">{spine}</div>
+            <span class="spine__end" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
 

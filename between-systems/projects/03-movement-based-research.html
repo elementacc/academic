@@ -96,7 +96,7 @@
     .logo { grid-column: 1 / span 3; grid-row: 1; align-self: start; padding: 10px 6px; white-space: nowrap; letter-spacing: .02em; text-transform: uppercase; font-size: .8em; }
     .figure { grid-column: 1 / -1; grid-row: 2; aspect-ratio: 1 / 1; }
     .figure__svg { width: 100%; height: 100%; color: var(--textPrimaryColor); }
-    .thumbs { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+    .thumbs { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
     .thumb { aspect-ratio: 4 / 3; border: 0; padding: 0; cursor: pointer; }
     .thumb::after { content: ""; position: absolute; inset: 0; background: var(--textPrimaryColor); opacity: 0; transition: opacity .2s; }
     .thumb:hover::after { opacity: .06; }
@@ -180,8 +180,7 @@
     .stage__img { position: absolute; inset: 44px 12px 12px; }
     .stage__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .25s var(--ease); }
     .figure--img { position: relative; }
-    .figure--img img { width: 100%; height: calc(100% - 1.6em); object-fit: contain; mix-blend-mode: multiply; }
-    body.dark .figure--img img { filter: invert(1); mix-blend-mode: screen; }
+    .figure--img img { width: 100%; height: calc(100% - 1.6em); object-fit: cover; }
     .figure__cap { color: var(--textTertiaryColor); font-size: .85em; margin-top: 4px; }
     .strip { grid-column: 1 / -1; aspect-ratio: 9 / 1; background: #fff; }
     .strip img { object-fit: contain; }
@@ -250,7 +249,8 @@
       .logo { order: 1; } .stage-col { order: 2; } .thumbs { order: 3; } .info { order: 4; }
       .spine { order: 5; } .details { order: 6; }
       .tile--tall, .texture--a, .texture--b { order: 7; grid-column: span 2 !important; }
-      .figure, .side { display: none; }
+      .figure { display: none; }
+      .side { display: contents; } .side .pill { display: none; }
     }
 
     /* ---------- Tablet ---------- */
@@ -277,7 +277,9 @@
       .side { display: grid; grid-column: 5 / span 2; grid-template-columns: 1fr 1fr; gap: var(--gap); align-content: start; grid-template-rows: auto auto 1fr; }
       .pill { grid-column: 1 / -1; }
       .doodle { grid-column: 1 / -1; padding: 4px 0 0 4px; }
-      .side__small { grid-column: 1 / span 1; aspect-ratio: .8; align-self: end; }
+      .side .spine { margin-top: 0; aspect-ratio: auto; height: clamp(17rem, 24vw, 22rem); grid-column: 1 / -1; border-radius: 30% 10px 10px 30% / 18% 10px 10px 18%; }
+      .side .spine__cap { left: 9%; top: 6%; width: 11%; }
+      .side .spine__label { left: 30%; top: 7%; bottom: 7%; gap: .7em; font-size: .74em; }
       .row--details { margin-top: 0; }
       /* bar spans left-half columns 3–6 */
       .dock {
@@ -301,15 +303,9 @@
       <div class="row row--top">
         <a class="logo" href="../index.html">○ Research / Teaching / Practice</a>
         <div class="figure figure--img"><img src="media/movement/ref-trisha-brown.jpg" alt="Trisha Brown, “It’s a Draw/Live Feed” (2003)" loading="lazy"><p class="figure__cap">Trisha Brown, “It’s a Draw/Live Feed” (2003)</p></div>
-        <div class="thumbs"><button class="thumb tile" data-src="media/movement/ui-finger-drawing.png" data-alt="Body-Sketch UI: setting countdowns for finger drawing" aria-label="Show: Body-Sketch UI: setting countdowns for finger drawing"><img src="media/movement/ui-finger-drawing.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/dynamic-brushes.png" data-alt="Dynamic brushes: width and colour follow movement velocity" aria-label="Show: Dynamic brushes: width and colour follow movement velocity"><img src="media/movement/dynamic-brushes.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/eye-drawing.png" data-alt="Eye drawing: gaze as a drawing cursor" aria-label="Show: Eye drawing: gaze as a drawing cursor"><img src="media/movement/eye-drawing.png" alt="" loading="lazy"></button></div>
+        <div class="thumbs"><button class="thumb tile" data-src="media/movement/ui-finger-drawing.png" data-alt="Body-Sketch UI: setting countdowns for finger drawing" aria-label="Show: Body-Sketch UI: setting countdowns for finger drawing"><img src="media/movement/ui-finger-drawing.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/dynamic-brushes.png" data-alt="Dynamic brushes: width and colour follow movement velocity" aria-label="Show: Dynamic brushes: width and colour follow movement velocity"><img src="media/movement/dynamic-brushes.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/eye-drawing.png" data-alt="Eye drawing: gaze as a drawing cursor" aria-label="Show: Eye drawing: gaze as a drawing cursor"><img src="media/movement/eye-drawing.png" alt="" loading="lazy"></button><button class="thumb tile" data-src="media/movement/ref-boxall.png" data-alt="L. E. Boxall, “Printing with magnetic inks”" aria-label="Show: L. E. Boxall, “Printing with magnetic inks”"><img src="media/movement/ref-boxall.png" alt="" loading="lazy"></button></div>
       </div>
       <div class="tile strip"><img src="media/movement/input-modalities.jpg" alt="Input modalities: foot, eye, full body, head, hand" loading="lazy"><span class="tile__cap">Input modalities: foot, eye, full body, head, hand</span></div>
-
-      <div class="spine tile" aria-label="Project specification">
-        <span class="spine__cap" aria-hidden="true"></span>
-        <div class="spine__label"><span>Movement-based research</span><span>Software research — Ongoing, 2023–present</span><span>Spatial interaction + Methods &amp; interfaces</span><span>№03</span><span>Research / Teaching / Practice</span><span>Independent research archive</span></div>
-        <span class="spine__end" aria-hidden="true"></span>
-      </div>
 
       <div class="row row--info">
         <div class="tile tile--tall texture"><img src="media/movement/ref-laban.jpg" alt="Effort diagram after Rudolf Laban" loading="lazy"><span class="tile__cap">Effort diagram after Rudolf Laban</span></div>
@@ -355,17 +351,11 @@
         </div>
         <div class="side">
           <a class="pill" href="../index.html#research"><span>Index</span><span>04</span></a>
-          <figure class="doodle"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-<path d="M100 100 L100 22" stroke="#6b7d1e" stroke-width="4"/>
-<path d="M100 100 L32 140" stroke="#e8432f" stroke-width="4"/>
-<path d="M100 100 L168 140" stroke="#2335d8" stroke-width="4"/>
-<path d="M100 100 L176 100" stroke="#e6c619" stroke-width="3" stroke-dasharray="3 6"/>
-<path d="M100 18 L168 58 L168 140 L100 182 L32 140 L32 58 Z" stroke="currentColor" opacity=".3" stroke-width="1.5"/>
-<path d="M100 100 L168 58 M100 100 L32 58 M100 100 L100 182" stroke="currentColor" opacity=".15" stroke-width="1.5"/>
-<g fill="currentColor" stroke="none" font-family="Helvetica, Arial, sans-serif" font-size="9">
-<text x="104" y="36">Perception</text><text x="34" y="156" transform="rotate(-30 34 156)">Action</text>
-<text x="132" y="128" transform="rotate(30 132 128)">Interface</text></g></svg><p class="doodle__cap">Fig 5: Perception, action, interface</p></figure>
-          <div class="tile side__small"><img src="media/movement/ref-boxall.png" alt="L. E. Boxall, “Printing with magnetic inks”" loading="lazy"><span class="tile__cap">L. E. Boxall, “Printing with magnetic inks”</span></div>
+          <div class="spine tile" aria-label="Project specification">
+            <span class="spine__cap" aria-hidden="true"></span>
+            <div class="spine__label"><span>Movement-based research</span><span>Software research — Ongoing, 2023–present</span><span>Spatial interaction + Methods &amp; interfaces</span><span>№03</span><span>Research / Teaching / Practice</span><span>Independent research archive</span></div>
+            <span class="spine__end" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
 
