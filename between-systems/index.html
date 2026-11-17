@@ -171,6 +171,7 @@
     .hd-nav ul { display: flex; flex-wrap: wrap; }
     .hd-nav li:not(:last-child)::after { content: ",\00a0"; }
     .hd-nav a { text-decoration: none; }
+    .hd-bio { margin-top: .6rem; } .hd-bio a { text-decoration: underline; text-underline-offset: .2em; }
     .pos { display: grid; grid-template-columns: auto 1fr; column-gap: .9em; margin: 0; }
     .pos dt { white-space: nowrap; }
     .pos dd { margin: 0; color: var(--textSecondaryColor); }
@@ -559,7 +560,7 @@
     /* the title's rule opens the intro: no second line, same padding */
     main > .text-columns:first-child { margin-top: 0; border-top: none; padding-top: var(--rule-pad); }
     /* each following section starts with one line */
-    main > .large-text, main > .cases, main > #teaching, main > #students, main > footer.site {
+    main > .cases, main > #teaching, main > #students, main > footer.site {
       margin-top: var(--section-gap) !important;
       padding-top: var(--rule-pad) !important;
       border-top: 1px solid var(--borderColor);
@@ -615,6 +616,7 @@
           <dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd>
           <dt>Ph.D. candidate</dt><dd>TU Berlin</dd>
         </dl>
+        <p class="hd-bio"><a href="bio.html">Bio →</a></p>
       </div>
     </header>
   </div>
@@ -638,7 +640,7 @@
           <ul class="nav-list" aria-label="Navigate">
             <li class="acc-meta">(04) Navigate</li>
             <li><a href="#research">Selected work <span>→ Research</span></a></li>
-            <li><a href="#about">Research practice <span>→ About</span></a></li>
+            <li><a href="bio.html">Bio <span>→ Bio</span></a></li>
             <li><a href="#teaching">Teaching <span>→ Teaching</span></a></li>
           </ul>
         </div>
@@ -668,42 +670,7 @@
     </section>
 
     <!-- ============ Large text ============ -->
-    <section class="large-text" aria-label="Between disciplines, between perspectives.">
-      <div class="container" style="--columns: 4" aria-hidden="true"><p>Between</p></div>
-      <div class="container" style="--columns: 8" aria-hidden="true"><p>disciplines,</p></div>
-      <div class="container" style="--columns: 4" aria-hidden="true"><p>between</p></div>
-      <div class="container" style="--columns: 8" aria-hidden="true"><p>perspectives.</p></div>
-    </section>
 
-    <!-- ============ (02) About (text columns) ============ -->
-    <section id="about" class="text-columns subgrid t-body" style="margin-top: 2.5rem; padding-bottom: .75rem;">
-      <div class="tc-left">
-        <div class="tc-head"><h2 class="t-label">About</h2></div>
-        <div class="tc-text body">
-          <p><span class="acc-meta">(02) Approach —</span> Between disciplines, between perspectives.</p>
-          <p>The work begins with questions about perception and action: what do people notice, what do they use as a reference, and how does an interface change what becomes possible?</p>
-          <figure class="fig fig--inline"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-<path d="M100 100 L100 22" stroke="#6b7d1e" stroke-width="4"/>
-<path d="M100 100 L32 140" stroke="#e8432f" stroke-width="4"/>
-<path d="M100 100 L168 140" stroke="#2335d8" stroke-width="4"/>
-<path d="M100 100 L176 100" stroke="#e6c619" stroke-width="3" stroke-dasharray="3 6"/>
-<path d="M100 18 L168 58 L168 140 L100 182 L32 140 L32 58 Z" stroke="currentColor" opacity=".3" stroke-width="1.5"/>
-<path d="M100 100 L168 58 M100 100 L32 58 M100 100 L100 182" stroke="currentColor" opacity=".15" stroke-width="1.5"/>
-<g fill="currentColor" stroke="none" font-family="Helvetica, Arial, sans-serif" font-size="9">
-<text x="104" y="36">Perception</text><text x="34" y="156" transform="rotate(-30 34 156)">Action</text>
-<text x="132" y="128" transform="rotate(30 132 128)">Interface</text></g></svg><figcaption class="t-body">Fig 5: Perception, action, interface</figcaption></figure>
-        </div>
-      </div>
-      <div class="tc-right">
-        <div class="tc-head"><h2 class="t-label">Methods</h2></div>
-        <div class="tc-text body">
-          <p>Experimental studies, interviews, behavioral and interaction logs, visualization prototyping, iterative design, and multimodal analysis.</p>
-          <figure class="fig fig--inline" style="margin-top:1.5rem"><svg aria-hidden="true" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-<path d="M70 70 L52 70 C 30 70, 22 90, 22 104 C 22 126, 40 140, 62 140 L138 140 C 160 140, 178 126, 178 104 C 178 84, 164 70, 142 70 L96 70" stroke-width="11"/>
-<path d="M104 46 L128 70 L104 94" stroke-width="11"/></svg><figcaption class="t-body">Fig 6: Iterate</figcaption></figure>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ (01) Research (cases) ============ -->
     <section id="research" class="cases subgrid">
@@ -875,24 +842,12 @@
           </svg>
         </div>
         <div class="ft-copyright">
-          <h3 class="t-label">Copyright</h3>
-          <p>Research / Teaching / Practice © 2026</p>
+          <p>2026</p>
         </div>
         <div class="ft-about">
           <h3 class="t-label">Contact</h3>
           <p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p>
           <p style="margin-top:1em">Interaction / Cognition / Computational environments.</p>
-        </div>
-        <div class="ft-credits">
-          <h3 class="t-label">Index</h3>
-          <ul class="ft-links">
-            <li><a href="bio.html">Bio</a><p>—</p></li>
-            <li><a href="#research">Research</a><p>01</p></li>
-            <li><a href="#about">About</a><p>02</p></li>
-            <li><a href="#teaching">Teaching</a><p>03</p></li>
-            <li><a href="#students">Teaching archive</a><p>03b</p></li>
-            <li><a href="https://www.sourcetype.com/" rel="noreferrer">Source Type</a><p>Type [UN-11]</p></li>
-          </ul>
         </div>
         <a class="button--reset ft-arrow" href="#top" aria-label="Back to top" style="text-decoration:none"><span>↑</span></a>
       </div>
