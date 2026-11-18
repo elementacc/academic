@@ -7,7 +7,7 @@ POSITION = ('<dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd>'
 def header(root):
     return f'''<header class="sh" id="top">
     <div class="sh__col sh__logo"><a href="{root}index.html">Paulina Greta Stefanovic</a></div>
-    <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
+    <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Embodied Cognition / Computational environments</p></div>
     <div class="sh__col sh__pos"><p class="sh__label">Position</p>
       {POSITION}
       <p class="sh__bio"><a href="{root}bio.html">Bio →</a><br><a href="{root}reflections.html">Reflections →</a></p></div>
