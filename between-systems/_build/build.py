@@ -238,20 +238,16 @@ def axis_html():
 
 
 def archive_html():
-    names = json.load(open(os.path.join(os.path.dirname(__file__), "sketches.json")))
+    names = [420, 421, 422, 423, 432, 433, 434, 435, 444, 445, 446, 447, 456, 457, 458, 459]
     cells = "".join(
-        f'<figure class="arc__cell{" arc__more" if k >= 48 else ""}"><figcaption>UNTITLED_{n}</figcaption>'
-        f'<img src="../media/vr/sketches/{n}.jpg" alt="VR sketch Untitled_{n}" loading="lazy"></figure>'
-        for k, n in enumerate(names))
+        f'<figure class="arc__cell"><img src="../media/vr/sketches/{n}.jpg" alt="VR sketch" loading="lazy"></figure>'
+        + ('<div class="arc__edge" aria-hidden="true">' + ('16:156' if r == 2 else '') + '</div>' if (k % 4 == 3) else '')
+        for k, n in enumerate(names) for r in [k // 4])
     return ('<section class="arc" aria-labelledby="arc-h">'
-        '<div class="arc__head">'
-        f'<p><span id="arc-h">VR SKETCHES<br>ARCHIVE</span></p><p>{len(names)}<br>SKETCHES</p><p>ORIGINAL BRUSH<br>GEOMETRY</p><p>LONGITUDINAL STUDY<br>ASCENDING NUMBER</p>'
-        '</div>'
-        f'<div class="arc__grid" id="arc-grid">{cells}</div>'
-        f'<button class="arc__toggle" id="arc-toggle" type="button">SHOW ALL {len(names)}</button>'
-        '<script>(function(){var g=document.getElementById("arc-grid"),b=document.getElementById("arc-toggle");'
-        'b.addEventListener("click",function(){var o=g.classList.toggle("is-open");b.textContent=o?"SHOW FEWER":"SHOW ALL {n}";}.bind(null));})();</script>'
-        '</section>').replace("{n}", str(len(names)))
+        '<div class="arc__head"><p id="arc-h">VR SKETCHES<br>ARCHIVE</p><p>LONGITUDINAL<br>STUDY</p><p>ORIGINAL<br>BRUSH<br>GEOMETRY</p><p></p><p class="arc__edge"></p></div>'
+        f'<div class="arc__grid">{cells}</div>'
+        '<div class="arc__foot"><p></p><p></p><p></p><p class="arc__ref">IMMERSIVE 3D SKETCHING<br>CIRCLE, CUBE, PYRAMID, SPHERE<br>REPEATED ACROSS SESSIONS</p><p class="arc__edge"></p></div>'
+        '</section>')
 
 
 def docs_html(cat):
