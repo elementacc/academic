@@ -29,9 +29,9 @@ ROWS = [
        b=("Role", "Lecturer"),
        text="I am a lecturer in the Applied Informatics and Industrial Design departments at HTW University of Applied Sciences Berlin. Twice a year I am involved in the seminar “Multidisciplinary Perspectives of Digital Neurosurgery” at Charité with the Speculative Realities Lab."),
   dict(title="Research lab", draw=None,
-       a=("Speculative Realities Lab", [("Since", "2023"), ("Neurosurgery", ""), ("Anthropology", ""), ("Immersive arts", "")]),
+       a=("Speculative Realities Lab", [("Neurosurgery", ""), ("Anthropology", ""), ("Immersive arts", "")]),
        b=("Collaboration", "Charité and the Cluster of Excellence »Matters of Activity. Image Space Material«"),
-       text="Since 2023 I have been a researcher at the Speculative Realities Lab, a space connecting neurosurgery, anthropology and the immersive arts, run by Charité with the Cluster of Excellence »Matters of Activity. Image Space Material«."),
+       text="I am a researcher at the Speculative Realities Lab, a space connecting neurosurgery, anthropology and the immersive arts, run by Charité with the Cluster of Excellence »Matters of Activity. Image Space Material«."),
   dict(title="Education", draw=None,
        a=("Degrees", [("Ph.D., Human–Computer Interaction", "TU Berlin, expected 2027"), ("MSc, Psychology of Communication", "Sapienza University of Rome, 2015"), ("BA/BFA, Video Direction and Non-Linear Installation Arts", "IED Milan, 2013")]),
        b=("Doctoral research", "Longitudinal Study of 3D VR Sketching Behaviour in Immersive Virtual Environments"),
@@ -110,14 +110,14 @@ HTML = f'''<!doctype html>
     }}
 
     /* title */
-    .head {{ padding: 16px 0 120px; align-items: start; }}
-    .head h1 {{ grid-column: 1 / span 3; font-size: clamp(36px, 4.4vw, 64px); line-height: 1; letter-spacing: -.02em; font-weight: 400; }}
+    .head {{ padding: 16px 0 40px; align-items: start; }}
+    .head h1 {{ grid-column: 1 / -1; font-family: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-feature-settings: normal; font-size: clamp(2.6rem, 6.9vw, 12rem); line-height: .86; letter-spacing: -.045em; margin-left: -.04em; font-weight: 400; padding: .06em 0 .2em; border-bottom: 1px solid var(--fg); }}
     .head__count {{ grid-column: 4 / span 1; justify-self: end; font-size: 12px; text-align: right; }}
     .head__code {{ color: var(--fg3); }}
     .head__count span {{ display: block; }}
     @media (min-width: 900px) {{
-      .head {{ padding-bottom: 180px; }}
-      .head h1 {{ grid-column: 1 / span 6; }} .head__count {{ grid-column: 9 / span 2; justify-self: start; text-align: left; display: contents; }}
+      .head {{ padding-bottom: 56px; }}
+      .head__count {{ grid-column: 9 / span 2; justify-self: start; text-align: left; display: contents; }}
       .head__count span:first-child {{ grid-column: 9 / span 2; }} .head__code {{ grid-column: 11 / span 2; }}
     }}
 
@@ -180,7 +180,7 @@ HTML = f'''<!doctype html>
     </header>
 
     <section class="head g">
-      <h1>Bio &amp;<br>Practice</h1>
+      <h1>Bio</h1>
     </section>
 
     <ol class="specs">{"".join(row(i, r) for i, r in enumerate(ROWS))}
