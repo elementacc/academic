@@ -18,7 +18,7 @@ def fig(i):
 
 PROJECTS = [
     dict(slug="01-vr-sketching", no="01", title="VR Sketching", svg=0,
-         area="Drawing without a page", type="Longitudinal study",
+         area="PhD Thesis Research", type="Longitudinal study",
          filters=["Spatial interaction", "Methods & interfaces"],
          lead="How are spatial relationships made when there is no surface to draw on?",
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
@@ -78,7 +78,7 @@ PROJECTS = [
              ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
     dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters",
-         area="Visualization", type="Collaborative work, Charité",
+         area="Scientific Visualization, Immersive Analytics", type="Collaborative work, Charité",
          filters=["Visualization", "Methods & interfaces"],
          lead="Making complex anatomical information more navigable and interpretable.",
          short="Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.",
