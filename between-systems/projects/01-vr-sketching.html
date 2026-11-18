@@ -300,11 +300,11 @@
     @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
 
     /* ---------- VR: Axis / Space figure ---------- */
-    .axis__stage { position: relative; height: min(100vw, 560px); margin-top: 8px; }
+    .axis__stage { position: relative; height: min(80vw, 560px); margin-top: 8px; }
     .axis__stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
     .axis__stage canvas:active { cursor: grabbing; }
     .axis__arrow { position: absolute; left: calc(50% - 17px); bottom: 8px; width: 34px; height: 34px; color: var(--textPrimaryColor); pointer-events: none; transform-origin: 50% 100%; transition: transform .35s var(--ease), color .35s var(--ease); }
-    .axis__stage:hover .axis__arrow { transform: scale(1.35); color: #ff3b1f; }
+    .axis__stage:hover .axis__arrow { transform: scale(1.35); color: #f26a3d; }
     @media (min-width: 900px) { .axis__stage { height: min(78vh, 760px); } }
 
     .sh, .sw, .sf { --fr-ink: #202020; --fr-2: #767676; --fr-3: #b3b3b3; --fr-line: #ededed; --fr-gap: 8px;
@@ -400,7 +400,7 @@
     </div>
   </div>
 
-  <section class="diagram axis" aria-label="Figure: axis and space"><h2 class="bar">fig. 01 — Axis / space</h2><div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas><svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><script src="../media/vr/axis.js" defer></script></section>
+  <section class="diagram axis" aria-label="Figure: axis and space"><h2 class="bar">fig. 01 — Axis / space</h2><div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas><svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></div><script src="../media/vr/axis.js" defer></script></section>
   
   
 
