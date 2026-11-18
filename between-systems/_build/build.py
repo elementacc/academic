@@ -40,7 +40,6 @@ PROJECTS = [
                      ("museum-vr-02.jpg", "VR sketch overlaid on a museum visitor"),
                      ("kgm-02.jpg", "Two participants drawing in VR")],
              stage=("museum-vr-02.jpg", "Museum VR sketching: sketch overlay at the Kunstgewerbemuseum"),
-             tall=("materiality-01.jpg", "Publication: “The Navigational Technè: From Static Frames to Perpetual Motion”, in Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
              tex_a=("kgm-13.jpg", "Drawing in VR beside a coral vitrine"),
              tex_b=("kgm-14.jpg", "Intervention »Wunderkammer«: more than human"),
          ),
@@ -215,10 +214,10 @@ def feature_html():
 def publication_html():
     return ('<section class="feature pub" aria-labelledby="pub-h">'
         '<p class="feature__kicker">Publication</p>'
-        '<h2 id="pub-h" class="feature__title">The Navigational Technè: From Static Frames to Perpetual Motion</h2>'
-        '<div class="feature__body"><div class="feature__text">'
+        '<h2 id="pub-h" class="feature__title pub__title">The Navigational Technè:<br>From Static Frames to Perpetual Motion</h2>'
+        '<div class="feature__body"><div class="feature__text pub__text">'
         '<p>A contribution to the Speculative Realities Lab section of <em>Matters of Activity. Rethinking Materiality, Rethinking Knowledge</em>, edited by Claudia Mareis, Carolin Ott and Babette Werner (Birkhäuser, 2026), pp. 305–306.</p>'
-        '<p><a href="https://doi.org/10.1515/9783035629774" target="_blank" rel="noopener">DOI: 10.1515/9783035629774 ↗</a></p>'
+        '<p class="pub__doi"><a href="https://doi.org/10.1515/9783035629774" target="_blank" rel="noopener">DOI: 10.1515/9783035629774 ↗</a></p>'
         '</div><figure class="feature__img pub__img"><img src="../media/speclab/materiality-01.jpg" alt="Book cover: Matters of Activity. Rethinking Materiality, Rethinking Knowledge" loading="lazy"></figure></div></section>')
 
 
@@ -280,7 +279,7 @@ def page(i, p):
         stage_html = f'<p class="stage__caption">{esc(M["stage"][1])}</p><div class="stage__img" id="stage">{img("stage", cap=False)}</div>'
         strip_html = f'<div class="tile strip">{img("strip")}</div>' if "strip" in M else ""
         side_html = f'<div class="tile side__small">{img("side")}</div>' if "side" in M else ""
-        tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>'
+        tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>' if "tall" in M else ""
         texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>' if "tex_a" in M else '<div class="texture texture--a texture--blank" aria-hidden="true"></div>'
         texb_html = f'<div class="tile texture texture--b">{img("tex_b")}</div>'
     else:

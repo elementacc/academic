@@ -303,7 +303,8 @@
        Cases  (Clients & projects pattern)
        ========================================================= */
     .cases { margin-top: 2.1875rem; padding-top: .75rem; border-top: 1px solid var(--borderColor); }
-    .cases__headline { grid-column-end: span 5; }
+    .cases__headline { grid-column-end: span var(--grid-cols); }
+    .cases__title { margin-top: 1.25rem; }
     .cases__sub { grid-column-end: span 3; }
     .cases__text, .cases__filters, .projects { grid-column-end: span var(--grid-cols); }
     .cases__text { margin-top: 1rem; }
@@ -315,7 +316,7 @@
     .proj.is-hidden { display: none; }
     @media (min-width: 1024px) {
       .cases { margin-top: 4.5rem; }
-      .cases__headline { grid-column: 1 / span 2; grid-row: 1; }
+      .cases__headline { grid-column: 1 / span 9; grid-row: 1; margin-bottom: 2.5rem; }
       .cases__sub { grid-column: 3 / span 2; grid-row: 1; }
       .cases__text { grid-column: 7 / span 3; grid-row: 1; margin-top: 0; margin-bottom: 2.5rem; }
       .cases__filters { grid-column: 10 / span 3; grid-row: 1; margin: 0; align-content: flex-start; }
@@ -666,8 +667,7 @@
 
     <!-- ============ (01) Research (cases) ============ -->
     <section id="research" class="cases subgrid">
-      <div class="cases__headline"><h2 class="t-label">Research &amp; Practice</h2></div>
-      <div class="cases__sub t-body"><p>Selected work</p></div>
+      <div class="cases__headline"><p class="t-label">Selected work</p><h2 class="st-title cases__title">Research &amp; Practice</h2></div>
       <div class="cases__filters t-body" role="group" aria-label="Filter projects">
         <button class="button--reset" data-filter="all" aria-pressed="true">All</button><span>,&nbsp;</span>
         <button class="button--reset" data-filter="spatial" aria-pressed="false">Spatial interaction</button><span>,&nbsp;</span>
