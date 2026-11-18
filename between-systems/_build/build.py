@@ -294,7 +294,7 @@ def page(i, p):
 </head>
 <body class="light">
   <header class="sh" id="top">
-    <div class="sh__col sh__logo"><a href="../index.html">○ Paulina Greta Stefanovic</a></div>
+    <div class="sh__col sh__logo"><a href="../index.html">Paulina Greta Stefanovic</a></div>
     <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
     <div class="sh__col sh__pos"><p class="sh__label">Position</p>
       <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
@@ -340,17 +340,12 @@ def page(i, p):
     <div class="half half--right">
       <div class="row row--top">
         <div class="stage-col">
-          <div class="sel">
-
-            <span class="sel__label">Project</span>
-            <nav class="sel__items" aria-label="Projects">{proj_nav}</nav>
-          </div>
           <div class="stage tile">
             {stage_html}
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Index</span><span>{total:02d}</span></a>
+          <a class="pill" href="../index.html#research"><span>Projects</span><span>{p["no"]}</span></a>
         </div>
       </div>
 
