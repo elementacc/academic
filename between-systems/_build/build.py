@@ -37,7 +37,7 @@ PROJECTS = [
                      ("session-04.jpg", "Participant drawing with an extended arm in VR")],
              side=("openbrush.jpg", "A cube being drawn in OpenBrush"),
              stage=("openbrush.jpg", "A cube being drawn in OpenBrush"),
-             tex_a=("session-03.jpg", "Participant reaching up while sketching in VR"),
+             tex_a=("session-01.jpg", "Participant drawing upwards in VR"),
              tex_b=("session-02.jpg", "Participant drawing in VR with both controllers"),
          )),
     dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, practice=True, docs="speclab", title="Speculative Realities Lab",
