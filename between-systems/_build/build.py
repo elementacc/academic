@@ -19,18 +19,18 @@ def fig(i):
 PROJECTS = [
     dict(slug="01-vr-sketching", no="01", title="VR Sketching", svg=0,
          area="PhD Thesis Research", type="Longitudinal study",
-         filters=["Spatial interaction", "Methods & interfaces"],
+         filters=["Spatial interaction", "Embodied Interfaces"],
          lead="How are spatial relationships made when there is no surface to draw on?",
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
          status="Illustrative study / 01. Current graphic is not a research artifact."),
     dict(slug="02-speculative-realities-lab", no="02", svg=3, title="Speculative Realities Lab",
-         area="Experiments", type="Research practice",
-         filters=["Methods & interfaces"],
+         area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
+         filters=["Methods & Interfaces"],
          lead="Prototypes, methods, and experiments at the edges of emerging interfaces.",
          short="Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.",
          detail="Explorations through prototypes and speculative practices to develop questions about emerging computational environments and their relationships to human experience.",
-         status="Project documentation / 02. Photographs from museum VR sketching at the Kunstgewerbemuseum, workshop and sessions.",
+         status="Documentation of VR sketching at the Kunstgewerbemuseum Berlin: drawing among the collection, in the headset and on paper, with sketch overlays by Maxime Le Calvé.",
          media=dict(
              dir="../media/speclab",
              figure=("museum-vr-01.jpg", "Printed sketch overlays from a museum VR sketching session"),
@@ -49,7 +49,7 @@ PROJECTS = [
          ),
     dict(slug="03-movement-based-research", no="03", title="Movement-based research",
          area="Software research", type="Ongoing, 2023–present",
-         filters=["Spatial interaction", "Methods & interfaces"],
+         filters=["Spatial interaction", "Methods & Interfaces"],
          lead="Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.",
          short="Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers.",
          detail="Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.",
@@ -74,12 +74,12 @@ PROJECTS = [
              ("Eye drawing — an inclusive feature", "Eye drawing introduces gaze as an input modality for immersive sketching: the system translates eye movements into a drawing cursor instead of moving controllers. This enables hands-free or hybrid workflows, reduces reliance on controllers and extends embodied interaction beyond the hand — opening tool design towards inclusivity while keeping a user-centred path at its core."),
          ],
          info_blocks=[
-             ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)<br>L. E. Boxall, “Printing with magnetic inks”"),
+             ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
              ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
     dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters",
          area="Scientific Visualization, Immersive Analytics", type="Collaborative work, Charité",
-         filters=["Visualization", "Methods & interfaces"],
+         filters=["Visualization", "Methods & Interfaces"],
          lead="Making complex anatomical information more navigable and interpretable.",
          short="Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.",
          detail="An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.",
@@ -94,7 +94,6 @@ PROJECTS = [
              stage=("through-the-headset-01.jpg", "Brain structures in VR, seen through the headset lens"),
              side=("fibre-paper.jpg", "Fibre drawings on paper"),
              tall=("vr-session.jpg", "Group sketching session in VR"),
-             tex_a=("charite-workshop-04.jpg", "Headsets, brain models and drawings on a table"),
              tex_b=("lila-01.jpg", "Fibre tracts and voxel points in an immersive scene"),
          ),
          docs="subcortical"),
@@ -211,7 +210,7 @@ def docs_html(cat):
         out.append(
             f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
             f'<span class="muted">{esc(blk["meta"])}</span></header>'
-            f'<p class="doc__text">{esc(blk["text"])}</p><div class="doc__row">{imgs}</div>'
+            f'<p class="doc__text">{blk.get("text_html") or esc(blk["text"])}</p><div class="doc__row">{imgs}</div>'
             + (f'<p class="doc__credit muted">{esc(blk["credit"])}</p>' if blk.get("credit") else "")
             + (f'<p class="doc__credit"><a href="{html.escape(blk["link"][1])}" target="_blank" rel="noopener">{esc(blk["link"][0])} ↗</a></p>' if blk.get("link") else "")
             + '</article>')
@@ -257,7 +256,7 @@ def page(i, p):
         strip_html = f'<div class="tile strip">{img("strip")}</div>' if "strip" in M else ""
         side_html = f'<div class="tile side__small">{img("side")}</div>' if "side" in M else ""
         tall_html = f'<div class="tile tile--tall texture">{img("tall")}</div>'
-        texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>'
+        texa_html = f'<div class="tile texture texture--a">{img("tex_a")}</div>' if "tex_a" in M else '<div class="texture texture--a texture--blank" aria-hidden="true"></div>'
         texb_html = f'<div class="tile texture texture--b">{img("tex_b")}</div>'
     else:
         figure_html = f'<div class="figure" aria-hidden="true">{crop(svg, "0 0 400 400", 'class="figure__svg"')}</div>'
@@ -298,9 +297,9 @@ def page(i, p):
     <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
     <div class="sh__col sh__pos"><p class="sh__label">Position</p>
       <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
-      <p class="sh__bio"><a href="../bio.html">Bio →</a></p></div>
+      <p class="sh__bio"><a href="../bio.html">Bio →</a><br><a href="../reflections.html">Reflections →</a></p></div>
   </header>
-  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1></div>
+  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1><p class="sw__proj">{esc(p["title"])}</p></div>
   <div class="mosaic">
 
     <!-- ============ Left half ============ -->
@@ -317,7 +316,7 @@ def page(i, p):
           <section class="block">
             <h1 class="bar">{esc(p["title"])}</h1>
             <div class="block__body">
-              <p>{esc(p["area"])}<br>{esc(p["type"])}<br>{esc(" + ".join(p["filters"]))}</p>
+              <p>{(f'<a href="{p["area_link"]}" target="_blank" rel="noopener">{esc(p["area"])} ↗</a>' if p.get("area_link") else esc(p["area"]))}<br>{esc(p["type"])}<br>{"<br>".join(esc(f) for f in p["filters"])}</p>
               <p class="muted">{p["no"]} / {total:02d} &nbsp;·&nbsp; Research</p>
             </div>
           </section>

@@ -175,7 +175,7 @@
     .doc__head { display: flex; justify-content: space-between; gap: 12px; }
     .doc__text { padding: 10px 8px 12px; max-width: 60ch; }
     .doc__credit { padding: 8px 8px 0; font-size: .85em; }
-    .doc__credit a { text-decoration: underline; text-underline-offset: .2em; }
+    .doc__text a, .doc__credit a { text-decoration: underline; text-underline-offset: .2em; }
     .doc__row { display: flex; flex-wrap: wrap; gap: var(--gap); }
     .doc__img { margin: 0; flex: 0 1 auto; --h: clamp(11rem, 17vw, 17rem); height: var(--h); width: calc(var(--h) * var(--r)); max-width: 100%; background: var(--layer1Color); overflow: hidden; }
     .doc__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
@@ -229,6 +229,9 @@
     .sw h1 { font-family: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 400;
       font-size: clamp(2.6rem, 6.9vw, 12rem); line-height: .86; letter-spacing: -.045em; margin-left: -.04em; padding: .06em 0 .2em; border-bottom: 1px solid var(--textPrimaryColor); }
     .sw h1 a { text-decoration: none; }
+    .sw__proj { font-size: 1.375rem; line-height: 1.15; letter-spacing: -.01em; padding: 14px 0 6px; }
+    .info .block__body a { text-decoration: underline; text-underline-offset: .2em; }
+    .texture--blank { background: none; }
     .sw__n { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .26em; letter-spacing: .3em; vertical-align: 2.3em; margin-right: .3em; }
     .sf { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding: 14px var(--gap) 90px; margin-top: 120px; border-top: 1px solid var(--borderColor); font-size: 14px; line-height: 1.15; position: relative; }
     .sf__graphic { grid-column: 1 / span 2; } .sf__graphic svg { width: 4.5rem; height: auto; color: var(--textPrimaryColor); }
@@ -307,9 +310,9 @@
     <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
     <div class="sh__col sh__pos"><p class="sh__label">Position</p>
       <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
-      <p class="sh__bio"><a href="../bio.html">Bio →</a></p></div>
+      <p class="sh__bio"><a href="../bio.html">Bio →</a><br><a href="../reflections.html">Reflections →</a></p></div>
   </header>
-  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1></div>
+  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1><p class="sw__proj">VR Sketching</p></div>
   <div class="mosaic">
 
     <!-- ============ Left half ============ -->
@@ -381,7 +384,7 @@
           <section class="block">
             <h1 class="bar">VR Sketching</h1>
             <div class="block__body">
-              <p>PhD Thesis Research<br>Longitudinal study<br>Spatial interaction + Methods &amp; interfaces</p>
+              <p>PhD Thesis Research<br>Longitudinal study<br>Spatial interaction<br>Embodied Interfaces</p>
               <p class="muted">01 / 04 &nbsp;·&nbsp; Research</p>
             </div>
           </section>

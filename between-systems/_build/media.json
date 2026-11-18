@@ -267,11 +267,6 @@
      "src": "media/subcortical/charite-workshop-03.jpg",
      "alt": "Drawing subcortical structures by hand",
      "r": 1.333
-    },
-    {
-     "src": "media/subcortical/charite-workshop-04.jpg",
-     "alt": "Headsets, brain models and drawings on a table",
-     "r": 1.333
     }
    ]
   },
@@ -330,7 +325,7 @@
    "key": "textiles",
    "title": "Textiles",
    "meta": "Nayeli Vega",
-   "text": "Brain visualisations carried onto textile.",
+   "text": "Brain visualisations carried onto textile, developed by Nayeli Vega.",
    "credit": "Textiles: Nayeli Vega",
    "images": [
     {
@@ -343,6 +338,11 @@
      "alt": "Textile detail, by Nayeli Vega",
      "r": 0.75
     }
+   ],
+   "text_html": "Brain visualisations carried onto textile, developed by <a href=\"https://nayelivega.com/\" target=\"_blank\" rel=\"noopener\">Nayeli Vega ↗</a>.",
+   "link": [
+    "nayelivega.com",
+    "https://nayelivega.com/"
    ]
   },
   {
