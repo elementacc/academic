@@ -328,6 +328,7 @@
     .sf { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--fr-gap); padding: 14px var(--fr-gap) 90px; margin-top: 120px; border-top: 1px solid var(--fr-line); font-size: 14px; line-height: 1.15; position: relative; }
     .sf__graphic { grid-column: 1 / span 2; } .sf__graphic svg { width: 4.5rem; height: auto; }
     .sf__about { grid-column: 3 / span 4; } .sf__copy { grid-column: 10 / span 2; }
+    .contact-mail { display: inline-block; margin-left: .35em; text-decoration: none; transition: transform .3s ease, color .3s ease; } .contact-mail:hover { transform: translateX(4px); color: #f26a3d !important; opacity: 1 !important; }
     .sf__top { position: absolute; right: var(--fr-gap); top: 14px; }
     @media (max-width: 1023px) { .sf__graphic { grid-column: 1 / -1; margin-bottom: 12px; } .sf__about { grid-column: 1 / span 8; } .sf__copy { grid-column: 9 / span 3; } }
 
@@ -405,7 +406,7 @@
   
 
   <footer class="sf">
-    <div class="sf__about"><p class="sh__label">Contact</p><p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p></div>
+    <div class="sf__about"><p class="sh__label">Contact</p><p>Open to interdisciplinary research conversations, evaluations and experimental collaborations. <a class="contact-mail" href="mailto:paulina@elementa.cc" aria-label="Email paulina@elementa.cc">→</a></p></div>
     <div class="sf__copy"><p>2026</p></div>
     <a class="sf__top" href="#top" aria-label="Back to top">↑</a>
   </footer>
