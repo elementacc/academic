@@ -33,12 +33,12 @@ PROJECTS = [
              figure_contain=True,
              thumbs=[("session-01.jpg", "Participant drawing upwards in VR"),
                      ("session-02.jpg", "Participant drawing in VR with both controllers"),
-                     ("session-03.jpg", "Participant reaching up while sketching in VR"),
-                     ("session-04.jpg", "Participant drawing with an extended arm in VR")],
+                     ("sketches/422.jpg", "VR sketch: cube"),
+                     ("sketches/434.jpg", "VR sketch: sphere")],
              side=("openbrush.jpg", "A cube being drawn in OpenBrush"),
              stage=("openbrush.jpg", "A cube being drawn in OpenBrush"),
-             tex_a=("sketches/422.jpg", "VR sketch: cube"),
-             tex_b=("sketches/434.jpg", "VR sketch: sphere"),
+             tex_a=("session-03.jpg", "Participant reaching up while sketching in VR"),
+             tex_b=("session-04.jpg", "Participant drawing with an extended arm in VR"),
          )),
     dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, practice=True, docs="speclab", title="Speculative Realities Lab",
          area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
@@ -238,10 +238,10 @@ def publication_html():
 
 
 def axis_html():
-    arrow = ('<svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="1.2"/>'
-             '<path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="1.2"/>'
-             '<path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="1.2"/>'
-             '<path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>')
+    arrow = ('<svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="2"/></svg>')
     return ('<section class="diagram axis" aria-label="Figure: axis and space">'
         '<h2 class="bar">fig. 01 — Axis / space</h2>'
         f'<div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas>{arrow}</div>'

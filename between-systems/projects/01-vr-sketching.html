@@ -300,11 +300,11 @@
     @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
 
     /* ---------- VR: Axis / Space figure ---------- */
-    .axis__stage { position: relative; height: min(80vw, 560px); margin-top: 8px; }
+    .axis__stage { position: relative; height: min(100vw, 560px); margin-top: 8px; }
     .axis__stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
     .axis__stage canvas:active { cursor: grabbing; }
     .axis__arrow { position: absolute; left: calc(50% - 17px); bottom: 8px; width: 34px; height: 34px; color: var(--textPrimaryColor); pointer-events: none; transform-origin: 50% 100%; transition: transform .35s var(--ease), color .35s var(--ease); }
-    .axis__stage:hover .axis__arrow { transform: scale(1.35); color: #f26a3d; }
+    .axis__stage:hover .axis__arrow { transform: scale(1.35); color: #ff3b1f; }
     @media (min-width: 900px) { .axis__stage { height: min(78vh, 760px); } }
 
     .sh, .sw, .sf { --fr-ink: #202020; --fr-2: #767676; --fr-3: #b3b3b3; --fr-line: #ededed; --fr-gap: 8px;
@@ -348,7 +348,7 @@
     <div class="half half--left">
       <div class="row row--top">
         <div class="figure figure--img figure--contain"><img src="../media/vr/sketch-grid.jpg" alt="Sixteen VR sketches from the study sessions: circle, cube, pyramid, sphere" loading="lazy"><p class="figure__cap">Sixteen VR sketches from the study sessions: circle, cube, pyramid, sphere</p></div>
-        <div class="thumbs"><button class="thumb tile" data-src="../media/vr/session-01.jpg" data-alt="Participant drawing upwards in VR" aria-label="Show: Participant drawing upwards in VR"><img src="../media/vr/session-01.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/session-02.jpg" data-alt="Participant drawing in VR with both controllers" aria-label="Show: Participant drawing in VR with both controllers"><img src="../media/vr/session-02.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/session-03.jpg" data-alt="Participant reaching up while sketching in VR" aria-label="Show: Participant reaching up while sketching in VR"><img src="../media/vr/session-03.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/session-04.jpg" data-alt="Participant drawing with an extended arm in VR" aria-label="Show: Participant drawing with an extended arm in VR"><img src="../media/vr/session-04.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/openbrush.jpg" data-alt="A cube being drawn in OpenBrush" aria-label="Show: A cube being drawn in OpenBrush"><img src="../media/vr/openbrush.jpg" alt="" loading="lazy"></button></div>
+        <div class="thumbs"><button class="thumb tile" data-src="../media/vr/session-01.jpg" data-alt="Participant drawing upwards in VR" aria-label="Show: Participant drawing upwards in VR"><img src="../media/vr/session-01.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/session-02.jpg" data-alt="Participant drawing in VR with both controllers" aria-label="Show: Participant drawing in VR with both controllers"><img src="../media/vr/session-02.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/sketches/422.jpg" data-alt="VR sketch: cube" aria-label="Show: VR sketch: cube"><img src="../media/vr/sketches/422.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/sketches/434.jpg" data-alt="VR sketch: sphere" aria-label="Show: VR sketch: sphere"><img src="../media/vr/sketches/434.jpg" alt="" loading="lazy"></button><button class="thumb tile" data-src="../media/vr/openbrush.jpg" data-alt="A cube being drawn in OpenBrush" aria-label="Show: A cube being drawn in OpenBrush"><img src="../media/vr/openbrush.jpg" alt="" loading="lazy"></button></div>
       </div>
       
 
@@ -394,13 +394,13 @@
           <section class="block"><h2 class="bar">About the study</h2><div class="block__body"><p>A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.</p></div></section>
           <section class="block"><h2 class="bar">Visual status</h2><div class="block__body"><p><span class="muted">Participants drawing in VR during the study sessions, the OpenBrush interface, and sketches from the sessions.</span></p></div></section>
         </div>
-        <div class="tile texture texture--a"><img src="../media/vr/sketches/422.jpg" alt="VR sketch: cube" loading="lazy"><span class="tile__cap">VR sketch: cube</span></div>
-        <div class="tile texture texture--b"><img src="../media/vr/sketches/434.jpg" alt="VR sketch: sphere" loading="lazy"><span class="tile__cap">VR sketch: sphere</span></div>
+        <div class="tile texture texture--a"><img src="../media/vr/session-03.jpg" alt="Participant reaching up while sketching in VR" loading="lazy"><span class="tile__cap">Participant reaching up while sketching in VR</span></div>
+        <div class="tile texture texture--b"><img src="../media/vr/session-04.jpg" alt="Participant drawing with an extended arm in VR" loading="lazy"><span class="tile__cap">Participant drawing with an extended arm in VR</span></div>
       </div>
     </div>
   </div>
 
-  <section class="diagram axis" aria-label="Figure: axis and space"><h2 class="bar">fig. 01 — Axis / space</h2><div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas><svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></div><script src="../media/vr/axis.js" defer></script></section>
+  <section class="diagram axis" aria-label="Figure: axis and space"><h2 class="bar">fig. 01 — Axis / space</h2><div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas><svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><script src="../media/vr/axis.js" defer></script></section>
   
   
 
