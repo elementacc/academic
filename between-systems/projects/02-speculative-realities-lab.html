@@ -181,6 +181,11 @@
     .feature__img img { width: 100%; height: auto; display: block; }
     @media (min-width: 1024px) { .feature__body { grid-template-columns: 1fr 1fr; align-items: start; } }
 
+    .doc--bw .doc__img img { filter: grayscale(1); transition: filter .4s var(--ease); }
+    .doc--bw .doc__img:hover img { filter: none; }
+    .pub__img { max-width: 22rem; background: none; }
+    .feature__text a { text-decoration: underline; text-underline-offset: .2em; }
+
     /* ---------- Documentation blocks ---------- */
     .docs { padding: calc(var(--gap) * 3) var(--gap) 0; display: grid; gap: calc(var(--gap) * 5); }
     .doc__head { display: flex; justify-content: space-between; gap: 12px; }
@@ -191,7 +196,7 @@
     .doc__img { margin: 0; flex: 0 1 auto; --h: clamp(11rem, 17vw, 17rem); height: var(--h); width: calc(var(--h) * var(--r)); max-width: 100%; background: var(--layer1Color); overflow: hidden; }
     .doc__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
     .doc__img:hover img { transform: scale(1.03); }
-    @media (max-width: 639px) { .doc__img { flex: 1 1 calc(50% - var(--gap)); aspect-ratio: auto; height: 46vw; } }
+    @media (max-width: 639px) { .doc__img { flex: 1 1 calc(50% - var(--gap)); aspect-ratio: auto; height: 46vw; width: auto; } }
 
     /* ---------- Diagram (fig. 01) ---------- */
     .diagram { padding: calc(var(--gap) * 3) var(--gap) 0; }
@@ -354,7 +359,7 @@
               <div class="block__body"><p>Exploring how speculative approaches can make unfamiliar technological possibilities tangible and discussable.</p></div>
             </section>
           </div>
-          <div class="info__pair"><section class="block"><h2 class="bar">Publication</h2><div class="block__body"><p>“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>.</p></div></section><section class="block"><h2 class="bar">Credits</h2><div class="block__body"><p>Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé</p></div></section></div>
+          <div class="info__pair"><section class="block"><h2 class="bar">Credits</h2><div class="block__body"><p>Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé</p></div></section></div>
         </div>
       </div>
     </div>
@@ -383,7 +388,7 @@
     </div>
   </div>
 
-  
+  <section class="feature pub" aria-labelledby="pub-h"><p class="feature__kicker">Publication</p><h2 id="pub-h" class="feature__title">The Navigational Technè: From Static Frames to Perpetual Motion</h2><div class="feature__body"><div class="feature__text"><p>A contribution to the Speculative Realities Lab section of <em>Matters of Activity. Rethinking Materiality, Rethinking Knowledge</em>, edited by Claudia Mareis, Carolin Ott and Babette Werner (Birkhäuser, 2026), pp. 305–306.</p><p><a href="https://doi.org/10.1515/9783035629774" target="_blank" rel="noopener">DOI: 10.1515/9783035629774 ↗</a></p></div><figure class="feature__img pub__img"><img src="../media/speclab/materiality-01.jpg" alt="Book cover: Matters of Activity. Rethinking Materiality, Rethinking Knowledge" loading="lazy"></figure></div></section>
   
 
   <footer class="sf">

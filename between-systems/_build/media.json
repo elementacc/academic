@@ -262,11 +262,6 @@
      "src": "media/subcortical/charite-workshop-02.jpg",
      "alt": "Participants around an anatomical brain model",
      "r": 0.75
-    },
-    {
-     "src": "media/subcortical/charite-workshop-03.jpg",
-     "alt": "Drawing subcortical structures by hand",
-     "r": 1.333
     }
    ]
   },
@@ -409,6 +404,24 @@
  ],
  "movement": [
   {
+   "key": "radial",
+   "title": "Radial interface prototyping",
+   "meta": "Eye drawing",
+   "text": "Prototyping a radial menu for gaze input: eye tracking inside the headset, and the interface developed from a paper sketch to an on-screen prototype.",
+   "images": [
+    {
+     "src": "media/movement/eye-tracking.jpg",
+     "alt": "Eye tracking inside the headset, both eyes",
+     "r": 1.784
+    },
+    {
+     "src": "media/movement/radial-interface.jpg",
+     "alt": "Radial interface: paper sketch and on-screen prototype",
+     "r": 3.265
+    }
+   ]
+  },
+  {
    "key": "pq",
    "title": "Researching Embodied Interactions",
    "meta": "Prague Quadrennial symposium, 2024",
@@ -428,7 +441,8 @@
      "alt": "Panel 5: Researching embodied interactions, Prague Quadrennial",
      "r": 2.165
     }
-   ]
+   ],
+   "bw": true
   }
  ]
 }

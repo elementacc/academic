@@ -24,7 +24,7 @@ PROJECTS = [
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
          status="Illustrative study / 01. Current graphic is not a research artifact."),
-    dict(slug="02-speculative-realities-lab", no="02", svg=3, title="Speculative Realities Lab",
+    dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, title="Speculative Realities Lab",
          area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
          filters=["Methods & Interfaces"],
          lead="Prototypes, methods, and experiments at the edges of emerging interfaces.",
@@ -43,7 +43,6 @@ PROJECTS = [
              tex_b=("kgm-14.jpg", "Intervention »Wunderkammer«: more than human"),
          ),
          info_blocks=[
-             ("Publication", "“The Navigational Technè: From Static Frames to Perpetual Motion”, a chapter in <em>Matters of Activity: Rethinking Materiality, Rethinking Knowledge</em>."),
              ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé"),
          ],
          ),
@@ -75,7 +74,7 @@ PROJECTS = [
              ("Objectives", "The software translates continuous movement qualities into discrete coded functions for an immersive drawing interface. Though the applied use case is drawing, the concept can be expanded to other applications."),
          ],
          info_blocks=[
-             ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
+             ("References", "Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
              ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
     dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters",
@@ -211,6 +210,16 @@ def feature_html():
         '</div><figure class="feature__img"><img src="media/movement/eye-drawing.png" alt="Eye drawing: gaze as a drawing cursor" loading="lazy"></figure></div></section>')
 
 
+def publication_html():
+    return ('<section class="feature pub" aria-labelledby="pub-h">'
+        '<p class="feature__kicker">Publication</p>'
+        '<h2 id="pub-h" class="feature__title">The Navigational Technè: From Static Frames to Perpetual Motion</h2>'
+        '<div class="feature__body"><div class="feature__text">'
+        '<p>A contribution to the Speculative Realities Lab section of <em>Matters of Activity. Rethinking Materiality, Rethinking Knowledge</em>, edited by Claudia Mareis, Carolin Ott and Babette Werner (Birkhäuser, 2026), pp. 305–306.</p>'
+        '<p><a href="https://doi.org/10.1515/9783035629774" target="_blank" rel="noopener">DOI: 10.1515/9783035629774 ↗</a></p>'
+        '</div><figure class="feature__img pub__img"><img src="../media/speclab/materiality-01.jpg" alt="Book cover: Matters of Activity. Rethinking Materiality, Rethinking Knowledge" loading="lazy"></figure></div></section>')
+
+
 def docs_html(cat):
     """Documentation blocks: header bar, short text, a justified row of 3-4 photos."""
     out = ['<section class="docs" aria-label="Documentation">']
@@ -219,7 +228,7 @@ def docs_html(cat):
             f'<figure class="doc__img" style="--r:{im["r"]}"><img src="{im["src"] if im["src"].startswith("media/movement") else "../" + im["src"]}" alt="{html.escape(im["alt"])}" loading="lazy"></figure>'
             for im in blk["images"])
         out.append(
-            f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
+            f'<article class="doc{" doc--bw" if blk.get("bw") else ""}"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
             f'<span class="muted">{esc(blk["meta"])}</span></header>'
             f'<p class="doc__text">{blk.get("text_html") or esc(blk["text"])}</p><div class="doc__row">{imgs}</div>'
             + (f'<p class="doc__credit muted">{esc(blk["credit"])}</p>' if blk.get("credit") else "")
@@ -258,7 +267,7 @@ def page(i, p):
             f'{crop(svg, c)}</button>'
             for k, c in enumerate(CROPS + ["140 140 120 120"]))
     total = len(PROJECTS)
-    docs = (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
+    docs = (publication_html() if p.get("publication") else "") + (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
     if M:
