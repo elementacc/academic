@@ -299,6 +299,48 @@
     }
     @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
 
+    /* ---------- VR: Axis / Space figure ---------- */
+    .axis { --hv: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: calc(var(--gap) * 4) var(--gap) 0; border-top: 1px solid rgba(0,0,0,.18); border-bottom: 1px solid rgba(0,0,0,.18);
+      display: grid; grid-template-columns: 1fr; }
+    .axis__text { padding: 16px 8px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .axis__title { margin: 0; font-family: var(--hv); font-weight: 400; font-size: 26px; line-height: .9; letter-spacing: -.01em; display: flex; align-items: stretch; gap: 8px; }
+    .axis__title b { font-weight: 700; }
+    .axis__slash { width: .9em; background: linear-gradient(to bottom right, transparent calc(50% - .6px), currentColor calc(50% - .6px), currentColor calc(50% + .6px), transparent calc(50% + .6px)); }
+    .axis__sub { margin: 0; font-family: var(--hv); font-size: 11px; }
+    .axis__body { margin: 0; max-width: 36ch; font-size: 13px; line-height: 1.4; }
+    .axis__hint, .axis__readout { margin: 0; font-family: var(--hv); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--textTertiaryColor); }
+    .axis__readout { color: var(--textPrimaryColor); font-variant-numeric: tabular-nums; }
+    .axis__stage { position: relative; height: min(92vw, 640px); }
+    .axis__stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+    .axis__stage canvas:active { cursor: grabbing; }
+    @media (min-width: 900px) {
+      .axis { grid-template-columns: minmax(240px, 3fr) 9fr; }
+      .axis__text { justify-content: flex-end; padding: 16px 16px 24px 8px; border-right: 1px solid rgba(0,0,0,.18); }
+      .axis__title { font-size: 34px; }
+      .axis__stage { height: min(72vh, 720px); }
+    }
+
+    /* ---------- VR: sketch archive grid ---------- */
+    .arc { --hv: "Helvetica Neue", Helvetica, Arial, sans-serif; --ln: rgba(0,0,0,.16);
+      margin: calc(var(--gap) * 4) var(--gap) 0; font-family: var(--hv); font-weight: 700; font-size: 10px; line-height: 1.05; letter-spacing: .01em; }
+    .arc__head { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ln); border-left: 1px solid var(--ln); }
+    .arc__head p { margin: 0; padding: 6px 6px 28px; border-right: 1px solid var(--ln); border-bottom: 1px solid var(--ln); }
+    .arc__grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--ln); }
+    .arc__cell { margin: 0; position: relative; border-right: 1px solid var(--ln); border-bottom: 1px solid var(--ln); aspect-ratio: 1; overflow: hidden; }
+    .arc__cell figcaption { position: absolute; left: 6px; top: 6px; z-index: 1; opacity: .55; transition: opacity .3s; }
+    .arc__cell img { width: 100%; height: 100%; object-fit: contain; padding: 14%; display: block; filter: grayscale(1) contrast(1.3); mix-blend-mode: multiply; transition: filter .5s var(--ease), transform .6s var(--ease); }
+    .arc__cell:hover img { filter: none; transform: scale(1.06); }
+    .arc__cell:hover figcaption { opacity: 1; }
+    .arc__more { display: none; }
+    .arc__grid.is-open .arc__more { display: block; }
+    .arc__toggle { all: unset; cursor: pointer; display: block; width: 100%; box-sizing: border-box; padding: 10px 6px; border: 1px solid var(--ln); border-top: 0; font: inherit; }
+    .arc__toggle:hover { background: var(--layer1Color); }
+    @media (min-width: 640px) { .arc__grid { grid-template-columns: repeat(6, 1fr); } .arc__head { grid-template-columns: repeat(4, 1fr); } .arc { font-size: 11px; } }
+    @media (min-width: 1024px) { .arc__grid { grid-template-columns: repeat(12, 1fr); } .arc__head { grid-template-columns: 3fr 3fr 3fr 3fr; } }
+    @media (prefers-reduced-motion: reduce) { .arc__cell img { transition: none; } }
+    @media (max-width: 639px) { .arc__grid:not(.is-open) .arc__cell:nth-child(n+25) { display: none; } }
+
     .sh, .sw, .sf { --fr-ink: #202020; --fr-2: #767676; --fr-3: #b3b3b3; --fr-line: #ededed; --fr-gap: 8px;
       font-family: "UN_11ST_Regular", "Helvetica Neue", Arial, sans-serif; color: var(--fr-ink); }
     .sh { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--fr-gap); padding: 13px var(--fr-gap) 12px; border-bottom: 1px solid var(--fr-line); font-size: 14px; line-height: 1.15; row-gap: 14px; }
@@ -392,6 +434,7 @@
     </div>
   </div>
 
+  
   <section class="feature" aria-labelledby="feat-h"><p class="feature__kicker">Revisiting the normative body/input</p><h2 id="feat-h" class="feature__title">Eye-drawing: an inclusive and experimental feature</h2><div class="feature__body"><div class="feature__text"><p>Eye Drawing introduces gaze as an input modality for immersive sketching. Instead of moving controllers to place strokes, the system translates the user’s eye movements into a drawing cursor. This enables hands-free or hybrid workflows, supports accessibility (reduced reliance on controllers), and expands embodied interaction beyond hand-based drawing.</p><p>This approach aims to open the design of new tools towards inclusivity and out of standardized features, still keeping a user-centred path at its core.</p></div><figure class="feature__img"><img src="media/movement/eye-drawing.png" alt="Eye drawing: gaze as a drawing cursor" loading="lazy"></figure></div></section><section class="docs" aria-label="Documentation"><article class="doc"><header class="doc__head bar"><span>Doc 01 — Radial interface prototyping</span><span class="muted">Eye drawing</span></header><p class="doc__text">Prototyping a radial menu for gaze input: eye tracking inside the headset, and the interface developed from a paper sketch to an on-screen prototype.</p><div class="doc__row"><figure class="doc__img" style="--r:1.784"><img src="media/movement/eye-tracking.jpg" alt="Eye tracking inside the headset, both eyes" loading="lazy"></figure><figure class="doc__img" style="--r:3.265"><img src="media/movement/radial-interface.jpg" alt="Radial interface: paper sketch and on-screen prototype" loading="lazy"></figure></div></article><article class="doc doc--bw"><header class="doc__head bar"><span>Doc 02 — Researching Embodied Interactions</span><span class="muted">Prague Quadrennial symposium, 2024</span></header><p class="doc__text">Panel 5 of the Prague Quadrennial symposium on technologies, presenting movement-based interfaces in virtual immersive environments.</p><div class="doc__row"><figure class="doc__img" style="--r:1.852"><img src="media/movement/pq-panel.jpg" alt="Speaking on the panel at the Prague Quadrennial symposium" loading="lazy"></figure><figure class="doc__img" style="--r:2.165"><img src="media/movement/pq-stage.jpg" alt="Panel 5: Researching embodied interactions, Prague Quadrennial" loading="lazy"></figure></div><p class="doc__credit"><a href="https://pq.cz/symposium-technologies/researching-embodied-interactions/" target="_blank" rel="noopener">Prague Quadrennial: Researching Embodied Interactions ↗</a></p></article></section>
   <section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2><div class="diagram__frame"><svg class="dg" viewBox="0 0 1200 700" role="img" aria-label="Diagram: body movement as input, translated from continuous movement into discrete code; input modes eye drawing, hand gesture and full body."><text class="dg-t k" x="600" y="62" text-anchor="middle" style="transition-delay:0.05s;font-size:58px">Body</text><line class="dg-l solid" x1="600" y1="82" x2="600" y2="292" style="transform-origin:600px 82px;transition-delay:0.1s"/><text class="dg-t k" x="600" y="362" text-anchor="middle" style="transition-delay:0.35s;font-size:58px">Input</text><line class="dg-l solid" x1="600" y1="388" x2="600" y2="598" style="transform-origin:600px 388px;transition-delay:0.3s"/><text class="dg-t k" x="600" y="668" text-anchor="middle" style="transition-delay:0.55s;font-size:58px">Code</text><line class="dg-l dot" x1="70" y1="378" x2="548" y2="344" style="transform-origin:70px 378px;transition-delay:0.6s"/><line class="dg-l dot" x1="672" y1="336" x2="1128" y2="304" style="transform-origin:672px 336px;transition-delay:0.75s"/><text class="dg-t k" x="42" y="380" text-anchor="middle" transform="rotate(-90 42 380)" style="transition-delay:0.7s;font-size:46px">continuous</text><text class="dg-t k" x="1160" y="300" text-anchor="middle" transform="rotate(90 1160 300)" style="transition-delay:0.85s;font-size:46px">discrete</text><line class="dg-l dash" x1="548" y1="372" x2="130" y2="628" style="transform-origin:548px 372px;transition-delay:0.95s"/><line class="dg-l dash" x1="652" y1="312" x2="1070" y2="66" style="transform-origin:652px 312px;transition-delay:1.05s"/><line class="dg-l dash" x1="636" y1="652" x2="1010" y2="652" style="transform-origin:636px 652px;transition-delay:1.15s"/><text class="dg-t g" x="18" y="672" text-anchor="start" style="transition-delay:1.1s;font-size:46px">Hand gesture</text><text class="dg-t g" x="1182" y="54" text-anchor="end" style="transition-delay:1.2s;font-size:46px">Eye drawing</text><text class="dg-t g" x="1182" y="668" text-anchor="end" style="transition-delay:1.3s;font-size:46px">Full body</text><line class="dg-l thin" x1="392" y1="282" x2="566" y2="330" style="transform-origin:392px 282px;transition-delay:1.35s"/><line class="dg-l thin" x1="632" y1="366" x2="700" y2="404" style="transform-origin:632px 366px;transition-delay:1.45s"/><text class="dg-t k" x="258" y="262" text-anchor="start" style="transition-delay:1.4s;font-size:17px">Movement</text><text class="dg-t k" x="258" y="282" text-anchor="start" style="transition-delay:1.4s;font-size:17px">qualities</text><text class="dg-t k" x="704" y="422" text-anchor="start" style="transition-delay:1.5s;font-size:17px">Body-Sketch</text><text class="dg-t k" x="704" y="442" text-anchor="start" style="transition-delay:1.5s;font-size:17px">immersive drawing</text><text class="dg-t k it" x="548" y="512" text-anchor="middle" style="transition-delay:1.6s;font-size:12px">fig. 01</text><circle class="dg-pulse" cx="600" cy="340" r="62"/></svg></div></section>
 

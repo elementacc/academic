@@ -25,7 +25,8 @@ PROJECTS = [
          lead="How are spatial relationships made when there is no surface to draw on?",
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
-         status="Illustrative study / 01. Current graphic is not a research artifact."),
+         status="Illustrative study / 01. Current graphic is not a research artifact.",
+         axis=True, archive=True),
     dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, practice=True, docs="speclab", title="Speculative Realities Lab",
          area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
          filters=["Methods & Interfaces"],
@@ -223,6 +224,36 @@ def publication_html():
         '</div></div></section>')
 
 
+def axis_html():
+    return ('<section class="axis" aria-labelledby="axis-h">'
+        '<div class="axis__text">'
+        '<h2 id="axis-h" class="axis__title"><b>AXIS<br>SPACE</b><span class="axis__slash" aria-hidden="true"></span><span aria-hidden="true">AXIS<br>SPACE</span></h2>'
+        '<p class="axis__sub">Spatial reference without a drawing surface</p>'
+        '<p class="axis__body">In immersive sketching there is no page to lean on. Orientation is built from the body, the viewpoint and the first strokes placed in space, which then become the reference for everything that follows.</p>'
+        '<p class="axis__hint">Drag to turn the view · double-click to redraw</p>'
+        '<p class="axis__readout" id="axis-readout" aria-live="off"></p>'
+        '</div>'
+        '<div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space"></canvas></div>'
+        '<script src="../media/vr/axis.js" defer></script></section>')
+
+
+def archive_html():
+    names = json.load(open(os.path.join(os.path.dirname(__file__), "sketches.json")))
+    cells = "".join(
+        f'<figure class="arc__cell{" arc__more" if k >= 48 else ""}"><figcaption>UNTITLED_{n}</figcaption>'
+        f'<img src="../media/vr/sketches/{n}.jpg" alt="VR sketch Untitled_{n}" loading="lazy"></figure>'
+        for k, n in enumerate(names))
+    return ('<section class="arc" aria-labelledby="arc-h">'
+        '<div class="arc__head">'
+        f'<p><span id="arc-h">VR SKETCHES<br>ARCHIVE</span></p><p>{len(names)}<br>SKETCHES</p><p>ORIGINAL BRUSH<br>GEOMETRY</p><p>LONGITUDINAL STUDY<br>ASCENDING NUMBER</p>'
+        '</div>'
+        f'<div class="arc__grid" id="arc-grid">{cells}</div>'
+        f'<button class="arc__toggle" id="arc-toggle" type="button">SHOW ALL {len(names)}</button>'
+        '<script>(function(){var g=document.getElementById("arc-grid"),b=document.getElementById("arc-toggle");'
+        'b.addEventListener("click",function(){var o=g.classList.toggle("is-open");b.textContent=o?"SHOW FEWER":"SHOW ALL {n}";}.bind(null));})();</script>'
+        '</section>').replace("{n}", str(len(names)))
+
+
 def docs_html(cat):
     """Documentation blocks: header bar, short text, a justified row of 3-4 photos."""
     out = ['<section class="docs" aria-label="Documentation">']
@@ -273,6 +304,7 @@ def page(i, p):
     FR_HEADER = frame.header("../")
     FR_TITLE = frame.title("../", 3 if p.get("practice") else 1, "Practice" if p.get("practice") else "Research", "index.html#research", esc(p["title"]))
     FR_FOOTER = frame.footer()
+    vr_html = (axis_html() if p.get("axis") else "") + (archive_html() if p.get("archive") else "")
     docs = (publication_html() if p.get("publication") else "") + (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
@@ -377,6 +409,7 @@ def page(i, p):
     </div>
   </div>
 
+  {vr_html}
   {docs}
   {diagram_html}
 

@@ -299,6 +299,48 @@
     }
     @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
 
+    /* ---------- VR: Axis / Space figure ---------- */
+    .axis { --hv: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: calc(var(--gap) * 4) var(--gap) 0; border-top: 1px solid rgba(0,0,0,.18); border-bottom: 1px solid rgba(0,0,0,.18);
+      display: grid; grid-template-columns: 1fr; }
+    .axis__text { padding: 16px 8px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .axis__title { margin: 0; font-family: var(--hv); font-weight: 400; font-size: 26px; line-height: .9; letter-spacing: -.01em; display: flex; align-items: stretch; gap: 8px; }
+    .axis__title b { font-weight: 700; }
+    .axis__slash { width: .9em; background: linear-gradient(to bottom right, transparent calc(50% - .6px), currentColor calc(50% - .6px), currentColor calc(50% + .6px), transparent calc(50% + .6px)); }
+    .axis__sub { margin: 0; font-family: var(--hv); font-size: 11px; }
+    .axis__body { margin: 0; max-width: 36ch; font-size: 13px; line-height: 1.4; }
+    .axis__hint, .axis__readout { margin: 0; font-family: var(--hv); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--textTertiaryColor); }
+    .axis__readout { color: var(--textPrimaryColor); font-variant-numeric: tabular-nums; }
+    .axis__stage { position: relative; height: min(92vw, 640px); }
+    .axis__stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
+    .axis__stage canvas:active { cursor: grabbing; }
+    @media (min-width: 900px) {
+      .axis { grid-template-columns: minmax(240px, 3fr) 9fr; }
+      .axis__text { justify-content: flex-end; padding: 16px 16px 24px 8px; border-right: 1px solid rgba(0,0,0,.18); }
+      .axis__title { font-size: 34px; }
+      .axis__stage { height: min(72vh, 720px); }
+    }
+
+    /* ---------- VR: sketch archive grid ---------- */
+    .arc { --hv: "Helvetica Neue", Helvetica, Arial, sans-serif; --ln: rgba(0,0,0,.16);
+      margin: calc(var(--gap) * 4) var(--gap) 0; font-family: var(--hv); font-weight: 700; font-size: 10px; line-height: 1.05; letter-spacing: .01em; }
+    .arc__head { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ln); border-left: 1px solid var(--ln); }
+    .arc__head p { margin: 0; padding: 6px 6px 28px; border-right: 1px solid var(--ln); border-bottom: 1px solid var(--ln); }
+    .arc__grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--ln); }
+    .arc__cell { margin: 0; position: relative; border-right: 1px solid var(--ln); border-bottom: 1px solid var(--ln); aspect-ratio: 1; overflow: hidden; }
+    .arc__cell figcaption { position: absolute; left: 6px; top: 6px; z-index: 1; opacity: .55; transition: opacity .3s; }
+    .arc__cell img { width: 100%; height: 100%; object-fit: contain; padding: 14%; display: block; filter: grayscale(1) contrast(1.3); mix-blend-mode: multiply; transition: filter .5s var(--ease), transform .6s var(--ease); }
+    .arc__cell:hover img { filter: none; transform: scale(1.06); }
+    .arc__cell:hover figcaption { opacity: 1; }
+    .arc__more { display: none; }
+    .arc__grid.is-open .arc__more { display: block; }
+    .arc__toggle { all: unset; cursor: pointer; display: block; width: 100%; box-sizing: border-box; padding: 10px 6px; border: 1px solid var(--ln); border-top: 0; font: inherit; }
+    .arc__toggle:hover { background: var(--layer1Color); }
+    @media (min-width: 640px) { .arc__grid { grid-template-columns: repeat(6, 1fr); } .arc__head { grid-template-columns: repeat(4, 1fr); } .arc { font-size: 11px; } }
+    @media (min-width: 1024px) { .arc__grid { grid-template-columns: repeat(12, 1fr); } .arc__head { grid-template-columns: 3fr 3fr 3fr 3fr; } }
+    @media (prefers-reduced-motion: reduce) { .arc__cell img { transition: none; } }
+    @media (max-width: 639px) { .arc__grid:not(.is-open) .arc__cell:nth-child(n+25) { display: none; } }
+
     .sh, .sw, .sf { --fr-ink: #202020; --fr-2: #767676; --fr-3: #b3b3b3; --fr-line: #ededed; --fr-gap: 8px;
       font-family: "UN_11ST_Regular", "Helvetica Neue", Arial, sans-serif; color: var(--fr-ink); }
     .sh { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--fr-gap); padding: 13px var(--fr-gap) 12px; border-bottom: 1px solid var(--fr-line); font-size: 14px; line-height: 1.15; row-gap: 14px; }
@@ -392,6 +434,7 @@
     </div>
   </div>
 
+  
   <section class="docs" aria-label="Documentation"><article class="doc"><header class="doc__head bar"><span>Doc 01 — Drawing the brain</span><span class="muted">Charité, 18 July 2025</span></header><p class="doc__text">A sketching session with anatomical models, headsets and drawings of subcortical structures.</p><div class="doc__row"><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/charite-workshop-01.jpg" alt="Charité building, Berlin" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/charite-workshop-02.jpg" alt="Participants around an anatomical brain model" loading="lazy"></figure></div></article><article class="doc"><header class="doc__head bar"><span>Doc 02 — Through the headset</span><span class="muted">Immersive sketching</span></header><p class="doc__text">Brain structures drawn and viewed in VR, photographed through the headset lens.</p><div class="doc__row"><figure class="doc__img" style="--r:0.753"><img src="../media/subcortical/through-the-headset-01.jpg" alt="Brain model seen through the headset lens" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/through-the-headset-02.jpg" alt="Ventricles drawn in VR, seen through the lens" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/through-the-headset-03.jpg" alt="Line drawing of brain structures in VR" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/through-the-headset-04.jpg" alt="Hand drawings of brain sections" loading="lazy"></figure></div></article><article class="doc"><header class="doc__head bar"><span>Doc 03 — Visualising fibres and forms</span><span class="muted">2024–2025</span></header><p class="doc__text">Tractography, colour maps and diffusion forms explored across screen and immersive views.</p><div class="doc__row"><figure class="doc__img" style="--r:1.333"><img src="../media/subcortical/visualisation-01.jpg" alt="Fibre tractography on screen" loading="lazy"></figure><figure class="doc__img" style="--r:1.333"><img src="../media/subcortical/visualisation-03.jpg" alt="Voxel and diffusion forms" loading="lazy"></figure><figure class="doc__img" style="--r:1.333"><img src="../media/subcortical/visualisation-04.jpg" alt="Diffusion form in an immersive scene" loading="lazy"></figure></div></article><article class="doc"><header class="doc__head bar"><span>Doc 04 — Textiles</span><span class="muted">Nayeli Vega</span></header><p class="doc__text">Brain visualisations carried onto textile, developed by <a href="https://nayelivega.com/" target="_blank" rel="noopener">Nayeli Vega ↗</a>.</p><div class="doc__row"><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/textile-01.jpg" alt="Textile with brain visualisation, by Nayeli Vega" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/textile-02.jpg" alt="Textile detail, by Nayeli Vega" loading="lazy"></figure></div><p class="doc__credit muted">Textiles: Nayeli Vega</p></article><article class="doc"><header class="doc__head bar"><span>Doc 05 — [in]visible. The art of visualization</span><span class="muted">COSMO Wissenschaftsforum, Dresden, 2025</span></header><p class="doc__text">Our scientific visualisation was part of the exhibition “[un]sichtbar / [in]visible: the art of visualization in science” at COSMO Wissenschaftsforum, Dresden (27 May – 6 August 2025).</p><div class="doc__row"><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/cosmo-01.jpg" alt="COSMO Wissenschaftsforum, Dresden" loading="lazy"></figure><figure class="doc__img" style="--r:0.563"><img src="../media/subcortical/visualisation-02.jpg" alt="Colourful fibre drawing" loading="lazy"></figure><figure class="doc__img" style="--r:0.75"><img src="../media/subcortical/cosmo-02.jpg" alt="Exhibition sign: [in]visible. The art of visualization" loading="lazy"></figure></div><p class="doc__credit"><a href="https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/" target="_blank" rel="noopener">About the exhibition ↗</a></p></article></section>
   
 
