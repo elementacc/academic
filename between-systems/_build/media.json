@@ -366,34 +366,21 @@
  ],
  "speclab": [
   {
-   "key": "kunstgewerbemuseum",
-   "title": "Museum VR sketching",
-   "meta": "Kunstgewerbemuseum Berlin, 2024",
-   "text": "Sketching in VR among the collection, and the session drawn while it happened.",
+   "key": "intervention",
+   "title": "Intervention at the Kunstgewerbemuseum",
+   "meta": "Kunstgewerbemuseum Berlin",
+   "text": "Movement-based immersive interfaces presented and drawn in the exhibition, and the open workshop space for sketching among the collection.",
+   "credit": "Sketch overlay: Maxime Le Calvé",
    "images": [
     {
-     "src": "media/speclab/kgm-03.jpg",
-     "alt": "VR sketch placed next to a coral in a vitrine",
-     "r": 1.0
+     "src": "media/speclab/kgm-overlay-talk.jpg",
+     "alt": "Sketch overlay: presenting movement-based immersive interfaces in the exhibition",
+     "r": 1.323
     },
     {
-     "src": "media/speclab/kgm-16.jpg",
-     "alt": "Sketch overlay of a presentation on movement-based immersive interfaces",
-     "r": 1.324
-    }
-   ],
-   "credit": "Photos: Kotryna Slapsinskaite, Maxime Le Calvé. Sketch overlays: Maxime Le Calvé"
-  },
-  {
-   "key": "workshop-2023",
-   "title": "Site-Writing with Technologies of Capture",
-   "meta": "Kunstgewerbemuseum Berlin, 13–14 December 2023",
-   "text": "Workshop at the Kunstgewerbemuseum, with drawing, pinning up and discussing sketches.",
-   "images": [
-    {
-     "src": "media/speclab/kgm-20.jpg",
-     "alt": "Kunstgewerbemuseum entrance",
-     "r": 0.75
+     "src": "media/speclab/kgm-workshop-space.jpg",
+     "alt": "Workshop space in the Kunstgewerbemuseum",
+     "r": 0.8
     }
    ]
   }
