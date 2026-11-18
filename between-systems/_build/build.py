@@ -3,6 +3,8 @@
 Usage: python3 -I build.py <between-systems dir>
 """
 import json, math, os, random, sys, html
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import frame
 
 OUT = sys.argv[1]
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,7 +26,7 @@ PROJECTS = [
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
          status="Illustrative study / 01. Current graphic is not a research artifact."),
-    dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, title="Speculative Realities Lab",
+    dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, practice=True, title="Speculative Realities Lab",
          area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
          filters=["Methods & Interfaces"],
          lead="Prototypes, methods, and experiments at the edges of emerging interfaces.",
@@ -77,7 +79,7 @@ PROJECTS = [
              ("References", "Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
              ("Credits", "Designed and developed by students of HTW University of Applied Sciences Berlin, IKG (Informatik in Kultur und Gesundheit), 2023–2026. Concept and supervision by the author of this archive."),
          ]),
-    dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters",
+    dict(slug="04-subcortical-matters", no="04", title="Subcortical Matters", practice=True,
          area="Scientific Visualization, Immersive Analytics", type="Collaborative work, Charité",
          filters=["Visualization", "Methods & Interfaces"],
          lead="Making complex anatomical information more navigable and interpretable.",
@@ -237,7 +239,7 @@ def docs_html(cat):
     out.append("</section>")
     return "".join(out)
 
-CSS = open(os.path.join(HERE, "project.css")).read()
+CSS = open(os.path.join(HERE, "project.css")).read() + frame.CSS
 JS = open(os.path.join(HERE, "project.js")).read()
 
 def esc(t):
@@ -267,6 +269,9 @@ def page(i, p):
             f'{crop(svg, c)}</button>'
             for k, c in enumerate(CROPS + ["140 140 120 120"]))
     total = len(PROJECTS)
+    FR_HEADER = frame.header("../")
+    FR_TITLE = frame.title("../", 3 if p.get("practice") else 1, "Practice" if p.get("practice") else "Research", "index.html#research", esc(p["title"]))
+    FR_FOOTER = frame.footer()
     docs = (publication_html() if p.get("publication") else "") + (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
@@ -312,14 +317,8 @@ def page(i, p):
   </style>
 </head>
 <body class="light">
-  <header class="sh" id="top">
-    <div class="sh__col sh__logo"><a href="../index.html">Paulina Greta Stefanovic</a></div>
-    <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
-    <div class="sh__col sh__pos"><p class="sh__label">Position</p>
-      <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
-      <p class="sh__bio"><a href="../bio.html">Bio →</a><br><a href="../reflections.html">Reflections →</a></p></div>
-  </header>
-  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1><p class="sw__proj">{esc(p["title"])}</p></div>
+  {FR_HEADER}
+  {FR_TITLE}
   <div class="mosaic">
 
     <!-- ============ Left half ============ -->
@@ -381,12 +380,7 @@ def page(i, p):
   {docs}
   {diagram_html}
 
-  <footer class="sf">
-    <div class="sf__graphic"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="26" cy="36" r="20"/><circle cx="46" cy="36" r="20"/></svg></div>
-    <div class="sf__about"><p class="sh__label">Contact</p><p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p></div>
-    <div class="sf__copy"><p>2026</p></div>
-    <a class="sf__top" href="#top" aria-label="Back to top">↑</a>
-  </footer>
+  {FR_FOOTER}
 
   <!-- ============ Sticky action bar ============ -->
   <div class="dock">

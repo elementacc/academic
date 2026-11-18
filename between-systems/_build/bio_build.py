@@ -1,5 +1,7 @@
 """Build bio.html (Opal-style spec list). Usage: python3 -I _build/bio_build.py <between-systems dir>"""
 import os, sys, re
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import frame
 OUT = sys.argv[1]
 LINE = os.path.join(OUT, "figures", "line")
 def drawing(name):
@@ -8,21 +10,21 @@ def drawing(name):
     return s.replace("<svg ", '<svg aria-hidden="true" ', 1)
 
 ROWS = [
-  dict(title="Profile", draw="01-headset",
-       a=("Position", [("Artist", ""), ("Lecturer", "HTW Berlin"), ("Researcher, HCI", "Speculative Realities Lab"), ("Ph.D. candidate", "TU Berlin")]),
+  dict(title="Profile", draw="06-motion-figure",
+       a=("Position", [("Artist", ""), ("Lecturer", "HTW Berlin"), ("Researcher, HCI", "Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«"), ("Ph.D. candidate", "TU Berlin")]),
        b=("Based in", "Berlin, Germany"),
        text="I study how interactive technologies shape the ways we perceive, think and move. My starting point is the body: perception, cognition and action form one continuous way of meeting the world, and every interface intervenes in that loop. Trained in psychology and interaction design, I work between first-person inquiry and empirical study, and I build the interfaces I study. My doctoral research follows how people learn to draw in immersive space, without a page to lean on, and how they form spatial references through their own movement. With clinicians, designers and data scientists I develop navigational interfaces for complex neurosurgical imaging, where what an interface makes visible changes what can be understood. Alongside research I teach, run practice-based workshops and make creative technology projects. Increasingly I ask how systems that take part in thinking and making, AI among them, change the conditions under which we perceive, reason and come to know."),
-  dict(title="Focus", draw="06-motion-figure",
-       a=("Fields", [("Embodied cognition", ""), ("Immersive sketching", ""), ("Scientific visualization", ""), ("Non-normative interfaces", "")]),
+  dict(title="Focus", draw=None,
+       a=("Fields", [("Space and spatial interaction", ""), ("Natural user interfaces", ""), ("Non-normative interfaces", ""), ("Accessibility", "")]),
        b=("Methods", "Phenomenologically informed inquiry, longitudinal studies, bodystorming, experimental interfaces"),
-       text="I explore the relationship between technology, art, design, space and human perception, both in theory and in practice. My focus is on immersive and movement-based interfaces, and on interaction design that questions assumptions about perception, cognition and bodily ability."),
+       text="My focus is on how people make sense of space through their bodies, and on interfaces that work with that capacity rather than around it. Natural user interfaces let gesture, gaze, posture and movement become input; non-normative interfaces ask whose body and perception those inputs assume. Accessibility runs through both: designing for different abilities from the start opens interaction to more people and often reveals more about interaction itself."),
   dict(title="Non-normative interfaces", draw="05-gaze-drawing",
        a=("Explorations", [("Eye drawing", "Gaze as a drawing input"), ("Movement-based input", "Hand, head, foot, full body"), ("Inclusive interfaces", "Teaching and student projects")]),
        b=("Approach", "Designing from bodies and abilities that standard interfaces overlook"),
-       text="Most interfaces quietly assume one kind of body and one way of perceiving: hands on a controller, eyes on a screen. My practice questions that norm. I explore inputs such as gaze, posture and whole-body movement, and design with people whose perception, cognition or bodily abilities differ from what technology expects. Working from these differences is not a special case added at the end; it is a way of discovering what interaction can be."),
+       text="Most interfaces quietly assume one kind of body and one way of perceiving: hands on a controller, eyes on a screen. My practice questions that norm. I explore inputs such as gaze, posture and whole-body movement, and design with people whose perception, cognition or bodily abilities differ from what technology expects."),
   dict(title="Exhibitions, residencies and workshops", draw=None,
-       a=("Selected", [("2027", "<a href=\"https://www.dagstuhl.de/seminars/seminar-calendar/seminar-details/27022\" target=\"_blank\" rel=\"noopener\">Dagstuhl Seminar 27022: Sketching Beyond 2D in Extended Reality, Schloss Dagstuhl ↗</a>"), ("2025", "<a href=\"https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/\" target=\"_blank\" rel=\"noopener\">[in]visible. Visualizations in Science, COSMO Science Forum, TU Dresden ↗</a>"), ("2025", "<a href=\"https://www.soiree-xd.com/\" target=\"_blank\" rel=\"noopener\">Already Possible, Soirée XD &amp; masumi, Berlin ↗</a>"), ("2025", "Eye-Tracking Workshop and Poster Presentation, University of Mannheim"), ("2025", "3D Sketching for Neuroanatomical Learning, workshop, Speculative Realities Lab, Charité"), ("2024", "<a href=\"https://pq.cz/symposium-technologies/researching-embodied-interactions/\" target=\"_blank\" rel=\"noopener\">Researching Embodied Interactions, Prague Quadrennial Symposium: Technologies, Prague ↗</a>"), ("2024", "More-than-Human Sketching / Drawing as Digestion, Kunstgewerbemuseum Berlin"), ("2024", "Micro-Phenomenology Crash Course with Kat Heimann"), ("2023", "Motion Bank Residency / Choreographic Coding Lab #15, German Sport University Cologne"), ("2023", "3D Sketching for Neuroanatomical Learning, workshop, Speculative Realities Lab, Charité"), ("2022", "Poster Presentation, Mensch und Computer 2022: Facing Realities, TU Darmstadt"), ("2021–2022", "Subterranean Matters, Stretching Senses School, Matters of Activity / Tieranatomisches Theater")]),
-       b=("Formats", "Exhibitions, symposia, residencies, workshops and poster presentations"),
+       a=("Selected", [("2027", "<a href=\"https://www.dagstuhl.de/seminars/seminar-calendar/seminar-details/27022\" target=\"_blank\" rel=\"noopener\">Dagstuhl Seminar 27022: Sketching Beyond 2D in Extended Reality, Schloss Dagstuhl, Wadern ↗</a>"), ("2025", "<a href=\"https://dst-tud.de/new-science-exhibition-at-cosmo-invisible-how-data-visualization-helps-us-understand-the-world/\" target=\"_blank\" rel=\"noopener\">[in]visible. Visualizations in Science, COSMO Science Forum, TU Dresden, Dresden ↗</a>"), ("2025", "<a href=\"https://www.soiree-xd.com/\" target=\"_blank\" rel=\"noopener\">Already Possible, Soirée XD &amp; masumi, Berlin ↗</a>"), ("2025", "Eye-Tracking Workshop and Poster Presentation, University of Mannheim, Mannheim"), ("2025", "3D Sketching for Neuroanatomical Learning, workshop, Speculative Realities Lab, Charité, Berlin"), ("2024", "<a href=\"https://pq.cz/symposium-technologies/researching-embodied-interactions/\" target=\"_blank\" rel=\"noopener\">Researching Embodied Interactions, Prague Quadrennial Symposium: Technologies, Prague ↗</a>"), ("2024", "More-than-Human Sketching / Drawing as Digestion, Kunstgewerbemuseum, Berlin"), ("2024", "Micro-Phenomenology Crash Course with Kat Heimann"), ("2023", "Motion Bank Residency / Choreographic Coding Lab #15, German Sport University, Cologne"), ("2023", "3D Sketching for Neuroanatomical Learning, workshop, Speculative Realities Lab, Charité, Berlin"), ("2022", "Poster Presentation, Mensch und Computer 2022: Facing Realities, TU Darmstadt, Darmstadt"), ("2021–2022", "Subterranean Matters, Stretching Senses School, Matters of Activity / Tieranatomisches Theater, Berlin")]),
+       b=None,
        text=""),
   dict(title="Teaching", draw=None,
        a=("Courses", [("Natural User Interfaces", "Applied Informatics, HTW Berlin"), ("Interaction Design", "Industrial Design, HTW Berlin"), ("Multidisciplinary Perspectives of Digital Neurosurgery", "Charité, with SpecLab, twice a year")]),
@@ -33,9 +35,9 @@ ROWS = [
        b=("Collaboration", "Charité and the Cluster of Excellence »Matters of Activity. Image Space Material«"),
        text="I am a researcher at the Speculative Realities Lab, a space connecting neurosurgery, anthropology and the immersive arts, run by Charité with the Cluster of Excellence »Matters of Activity. Image Space Material«."),
   dict(title="Education", draw=None,
-       a=("Degrees", [("Ph.D., Human–Computer Interaction", "TU Berlin, expected 2027"), ("MSc, Psychology of Communication", "Sapienza University of Rome, 2015"), ("BA/BFA, Video Direction and Non-Linear Installation Arts", "IED Milan, 2013")]),
+       a=("Degrees", [("Ph.D., Human–Computer Interaction", "TU Berlin, expected 2027"), ("MSc, Psychology of Communication", "Sapienza University of Rome, 2015"), ("BA/BFA, Video Direction, Performance and Non-Linear Installation Arts", "IED Milan, 2013")]),
        b=("Doctoral research", "Longitudinal Study of 3D VR Sketching Behaviour in Immersive Virtual Environments"),
-       text="My MSc thesis examined the sense of agency in gesture-controlled interactive storytelling through a phenomenological approach. My doctoral research continues that thread with a longitudinal study of drawing in immersive space."),
+       text="My MSc thesis examined the sense of agency in gesture-controlled interactive storytelling through a phenomenological approach.<br><br>My doctoral research continues that thread with a longitudinal study of drawing in immersive space."),
   dict(title="Publication", draw=None,
        a=("Chapter", [("“The Navigational Technè: From Static Frames to Perpetual Motion”", "")]),
        b=("In", "Matters of Activity: Rethinking Materiality, Rethinking Knowledge"),
@@ -54,7 +56,7 @@ def row(i, r):
         </button>
         <div class="spec__panel" id="spec-{n}"><div><div class="spec__inner">
           <div class="spec__a"><p class="spec__label">{r["a"][0]}</p><dl class="spec__kv">{kv}</dl></div>
-          <div class="spec__b"><p class="spec__label">{r["b"][0]}</p><p class="muted">{r["b"][1]}</p></div>
+          {('<div class="spec__b"><p class="spec__label">' + r["b"][0] + '</p><p class="muted">' + r["b"][1] + '</p></div>') if r.get("b") else ""}
           {('<p class="spec__text">' + r["text"] + '</p>') if r["text"] else ""}
 {('<figure class="spec__draw">' + drawing(r["draw"]) + '</figure>') if r.get("draw") else ""}
         </div></div></div>
@@ -167,39 +169,22 @@ HTML = f'''<!doctype html>
     .foot__base p:nth-child(1) {{ grid-column: 1 / span 2; }} .foot__base p:nth-child(2) {{ grid-column: 3 / span 1; }} .foot__base p:nth-child(3) {{ grid-column: 1 / -1; color: var(--fg2); margin-top: 6px; }}
     @media (min-width: 900px) {{ .foot__base p:nth-child(2) {{ grid-column: 7 / span 3; }} .foot__base p:nth-child(3) {{ grid-column: 10 / span 3; margin-top: 0; }} }}
     @media (prefers-reduced-motion: reduce) {{ .spec__panel, .spec__icon::after {{ transition: none; }} }}
+{frame.CSS}
+    .wrap {{ padding: 0 8px; }} .specs {{ margin-top: 40px; }}
   </style>
 </head>
 <body class="light">
+  {frame.header("")}
+  {frame.title("", 1, "Bio", "bio.html")}
   <div class="wrap">
-    <header class="top g">
-      <a class="logo" href="index.html">Research / Teaching / Practice</a>
-      <div class="top__meta top__meta--a"><p>Bio</p><p class="muted">Research practice</p></div>
-      <div class="top__meta top__meta--b"><p><span class="bullet"></span>Human–computer interaction</p><p><span class="bullet"></span>Immersive and embodied interfaces</p></div>
-      <a class="top__pill" href="index.html#research">Selected work</a>
 
-    </header>
-
-    <section class="head g">
-      <h1>Bio</h1>
-    </section>
 
     <ol class="specs">{"".join(row(i, r) for i, r in enumerate(ROWS))}
     </ol>
 
-    <footer class="foot">
-      <div class="g foot__block" style="margin-top:16px">
-        <p class="foot__label">Based in</p><p class="foot__val foot__val--mid">Berlin<br>Germany</p>
-      </div>
-      <div class="g foot__block" style="margin-top:60px">
-        <p class="foot__label">Contact</p><p class="foot__val foot__val--mid muted">Contact details to be added before publication.</p>
-      </div>
-      <div class="g foot__block">
-        <p class="foot__label">Index</p>
-        <p class="foot__val foot__val--mid"><a href="index.html#research">Research</a><a href="index.html#students">Teaching</a></p>
-      </div>
-      <div class="g foot__base"><p>Research / Teaching / Practice</p><p>© 2026</p><p></p></div>
-    </footer>
+
   </div>
+  {frame.footer()}
   <script>
     (function () {{
       var b = document.body, btns = document.querySelectorAll('[data-theme]');
