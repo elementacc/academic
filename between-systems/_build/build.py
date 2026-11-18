@@ -46,7 +46,7 @@ PROJECTS = [
          ),
          info_blocks=[
              ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé"),
-             ("Activities", "2025 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin<br>2024 · <a href=\"https://more-than-human.eu/en/more-than-human-sketching1/\" target=\"_blank\" rel=\"noopener\">More-than-Human Sketching / Drawing as Digestion, Kunstgewerbemuseum, Berlin ↗</a><br>2023 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin"),
+             ("Activities", "2025 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin<br>2024 · <a href=\"https://more-than-human.eu/en/more-than-human-sketching1/\" target=\"_blank\" rel=\"noopener\">More-than-Human Sketching / Drawing as Digestion, Kunstgewerbemuseum, Berlin ↗</a><br>2023 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin<br>2021–2022 · Subterranean Matters, Stretching Senses School, Matters of Activity / Tieranatomisches Theater, Berlin"),
          ],
          ),
     dict(slug="03-movement-based-research", no="03", title="Movement-based Interfaces",
