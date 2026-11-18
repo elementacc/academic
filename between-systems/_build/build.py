@@ -277,7 +277,7 @@ def page(i, p):
     info_extra = ('<div class="info__pair">' + "".join(block(h, b) for h, b in extra) + '</div>') if extra else ""
     spec = "".join(f"<li>{esc(x)}</li>" for x in [
         p["title"], p["area"] + " — " + p["type"], " + ".join(p["filters"]),
-        "№" + p["no"], "Research / Teaching / Practice"])
+        "Research / Teaching / Practice"])
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -293,12 +293,19 @@ def page(i, p):
   </style>
 </head>
 <body class="light">
+  <header class="sh" id="top">
+    <div class="sh__col sh__logo"><a href="../index.html">○ Paulina Greta Stefanovic</a></div>
+    <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
+    <div class="sh__col sh__pos"><p class="sh__label">Position</p>
+      <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
+      <p class="sh__bio"><a href="../bio.html">Bio →</a></p></div>
+  </header>
+  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1></div>
   <div class="mosaic">
 
     <!-- ============ Left half ============ -->
     <div class="half half--left">
       <div class="row row--top">
-        <a class="logo" href="../index.html">○ Research / Teaching / Practice</a>
         {figure_html}
         <div class="thumbs">{thumbs}</div>
       </div>
@@ -311,7 +318,7 @@ def page(i, p):
             <h1 class="bar">{esc(p["title"])}</h1>
             <div class="block__body">
               <p>{esc(p["area"])}<br>{esc(p["type"])}<br>{esc(" + ".join(p["filters"]))}</p>
-              <p class="muted">№{p["no"]} / {total:02d} &nbsp;·&nbsp; 01 Research</p>
+              <p class="muted">{p["no"]} / {total:02d} &nbsp;·&nbsp; Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -360,10 +367,17 @@ def page(i, p):
   {docs}
   {diagram_html}
 
+  <footer class="sf">
+    <div class="sf__graphic"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="26" cy="36" r="20"/><circle cx="46" cy="36" r="20"/></svg></div>
+    <div class="sf__about"><p class="sh__label">Contact</p><p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p></div>
+    <div class="sf__copy"><p>2026</p></div>
+    <a class="sf__top" href="#top" aria-label="Back to top">↑</a>
+  </footer>
+
   <!-- ============ Sticky action bar ============ -->
   <div class="dock">
     <a class="dock__bar" href="{nxt["slug"]}.html">
-      <span>Next project — {esc(nxt["title"])}</span><span>№{nxt["no"]} →</span>
+      <span>Next project — {esc(nxt["title"])}</span><span>{nxt["no"]} →</span>
     </a>
     <a class="dock__back" href="../index.html#research">← All research</a>
   </div>

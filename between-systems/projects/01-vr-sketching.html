@@ -212,6 +212,30 @@
     .spec li { padding: 6.5px 0; border-bottom: 1px solid var(--borderColor); }
     .spec li:nth-child(4) { color: var(--textSecondaryColor); }
 
+    /* ---------- Site header, title and footer (shared with homepage) ---------- */
+    .sh { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding: 13px var(--gap) 12px; border-bottom: 1px solid var(--borderColor); font-size: 14px; line-height: 1.15; row-gap: 14px; }
+    .sh a { text-decoration: none; }
+    .sh__label { font-size: 10px; line-height: 1.6; letter-spacing: 0; text-transform: uppercase; color: var(--textTertiaryColor); }
+    .sh__logo { grid-column: 1 / -1; font-size: 10px; line-height: 1.6; text-transform: uppercase; color: var(--textTertiaryColor); }
+    .sh__intro { grid-column: 1 / -1; }
+    .sh__pos { grid-column: 1 / -1; }
+    .sh__pos dl { display: grid; grid-template-columns: auto 1fr; column-gap: .9em; margin: 0; }
+    .sh__pos dt { white-space: nowrap; } .sh__pos dd { margin: 0; color: var(--textSecondaryColor); }
+    .sh__bio { margin-top: .6rem; } .sh__bio a { text-decoration: underline; text-underline-offset: .2em; }
+    @media (min-width: 1024px) {
+      .sh__logo { grid-column: 1 / span 2; } .sh__intro { grid-column: 3 / span 4; } .sh__pos { grid-column: 7 / span 6; }
+    }
+    .sw { padding: 18px var(--gap) 0; }
+    .sw h1 { font-family: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 400;
+      font-size: clamp(2.6rem, 6.9vw, 12rem); line-height: .86; letter-spacing: -.045em; margin-left: -.04em; padding: .06em 0 .2em; border-bottom: 1px solid var(--textPrimaryColor); }
+    .sw h1 a { text-decoration: none; }
+    .sw__n { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .26em; letter-spacing: .3em; vertical-align: 2.3em; margin-right: .3em; }
+    .sf { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); padding: 14px var(--gap) 90px; margin-top: 120px; border-top: 1px solid var(--borderColor); font-size: 14px; line-height: 1.15; position: relative; }
+    .sf__graphic { grid-column: 1 / span 2; } .sf__graphic svg { width: 4.5rem; height: auto; color: var(--textPrimaryColor); }
+    .sf__about { grid-column: 3 / span 4; } .sf__copy { grid-column: 10 / span 2; }
+    .sf__top { position: absolute; right: var(--gap); top: 14px; text-decoration: none; }
+    @media (max-width: 1023px) { .sf__graphic { grid-column: 1 / -1; margin-bottom: 12px; } .sf__about { grid-column: 1 / span 8; } .sf__copy { grid-column: 9 / span 3; } }
+
     /* ---------- Dock ---------- */
     .dock { position: fixed; z-index: 20; left: var(--gap); right: var(--gap); bottom: var(--gap); display: flex; gap: var(--gap); }
     .dock__bar {
@@ -254,8 +278,8 @@
     /* ---------- Desktop: two halves, 12 columns ---------- */
     @media (min-width: 1024px) {
       .mosaic { grid-template-columns: 1fr 1fr; }
-      .logo { grid-column: 1 / span 2; grid-row: 1; }
-      .figure { grid-column: 3 / span 3; grid-row: 1; align-self: start; aspect-ratio: auto; height: 100%; }
+
+      .figure { grid-column: 1 / span 5; grid-row: 1; align-self: start; aspect-ratio: auto; height: 100%; }
       .thumbs { grid-column: 6 / span 1; grid-row: 1; }
       .row--top { min-height: 0; }
       .stage-col { grid-column: 1 / span 4; }
@@ -278,12 +302,19 @@
   </style>
 </head>
 <body class="light">
+  <header class="sh" id="top">
+    <div class="sh__col sh__logo"><a href="../index.html">○ Paulina Greta Stefanovic</a></div>
+    <div class="sh__col sh__intro"><p class="sh__label">Intro</p><p>Interaction / Cognition / Computational environments</p></div>
+    <div class="sh__col sh__pos"><p class="sh__label">Position</p>
+      <dl><dt>Artist</dt><dd></dd><dt>Lecturer</dt><dd>HTW Berlin</dd><dt>Researcher, HCI</dt><dd>Speculative Realities Lab, Charité and Cluster of Excellence »Matters of Activity. Image Space Material«</dd><dt>Ph.D. candidate</dt><dd>TU Berlin</dd></dl>
+      <p class="sh__bio"><a href="../bio.html">Bio →</a></p></div>
+  </header>
+  <div class="sw"><h1><a href="../index.html#research"><span class="sw__n">(1)</span>Research</a></h1></div>
   <div class="mosaic">
 
     <!-- ============ Left half ============ -->
     <div class="half half--left">
       <div class="row row--top">
-        <a class="logo" href="../index.html">○ Research / Teaching / Practice</a>
         <div class="figure" aria-hidden="true"><svg class="figure__svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
                 <g class="spin" opacity=".9">
                   <path d="M70 250 C 110 140, 190 120, 230 170 S 320 260, 340 150" />
@@ -351,7 +382,7 @@
             <h1 class="bar">VR Sketching</h1>
             <div class="block__body">
               <p>PhD Thesis Research<br>Longitudinal study<br>Spatial interaction + Methods &amp; interfaces</p>
-              <p class="muted">№01 / 04 &nbsp;·&nbsp; 01 Research</p>
+              <p class="muted">01 / 04 &nbsp;·&nbsp; Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -423,10 +454,17 @@
   
   
 
+  <footer class="sf">
+    <div class="sf__graphic"><svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="26" cy="36" r="20"/><circle cx="46" cy="36" r="20"/></svg></div>
+    <div class="sf__about"><p class="sh__label">Contact</p><p>Open to interdisciplinary research conversations, evaluations and experimental collaborations.</p></div>
+    <div class="sf__copy"><p>2026</p></div>
+    <a class="sf__top" href="#top" aria-label="Back to top">↑</a>
+  </footer>
+
   <!-- ============ Sticky action bar ============ -->
   <div class="dock">
     <a class="dock__bar" href="02-speculative-realities-lab.html">
-      <span>Next project — Speculative Realities Lab</span><span>№02 →</span>
+      <span>Next project — Speculative Realities Lab</span><span>02 →</span>
     </a>
     <a class="dock__back" href="../index.html#research">← All research</a>
   </div>
