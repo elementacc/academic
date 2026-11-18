@@ -25,8 +25,21 @@ PROJECTS = [
          lead="How are spatial relationships made when there is no surface to draw on?",
          short="Immersive 3D sketching examined through interaction traces, construction sequences, movement, and participants’ reflections.",
          detail="A longitudinal study of spatial drawing in immersive VR. The research follows how people establish relationships between shapes, viewpoints and body movement when sketching without a physical page or fixed construction procedure.",
-         status="Illustrative study / 01. Current graphic is not a research artifact.",
-         axis=True, archive=True),
+         status="Participants drawing in VR during the study sessions, the OpenBrush interface, and sketches from the sessions.",
+         axis=True,
+         media=dict(
+             dir="../media/vr",
+             figure=("sketch-grid.jpg", "Sixteen VR sketches from the study sessions: circle, cube, pyramid, sphere"),
+             figure_contain=True,
+             thumbs=[("session-01.jpg", "Participant drawing upwards in VR"),
+                     ("session-02.jpg", "Participant drawing in VR with both controllers"),
+                     ("session-03.jpg", "Participant reaching up while sketching in VR"),
+                     ("session-04.jpg", "Participant drawing with an extended arm in VR")],
+             side=("openbrush.jpg", "A cube being drawn in OpenBrush"),
+             stage=("openbrush.jpg", "A cube being drawn in OpenBrush"),
+             tex_a=("sketches/422.jpg", "VR sketch: cube"),
+             tex_b=("sketches/434.jpg", "VR sketch: sphere"),
+         )),
     dict(slug="02-speculative-realities-lab", no="02", svg=3, publication=True, practice=True, docs="speclab", title="Speculative Realities Lab",
          area="Science and Technology Studies (STS)", area_link="https://speculativerealitieslab.pubpub.org/", type="Research practice",
          filters=["Methods & Interfaces"],
@@ -225,29 +238,14 @@ def publication_html():
 
 
 def axis_html():
-    return ('<section class="axis" aria-labelledby="axis-h">'
-        '<div class="axis__text">'
-        '<h2 id="axis-h" class="axis__title"><b>AXIS<br>SPACE</b><span class="axis__slash" aria-hidden="true"></span><span aria-hidden="true">AXIS<br>SPACE</span></h2>'
-        '<p class="axis__sub">Spatial reference without a drawing surface</p>'
-        '<p class="axis__body">In immersive sketching there is no page to lean on. Orientation is built from the body, the viewpoint and the first strokes placed in space, which then become the reference for everything that follows.</p>'
-        '<p class="axis__hint">Drag to turn the view · double-click to redraw</p>'
-        '<p class="axis__readout" id="axis-readout" aria-live="off"></p>'
-        '</div>'
-        '<div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space"></canvas></div>'
+    arrow = ('<svg class="axis__arrow" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 26a16 16 0 0 1 30-8" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M39 9v10h-10" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M40 22a16 16 0 0 1-30 8" fill="none" stroke="currentColor" stroke-width="2"/>'
+             '<path d="M9 39V29h10" fill="none" stroke="currentColor" stroke-width="2"/></svg>')
+    return ('<section class="diagram axis" aria-label="Figure: axis and space">'
+        '<h2 class="bar">fig. 01 — Axis / space</h2>'
+        f'<div class="axis__stage"><canvas id="axis-canvas" aria-label="Interactive figure: three intersecting planes and a sketched pyramid in a cube of space. Drag to turn the view."></canvas>{arrow}</div>'
         '<script src="../media/vr/axis.js" defer></script></section>')
-
-
-def archive_html():
-    names = [420, 421, 422, 423, 432, 433, 434, 435, 444, 445, 446, 447, 456, 457, 458, 459]
-    cells = "".join(
-        f'<figure class="arc__cell"><img src="../media/vr/sketches/{n}.jpg" alt="VR sketch" loading="lazy"></figure>'
-        + ('<div class="arc__edge" aria-hidden="true">' + ('16:156' if r == 2 else '') + '</div>' if (k % 4 == 3) else '')
-        for k, n in enumerate(names) for r in [k // 4])
-    return ('<section class="arc" aria-labelledby="arc-h">'
-        '<div class="arc__head"><p id="arc-h">VR SKETCHES<br>ARCHIVE</p><p>LONGITUDINAL<br>STUDY</p><p>ORIGINAL<br>BRUSH<br>GEOMETRY</p><p></p><p class="arc__edge"></p></div>'
-        f'<div class="arc__grid">{cells}</div>'
-        '<div class="arc__foot"><p></p><p></p><p></p><p class="arc__ref">IMMERSIVE 3D SKETCHING<br>CIRCLE, CUBE, PYRAMID, SPHERE<br>REPEATED ACROSS SESSIONS</p><p class="arc__edge"></p></div>'
-        '</section>')
 
 
 def docs_html(cat):
@@ -300,7 +298,7 @@ def page(i, p):
     FR_HEADER = frame.header("../")
     FR_TITLE = frame.title("../", 3 if p.get("practice") else 1, "Practice" if p.get("practice") else "Research", "index.html#research", esc(p["title"]))
     FR_FOOTER = frame.footer()
-    vr_html = (axis_html() if p.get("axis") else "") + (archive_html() if p.get("archive") else "")
+    vr_html = (axis_html() if p.get("axis") else "")
     docs = (publication_html() if p.get("publication") else "") + (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""

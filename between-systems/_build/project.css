@@ -289,49 +289,9 @@
     @media (prefers-reduced-motion: reduce) { .spin, .spin-r { animation: none; } }
 
     /* ---------- VR: Axis / Space figure ---------- */
-    .axis { --hv: "Helvetica Now Display", "Neue Haas Grotesk Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-      margin: calc(var(--gap) * 4) var(--gap) 0; border-top: 1px solid rgba(0,0,0,.18); border-bottom: 1px solid rgba(0,0,0,.18);
-      display: grid; grid-template-columns: 1fr; }
-    .axis__text { padding: 16px 8px 20px; display: flex; flex-direction: column; gap: 10px; }
-    .axis__title { margin: 0; font-family: var(--hv); font-weight: 400; font-size: 26px; line-height: .9; letter-spacing: -.01em; display: flex; align-items: stretch; gap: 8px; }
-    .axis__title b { font-weight: 700; }
-    .axis__slash { width: .9em; background: linear-gradient(to bottom right, transparent calc(50% - .6px), currentColor calc(50% - .6px), currentColor calc(50% + .6px), transparent calc(50% + .6px)); }
-    .axis__sub { margin: 0; font-family: var(--hv); font-size: 11px; }
-    .axis__body { margin: 0; max-width: 36ch; font-size: 13px; line-height: 1.4; }
-    .axis__hint, .axis__readout { margin: 0; font-family: var(--hv); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; color: var(--textTertiaryColor); }
-    .axis__readout { color: var(--textPrimaryColor); font-variant-numeric: tabular-nums; }
-    .axis__stage { position: relative; height: min(92vw, 640px); }
+    .axis__stage { position: relative; height: min(100vw, 560px); margin-top: 8px; }
     .axis__stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; touch-action: pan-y; }
     .axis__stage canvas:active { cursor: grabbing; }
-    @media (min-width: 900px) {
-      .axis { grid-template-columns: minmax(240px, 3fr) 9fr; }
-      .axis__text { justify-content: flex-end; padding: 16px 16px 24px 8px; border-right: 1px solid rgba(0,0,0,.18); }
-      .axis__title { font-size: 34px; }
-      .axis__stage { height: min(72vh, 720px); }
-    }
-
-    /* ---------- VR: sketch archive grid (minimal) ---------- */
-    .arc { --hv: "Helvetica Neue", Helvetica, Arial, sans-serif; --ln: rgba(0,0,0,.22); --cols: repeat(4, 1fr) .32fr;
-      margin: calc(var(--gap) * 4) 0 0; padding: 0 var(--gap); font-family: var(--hv); font-weight: 700; font-size: 11px; line-height: 1; letter-spacing: -.01em; text-transform: uppercase;
-      border-top: 1px solid var(--ln); border-bottom: 1px solid var(--ln); }
-    .arc p { margin: 0; }
-    .arc__head, .arc__grid, .arc__foot { display: grid; grid-template-columns: var(--cols); border-left: 1px solid var(--ln); }
-    .arc__head > *, .arc__grid > *, .arc__foot > * { border-right: 1px solid var(--ln); }
-    .arc__head > * { padding: 6px 6px 40px; }
-    .arc__grid > * { border-top: 1px solid var(--ln); }
-    .arc__grid > :nth-child(n+11):nth-child(-n+15) { border-top: 3px double var(--ln); }
-    .arc__cell { margin: 0; aspect-ratio: 1; overflow: hidden; }
-    .arc__cell img { width: 100%; height: 100%; object-fit: contain; padding: 16%; display: block; filter: grayscale(1) contrast(1.3); mix-blend-mode: multiply; transition: filter .5s var(--ease), transform .6s var(--ease); }
-    .arc__cell:hover img { filter: none; transform: scale(1.05); }
-    .arc__edge { display: flex; align-items: flex-end; padding: 0 0 4px 4px; font-size: 10px; }
-    .arc__foot > * { border-top: 1px solid var(--ln); padding: 40px 6px 6px; }
-    .arc__ref { line-height: 1.05; }
-    @media (max-width: 639px) {
-      .arc { --cols: repeat(4, 1fr); font-size: 9px; }
-      .arc .arc__edge { display: none; }
-      .arc__grid > :nth-child(n+11):nth-child(-n+15) { border-top: 1px solid var(--ln); }
-      .arc__ref { grid-column: 2 / span 3; }
-      .arc__foot > :nth-child(2), .arc__foot > :nth-child(3) { display: none; }
-    }
-    @media (min-width: 1024px) { .arc { font-size: 13px; } .arc__head > * { padding-bottom: 72px; } }
-    @media (prefers-reduced-motion: reduce) { .arc__cell img { transition: none; } }
+    .axis__arrow { position: absolute; left: calc(50% - 17px); bottom: 8px; width: 34px; height: 34px; color: var(--textPrimaryColor); pointer-events: none; transform-origin: 50% 100%; transition: transform .35s var(--ease), color .35s var(--ease); }
+    .axis__stage:hover .axis__arrow { transform: scale(1.35); color: #ff3b1f; }
+    @media (min-width: 900px) { .axis__stage { height: min(78vh, 760px); } }
