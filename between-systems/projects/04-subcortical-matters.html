@@ -184,6 +184,7 @@
     .doc--bw .doc__img img { filter: grayscale(1); transition: filter .4s var(--ease); }
     .doc--bw .doc__img:hover img { filter: none; }
     .pub__img { max-width: none; background: none; }
+    @media (min-width: 1024px) { .pub__body { grid-template-columns: auto 1fr; gap: 32px; } }
     .pub__img img { height: clamp(11rem, 17vw, 17rem); width: auto; max-width: 100%; object-fit: contain; }
     .pub__title { max-width: none; font-size: clamp(1.5rem, 2.6vw, 2.6rem); }
     .pub__text { font-size: 15px; line-height: 1.4; }
@@ -350,7 +351,6 @@
             <h1 class="bar">Subcortical Matters</h1>
             <div class="block__body">
               <p>Scientific Visualization, Immersive Analytics<br>Collaborative work, Charité<br>Visualization<br>Methods &amp; Interfaces</p>
-              <p class="muted">04 / 04 &nbsp;·&nbsp; Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -377,14 +377,14 @@
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Projects</span><span>04</span></a>
+          <a class="pill" href="01-vr-sketching.html" aria-label="Next project: VR Sketching"><span>Project</span><span>04 →</span></a>
         </div>
       </div>
 
       <div class="row row--details">
         <div class="details">
           <section class="block"><h2 class="bar">About the study</h2><div class="block__body"><p>An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.</p></div></section>
-          <section class="block"><h2 class="bar">Visual status</h2><div class="block__body"><p><span class="muted">Project documentation / 04. Photographs from drawing sessions, VR sketching and visualisation work.</span></p></div></section>
+          <section class="block"><h2 class="bar">Visual status</h2><div class="block__body"><p><span class="muted">Photographs from drawing sessions, VR sketching and visualisation work.</span></p></div></section>
         </div>
         <div class="texture texture--a texture--blank" aria-hidden="true"></div>
         <div class="tile texture texture--b"><img src="../media/subcortical/lila-01.jpg" alt="Fibre tracts and voxel points in an immersive scene" loading="lazy"><span class="tile__cap">Fibre tracts and voxel points in an immersive scene</span></div>

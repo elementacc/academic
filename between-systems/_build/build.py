@@ -36,7 +36,8 @@ PROJECTS = [
          media=dict(
              dir="../media/speclab",
              figure=("museum-vr-01.jpg", "Printed sketch overlays from a museum VR sketching session"),
-             thumbs=[("kgm-12.jpg", "Colourful sketch of museum vessels on a clipboard"),
+             thumbs=[("printed-sketches.jpg", "Printed VR sketches laid out on a table"),
+                     ("kgm-12.jpg", "Colourful sketch of museum vessels on a clipboard"),
                      ("museum-vr-02.jpg", "VR sketch overlaid on a museum visitor"),
                      ("kgm-02.jpg", "Two participants drawing in VR")],
              stage=("printed-sketches.jpg", "Printed VR sketches laid out on a table"),
@@ -45,15 +46,16 @@ PROJECTS = [
          ),
          info_blocks=[
              ("Credits", "Photos: Kotryna Slapsinskaite, Maxime Le Calvé and workshop participants<br>Sketch overlays: Maxime Le Calvé"),
+             ("Activities", "2025 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin<br>2024 · <a href=\"https://more-than-human.eu/en/more-than-human-sketching1/\" target=\"_blank\" rel=\"noopener\">More-than-Human Sketching / Drawing as Digestion, Kunstgewerbemuseum, Berlin ↗</a><br>2023 · 3D Sketching for Neuroanatomical Learning, workshop, Charité, Berlin"),
          ],
          ),
     dict(slug="03-movement-based-research", no="03", title="Movement-based Interfaces",
          area="Software research", type="Ongoing, 2023–present",
          filters=["Spatial interaction", "Methods & Interfaces"],
          lead="Translating continuous movement qualities into discrete, programmable functions for an immersive drawing interface.",
-         short="Most XR, CAVE and sensor-based software makes the body central as a perceiving subject, but not as an active agent: movement qualities, position and different body parts are left out of input design, which mostly relies on hand controllers.",
+         short="Input design can do more with movement qualities and the whole body than classic hand controllers allow. Building interfaces around how people move, not only where their hands are, opens immersive tools to richer and more varied ways of interacting.",
          detail="Body-Sketch is an ongoing system development that creates a working software application for an immersive 3D drawing interface. Users interact through a wide range of motion inputs, from subtle hand gestures to full-body interaction. This broadens input modalities and the accessibility of 3D drawing technology across fields.",
-         status="Project documentation / 03. Interface screenshots, posters and reference material.",
+         status="Interface screenshots, posters and reference material.",
          fig=("05-axes", 5, "Perception, action, interface"),
          diagram=True,
          feature=True,
@@ -84,7 +86,7 @@ PROJECTS = [
          lead="Making complex anatomical information more navigable and interpretable.",
          short="Interdisciplinary work on visual interaction with complex scientific and neuroanatomical material across immersive and screen-based contexts.",
          detail="An interdisciplinary exploration of complex neuroanatomical representations and the different demands placed on immersive and screen-based visualization, navigation, and interaction.",
-         status="Project documentation / 04. Photographs from drawing sessions, VR sketching and visualisation work.",
+         status="Photographs from drawing sessions, VR sketching and visualisation work.",
          fig=("03-signal", 3, "Signal"),
          media=dict(
              dir="../media/subcortical",
@@ -215,10 +217,10 @@ def publication_html():
     return ('<section class="feature pub" aria-labelledby="pub-h">'
         '<p class="feature__kicker">Publication</p>'
         '<h2 id="pub-h" class="feature__title pub__title">The Navigational Technè:<br>From Static Frames to Perpetual Motion</h2>'
-        '<div class="feature__body"><div class="feature__text pub__text">'
+        '<div class="feature__body pub__body"><figure class="feature__img pub__img"><img src="../media/speclab/materiality-01.jpg" alt="Book cover: Matters of Activity. Rethinking Materiality, Rethinking Knowledge" loading="lazy"></figure><div class="feature__text pub__text">'
         '<p>A contribution to the Speculative Realities Lab section of <em>Matters of Activity. Rethinking Materiality, Rethinking Knowledge</em>, edited by Claudia Mareis, Carolin Ott and Babette Werner (Birkhäuser, 2026), pp. 305–306.</p>'
         '<p class="pub__doi"><a href="https://doi.org/10.1515/9783035629774" target="_blank" rel="noopener">DOI: 10.1515/9783035629774 ↗</a></p>'
-        '</div><figure class="feature__img pub__img"><img src="../media/speclab/materiality-01.jpg" alt="Book cover: Matters of Activity. Rethinking Materiality, Rethinking Knowledge" loading="lazy"></figure></div></section>')
+        '</div></div></section>')
 
 
 def docs_html(cat):
@@ -335,7 +337,6 @@ def page(i, p):
             <h1 class="bar">{esc(p["title"])}</h1>
             <div class="block__body">
               <p>{(f'<a href="{p["area_link"]}" target="_blank" rel="noopener">{esc(p["area"])} ↗</a>' if p.get("area_link") else esc(p["area"]))}<br>{esc(p["type"])}<br>{"<br>".join(esc(f) for f in p["filters"])}</p>
-              <p class="muted">{p["no"]} / {total:02d} &nbsp;·&nbsp; Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -362,7 +363,7 @@ def page(i, p):
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Projects</span><span>{p["no"]}</span></a>
+          <a class="pill" href="{nxt["slug"]}.html" aria-label="Next project: {esc(nxt["title"])}"><span>Project</span><span>{p["no"]} →</span></a>
         </div>
       </div>
 

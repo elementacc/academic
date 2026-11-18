@@ -184,6 +184,7 @@
     .doc--bw .doc__img img { filter: grayscale(1); transition: filter .4s var(--ease); }
     .doc--bw .doc__img:hover img { filter: none; }
     .pub__img { max-width: none; background: none; }
+    @media (min-width: 1024px) { .pub__body { grid-template-columns: auto 1fr; gap: 32px; } }
     .pub__img img { height: clamp(11rem, 17vw, 17rem); width: auto; max-width: 100%; object-fit: contain; }
     .pub__title { max-width: none; font-size: clamp(1.5rem, 2.6vw, 2.6rem); }
     .pub__text { font-size: 15px; line-height: 1.4; }
@@ -405,7 +406,6 @@
             <h1 class="bar">VR Sketching</h1>
             <div class="block__body">
               <p>PhD Thesis Research<br>Longitudinal study<br>Spatial interaction<br>Embodied Interfaces</p>
-              <p class="muted">01 / 04 &nbsp;·&nbsp; Research</p>
             </div>
           </section>
           <div class="info__pair">
@@ -443,7 +443,7 @@
           </div>
         </div>
         <div class="side">
-          <a class="pill" href="../index.html#research"><span>Projects</span><span>01</span></a>
+          <a class="pill" href="02-speculative-realities-lab.html" aria-label="Next project: Speculative Realities Lab"><span>Project</span><span>01 →</span></a>
         </div>
       </div>
 

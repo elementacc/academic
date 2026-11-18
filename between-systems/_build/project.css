@@ -173,6 +173,7 @@
     .doc--bw .doc__img img { filter: grayscale(1); transition: filter .4s var(--ease); }
     .doc--bw .doc__img:hover img { filter: none; }
     .pub__img { max-width: none; background: none; }
+    @media (min-width: 1024px) { .pub__body { grid-template-columns: auto 1fr; gap: 32px; } }
     .pub__img img { height: clamp(11rem, 17vw, 17rem); width: auto; max-width: 100%; object-fit: contain; }
     .pub__title { max-width: none; font-size: clamp(1.5rem, 2.6vw, 2.6rem); }
     .pub__text { font-size: 15px; line-height: 1.4; }
