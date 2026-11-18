@@ -56,6 +56,8 @@ PROJECTS = [
          status="Project documentation / 03. Interface screenshots, posters and reference material.",
          fig=("05-axes", 5, "Perception, action, interface"),
          diagram=True,
+         feature=True,
+         docs="movement",
          media=dict(
              dir="media/movement",
              figure=("input-icons.jpg", "Input modalities: foot, eye, full body, head, hand"),
@@ -71,7 +73,6 @@ PROJECTS = [
          detail_blocks=[
              ("About the study", None),
              ("Objectives", "The software translates continuous movement qualities into discrete coded functions for an immersive drawing interface. Though the applied use case is drawing, the concept can be expanded to other applications."),
-             ("Eye drawing — an inclusive feature", "Eye drawing introduces gaze as an input modality for immersive sketching: the system translates eye movements into a drawing cursor instead of moving controllers. This enables hands-free or hybrid workflows, reduces reliance on controllers and extends embodied interaction beyond the hand — opening tool design towards inclusivity while keeping a user-centred path at its core."),
          ],
          info_blocks=[
              ("References", "Rudolf Laban (1879–1958)<br>Trisha Brown, “It’s a Draw/Live Feed” (2003)"),
@@ -200,12 +201,22 @@ def diagram():
 
 MEDIA = json.load(open(os.path.join(HERE, "media.json")))
 
+def feature_html():
+    return ('<section class="feature" aria-labelledby="feat-h">'
+        '<p class="feature__kicker">Revisiting the normative body/input</p>'
+        '<h2 id="feat-h" class="feature__title">Eye-drawing: an inclusive and experimental feature</h2>'
+        '<div class="feature__body"><div class="feature__text">'
+        '<p>Eye Drawing introduces gaze as an input modality for immersive sketching. Instead of moving controllers to place strokes, the system translates the user’s eye movements into a drawing cursor. This enables hands-free or hybrid workflows, supports accessibility (reduced reliance on controllers), and expands embodied interaction beyond hand-based drawing.</p>'
+        '<p>This approach aims to open the design of new tools towards inclusivity and out of standardized features, still keeping a user-centred path at its core.</p>'
+        '</div><figure class="feature__img"><img src="media/movement/eye-drawing.png" alt="Eye drawing: gaze as a drawing cursor" loading="lazy"></figure></div></section>')
+
+
 def docs_html(cat):
     """Documentation blocks: header bar, short text, a justified row of 3-4 photos."""
     out = ['<section class="docs" aria-label="Documentation">']
     for n, blk in enumerate(MEDIA[cat], 1):
         imgs = "".join(
-            f'<figure class="doc__img" style="--r:{im["r"]}"><img src="../{im["src"]}" alt="{html.escape(im["alt"])}" loading="lazy"></figure>'
+            f'<figure class="doc__img" style="--r:{im["r"]}"><img src="{im["src"] if im["src"].startswith("media/movement") else "../" + im["src"]}" alt="{html.escape(im["alt"])}" loading="lazy"></figure>'
             for im in blk["images"])
         out.append(
             f'<article class="doc"><header class="doc__head bar"><span>Doc {n:02d} — {esc(blk["title"])}</span>'
@@ -247,7 +258,7 @@ def page(i, p):
             f'{crop(svg, c)}</button>'
             for k, c in enumerate(CROPS + ["140 140 120 120"]))
     total = len(PROJECTS)
-    docs = docs_html(p["docs"]) if p.get("docs") else ""
+    docs = (feature_html() if p.get("feature") else "") + (docs_html(p["docs"]) if p.get("docs") else "")
     diagram_html = (f'<section class="diagram" aria-label="Diagram"><h2 class="bar">fig. 01 — Body as input</h2>'
                     f'<div class="diagram__frame">{diagram()}</div></section>') if p.get("diagram") else ""
     if M:

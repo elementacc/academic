@@ -406,5 +406,29 @@
     }
    ]
   }
+ ],
+ "movement": [
+  {
+   "key": "pq",
+   "title": "Researching Embodied Interactions",
+   "meta": "Prague Quadrennial symposium, 2024",
+   "text": "Panel 5 of the Prague Quadrennial symposium on technologies, presenting movement-based interfaces in virtual immersive environments.",
+   "link": [
+    "Prague Quadrennial: Researching Embodied Interactions",
+    "https://pq.cz/symposium-technologies/researching-embodied-interactions/"
+   ],
+   "images": [
+    {
+     "src": "media/movement/pq-panel.jpg",
+     "alt": "Speaking on the panel at the Prague Quadrennial symposium",
+     "r": 1.852
+    },
+    {
+     "src": "media/movement/pq-stage.jpg",
+     "alt": "Panel 5: Researching embodied interactions, Prague Quadrennial",
+     "r": 2.165
+    }
+   ]
+  }
  ]
 }

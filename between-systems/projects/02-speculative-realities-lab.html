@@ -170,6 +170,17 @@
     body.dark .strip { background: var(--layer1Color); }
     .texture img { object-fit: cover; object-position: top; }
 
+    /* ---------- Feature (eye drawing) ---------- */
+    .feature { padding: calc(var(--gap) * 6) var(--gap) 0; }
+    .feature__kicker { color: var(--textSecondaryColor); border-top: 1px solid var(--borderColor); padding-top: 10px; }
+    .feature__title { font-size: clamp(1.8rem, 3.4vw, 3.4rem); line-height: 1.02; letter-spacing: -.03em; margin: 10px 0 24px; max-width: 18ch; font-weight: 400; }
+    .feature__body { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .feature__text { font-size: clamp(1.05rem, 1.35vw, 1.35rem); line-height: 1.35; letter-spacing: -.01em; max-width: 36em; }
+    .feature__text p + p { margin-top: 1em; }
+    .feature__img { margin: 0; background: var(--layer1Color); }
+    .feature__img img { width: 100%; height: auto; display: block; }
+    @media (min-width: 1024px) { .feature__body { grid-template-columns: 1fr 1fr; align-items: start; } }
+
     /* ---------- Documentation blocks ---------- */
     .docs { padding: calc(var(--gap) * 3) var(--gap) 0; display: grid; gap: calc(var(--gap) * 5); }
     .doc__head { display: flex; justify-content: space-between; gap: 12px; }
